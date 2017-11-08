@@ -126,15 +126,15 @@ public class PEGGenerator extends BodyTransformer {
 		if (s.containsInvokeExpr()) {
 			InvokeExpr ie = s.getInvokeExpr();			
 			
+			//local = invokeExpr()
 			if (s instanceof AssignStmt) {
 				Local lhs = (Local) ((AssignStmt) s).getLeftOp();
 				
 				// deals with certain special cases and since they are special, the parameters of them are not handled
 				if(isJavaObjectNew(ie)){
-					intra_graph.addJavaClassObj2Local(lhs);
+					intra_graph.addJavaClassObj2Local(ie, lhs);
 					return;
 				}
-				
 			}
 
 			// deals with actual arguments
