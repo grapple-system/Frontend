@@ -1,0 +1,34 @@
+public class Test0 extends java.lang.Object
+{
+
+    public void <init>()
+    {
+        Test0 this;
+
+        this := @this: Test0;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    private void t1(int, int)
+    {
+        Test0 this;
+        int x, y, a, c, b;
+
+        this := @this: Test0;
+        x := @parameter0: int;
+        y := @parameter1: int;
+        a = x * x;
+        c = a + x;
+        b = y - c;
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+
+        args := @parameter0: java.lang.String[];
+        return;
+    }
+}
