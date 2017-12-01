@@ -84,8 +84,10 @@ public class Main extends SceneTransformer {
 //		if (DEBUG) printClasses("aft_instr.txt");
     	
     	classes = Scene.v().getApplicationClasses();
-    	Instrumentor ci = new Instrumentor();
-    	ci.instrument(classes);
+//    	Instrumentor ci = new Instrumentor();
+//    	ci.instrument(classes);
+    	Executor ce = new Executor();
+    	ce.execute(classes);
     }
 
 //	private void printClasses(String fileName) {
