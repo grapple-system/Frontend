@@ -13,14 +13,40 @@ public class Test0 extends java.lang.Object
     private void t1(int, int)
     {
         Test0 this;
-        int x, y, a, c, b;
+        int x, y, a, c, l5;
 
         this := @this: Test0;
         x := @parameter0: int;
         y := @parameter1: int;
         a = x * x;
         c = a + x;
-        b = y - c;
+        if c <= 0 goto label0;
+
+        l5 = y - c;
+        goto label1;
+
+     label0:
+        c = c + -1;
+
+     label1:
+        a = a + 1;
+        if a >= 0 goto label2;
+
+        a = a + -1;
+
+     label2:
+        c = c + 1;
+        return;
+    }
+
+    private void t2(int)
+    {
+        Test0 this;
+        int x, a;
+
+        this := @this: Test0;
+        x := @parameter0: int;
+        a = 19 / x;
         return;
     }
 
