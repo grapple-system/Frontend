@@ -1,10 +1,12 @@
-package acteve.instrumentor;
+package edu.zuo.setree.execution;
 
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import edu.zuo.setree.datastructure.StateNode;
+import soot.Body;
 import soot.SootClass;
 import soot.SootMethod;
 import soot.Unit;
@@ -17,7 +19,7 @@ import soot.toolkits.graph.Block;
 import soot.toolkits.graph.BriefBlockGraph;
 import soot.util.Chain;
 
-public class Executor extends AbstractStmtSwitch {
+public class Executor {
 	
 	public void execute(Chain<SootClass> classes){
 		for (SootClass klass : classes) {
@@ -26,16 +28,19 @@ public class Executor extends AbstractStmtSwitch {
 				if (!m.isConcrete())
 					continue;
 
-				execute(m);
+				execute(m.getActiveBody());
 			}
 		}
 	}
 	
-	private void execute(SootMethod method){
-		BriefBlockGraph cfg = new BriefBlockGraph(method.getActiveBody());
-		System.out.println(cfg.toString());
+	public void execute(Body mb){
+		System.out.println("\n\n");
+		System.out.println("Method: " + mb.getMethod().getSubSignature().toString());
+		System.out.println("---------------------------------------------------");
 		
-//		Block entryBlock = getEntryBlock(cfg);
+		BriefBlockGraph cfg = new BriefBlockGraph(mb);
+		System.out.println("cfg ==>>");
+		System.out.println(cfg.toString());
 		
 //		Set<Block> set_visited = new HashSet<Block>();
 		List<Block> entries = cfg.getHeads();
@@ -44,11 +49,26 @@ public class Executor extends AbstractStmtSwitch {
 		for(Block entry: entries){
 			StateNode root = new StateNode();
 			traverseCFG(entry, root);
+			
+			//for debugging
+			System.out.println("state ==>>");
+			printOutInfo(root, 1);
 		}
+		
 		
 	}
 
 	
+	private void printOutInfo(StateNode root, int id) {
+		// TODO Auto-generated method stub
+		if(root == null){
+			return;
+		}
+		System.out.println(id + ": " + root.getState().toString());
+		printOutInfo(root.getTrueChild(), 2 * id);
+		printOutInfo(root.getFalseChild(), 2 * id + 1);
+	}
+
 	private void filterEntries(List<Block> entries) {
 		// TODO Auto-generated method stub
 		for(Iterator<Block> it = entries.listIterator(); it.hasNext();){
@@ -57,20 +77,18 @@ public class Executor extends AbstractStmtSwitch {
 				it.remove();
 			}
 		}
-		System.out.println(entries.size());
+//		System.out.println(entries.size());
+		assert(entries.size() == 1);
 	}
 
-	private void traverseCFG(Block entryBlock, StateNode node) {
+	private void traverseCFG(Block block, StateNode node) {
 		// TODO Auto-generated method stub
-		operate(entryBlock, node);
+		operate(block, node);
 		
-//		Unit stmt = entryBlock.getTail();
-//		if(stmt instanceof IfStmt){
-//			((IfStmt) stmt).getTarget();
-//		}
-		
-		List<Block> succs = entryBlock.getSuccs();
+		List<Block> succs = block.getSuccs();
 		if(succs.size() == 2){//branch
+			assert(block.getTail() instanceof IfStmt);
+			
 			StateNode nTrue = new StateNode(node.getState());
 			node.setTrueChild(nTrue);
 			traverseCFG(succs.get(0), nTrue);
@@ -86,13 +104,13 @@ public class Executor extends AbstractStmtSwitch {
 
 		}
 		else if(succs.size() > 2){//error
-			
+			System.err.println("unexpected case!!!");
 		}
 	}
 
 	private void operate(Block block, StateNode node) {
 		// TODO Auto-generated method stub
-		Propagate p = new Propagate(node.getState().getLocalsMap());
+		Propagator p = new Propagator(node.getState().getLocalsMap());
 		for(Iterator<Unit> it = block.iterator(); it.hasNext();){
 			Stmt stmt = (Stmt) it.next();
 			stmt.apply(p);

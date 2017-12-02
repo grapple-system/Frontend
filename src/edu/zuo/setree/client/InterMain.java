@@ -28,7 +28,7 @@
   of the authors and should not be interpreted as representing official policies, 
   either expressed or implied, of the FreeBSD Project.
 */
-package acteve.instrumentor;
+package edu.zuo.setree.client;
 
 import java.io.File;
 import java.io.FileWriter;
@@ -43,6 +43,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.regex.Pattern;
 
+import edu.zuo.setree.execution.Executor;
 import soot.Scene;
 import soot.PackManager;
 import soot.Scene;
@@ -52,7 +53,7 @@ import soot.Transform;
 import soot.options.Options;
 import soot.util.Chain;
 
-public class Main extends SceneTransformer {
+public class InterMain extends SceneTransformer {
 //	private static Config config;
     private static Chain<SootClass> classes;
 //	private static Map<String,List<String>> uninstrumentedClasses = new HashMap();
@@ -84,10 +85,8 @@ public class Main extends SceneTransformer {
 //		if (DEBUG) printClasses("aft_instr.txt");
     	
     	classes = Scene.v().getApplicationClasses();
-//    	Instrumentor ci = new Instrumentor();
-//    	ci.instrument(classes);
-    	Executor ce = new Executor();
-    	ce.execute(classes);
+    	Executor inter_executor = new Executor();
+    	inter_executor.execute(classes);
     }
 
 //	private void printClasses(String fileName) {
@@ -145,7 +144,7 @@ public class Main extends SceneTransformer {
 		Options.v().set_output_format(Options.output_format_jimple);
 		Options.v().set_prepend_classpath(true);
 		
-		PackManager.v().getPack("wjtp").add(new Transform("wjtp.acteve", new Main()));
+		PackManager.v().getPack("wjtp").add(new Transform("wjtp.acteve", new InterMain()));
 
 		
 		/**args should be in the following format: "-cp path_of_classes_analyzed class_names"
