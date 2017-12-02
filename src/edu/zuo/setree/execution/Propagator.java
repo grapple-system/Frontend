@@ -29,7 +29,7 @@
   either expressed or implied, of the FreeBSD Project.
 */
 
-package acteve.instrumentor;
+package edu.zuo.setree.execution;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -153,15 +153,15 @@ import soot.toolkits.graph.UnitGraph;
 import soot.toolkits.graph.ExceptionalUnitGraph;
 
 
-public class Propagate extends AbstractStmtSwitch {
+public class Propagator extends AbstractStmtSwitch {
 	
 	private Map<Local, Expression> localsMap;
 
-	public Propagate(){
+	public Propagator(){
 		this.localsMap = new LinkedHashMap<Local, Expression>();
 	}
 	
-	public Propagate(Map<Local, Expression> localsM){
+	public Propagator(Map<Local, Expression> localsM){
 		this.localsMap = localsM;
 	}
 
@@ -271,6 +271,7 @@ public class Propagate extends AbstractStmtSwitch {
 		if (rhs instanceof ParameterRef) {
 			Expression sym_para = null;
 			int index = ((ParameterRef) rhs).getIndex();
+			rhs_name = "@para" + index;
 			if(rhs.getType() instanceof PrimType){
 				//split the cases
 				if(rhs.getType() instanceof BooleanType){
@@ -309,6 +310,7 @@ public class Propagate extends AbstractStmtSwitch {
 			
 		}
 		else if(rhs instanceof ThisRef){
+			rhs_name = "@this";
 			Expression sym = new SymbolicRef(rhs_name, null);
 			localsMap.put(lhs, sym);
 		}

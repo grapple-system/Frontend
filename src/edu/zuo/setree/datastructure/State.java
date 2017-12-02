@@ -1,4 +1,4 @@
-package acteve.instrumentor;
+package edu.zuo.setree.datastructure;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -30,6 +30,10 @@ public class State {
 		this.localsMap = localsMap;
 	}
 	
+	
+	public String toString(){
+		return this.localsMap.toString();
+	}
 	
 	
 
