@@ -15,7 +15,7 @@ public class IntraMain extends BodyTransformer {
 	protected void internalTransform(Body b, String phaseName, Map options) {
 		// TODO Auto-generated method stub
 		Executor intra_executor = new Executor();
-		intra_executor.execute(b);
+		intra_executor.run(b);
 	}
 	
 	

@@ -13,7 +13,8 @@ public class Test0 extends java.lang.Object
     private void t1(int, int)
     {
         Test0 this;
-        int x, y, a, c, l5;
+        int x, y, a, c, l5, i;
+        java.io.PrintStream $r0;
 
         this := @this: Test0;
         x := @parameter0: int;
@@ -26,16 +27,59 @@ public class Test0 extends java.lang.Object
         goto label1;
 
      label0:
-        c = c + -1;
+        c = c + -2;
 
      label1:
         a = a + 1;
-        if a >= 0 goto label2;
-
-        a = a + -1;
+        goto label3;
 
      label2:
+        a = a + -1;
+
+     label3:
+        if a < 0 goto label2;
+
+        c = c + 2;
+        if a == 2 goto label4;
+
+        if a == 100 goto label5;
+
+        goto label6;
+
+     label4:
         c = c + 1;
+        goto label7;
+
+     label5:
+        c = c + -1;
+        goto label7;
+
+     label6:
+        $r0 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r0.<java.io.PrintStream: void println(java.lang.String)>("default!");
+
+     label7:
+        a = a + 3;
+        c = c + -4;
+        if c != 0 goto label7;
+
+        i = 0;
+        goto label10;
+
+     label8:
+        a = 2 * c;
+        a = a + -5;
+        if a >= 100 goto label9;
+
+        goto label11;
+
+     label9:
+        i = i + 1;
+
+     label10:
+        if i < a goto label8;
+
+     label11:
         return;
     }
 

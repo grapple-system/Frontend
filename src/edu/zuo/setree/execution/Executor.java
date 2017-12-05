@@ -5,6 +5,8 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Set;
 
+import acteve.instrumentor.LoopTransformer;
+import acteve.instrumentor.SwitchTransformer;
 import edu.zuo.setree.datastructure.StateNode;
 import soot.Body;
 import soot.SootClass;
@@ -21,44 +23,67 @@ import soot.util.Chain;
 
 public class Executor {
 	
-	public void execute(Chain<SootClass> classes){
+	public void run(Chain<SootClass> classes){
 		for (SootClass klass : classes) {
 			List<SootMethod> origMethods = klass.getMethods();
 			for (SootMethod m : origMethods) {
-				if (!m.isConcrete())
-					continue;
-
-				execute(m.getActiveBody());
+				if (m.isConcrete()) {
+					run(m.retrieveActiveBody());
+				}
 			}
 		}
 	}
 	
-	public void execute(Body mb){
+	
+	public void run(Body mb){
 		System.out.println("\n\n");
 		System.out.println("Method: " + mb.getMethod().getSubSignature().toString());
 		System.out.println("---------------------------------------------------");
 		
+		//transform the body
+		transform(mb.getMethod());
+		
+		//execute the body symbolically
+		execute(mb);
+		
+	}
+	
+	private void execute(Body mb) {
 		BriefBlockGraph cfg = new BriefBlockGraph(mb);
-		System.out.println("cfg ==>>");
+		System.err.println("cfg before executing ==>>");
 		System.out.println(cfg.toString());
 		
-//		Set<Block> set_visited = new HashSet<Block>();
 		List<Block> entries = cfg.getHeads();
 		filterEntries(entries);
 		
 		for(Block entry: entries){
 			StateNode root = new StateNode();
-			traverseCFG(entry, root);
+//			traverseCFG(entry, root);
 			
 			//for debugging
-			System.out.println("state ==>>");
+			System.err.println("state ==>>");
 			printOutInfo(root, 1);
 		}
+	}
+	
+	private void transform(SootMethod method) {
+		BriefBlockGraph cfg = new BriefBlockGraph(method.getActiveBody());
+		System.err.println("cfg before transforming ==>>");
+		System.out.println(cfg.toString());
 		
+		//loop transform: unroll the loop twice
+		LoopTransformer.transform(method);
+		
+		//switch transform: transform lookupswitch and tableswitch into if
+		SwitchTransformer.transform(method);
 		
 	}
 
 	
+	/** print out state information
+	 * @param root
+	 * @param id
+	 */
 	private void printOutInfo(StateNode root, int id) {
 		// TODO Auto-generated method stub
 		if(root == null){
@@ -69,6 +94,10 @@ public class Executor {
 		printOutInfo(root.getFalseChild(), 2 * id + 1);
 	}
 
+	
+	/** filter out the entry blocks which are catching exceptions
+	 * @param entries
+	 */
 	private void filterEntries(List<Block> entries) {
 		// TODO Auto-generated method stub
 		for(Iterator<Block> it = entries.listIterator(); it.hasNext();){
@@ -81,6 +110,7 @@ public class Executor {
 		assert(entries.size() == 1);
 	}
 
+	
 	private void traverseCFG(Block block, StateNode node) {
 		// TODO Auto-generated method stub
 		operate(block, node);
@@ -108,6 +138,7 @@ public class Executor {
 		}
 	}
 
+	
 	private void operate(Block block, StateNode node) {
 		// TODO Auto-generated method stub
 		Propagator p = new Propagator(node.getState().getLocalsMap());
