@@ -86,7 +86,7 @@ public class InterMain extends SceneTransformer {
     	
     	classes = Scene.v().getApplicationClasses();
     	Executor inter_executor = new Executor();
-    	inter_executor.execute(classes);
+    	inter_executor.run(classes);
     }
 
 //	private void printClasses(String fileName) {

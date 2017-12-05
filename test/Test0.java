@@ -13,14 +13,40 @@ public class Test0 {
 			int b = y - c;			
 		}
 		else{
-			c--;
+			c-=2;
 		}
 		a++;
-		if(a < 0){
+		while(a < 0){
 			a--;
 		}
-		c++;
+		c+=2;
 //		int d = b + this.f;
+		
+		switch(a) {
+		case 2:
+			c++;
+			break;
+		case 100:
+			c--;
+			break;
+			
+		default:
+			System.out.println("default!");	
+		}
+		
+		do {
+			a+=3;
+			c-=4;
+		}
+		while(c != 0);
+		
+		for(int i = 0; i < a; i++) {
+			a = 2 * c;
+			a -= 5;
+			if(a < 100) {
+				break;
+			}
+		}
 	}
 	
 	
