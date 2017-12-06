@@ -43,9 +43,22 @@ public class Test0 {
 		for(int i = 0; i < a; i++) {
 			a = 2 * c;
 			a -= 5;
-			if(a < 100) {
+			for(int j = 0; j < 10; j++) {
+				if(a < 100) {
+					return;
+				}
+				a++;
+			}
+		}
+		
+		a+=7;
+		
+		while(true) {
+			a++;
+			if(a == 0) {
 				break;
 			}
+			a--;
 		}
 	}
 	
