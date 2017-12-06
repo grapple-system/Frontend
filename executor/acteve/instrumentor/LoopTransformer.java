@@ -39,6 +39,8 @@ import soot.Immediate;
 import soot.jimple.TableSwitchStmt;
 import soot.jimple.toolkits.annotation.logic.Loop;
 import soot.toolkits.graph.LoopNestTree;
+import soot.toolkits.graph.UnitGraph;
+import soot.util.Chain;
 import soot.jimple.LookupSwitchStmt;
 import soot.jimple.Stmt;
 import soot.jimple.IfStmt;
@@ -49,7 +51,11 @@ import soot.jimple.GotoStmt;
 import soot.jimple.EqExpr;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.HashSet;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Set;
 
 public final class LoopTransformer {
 	
@@ -66,6 +72,7 @@ public final class LoopTransformer {
 		LoopNestTree loopNestTree = new LoopNestTree(body);
 		for(Loop loop: loopNestTree) {
 			System.err.println("\nLoop ===>");
+			System.err.println(loop.getLoopStatements());
 			Stmt head = loop.getHead();
 			System.err.println("Loop head: " + head.toString());
 			Stmt backJump = loop.getBackJumpStmt();
@@ -75,26 +82,104 @@ public final class LoopTransformer {
 				System.err.println("Loop exit: " + exit.toString());
 				System.err.println("Loop targets: " + loop.targetsOfLoopExit(exit).toString());
 			}
+			
+			//infinite loop
+			if(loop.loopsForever()) {
+				throw new RuntimeException("unexcepted infinite loop!!!");
+			}
+			
+			//get the target of the loop exit
+			Stmt target = getTargetOfLoopExits(loop);
+			
+			//redirect backJump to exit target
+			redirectBackJump(loop, target, method);
+			
 		}
 
-		while (editor.hasNext()) {
-			Stmt s = editor.next();
-			//System.out.println(">> " + s);
-
-		}
 	}
 
 
-    private static void convertSwitchToBranches(Local key, List<IntConstant> values, List<Unit> targets, Unit defaultTarget) {
-        int n = values.size();
-        if (targets.size() != n)
-            throw new RuntimeException("Number of values and targets do not match.");
-        for (int i = 0; i < n; i++) {
-			EqExpr cond = jimple.newEqExpr(key, (IntConstant) values.get(i));
-			IfStmt ifStmt = jimple.newIfStmt(cond, targets.get(i));
-			editor.insertStmt(ifStmt);
+    private static void redirectBackJump(Loop loop, Stmt target, SootMethod method) {
+    	Chain stmts = method.getActiveBody().getUnits().getNonPatchingChain();
+    	
+    	//unroll the loop one more time
+//    	while (editor.hasNext()) {
+//    		Stmt s = editor.next();
+//    		//System.out.println(">> " + s);
+//    		
+//    	}
+    	
+    	
+    	//redirect backJump
+		Stmt backJump = loop.getBackJumpStmt();
+		if(backJump instanceof IfStmt) {
+			System.err.println("BackJump is IfStmt: " + backJump);
+			
 		}
-        editor.insertStmt(jimple.newGotoStmt(defaultTarget));
-        editor.removeOriginalStmt();
+		else if(backJump instanceof GotoStmt) {
+			System.err.println("BackJump is GotoStmt: " + backJump);
+			
+		}
+		else {
+			System.err.println("BackJump is OtherStmt: " + backJump);
+			GotoStmt newGoto = jimple.newGotoStmt(target);
+//			stmts.insertAfter(newGoto, backJump);
+		}
+	}
+
+    private static Stmt getTargetOfLoopExits(Loop loop) {
+    	assert(!loop.getLoopExits().isEmpty());
+    	Stmt header = loop.getHead();
+    	Stmt backJump = loop.getBackJumpStmt();
+    	//while loop
+    	if(header instanceof IfStmt) {
+    		assert(loop.getLoopExits().contains(header));
+    		assert(loop.targetsOfLoopExit(header).size() == 1);
+    		return loop.targetsOfLoopExit(header).iterator().next();
+    	}
+    	
+    	//do-while loop
+    	if(backJump instanceof IfStmt) {
+    		
+    	}
+    	
+    	return null;
     }
+    
+//	private static Stmt getTargetOfLoopExits(Loop loop) {
+//		//get all the targets of the loop exits
+//		assert(!loop.getLoopExits().isEmpty());
+//		Set<Stmt> targets = new HashSet<Stmt>();
+//		for(Stmt exit: loop.getLoopExits()) {
+//			targets.addAll(loop.targetsOfLoopExit(exit));
+//		}
+//		
+//		//filter out GotoStmt
+//		for(Iterator<Stmt> it = targets.iterator(); it.hasNext();) {
+//			Stmt target = it.next();
+//			if(target instanceof GotoStmt) {
+//				it.remove();
+//				Stmt finalTarget = getGotoTarget((GotoStmt)target);
+//				targets.add(finalTarget);
+//			}
+//		}
+//		
+//		//return the exit target
+//		assert(targets.size() > 0);
+//		if(targets.size() > 1) {
+//			System.err.println("Multiple exit targets: " + targets);
+//		}
+//		return targets.iterator().next();
+//		
+//	}
+
+	private static Stmt getGotoTarget(GotoStmt it) {
+		// TODO Auto-generated method stub
+		Stmt target = (Stmt) it.getTarget();
+		while(target instanceof GotoStmt) {
+			target = (Stmt)((GotoStmt) target).getTarget();
+		}
+		return target;
+	}
+
 }
