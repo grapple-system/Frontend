@@ -52,9 +52,11 @@ import soot.jimple.EqExpr;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 public final class LoopTransformer {
@@ -63,11 +65,19 @@ public final class LoopTransformer {
 
     public static final BodyEditor editor = new BodyEditor();
 
+    
+    private static Chain STMTS;
+    
 	private LoopTransformer() { }
+	
 
+	/**
+	 * @param method
+	 */
 	public static void transform(SootMethod method) {		
 		Body body = method.retrieveActiveBody();		
 		editor.newBody(body, method);
+		STMTS = body.getUnits();
 		
 		LoopNestTree loopNestTree = new LoopNestTree(body);
 		for(Loop loop: loopNestTree) {
@@ -85,10 +95,12 @@ public final class LoopTransformer {
 			
 			//infinite loop
 			if(loop.loopsForever()) {
-				throw new RuntimeException("unexcepted infinite loop!!!");
+				throw new RuntimeException("unexpected infinite loop!!!");
 			}
 			
-			//get the target of the loop exit
+			//get the exit target of the loop
+			//it's no necessary to be the target of loop exit, e.g., while(true)
+			//instead, it should be the right next stmt in the chain after the loop.
 			Stmt target = getTargetOfLoopExits(loop);
 			
 			//redirect backJump to exit target
@@ -100,30 +112,87 @@ public final class LoopTransformer {
 
 
     private static void redirectBackJump(Loop loop, Stmt target, SootMethod method) {
-    	Chain stmts = method.getActiveBody().getUnits().getNonPatchingChain();
+    	Chain stmts = method.getActiveBody().getUnits();
     	
-    	//unroll the loop one more time
-//    	while (editor.hasNext()) {
-//    		Stmt s = editor.next();
-//    		//System.out.println(">> " + s);
-//    		
-//    	}
-    	
+    	/*--unroll the loop one more time--*/
+    	//clone loop statements
+    	Map<Stmt, Stmt> unitsMap = new HashMap<Stmt, Stmt>();
+		for(Stmt loopstmt: loop.getLoopStatements()){
+			Stmt newStmt = (Stmt) loopstmt.clone();
+			unitsMap.put(loopstmt, newStmt);
+		}
+		
+		//duplicate units
+//		for(Iterator<Stmt> it = stmts.snapshotIterator(); it.hasNext();) {
+//			Stmt s = it.next();
+//			if(unitsMap.containsKey(s)) {
+//				Stmt newStmt = unitsMap.get(s);
+//				stmts.insertAfter(newStmt, stmts.getLast());
+//				
+//				Stmt suc = (Stmt) stmts.getSuccOf(s);
+//				if(!unitsMap.containsKey(suc)) {
+//					Stmt newGoto = jimple.newGotoStmt(suc);
+//					stmts.insertAfter(newGoto, newStmt);
+//				}
+//			}
+//		}
+		for(Stmt loopStmt: loop.getLoopStatements()) {
+			Stmt newStmt = unitsMap.get(loopStmt);
+			stmts.insertAfter(newStmt, stmts.getLast());
+			
+			Stmt suc = (Stmt) stmts.getSuccOf(loopStmt);
+			if(!unitsMap.containsKey(suc)) {
+				Stmt newGoto = jimple.newGotoStmt(suc);
+				stmts.insertAfter(newGoto, newStmt);
+			}
+		}
+		
+		//change targets accordingly
+		for(Unit oldStmt: unitsMap.keySet()){
+			if(oldStmt instanceof IfStmt){
+				IfStmt newIfStmt = (IfStmt) unitsMap.get(oldStmt);
+				Stmt iftarget = ((IfStmt) oldStmt).getTarget();
+				if(unitsMap.containsKey(iftarget)) {
+					newIfStmt.setTarget(unitsMap.get(iftarget));
+				}
+			}
+			else if(oldStmt instanceof GotoStmt){
+				GotoStmt newGotoStmt = (GotoStmt) unitsMap.get(oldStmt);
+				Stmt gototarget = (Stmt) ((GotoStmt) oldStmt).getTarget();
+				if(unitsMap.containsKey(gototarget)) {
+					newGotoStmt.setTarget(unitsMap.get(gototarget));
+				}
+			}
+		}
     	
     	//redirect backJump
 		Stmt backJump = loop.getBackJumpStmt();
-		if(backJump instanceof IfStmt) {
+		Stmt newBackJump = unitsMap.get(backJump);
+		Stmt header = loop.getHead();
+		Stmt newHeader = unitsMap.get(header);
+		
+		if(backJump instanceof IfStmt) {//do-while
 			System.err.println("BackJump is IfStmt: " + backJump);
+			assert(((IfStmt) backJump).getTarget() == header);
+			((IfStmt) backJump).setTarget(newHeader);
 			
+			stmts.remove(newBackJump);
 		}
-		else if(backJump instanceof GotoStmt) {
+		else if(backJump instanceof GotoStmt) {//true-while
 			System.err.println("BackJump is GotoStmt: " + backJump);
+			assert(((GotoStmt) backJump).getTarget() == header);
+			((GotoStmt) backJump).setTarget(newHeader);
 			
+			stmts.remove(newBackJump);
 		}
-		else {
+		else {//while
 			System.err.println("BackJump is OtherStmt: " + backJump);
-			GotoStmt newGoto = jimple.newGotoStmt(target);
-//			stmts.insertAfter(newGoto, backJump);
+			GotoStmt newGoto = jimple.newGotoStmt(newHeader);
+			stmts.insertAfter(newGoto, backJump);
+			
+			assert(target == stmts.getSuccOf(header));
+			GotoStmt newGoto2 = jimple.newGotoStmt(target);
+			stmts.insertAfter(newGoto2, newBackJump);
 		}
 	}
 
@@ -138,12 +207,21 @@ public final class LoopTransformer {
     		return loop.targetsOfLoopExit(header).iterator().next();
     	}
     	
-    	//do-while loop
-    	if(backJump instanceof IfStmt) {
-    		
+    	if(backJump instanceof IfStmt) {//do-while
+    		assert(loop.getLoopExits().contains(backJump));
+    		assert(loop.targetsOfLoopExit(backJump).size() == 1);
+    		return loop.targetsOfLoopExit(backJump).iterator().next();
+    	}
+    	else if(backJump instanceof GotoStmt) {//while(true)
+    		Stmt next = (Stmt) STMTS.getSuccOf(backJump);
+    		return next;
+    	}
+    	else {//should be while loop
+    		System.err.println("unexpected loop case!!!");
+    		System.err.println("loop: " + loop.getLoopStatements());
+    		throw new RuntimeException();
     	}
     	
-    	return null;
     }
     
 //	private static Stmt getTargetOfLoopExits(Loop loop) {

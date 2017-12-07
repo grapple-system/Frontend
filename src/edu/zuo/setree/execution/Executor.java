@@ -71,12 +71,11 @@ public class Executor {
 		System.err.println("cfg before transforming ==>>");
 		System.out.println(cfg.toString());
 		
-		//loop transform: unroll the loop twice
-		LoopTransformer.transform(method);
-		
 		//switch transform: transform lookupswitch and tableswitch into if
 		SwitchTransformer.transform(method);
 		
+		//loop transform: unroll the loop twice
+		LoopTransformer.transform(method);
 	}
 
 	
