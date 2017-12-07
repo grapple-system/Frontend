@@ -6,15 +6,15 @@ public class Test0 {
 //		this.f = 1;
 	}
 
-	private void t1(int x, int y){
+	private void while_dowhile(int x, int y){
 		int a = x * x;
 		int c = a + x;
-		if(c > 0){
-			int b = y - c;			
-		}
-		else{
-			c-=2;
-		}
+//		if(c > 0){
+//			int b = y - c;			
+//		}
+//		else{
+//			c-=2;
+//		}
 		a++;
 		while(a < 0){
 			a--;
@@ -22,6 +22,20 @@ public class Test0 {
 		c+=2;
 //		int d = b + this.f;
 		
+		c = lookup_switch(a, c);
+		
+		do {
+			a+=3;
+			c-=4;
+		}
+		while(c != 0);
+		
+
+		
+		true_while(a, c);
+	}
+
+	private int lookup_switch(int a, int c) {
 		switch(a) {
 		case 2:
 			c++;
@@ -33,15 +47,53 @@ public class Test0 {
 		default:
 			System.out.println("default!");	
 		}
+		return c;
+	}
+
+	private void true_while(int a, int c) {
+		a+=7;
 		
-		do {
-			a+=3;
-			c-=4;
+		while(true) {
+			a++;
+			if(a == 0) {
+				break;
+			}
+			if(a == 1) {
+				return;
+			}
+			a--;
 		}
-		while(c != 0);
 		
+		do{
+			a+=2;
+			if(a == 0) {
+				break;
+			}
+			a-=2;
+		}
+		while(true);
+		
+		
+		while(true) {
+			a+=3;
+//			if(a == 0) {
+//				break;
+//			}
+			
+			if(a == 1) {
+				break;
+			}
+			a-=3;
+		}
+		
+		c++;
+	}
+	
+	
+	private void nest_for(int x){
+		int a = 19 / x;
 		for(int i = 0; i < a; i++) {
-			a = 2 * c;
+			a = 2 * x;
 			a -= 5;
 			for(int j = 0; j < 10; j++) {
 				if(a < 100) {
@@ -50,21 +102,8 @@ public class Test0 {
 				a++;
 			}
 		}
+		x++;
 		
-		a+=7;
-		
-		while(true) {
-			a++;
-			if(a == 0) {
-				break;
-			}
-			a--;
-		}
-	}
-	
-	
-	private void t2(int x){
-		int a = 19 / x;
 	}
 	
 	
