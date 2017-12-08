@@ -19,9 +19,10 @@ import soot.jimple.IfStmt;
 import soot.jimple.Stmt;
 import soot.toolkits.graph.Block;
 import soot.toolkits.graph.BriefBlockGraph;
+import soot.toolkits.graph.LoopNestTree;
 import soot.util.Chain;
 
-public class Executor {
+public class Runner {
 	
 	public void run(Chain<SootClass> classes){
 		for (SootClass klass : classes) {
@@ -43,14 +44,27 @@ public class Executor {
 		//transform the body
 		transform(mb.getMethod());
 		
+		//confirm that there's no loop at all before executing it symbolically
+		confirm_no_loop(mb);
+		
 		//execute the body symbolically
 		execute(mb);
 		
 	}
 	
+	private void confirm_no_loop(Body mb) {
+		// TODO Auto-generated method stub
+		LoopNestTree loopNestTree = new LoopNestTree(mb);
+		
+		if(!loopNestTree.isEmpty()) {
+			throw new RuntimeException("Unexpected loops existing!!!");
+		}
+	}
+
+
 	private void execute(Body mb) {
 		BriefBlockGraph cfg = new BriefBlockGraph(mb);
-		System.err.println("cfg before executing ==>>");
+		System.out.println("\n\nCFG before executing ==>>");
 		System.out.println(cfg.toString());
 		
 		List<Block> entries = cfg.getHeads();
@@ -58,17 +72,18 @@ public class Executor {
 		
 		for(Block entry: entries){
 			StateNode root = new StateNode();
-//			traverseCFG(entry, root);
+			traverseCFG(entry, root);
 			
 			//for debugging
-			System.err.println("state ==>>");
+			System.out.println("STATE ==>>");
 			printOutInfo(root, 1);
+			System.out.println("\n");
 		}
 	}
 	
 	private void transform(SootMethod method) {
 		BriefBlockGraph cfg = new BriefBlockGraph(method.getActiveBody());
-		System.err.println("cfg before transforming ==>>");
+		System.out.println("\nCFG before transforming ==>>");
 		System.out.println(cfg.toString());
 		
 		//switch transform: transform lookupswitch and tableswitch into if
@@ -143,6 +158,8 @@ public class Executor {
 		Propagator p = new Propagator(node.getState().getLocalsMap());
 		for(Iterator<Unit> it = block.iterator(); it.hasNext();){
 			Stmt stmt = (Stmt) it.next();
+//			//for debugging
+//			System.out.println(stmt);
 			stmt.apply(p);
 		}
 	}

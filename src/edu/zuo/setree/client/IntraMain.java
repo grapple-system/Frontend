@@ -2,7 +2,7 @@ package edu.zuo.setree.client;
 
 import java.util.Map;
 
-import edu.zuo.setree.execution.Executor;
+import edu.zuo.setree.execution.Runner;
 import soot.Body;
 import soot.BodyTransformer;
 import soot.PackManager;
@@ -14,7 +14,7 @@ public class IntraMain extends BodyTransformer {
 	@Override
 	protected void internalTransform(Body b, String phaseName, Map options) {
 		// TODO Auto-generated method stub
-		Executor intra_executor = new Executor();
+		Runner intra_executor = new Runner();
 		intra_executor.run(b);
 	}
 	

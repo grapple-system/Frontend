@@ -43,7 +43,7 @@ import java.util.jar.JarEntry;
 import java.util.jar.JarFile;
 import java.util.regex.Pattern;
 
-import edu.zuo.setree.execution.Executor;
+import edu.zuo.setree.execution.Runner;
 import soot.Scene;
 import soot.PackManager;
 import soot.Scene;
@@ -85,7 +85,7 @@ public class InterMain extends SceneTransformer {
 //		if (DEBUG) printClasses("aft_instr.txt");
     	
     	classes = Scene.v().getApplicationClasses();
-    	Executor inter_executor = new Executor();
+    	Runner inter_executor = new Runner();
     	inter_executor.run(classes);
     }
 
