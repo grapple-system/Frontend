@@ -42,8 +42,8 @@ public class IntegerBinaryOperator extends BinaryOperator
     {
 		IntegerExpression left = (IntegerExpression) leftOp;
 		IntegerExpression right = (IntegerExpression) rightOp;
-		if(left instanceof Constant && right instanceof Constant)
-			assert false;
+//		if(left instanceof Constant && right instanceof Constant)
+//			assert false;
 		return new BinaryIntegerExpression(this, left, right);
     }
 }
