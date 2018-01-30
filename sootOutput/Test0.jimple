@@ -10,6 +10,51 @@ public class Test0 extends java.lang.Object
         return;
     }
 
+    private void while_dowhile(int, int)
+    {
+        Test0 this;
+        int x, y, a, c, l5, $i0, $i1;
+        float dd;
+        boolean bool, $z0;
+        byte $b2;
+
+        this := @this: Test0;
+        x := @parameter0: int;
+        y := @parameter1: int;
+        a = x * x;
+        c = a + x;
+        $i0 = c + a;
+        $i1 = 0 + x;
+        if $i0 <= $i1 goto label0;
+
+        l5 = y - c;
+        goto label1;
+
+     label0:
+        c = c + -2;
+
+     label1:
+        a = a + 1;
+        dd = 0.0F;
+        $b2 = dd cmpg 0.4F;
+        if $b2 >= 0 goto label2;
+
+        $z0 = 1;
+        goto label3;
+
+     label2:
+        $z0 = 0;
+
+     label3:
+        bool = $z0;
+        if bool == 0 goto label4;
+
+        a = a + 1;
+
+     label4:
+        return;
+    }
+
     private void nest_for(int)
     {
         Test0 this;

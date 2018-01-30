@@ -4,6 +4,8 @@ public class StateNode {
 	
 	private State state;
 	
+	private Conditional conditional;
+	
 	private StateNode trueChild;
 	
 	private StateNode falseChild;

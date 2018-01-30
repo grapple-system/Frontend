@@ -41,8 +41,8 @@ public class LongBinaryOperator extends BinaryOperator
     public Expression apply(Expression leftOp, Expression rightOp)
     {
 		LongExpression left = (LongExpression) leftOp;
-		if(left instanceof Constant && rightOp instanceof Constant)
-			assert false;
+//		if(left instanceof Constant && rightOp instanceof Constant)
+//			assert false;
 		return new BinaryLongExpression(this, left, rightOp);
     }
 }

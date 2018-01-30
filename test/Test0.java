@@ -6,21 +6,27 @@ public class Test0 {
 //		this.f = 1;
 	}
 
-//	private void while_dowhile(int x, int y){
-//		int a = x * x;
-//		int c = a + x;
-////		if(c > 0){
-////			int b = y - c;			
-////		}
-////		else{
-////			c-=2;
-////		}
-//		a++;
+	private void while_dowhile(int x, int y){
+		int a = x * x;
+		int c = a + x;
+		if(c + a > 0 + x){
+			int b = y - c;			
+		}
+		else{
+			c-=2;
+		}
+		a++;
+		
+		float dd = 0f;
+		boolean bool = dd < 0.4f;
+		if(bool) {
+			a++;
+		}
 //		while(a < 0){
 //			a--;
 //		}
 //		c+=2;
-////		int d = b + this.f;
+//		int d = b + this.f;
 //		
 //		c = lookup_switch(a, c);
 //		
@@ -33,7 +39,7 @@ public class Test0 {
 //
 //		
 //		true_while(a, c);
-//	}
+	}
 //
 //	private int lookup_switch(int a, int c) {
 //		switch(a) {
