@@ -157,9 +157,9 @@ public class Propagator extends AbstractStmtSwitch {
 	
 	private Map<Local, Expression> localsMap;
 
-	public Propagator(){
-		this.localsMap = new LinkedHashMap<Local, Expression>();
-	}
+//	public Propagator(){
+//		this.localsMap = new LinkedHashMap<Local, Expression>();
+//	}
 	
 	public Propagator(Map<Local, Expression> localsM){
 		this.localsMap = localsM;
@@ -338,10 +338,10 @@ public class Propagator extends AbstractStmtSwitch {
 	
 	private BinaryOperator getBinaryOperator(BinopExpr binExpr) {
 		// TODO Auto-generated method stub
-		String binExprSymbol = binExpr.getSymbol();
+		String binExprSymbol = binExpr.getSymbol().trim();
 		
-		Type binType = binExpr.getType();
-		assert(binType == binExpr.getOp1().getType());
+		Type binType = binExpr.getOp1().getType();
+		assert(binType == binExpr.getOp2().getType());
 		
 		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
 			return new IntegerBinaryOperator(binExprSymbol);
@@ -405,8 +405,7 @@ public class Propagator extends AbstractStmtSwitch {
 //		String unaryExprSymbol = unaryExpr instanceof NegExpr? "-" : "lengthOf";
 		
 		String unaryExprSymbol = "-";
-		Type unaryType = unaryExpr.getType();
-		assert(unaryType == unaryExpr.getOp().getType());
+		Type unaryType = unaryExpr.getOp().getType();
 		
 		if(unaryType instanceof IntType || unaryType instanceof ShortType || unaryType instanceof CharType || unaryType instanceof ByteType){
 			return new IntegerUnaryOperator(unaryExprSymbol);

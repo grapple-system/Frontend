@@ -12,8 +12,10 @@ import soot.Body;
 import soot.SootClass;
 import soot.SootMethod;
 import soot.Unit;
+import soot.Value;
 import soot.jimple.AbstractStmtSwitch;
 import soot.jimple.CaughtExceptionRef;
+import soot.jimple.ConditionExpr;
 import soot.jimple.IdentityStmt;
 import soot.jimple.IfStmt;
 import soot.jimple.Stmt;
@@ -71,15 +73,22 @@ public class Runner {
 		filterEntries(entries);
 		
 		for(Block entry: entries){
-			StateNode root = new StateNode();
-			traverseCFG(entry, root);
-			
-			//for debugging
-			System.out.println("STATE ==>>");
-			printOutInfo(root, 1);
-			System.out.println("\n");
+			executeSingleEntry(entry);
 		}
 	}
+
+
+	private void executeSingleEntry(Block entry) {
+		StateNode root = new StateNode();
+		traverseCFG(entry, root);
+		
+		//for debugging
+		System.out.println("STATE ==>>");
+		printOutInfo(root, 1);
+		System.out.println("\n");
+	}
+	
+	
 	
 	private void transform(SootMethod method) {
 		BriefBlockGraph cfg = new BriefBlockGraph(method.getActiveBody());
@@ -126,12 +135,20 @@ public class Runner {
 
 	
 	private void traverseCFG(Block block, StateNode node) {
-		// TODO Auto-generated method stub
+		//propagate the execution symbolically
 		operate(block, node);
 		
+		//branching
 		List<Block> succs = block.getSuccs();
-		if(succs.size() == 2){//branch
+		if(succs.size() == 2){
+			//branch
 			assert(block.getTail() instanceof IfStmt);
+			
+			//set conditional
+			IfStmt ifstmt = (IfStmt) block.getTail();
+//			ifstmt.getCondition();
+			setConditional(ifstmt, node);
+			
 			
 			StateNode nTrue = new StateNode(node.getState());
 			node.setTrueChild(nTrue);
@@ -141,18 +158,32 @@ public class Runner {
 			node.setFalseChild(nFalse);
 			traverseCFG(succs.get(1), nFalse);
 		}
-		else if(succs.size() == 1){//fall-through
+		else if(succs.size() == 1){
+			//fall-through
 			traverseCFG(succs.get(0), node);
 		}
-		else if(succs.size() == 0){//end
+		else if(succs.size() == 0){
+			//end
 
 		}
-		else if(succs.size() > 2){//error
+		else if(succs.size() > 2){
+			//error
 			System.err.println("unexpected case!!!");
 		}
 	}
 
 	
+	private void setConditional(IfStmt ifstmt, StateNode node) {
+		// TODO Auto-generated method stub
+		ConditionExpr conditionExpr = (ConditionExpr) ifstmt.getCondition();
+		
+		System.out.println("Condition expression ==>>");
+		System.out.println(conditionExpr.toString());
+		System.out.println();
+		
+	}
+
+
 	private void operate(Block block, StateNode node) {
 		// TODO Auto-generated method stub
 		Propagator p = new Propagator(node.getState().getLocalsMap());

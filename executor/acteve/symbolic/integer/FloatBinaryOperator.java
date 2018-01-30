@@ -41,8 +41,8 @@ public class FloatBinaryOperator extends BinaryOperator
     {
 		FloatExpression left = (FloatExpression) leftOp;
 		FloatExpression right = (FloatExpression) rightOp;
-		if(left instanceof Constant && right instanceof Constant)
-			assert false;
+//		if(left instanceof Constant && right instanceof Constant)
+//			assert false;
 		return new BinaryFloatExpression(this, left, right);
     }
 }

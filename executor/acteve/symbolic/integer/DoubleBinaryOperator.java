@@ -41,8 +41,8 @@ public class DoubleBinaryOperator extends BinaryOperator
     {
 		DoubleExpression left = (DoubleExpression) leftOp;
 		DoubleExpression right = (DoubleExpression) rightOp;
-		if(left instanceof Constant && right instanceof Constant)
-			assert false;
+//		if(left instanceof Constant && right instanceof Constant)
+//			assert false;
 		return new BinaryDoubleExpression(this, left, right);
     }
 }
