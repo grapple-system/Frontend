@@ -12,14 +12,14 @@ public class StateNode {
 
 	public StateNode(){
 		state = new State();
+		this.conditional = null;
 		this.trueChild = null;
 		this.falseChild = null;
 	}
 	
 	public StateNode(State s){
 		this.state = new State(s);
-//		this.trueChild = tC;
-//		this.falseChild = fC;
+		this.conditional = null;
 		this.trueChild = null;
 		this.falseChild = null;
 	}
@@ -47,6 +47,28 @@ public class StateNode {
 	public void setFalseChild(StateNode falseChild) {
 		this.falseChild = falseChild;
 	}
+
+	public Conditional getConditional() {
+		return conditional;
+	}
+
+	public void setConditional(Conditional conditional) {
+		this.conditional = conditional;
+	}
+	
+	
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		
+		builder.append("Conditional: ");
+		builder.append(conditional == null ? "null" : conditional.toString());
+		builder.append("\t");
+		builder.append("State map: ");
+		builder.append(state.toString());
+		
+		return builder.toString();
+	}
+	
 
 	
 	

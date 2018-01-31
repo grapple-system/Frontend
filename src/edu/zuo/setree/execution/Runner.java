@@ -3,19 +3,43 @@ package edu.zuo.setree.execution;
 import java.util.HashSet;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Set;
 
 import acteve.instrumentor.LoopTransformer;
 import acteve.instrumentor.SwitchTransformer;
+import acteve.symbolic.integer.BinaryOperator;
+import acteve.symbolic.integer.BooleanBinaryOperator;
+import acteve.symbolic.integer.DoubleBinaryOperator;
+import acteve.symbolic.integer.Expression;
+import acteve.symbolic.integer.FloatBinaryOperator;
+import acteve.symbolic.integer.IntegerBinaryOperator;
+import acteve.symbolic.integer.LongBinaryOperator;
+import edu.zuo.setree.datastructure.Conditional;
 import edu.zuo.setree.datastructure.StateNode;
+import edu.zuo.setree.export.Exporter;
 import soot.Body;
+import soot.BooleanType;
+import soot.ByteType;
+import soot.CharType;
+import soot.DoubleType;
+import soot.FloatType;
+import soot.Immediate;
+import soot.IntType;
+import soot.Local;
+import soot.LongType;
+import soot.PrimType;
+import soot.ShortType;
 import soot.SootClass;
 import soot.SootMethod;
+import soot.Type;
 import soot.Unit;
 import soot.Value;
 import soot.jimple.AbstractStmtSwitch;
+import soot.jimple.BinopExpr;
 import soot.jimple.CaughtExceptionRef;
 import soot.jimple.ConditionExpr;
+import soot.jimple.Constant;
 import soot.jimple.IdentityStmt;
 import soot.jimple.IfStmt;
 import soot.jimple.Stmt;
@@ -25,6 +49,12 @@ import soot.toolkits.graph.LoopNestTree;
 import soot.util.Chain;
 
 public class Runner {
+	
+	private final StateNode root;
+	
+	public Runner() {
+		this.root = new StateNode();
+	}
 	
 	public void run(Chain<SootClass> classes){
 		for (SootClass klass : classes) {
@@ -52,8 +82,14 @@ public class Runner {
 		//execute the body symbolically
 		execute(mb);
 		
+		//export the symbolic execution tree
+		export();
 	}
 	
+	private void export() {
+		Exporter.export(root);
+	}
+
 	private void confirm_no_loop(Body mb) {
 		// TODO Auto-generated method stub
 		LoopNestTree loopNestTree = new LoopNestTree(mb);
@@ -72,24 +108,12 @@ public class Runner {
 		List<Block> entries = cfg.getHeads();
 		filterEntries(entries);
 		
-		for(Block entry: entries){
-			executeSingleEntry(entry);
-		}
-	}
-
-
-	private void executeSingleEntry(Block entry) {
-		StateNode root = new StateNode();
+		assert(entries.size() == 1);
+		Block entry = entries.get(0);
 		traverseCFG(entry, root);
-		
-		//for debugging
-		System.out.println("STATE ==>>");
-		printOutInfo(root, 1);
-		System.out.println("\n");
 	}
-	
-	
-	
+
+
 	private void transform(SootMethod method) {
 		BriefBlockGraph cfg = new BriefBlockGraph(method.getActiveBody());
 		System.out.println("\nCFG before transforming ==>>");
@@ -100,21 +124,6 @@ public class Runner {
 		
 		//loop transform: unroll the loop twice
 		LoopTransformer.transform(method);
-	}
-
-	
-	/** print out state information
-	 * @param root
-	 * @param id
-	 */
-	private void printOutInfo(StateNode root, int id) {
-		// TODO Auto-generated method stub
-		if(root == null){
-			return;
-		}
-		System.out.println(id + ": " + root.getState().toString());
-		printOutInfo(root.getTrueChild(), 2 * id);
-		printOutInfo(root.getFalseChild(), 2 * id + 1);
 	}
 
 	
@@ -146,7 +155,6 @@ public class Runner {
 			
 			//set conditional
 			IfStmt ifstmt = (IfStmt) block.getTail();
-//			ifstmt.getCondition();
 			setConditional(ifstmt, node);
 			
 			
@@ -173,6 +181,10 @@ public class Runner {
 	}
 
 	
+	/**set the conditional constraint in StateNode 
+	 * @param ifstmt
+	 * @param node
+	 */
 	private void setConditional(IfStmt ifstmt, StateNode node) {
 		// TODO Auto-generated method stub
 		ConditionExpr conditionExpr = (ConditionExpr) ifstmt.getCondition();
@@ -181,8 +193,61 @@ public class Runner {
 		System.out.println(conditionExpr.toString());
 		System.out.println();
 		
+		Conditional conditional = getConditional(conditionExpr, node.getState().getLocalsMap()); 
+		node.setConditional(conditional);
+	}
+	
+
+
+	/**get the conditional expression
+	 * @param conditionExpr
+	 * @param localsMap
+	 * @return
+	 */
+	private Conditional getConditional(ConditionExpr conditionExpr, Map<Local, Expression> localsMap) {
+		Immediate op1 = (Immediate) conditionExpr.getOp1();
+        Immediate op2 = (Immediate) conditionExpr.getOp2();
+		
+		assert((op1.getType() instanceof PrimType) && (op2.getType() instanceof PrimType));
+
+		//TODO: deal with non-primitive constant
+		Expression symOp1 = op1 instanceof Constant ? Propagator.getConstant((Constant) op1) : localsMap.get((Local) op1);
+		Expression symOp2 = op2 instanceof Constant ? Propagator.getConstant((Constant) op2) : localsMap.get((Local) op2);
+		
+		BinaryOperator binop = getConditionOperator(conditionExpr);
+		Expression constraint = binop.apply(symOp1, symOp2);
+		
+		return new Conditional(constraint);
 	}
 
+	public static BinaryOperator getConditionOperator(ConditionExpr conditionExpr) {
+		// TODO Auto-generated method stub
+		String binExprSymbol = conditionExpr.getSymbol().trim();
+		
+		Type binType = conditionExpr.getType();
+//		assert(binType == binExpr.getOp2().getType());
+		
+		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
+			return new IntegerBinaryOperator(binExprSymbol);
+		}
+		else if(binType instanceof LongType){
+			return new LongBinaryOperator(binExprSymbol);
+		}
+		else if(binType instanceof FloatType){
+			return new FloatBinaryOperator(binExprSymbol);
+		}
+		else if(binType instanceof DoubleType){
+			return new DoubleBinaryOperator(binExprSymbol);
+		}
+		else if(binType instanceof BooleanType){
+			return new BooleanBinaryOperator(binExprSymbol);
+		}
+		else{
+			System.err.println("wrong type: " + binType.toString());
+		}
+		
+		return null;
+	}
 
 	private void operate(Block block, StateNode node) {
 		// TODO Auto-generated method stub
