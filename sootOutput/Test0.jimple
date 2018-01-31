@@ -15,7 +15,6 @@ public class Test0 extends java.lang.Object
         Test0 this;
         int x, y, a, c, l5, $i0, $i1;
         float dd;
-        boolean bool, $z0;
         byte $b2;
 
         this := @this: Test0;
@@ -39,19 +38,9 @@ public class Test0 extends java.lang.Object
         $b2 = dd cmpg 0.4F;
         if $b2 >= 0 goto label2;
 
-        $z0 = 1;
-        goto label3;
-
-     label2:
-        $z0 = 0;
-
-     label3:
-        bool = $z0;
-        if bool == 0 goto label4;
-
         a = a + 1;
 
-     label4:
+     label2:
         return;
     }
 

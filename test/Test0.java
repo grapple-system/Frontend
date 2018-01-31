@@ -18,8 +18,8 @@ public class Test0 {
 		a++;
 		
 		float dd = 0f;
-		boolean bool = dd < 0.4f;
-		if(bool) {
+//		boolean bool = dd < 0.4f;
+		if(dd < 0.4f) {
 			a++;
 		}
 //		while(a < 0){

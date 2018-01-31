@@ -1,5 +1,21 @@
 package edu.zuo.setree.datastructure;
 
-public class Conditional {
+import acteve.symbolic.integer.Expression;
 
+public class Conditional {
+	
+	private final Expression condition;
+	
+	public Conditional(Expression cond) {
+		this.condition = cond;
+	}
+	
+	public Expression getCondition() {
+		return this.condition;
+	}
+
+	
+	public String toString() {
+		return this.condition.toString();
+	}
 }

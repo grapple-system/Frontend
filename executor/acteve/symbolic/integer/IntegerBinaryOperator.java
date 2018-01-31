@@ -40,10 +40,12 @@ public class IntegerBinaryOperator extends BinaryOperator
     
     public Expression apply(Expression leftOp, Expression rightOp)
     {
-		IntegerExpression left = (IntegerExpression) leftOp;
-		IntegerExpression right = (IntegerExpression) rightOp;
+//		IntegerExpression left = (IntegerExpression) leftOp;
+//		IntegerExpression right = (IntegerExpression) rightOp;
 //		if(left instanceof Constant && right instanceof Constant)
 //			assert false;
-		return new BinaryIntegerExpression(this, left, right);
+//		return new BinaryIntegerExpression(this, left, right);
+		
+		return new BinaryIntegerExpression(this, leftOp, rightOp);
     }
 }

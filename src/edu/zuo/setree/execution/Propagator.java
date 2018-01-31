@@ -73,6 +73,7 @@ import acteve.symbolic.integer.SymbolicLong;
 import acteve.symbolic.integer.SymbolicRef;
 import acteve.symbolic.integer.UnaryOperator;
 import acteve.symbolic.integer.operation.NEGATION;
+import acteve.symbolic.integer.operation.Operations;
 import soot.Scene;
 import soot.ShortType;
 import soot.Body;
@@ -117,6 +118,7 @@ import soot.jimple.IntConstant;
 import soot.jimple.InstanceFieldRef;
 import soot.jimple.InterfaceInvokeExpr;
 import soot.jimple.InvokeExpr;
+import soot.jimple.Jimple;
 import soot.jimple.LengthExpr;
 import soot.jimple.NegExpr;
 import soot.jimple.EqExpr;
@@ -131,6 +133,7 @@ import soot.jimple.StaticFieldRef;
 import soot.jimple.StaticInvokeExpr;
 import soot.jimple.Stmt;
 import soot.jimple.VirtualInvokeExpr;
+import soot.options.Options;
 import soot.util.Chain;
 import soot.PatchingChain;
 import soot.jimple.ConditionExpr;
@@ -336,21 +339,23 @@ public class Propagator extends AbstractStmtSwitch {
 		localsMap.put(leftOp, rightOp_sym);
 	}
 	
-	private BinaryOperator getBinaryOperator(BinopExpr binExpr) {
+	public static BinaryOperator getBinaryOperator(BinopExpr binExpr) {
 		// TODO Auto-generated method stub
 		String binExprSymbol = binExpr.getSymbol().trim();
 		
 		Type binType = binExpr.getOp1().getType();
-		assert(binType == binExpr.getOp2().getType());
+//		assert(binType == binExpr.getOp2().getType());
 		
 		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
-			return new IntegerBinaryOperator(binExprSymbol);
+//			return new IntegerBinaryOperator(binExprSymbol);
+			return getIntegerBinaryOperator(binExprSymbol);
 		}
 		else if(binType instanceof LongType){
 			return new LongBinaryOperator(binExprSymbol);
 		}
 		else if(binType instanceof FloatType){
-			return new FloatBinaryOperator(binExprSymbol);
+//			return new FloatBinaryOperator(binExprSymbol);
+			return getFloatBinaryOperator(binExprSymbol);
 		}
 		else if(binType instanceof DoubleType){
 			return new DoubleBinaryOperator(binExprSymbol);
@@ -365,7 +370,78 @@ public class Propagator extends AbstractStmtSwitch {
 		return null;
 	}
 
-	Expression getConstant(Constant operand){
+	private static BinaryOperator getFloatBinaryOperator(String binExprSymbol) {
+		switch (binExprSymbol) {
+		case "==":
+			return Operations.v.req();
+		case "!=":
+			return Operations.v.rne();
+		case Jimple.CMPL:
+			return Operations.v.fcmpl();
+		case Jimple.CMPG:
+			return Operations.v.fcmpg();
+			
+		case "+":
+			return Operations.v.fadd();
+		case "-":
+			return Operations.v.fsub();
+		case "*":
+			return Operations.v.fmul();
+		case "/":
+			return Operations.v.fdiv();
+		case "%":
+			return Operations.v.frem();
+			
+		}
+		return null;
+	}
+
+
+	private static BinaryOperator getIntegerBinaryOperator(String binExprSymbol) {
+		switch (binExprSymbol) {
+		case "==":
+			return Operations.v.icmpeq();
+		case "!=":
+			return Operations.v.icmpne();
+		case ">=":
+			return Operations.v.icmpge();
+		case ">":
+			return Operations.v.icmpgt();
+		case "<=":
+			return Operations.v.icmple();
+		case "<":
+			return Operations.v.icmplt();
+			
+		case "+":
+			return Operations.v.iadd();
+		case "-":
+			return Operations.v.isub();
+		case "*":
+			return Operations.v.imul();
+		case "/":
+			return Operations.v.idiv();
+		case "%":
+			return Operations.v.irem();
+			
+		case "|":
+			return Operations.v.ior();
+		case "&":
+			return Operations.v.iand();
+		case "^":
+			return Operations.v.ixor();
+			
+		case ">>":
+			return Operations.v.ishl();
+		case "<<":
+			return Operations.v.ishr();
+		case ">>>":
+			return Operations.v.iushr();
+		}
+		return null;
+	}
+
+
+	public static Expression getConstant(Constant operand){
 		assert(operand.getType() instanceof PrimType);
 		
 		Type constType = operand.getType();
