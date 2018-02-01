@@ -17,5 +17,6 @@ public class Conditional {
 	
 	public String toString() {
 		return this.condition.toString();
+//		return this.condition.toYicesString();
 	}
 }

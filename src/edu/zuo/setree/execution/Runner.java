@@ -83,11 +83,11 @@ public class Runner {
 		execute(mb);
 		
 		//export the symbolic execution tree
-		export();
+		export(mb);
 	}
 	
-	private void export() {
-		Exporter.export(root);
+	private void export(Body mb) {
+		Exporter.run(root, mb);
 	}
 
 	private void confirm_no_loop(Body mb) {
@@ -214,40 +214,40 @@ public class Runner {
 		Expression symOp1 = op1 instanceof Constant ? Propagator.getConstant((Constant) op1) : localsMap.get((Local) op1);
 		Expression symOp2 = op2 instanceof Constant ? Propagator.getConstant((Constant) op2) : localsMap.get((Local) op2);
 		
-		BinaryOperator binop = getConditionOperator(conditionExpr);
+		BinaryOperator binop = Propagator.getBinaryOperator(conditionExpr);
 		Expression constraint = binop.apply(symOp1, symOp2);
 		
 		return new Conditional(constraint);
 	}
 
-	public static BinaryOperator getConditionOperator(ConditionExpr conditionExpr) {
-		// TODO Auto-generated method stub
-		String binExprSymbol = conditionExpr.getSymbol().trim();
-		
-		Type binType = conditionExpr.getType();
-//		assert(binType == binExpr.getOp2().getType());
-		
-		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
-			return new IntegerBinaryOperator(binExprSymbol);
-		}
-		else if(binType instanceof LongType){
-			return new LongBinaryOperator(binExprSymbol);
-		}
-		else if(binType instanceof FloatType){
-			return new FloatBinaryOperator(binExprSymbol);
-		}
-		else if(binType instanceof DoubleType){
-			return new DoubleBinaryOperator(binExprSymbol);
-		}
-		else if(binType instanceof BooleanType){
-			return new BooleanBinaryOperator(binExprSymbol);
-		}
-		else{
-			System.err.println("wrong type: " + binType.toString());
-		}
-		
-		return null;
-	}
+//	public static BinaryOperator getConditionOperator(ConditionExpr conditionExpr) {
+//		// TODO Auto-generated method stub
+//		String binExprSymbol = conditionExpr.getSymbol().trim();
+//		
+//		Type binType = conditionExpr.getType();
+////		assert(binType == binExpr.getOp2().getType());
+//		
+//		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
+//			return new IntegerBinaryOperator(binExprSymbol);
+//		}
+//		else if(binType instanceof LongType){
+//			return new LongBinaryOperator(binExprSymbol);
+//		}
+//		else if(binType instanceof FloatType){
+//			return new FloatBinaryOperator(binExprSymbol);
+//		}
+//		else if(binType instanceof DoubleType){
+//			return new DoubleBinaryOperator(binExprSymbol);
+//		}
+//		else if(binType instanceof BooleanType){
+//			return new BooleanBinaryOperator(binExprSymbol);
+//		}
+//		else{
+//			System.err.println("wrong type: " + binType.toString());
+//		}
+//		
+//		return null;
+//	}
 
 	private void operate(Block block, StateNode node) {
 		// TODO Auto-generated method stub

@@ -340,28 +340,25 @@ public class Propagator extends AbstractStmtSwitch {
 	}
 	
 	public static BinaryOperator getBinaryOperator(BinopExpr binExpr) {
-		// TODO Auto-generated method stub
 		String binExprSymbol = binExpr.getSymbol().trim();
 		
 		Type binType = binExpr.getOp1().getType();
 //		assert(binType == binExpr.getOp2().getType());
 		
 		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
-//			return new IntegerBinaryOperator(binExprSymbol);
 			return getIntegerBinaryOperator(binExprSymbol);
 		}
 		else if(binType instanceof LongType){
-			return new LongBinaryOperator(binExprSymbol);
+			return getLongBinaryOperator(binExprSymbol);
 		}
 		else if(binType instanceof FloatType){
-//			return new FloatBinaryOperator(binExprSymbol);
 			return getFloatBinaryOperator(binExprSymbol);
 		}
 		else if(binType instanceof DoubleType){
-			return new DoubleBinaryOperator(binExprSymbol);
+			return getDoubleBinaryOperator(binExprSymbol);
 		}
 		else if(binType instanceof BooleanType){
-			return new BooleanBinaryOperator(binExprSymbol);
+			return getBooleanBinaryOperator(binExprSymbol);
 		}
 		else{
 			System.err.println("wrong type: " + binType.toString());
@@ -370,17 +367,91 @@ public class Propagator extends AbstractStmtSwitch {
 		return null;
 	}
 
+	private static BinaryOperator getBooleanBinaryOperator(String binExprSymbol) {
+		// TODO Auto-generated method stub
+		System.err.println("Need to implemented!!!");
+		return null;
+	}
+
+
+	private static BinaryOperator getDoubleBinaryOperator(String binExprSymbol) {
+		switch (binExprSymbol) {
+		//cmp	
+		case Jimple.CMPL:
+			return Operations.v.dcmpl();
+		case Jimple.CMPG:
+			return Operations.v.dcmpg();
+		
+		//algebraic	
+		case "+":
+			return Operations.v.dadd();
+		case "-":
+			return Operations.v.dsub();
+		case "*":
+			return Operations.v.dmul();
+		case "/":
+			return Operations.v.ddiv();
+		case "%":
+			return Operations.v.drem();
+			
+		default:
+			throw new RuntimeException("wrong double binary operator!!!");
+		}
+	}
+
+
+	private static BinaryOperator getLongBinaryOperator(String binExprSymbol) {
+		switch (binExprSymbol) {
+		//cmp	
+		case Jimple.CMP:
+			return Operations.v.lcmp();
+			
+		//algebraic
+		case "+":
+			return Operations.v.ladd();
+		case "-":
+			return Operations.v.lsub();
+		case "*":
+			return Operations.v.lmul();
+		case "/":
+			return Operations.v.ldiv();
+		case "%":
+			return Operations.v.lrem();
+		
+		//bitwise	
+		case "|":
+			return Operations.v.lor();
+		case "&":
+			return Operations.v.land();
+		case "^":
+			return Operations.v.lxor();
+		case ">>":
+			return Operations.v.lshl();
+		case "<<":
+			return Operations.v.lshr();
+		case ">>>":
+			return Operations.v.lushr();
+			
+		default:
+			throw new RuntimeException("wrong long binary operator!!!");
+		}
+	}
+
+
 	private static BinaryOperator getFloatBinaryOperator(String binExprSymbol) {
 		switch (binExprSymbol) {
+		//equality
 		case "==":
 			return Operations.v.req();
 		case "!=":
 			return Operations.v.rne();
+		//cmp	
 		case Jimple.CMPL:
 			return Operations.v.fcmpl();
 		case Jimple.CMPG:
 			return Operations.v.fcmpg();
-			
+		
+		//algebraic	
 		case "+":
 			return Operations.v.fadd();
 		case "-":
@@ -392,13 +463,15 @@ public class Propagator extends AbstractStmtSwitch {
 		case "%":
 			return Operations.v.frem();
 			
+		default:
+			throw new RuntimeException("wrong float binary operator!!!");
 		}
-		return null;
 	}
 
 
 	private static BinaryOperator getIntegerBinaryOperator(String binExprSymbol) {
 		switch (binExprSymbol) {
+		//equality
 		case "==":
 			return Operations.v.icmpeq();
 		case "!=":
@@ -412,6 +485,7 @@ public class Propagator extends AbstractStmtSwitch {
 		case "<":
 			return Operations.v.icmplt();
 			
+		//algebraic
 		case "+":
 			return Operations.v.iadd();
 		case "-":
@@ -422,22 +496,24 @@ public class Propagator extends AbstractStmtSwitch {
 			return Operations.v.idiv();
 		case "%":
 			return Operations.v.irem();
-			
+		
+		//bitwise	
 		case "|":
 			return Operations.v.ior();
 		case "&":
 			return Operations.v.iand();
 		case "^":
 			return Operations.v.ixor();
-			
 		case ">>":
 			return Operations.v.ishl();
 		case "<<":
 			return Operations.v.ishr();
 		case ">>>":
 			return Operations.v.iushr();
+			
+		default:
+			throw new RuntimeException("wrong integer binary operator!!!");
 		}
-		return null;
 	}
 
 
@@ -445,7 +521,7 @@ public class Propagator extends AbstractStmtSwitch {
 		assert(operand.getType() instanceof PrimType);
 		
 		Type constType = operand.getType();
-		if(constType instanceof IntType){
+		if(constType instanceof IntegerType){
 			return IntegerConstant.get(((soot.jimple.IntConstant)operand).value);
 		}
 		else if(constType instanceof LongType){
@@ -472,31 +548,28 @@ public class Propagator extends AbstractStmtSwitch {
 		}
 		
 		Expression symOp = op instanceof Constant ? getConstant((Constant) op) : localsMap.get((Local) op);
-		UnaryOperator unaop = getUnaryOperator(negExpr);
+		UnaryOperator unaop = getNegOperator(negExpr);
 		Expression rightOp_sym = unaop.apply(symOp);
 		localsMap.put(leftOp, rightOp_sym);
 	}
 	
-	private UnaryOperator getUnaryOperator(UnopExpr unaryExpr) {
-//		String unaryExprSymbol = unaryExpr instanceof NegExpr? "-" : "lengthOf";
-		
-		String unaryExprSymbol = "-";
+	private UnaryOperator getNegOperator(UnopExpr unaryExpr) {
 		Type unaryType = unaryExpr.getOp().getType();
 		
 		if(unaryType instanceof IntType || unaryType instanceof ShortType || unaryType instanceof CharType || unaryType instanceof ByteType){
-			return new IntegerUnaryOperator(unaryExprSymbol);
+			return Operations.v.ineg();
 		}
 		else if(unaryType instanceof LongType){
-			return new LongUnaryOperator(unaryExprSymbol);
+			return Operations.v.lneg();
 		}
 		else if(unaryType instanceof FloatType){
-			return new FloatUnaryOperator(unaryExprSymbol);
+			return Operations.v.fneg();
 		}
 		else if(unaryType instanceof DoubleType){
-			return new DoubleUnaryOperator(unaryExprSymbol);
+			return Operations.v.dneg();
 		}
 		else if(unaryType instanceof BooleanType){
-			return new NEGATION(unaryExprSymbol);
+			return Operations.v.negation();
 		}
 		else{
 			System.err.println("wrong type: " + unaryType.toString());

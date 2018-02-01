@@ -17,11 +17,23 @@ public class Test0 {
 		}
 		a++;
 		
-		float dd = 0f;
+		double dd = 0d;
 //		boolean bool = dd < 0.4f;
 		if(dd < 0.4f) {
 			a++;
 		}
+		
+		boolean bool2 = x <= c == dd < 0.4d;
+		if(!bool2) {
+			a--;
+		}
+		
+		long ll = 9;
+		long l2 = ll - x;
+		if(l2 < 10) {
+			c++;
+		}
+		
 //		while(a < 0){
 //			a--;
 //		}
