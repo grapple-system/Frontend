@@ -214,8 +214,10 @@ public class Runner {
 		Expression symOp1 = op1 instanceof Constant ? Propagator.getConstant((Constant) op1) : localsMap.get((Local) op1);
 		Expression symOp2 = op2 instanceof Constant ? Propagator.getConstant((Constant) op2) : localsMap.get((Local) op2);
 		
-		BinaryOperator binop = Propagator.getBinaryOperator(conditionExpr);
-		Expression constraint = binop.apply(symOp1, symOp2);
+//		BinaryOperator binop = Propagator.getBinaryOperator(conditionExpr);
+//		Expression constraint = binop.apply(symOp1, symOp2);
+		
+		Expression constraint = Propagator.getBinaryExpression(conditionExpr, symOp1, symOp2);
 		
 		return new Conditional(constraint);
 	}
