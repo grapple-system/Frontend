@@ -334,31 +334,33 @@ public class Propagator extends AbstractStmtSwitch {
 		Expression symOp1 = op1 instanceof Constant ? getConstant((Constant) op1) : localsMap.get((Local) op1);
 		Expression symOp2 = op2 instanceof Constant ? getConstant((Constant) op2) : localsMap.get((Local) op2);
 		
-		BinaryOperator binop = getBinaryOperator(binExpr);
-		Expression rightOp_sym = binop.apply(symOp1, symOp2);
+//		BinaryOperator binop = getBinaryOperator(binExpr);
+//		Expression rightOp_sym = binop.apply(symOp1, symOp2);
+		
+		Expression rightOp_sym = getBinaryExpression(binExpr, symOp1, symOp2);
 		localsMap.put(leftOp, rightOp_sym);
 	}
 	
-	public static BinaryOperator getBinaryOperator(BinopExpr binExpr) {
+	public static Expression getBinaryExpression(BinopExpr binExpr, Expression symOp1, Expression symOp2) {
 		String binExprSymbol = binExpr.getSymbol().trim();
 		
 		Type binType = binExpr.getOp1().getType();
 //		assert(binType == binExpr.getOp2().getType());
 		
 		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
-			return getIntegerBinaryOperator(binExprSymbol);
+			return getIntegerBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof LongType){
-			return getLongBinaryOperator(binExprSymbol);
+			return getLongBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof FloatType){
-			return getFloatBinaryOperator(binExprSymbol);
+			return getFloatBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof DoubleType){
-			return getDoubleBinaryOperator(binExprSymbol);
+			return getDoubleBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof BooleanType){
-			return getBooleanBinaryOperator(binExprSymbol);
+			return getBooleanBinaryExpression(binExprSymbol, symOp1, symOp2);
 		}
 		else{
 			System.err.println("wrong type: " + binType.toString());
@@ -367,10 +369,74 @@ public class Propagator extends AbstractStmtSwitch {
 		return null;
 	}
 
-	private static BinaryOperator getBooleanBinaryOperator(String binExprSymbol) {
-		// TODO Auto-generated method stub
-		System.err.println("Need to implemented!!!");
-		return null;
+
+//	public static BinaryOperator getBinaryOperator(BinopExpr binExpr) {
+//		String binExprSymbol = binExpr.getSymbol().trim();
+//		
+//		Type binType = binExpr.getOp1().getType();
+////		assert(binType == binExpr.getOp2().getType());
+//		
+//		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
+//			return getIntegerBinaryOperator(binExprSymbol);
+//		}
+//		else if(binType instanceof LongType){
+//			return getLongBinaryOperator(binExprSymbol);
+//		}
+//		else if(binType instanceof FloatType){
+//			return getFloatBinaryOperator(binExprSymbol);
+//		}
+//		else if(binType instanceof DoubleType){
+//			return getDoubleBinaryOperator(binExprSymbol);
+//		}
+//		else if(binType instanceof BooleanType){
+//			return getBooleanBinaryOperator(binExprSymbol);
+//		}
+//		else{
+//			System.err.println("wrong type: " + binType.toString());
+//		}
+//		
+//		return null;
+//	}
+
+	private static Expression getBooleanBinaryExpression(String binExprSymbol, Expression symOp1, Expression symOp2) {
+		switch (binExprSymbol) {
+		//equality
+		case "==":
+			return _eq(symOp1, symOp2);
+		case "!=":
+			return _ne(symOp1, symOp2);
+			
+		default:
+			throw new RuntimeException("wrong boolean binary operator!!!");	
+		}
+	}
+
+
+	private static Expression _ne(Expression symOp1, Expression symOp2) {
+		if(symOp2 instanceof IntegerConstant){
+			int seed = ((IntegerConstant) symOp2).seed;
+			if(seed == 1)
+				return Operations.v.negation().apply(symOp1);
+			else if(seed == 0)
+				return symOp1;
+			else
+				assert false;
+		}
+		throw new RuntimeException("Take care");
+	}
+
+
+	private static Expression _eq(Expression symOp1, Expression symOp2) {
+		if(symOp2 instanceof IntegerConstant){
+			int seed = ((IntegerConstant) symOp2).seed;
+			if(seed == 1)
+				return symOp1;
+			else if(seed == 0)
+				return Operations.v.negation().apply(symOp1);
+			else
+				assert false;
+		}
+		throw new RuntimeException("Take care");
 	}
 
 
