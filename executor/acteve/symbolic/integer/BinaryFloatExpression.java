@@ -45,7 +45,7 @@ public class BinaryFloatExpression extends FloatExpression
     
     public String toString () 
     {
-		return "(" + left.toString() + " " + op.toString() + right.toString() + ")";
+		return "(" + left.toString() + " " + op.toString() + " " + right.toString() + ")";
     }
     
     public String toYicesString()

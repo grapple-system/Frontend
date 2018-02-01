@@ -45,7 +45,7 @@ public class BinaryBooleanExpression extends BooleanExpression
 
     public String toString () 
     {
-		return "(" + left.toString() + " " + op.toString() + right.toString() + ")"; // + "[" + seed + "]";
+		return "(" + left.toString() + " " + op.toString() + " " + right.toString() + ")"; // + "[" + seed + "]";
     }
     
     public String toYicesString()

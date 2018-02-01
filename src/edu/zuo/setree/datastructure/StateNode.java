@@ -61,12 +61,16 @@ public class StateNode {
 		StringBuilder builder = new StringBuilder();
 		
 		builder.append("Conditional: ");
-		builder.append(conditional == null ? "null" : conditional.toString());
+		builder.append(this.getConditionalString());
 		builder.append("\t");
 		builder.append("State map: ");
 		builder.append(state.toString());
 		
 		return builder.toString();
+	}
+	
+	public String getConditionalString() {
+		return conditional == null ? "null" : conditional.toString();
 	}
 	
 

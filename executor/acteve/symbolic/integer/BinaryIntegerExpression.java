@@ -47,7 +47,7 @@ public class BinaryIntegerExpression extends IntegerExpression
     
     public String toString () 
     {
-		return "(" + left.toString() + " " + op.toString() + right.toString() + ")"; // + "[" + seed + "]";
+		return "(" + left.toString() + " " + op.toString() + " " + right.toString() + ")"; // + "[" + seed + "]";
     }
     
     public String toYicesString()
