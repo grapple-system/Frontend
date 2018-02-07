@@ -172,10 +172,6 @@ public class Propagator extends AbstractStmtSwitch {
 //		this.localsMap = sNode.getState().getLocalsMap();
 	}
 	
-//	public Propagator(Map<Local, Expression> localsM){
-//		this.localsMap = localsM;
-//	}
-
 
 //    private void printOutLocalsMap() {
 //		System.out.println(localsMap.size());
@@ -288,6 +284,7 @@ public class Propagator extends AbstractStmtSwitch {
 			Expression sym_para = null;
 			int index = ((ParameterRef) rhs).getIndex();
 			String rhs_name = "@para" + index;
+			
 			if(rhs.getType() instanceof PrimType){
 				//split the cases
 				if(rhs.getType() instanceof BooleanType){
@@ -317,8 +314,9 @@ public class Propagator extends AbstractStmtSwitch {
 				putMap(lhs, sym_para);
 			}
 			else if(rhs.getType() instanceof RefLikeType){
+				//TODO: for array or object
 				sym_para = new SymbolicRef(rhs_name, null);
-//				localsMap.put(lhs, sym_para);
+				putMap(lhs, sym_para);
 			}
 			else{
 				System.err.println("unexpected type!!!");
@@ -326,6 +324,7 @@ public class Propagator extends AbstractStmtSwitch {
 			
 		}
 		else if(rhs instanceof ThisRef){
+			//TODO: for callee
 			String rhs_name = "@this";
 			Expression sym = new SymbolicRef(rhs_name, null);
 			putMap(lhs, sym);
@@ -337,11 +336,11 @@ public class Propagator extends AbstractStmtSwitch {
 	}
 
 	private void putMap(Local var, Expression sym_expr) {
-		stateNode.getLocalsMap().put(var, sym_expr);
+		stateNode.putToLocalsMap(var, sym_expr);
 	}
 	
 	private Expression getMap(Local var) {
-		return stateNode.getLocalsMap().get(var);
+		return stateNode.getFromLocalsMap(var);
 	}
 	
 
@@ -350,8 +349,11 @@ public class Propagator extends AbstractStmtSwitch {
 		Immediate op1 = (Immediate) binExpr.getOp1();
         Immediate op2 = (Immediate) binExpr.getOp2();
 		
-		if(!(op1.getType() instanceof PrimType) || !(op2.getType() instanceof PrimType))
+        //the operands of binary operation (except for object equal) must be primitive type!!!
+		if(!(op1.getType() instanceof PrimType) || !(op2.getType() instanceof PrimType)) {
 			return;
+		}
+		//TODO: deal with object equality later
 
 		Expression symOp1 = op1 instanceof Constant ? getConstant((Constant) op1) : getMap((Local) op1);
 		Expression symOp2 = op2 instanceof Constant ? getConstant((Constant) op2) : getMap((Local) op2);
@@ -365,7 +367,6 @@ public class Propagator extends AbstractStmtSwitch {
 		String binExprSymbol = binExpr.getSymbol().trim();
 		
 		Type binType = binExpr.getOp1().getType();
-//		assert(binType == binExpr.getOp2().getType());
 		
 		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
 			return getIntegerBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
@@ -417,6 +418,7 @@ public class Propagator extends AbstractStmtSwitch {
 //		
 //		return null;
 //	}
+	
 
 	private static Expression getBooleanBinaryExpression(String binExprSymbol, Expression symOp1, Expression symOp2) {
 		switch (binExprSymbol) {
@@ -431,7 +433,6 @@ public class Propagator extends AbstractStmtSwitch {
 		}
 	}
 
-
 	private static Expression _ne(Expression symOp1, Expression symOp2) {
 		if(symOp2 instanceof IntegerConstant){
 			int seed = ((IntegerConstant) symOp2).seed;
@@ -444,7 +445,6 @@ public class Propagator extends AbstractStmtSwitch {
 		}
 		throw new RuntimeException("Take care");
 	}
-
 
 	private static Expression _eq(Expression symOp1, Expression symOp2) {
 		if(symOp2 instanceof IntegerConstant){
@@ -604,9 +604,8 @@ public class Propagator extends AbstractStmtSwitch {
 
 
 	public static Expression getConstant(Constant operand){
-//		assert(operand.getType() instanceof PrimType);
-		
 		Type constType = operand.getType();
+		
 		if(constType instanceof IntegerType){
 			return IntegerConstant.get(((soot.jimple.IntConstant)operand).value);
 		}
@@ -632,6 +631,8 @@ public class Propagator extends AbstractStmtSwitch {
 	void handleNegStmt(Local leftOp, NegExpr negExpr)
 	{
 		Immediate op = (Immediate) negExpr.getOp();
+		
+		assert(op.getType() instanceof PrimType);
 		if(!(op.getType() instanceof PrimType)){
 			return;
 		}
@@ -669,41 +670,12 @@ public class Propagator extends AbstractStmtSwitch {
 
 	void handleSimpleAssignStmt(Local leftOp, Immediate rightOp)
 	{
-		Expression exp;
-		if(rightOp instanceof Constant){
-			exp = getConstant((Constant) rightOp);
-		}
-		else{
-			assert(rightOp instanceof Local);
-			exp = getMap((Local) rightOp);
-		}
+		Expression exp = rightOp instanceof Constant ? getConstant((Constant) rightOp) : getMap((Local) rightOp);
 		putMap(leftOp, exp);
 	}
 
 	void handleStoreStmt(FieldRef leftOp, Immediate rightOp) 
 	{
-//		Immediate base;
-//		if (leftOp instanceof StaticFieldRef) {
-//			base = NullConstant.v();
-//		} else {
-//			base = (Local) ((InstanceFieldRef) leftOp).getBase();
-//		}
-//
-//		SootField fld = leftOp.getField();
-//		if (!Main.isInstrumented(fld.getDeclaringClass())) 
-//			return;
-//
-//		if(addSymLocationFor(fld.getType())) {
-//			SootField fld_sym = fieldsMap.get(fld);
-//			assert fld_sym != null : fld + " " + fld.getDeclaringClass();
-//			FieldRef leftOp_sym;
-//			if (leftOp instanceof StaticFieldRef) {
-//				leftOp_sym = G.staticFieldRef(fld_sym.makeRef());
-//			} else {
-//				leftOp_sym = G.instanceFieldRef(base, fld_sym.makeRef());
-//			}
-//			G.assign(leftOp_sym, symLocalfor(rightOp));
-//		} 
 	}
 	
 	void handleLoadStmt(Local leftOp, FieldRef rightOp) 
@@ -736,37 +708,16 @@ public class Propagator extends AbstractStmtSwitch {
 		Type type = rightOp.getCastType();
 		if(type instanceof PrimType){
 			Immediate op = (Immediate) rightOp.getOp();
-			Expression exp;
-			if (op instanceof Constant) {
-				exp = getConstant((Constant) op);
-			} 
-			else {
-				assert(op instanceof Local);
-				exp = getMap((Local) op);
-			}
+			Expression exp = op instanceof Constant ? getConstant((Constant) op) : getMap((Local) op);
 			putMap(leftOp, exp);
+		}
+		else {
+			//TODO
 		}
 	}
 
 	void handleArrayLoadStmt(Local leftOp, ArrayRef rightOp)
 	{
-//		Local base = (Local) rightOp.getBase();
-//		Immediate index = (Immediate) rightOp.getIndex();
-//		
-//		Local base_sym = localsMap.get(base);
-//		Local leftOp_sym = localsMap.get(leftOp);
-//		if(base_sym != null) {
-//			Immediate index_sym = index instanceof Constant ? NullConstant.v() : localsMap.get((Local) index);
-//			Type[] paramTypes = new Type[]{G.EXPRESSION_TYPE, G.EXPRESSION_TYPE, base.getType(), IntType.v()};
-//			SootMethodRef ref = G.symOpsClass.getMethod(G.arrayGetMethodName, Arrays.asList(paramTypes)).makeRef();
-//			G.assign(leftOp_sym, G.staticInvokeExpr(ref, Arrays.asList(new Immediate[]{base_sym, index_sym, base, index})));
-//		} else if(leftOp_sym != null){
-//			G.assign(leftOp_sym, NullConstant.v());
-//		}
-//		if (doRW()) {
-//			if (rwKind == RWKind.ID_FIELD_WRITE || rwKind == RWKind.EXPLICIT_WRITE)
-//				G.invoke(G.staticInvokeExpr(G.readArray, base, index));
-//        }
 	}
 
 	void handleArrayLengthStmt(Local leftOp, LengthExpr rightOp)
@@ -776,28 +727,6 @@ public class Propagator extends AbstractStmtSwitch {
 
 	void handleArrayStoreStmt(ArrayRef leftOp, Immediate rightOp)
 	{
-//		Local base = (Local) leftOp.getBase();
-//		Immediate index = (Immediate) leftOp.getIndex();
-//
-//		Local base_sym = localsMap.get(base);
-//		if(base_sym != null){
-//			Immediate index_sym = index instanceof Constant ? NullConstant.v() : localsMap.get((Local) index);
-//			
-//			Immediate rightOp_sym = rightOp instanceof Constant ? NullConstant.v() : localsMap.get((Local) rightOp);
-//			
-//			Type[] paramTypes = new Type[]{G.EXPRESSION_TYPE, G.EXPRESSION_TYPE, G.EXPRESSION_TYPE,
-//										   base.getType(), IntType.v(), ((ArrayType) base.getType()).baseType};
-//			SootMethodRef ref = G.symOpsClass.getMethod(G.arraySetMethodName, Arrays.asList(paramTypes)).makeRef();
-//			G.invoke(G.staticInvokeExpr(ref, Arrays.asList(new Immediate[]{base_sym, index_sym,
-//																		   rightOp_sym, base, index, rightOp})));
-//		}
-//		if (doRW()) {
-//			if (rwKind == RWKind.ID_FIELD_WRITE || rwKind == RWKind.EXPLICIT_WRITE)
-//            	G.invoke(G.staticInvokeExpr(G.writeArray, base, index));
-//			else if (rwKind == RWKind.ONLY_WRITE)
-//            	G.invoke(G.staticInvokeExpr(G.only_write, IntConstant.v(-1)));
-//        }
-//		
 	}
 
 	void handleInstanceOfStmt(Local leftOp, InstanceOfExpr expr)
