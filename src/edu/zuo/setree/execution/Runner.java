@@ -158,11 +158,11 @@ public class Runner {
 			setConditional(ifstmt, node);
 			
 			
-			StateNode nTrue = new StateNode(node.getState());
+			StateNode nTrue = new StateNode(node.getLocalsMap());
 			node.setTrueChild(nTrue);
 			traverseCFG(succs.get(0), nTrue);
 			
-			StateNode nFalse = new StateNode(node.getState());
+			StateNode nFalse = new StateNode(node.getLocalsMap());
 			node.setFalseChild(nFalse);
 			traverseCFG(succs.get(1), nFalse);
 		}
@@ -193,7 +193,7 @@ public class Runner {
 		System.out.println(conditionExpr.toString());
 		System.out.println();
 		
-		Conditional conditional = getConditional(conditionExpr, node.getState().getLocalsMap()); 
+		Conditional conditional = getConditional(conditionExpr, node.getLocalsMap()); 
 		node.setConditional(conditional);
 	}
 	
@@ -253,7 +253,7 @@ public class Runner {
 
 	private void operate(Block block, StateNode node) {
 		// TODO Auto-generated method stub
-		Propagator p = new Propagator(node.getState().getLocalsMap());
+		Propagator p = new Propagator(node);
 		for(Iterator<Unit> it = block.iterator(); it.hasNext();){
 			Stmt stmt = (Stmt) it.next();
 //			//for debugging

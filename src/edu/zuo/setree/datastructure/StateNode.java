@@ -1,36 +1,53 @@
 package edu.zuo.setree.datastructure;
 
+import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.List;
+import java.util.Map;
+
+import acteve.symbolic.integer.Expression;
+import soot.Local;
+
 public class StateNode {
 	
-	private State state;
+	//state map containing <variable, symbolic expression> mapping
+//	private State state;
+	private Map<Local, Expression> localsMap;
 	
+	//symbolic conditional
 	private Conditional conditional;
 	
+	//two children
 	private StateNode trueChild;
-	
 	private StateNode falseChild;
 
+	//list of call-sites ahead of the node
+	private final List<CallSite> callsites;
+	
+	//formal symbolic return if applicable (only for the node containing return statement) 
+	private Expression returnExpr;
+	
+	
 	public StateNode(){
-		state = new State();
+//		state = new State();
+		this.localsMap = new LinkedHashMap<Local, Expression>();
 		this.conditional = null;
 		this.trueChild = null;
 		this.falseChild = null;
+		this.callsites = new ArrayList<CallSite>();
+		this.returnExpr = null;
 	}
 	
-	public StateNode(State s){
-		this.state = new State(s);
+	public StateNode(Map parentMap){
+//		this.state = new State(s);
+		localsMap = new LinkedHashMap<Local, Expression>(parentMap);
 		this.conditional = null;
 		this.trueChild = null;
 		this.falseChild = null;
+		this.callsites = new ArrayList<CallSite>();
+		this.returnExpr = null;
 	}
 
-	public State getState() {
-		return state;
-	}
-
-	public void setState(State state) {
-		this.state = state;
-	}
 
 	public StateNode getTrueChild() {
 		return trueChild;
@@ -56,6 +73,18 @@ public class StateNode {
 		this.conditional = conditional;
 	}
 	
+	public Map<Local, Expression> getLocalsMap() {
+		return localsMap;
+	}
+
+	public void setLocalsMap(Map<Local, Expression> localsMap) {
+		this.localsMap = localsMap;
+	}
+	
+	public void addCallSite(CallSite cs) {
+		this.callsites.add(cs);
+	}
+	
 	
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
@@ -64,7 +93,7 @@ public class StateNode {
 		builder.append(this.getConditionalString());
 		builder.append("\t");
 		builder.append("State map: ");
-		builder.append(state.toString());
+		builder.append(this.localsMap.toString());
 		
 		return builder.toString();
 	}

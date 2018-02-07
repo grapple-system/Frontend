@@ -66,6 +66,7 @@ import acteve.symbolic.integer.IntegerUnaryOperator;
 import acteve.symbolic.integer.LongBinaryOperator;
 import acteve.symbolic.integer.LongConstant;
 import acteve.symbolic.integer.LongUnaryOperator;
+import acteve.symbolic.integer.RefConstant;
 import acteve.symbolic.integer.SymbolicDouble;
 import acteve.symbolic.integer.SymbolicFloat;
 import acteve.symbolic.integer.SymbolicInteger;
@@ -74,6 +75,8 @@ import acteve.symbolic.integer.SymbolicRef;
 import acteve.symbolic.integer.UnaryOperator;
 import acteve.symbolic.integer.operation.NEGATION;
 import acteve.symbolic.integer.operation.Operations;
+import edu.zuo.setree.datastructure.CallSite;
+import edu.zuo.setree.datastructure.StateNode;
 import soot.Scene;
 import soot.ShortType;
 import soot.Body;
@@ -118,6 +121,7 @@ import soot.jimple.IntConstant;
 import soot.jimple.InstanceFieldRef;
 import soot.jimple.InterfaceInvokeExpr;
 import soot.jimple.InvokeExpr;
+import soot.jimple.InvokeStmt;
 import soot.jimple.Jimple;
 import soot.jimple.LengthExpr;
 import soot.jimple.NegExpr;
@@ -158,66 +162,35 @@ import soot.toolkits.graph.ExceptionalUnitGraph;
 
 public class Propagator extends AbstractStmtSwitch {
 	
-	private Map<Local, Expression> localsMap;
-
-//	public Propagator(){
-//		this.localsMap = new LinkedHashMap<Local, Expression>();
-//	}
+//	private Map<Local, Expression> localsMap;
 	
-	public Propagator(Map<Local, Expression> localsM){
-		this.localsMap = localsM;
+	private final StateNode stateNode;
+	
+
+	public Propagator(StateNode sNode){
+		this.stateNode = sNode;
+//		this.localsMap = sNode.getState().getLocalsMap();
 	}
+	
+//	public Propagator(Map<Local, Expression> localsM){
+//		this.localsMap = localsM;
+//	}
 
 
-    private void printOutLocalsMap() {
-		// TODO Auto-generated method stub
-		System.out.println(localsMap.size());
-		for(Local local: localsMap.keySet()){
-			System.out.println(local.toString() + " -- " + localsMap.get(local).toString());
-		}
-		System.out.println();
+//    private void printOutLocalsMap() {
+//		System.out.println(localsMap.size());
+//		for(Local local: localsMap.keySet()){
+//			System.out.println(local.toString() + " -- " + localsMap.get(local).toString());
+//		}
+//		System.out.println();
+//	}
+
+
+	public void caseInvokeStmt(InvokeStmt is){
+		InvokeExpr ie = is.getInvokeExpr();
+		handleInvokeExpr(ie, null);
 	}
-
-
-	private void handleInvokeExpr(Stmt s)
-	{
-//		InvokeExpr ie = s.getInvokeExpr();
-//		List symArgs = new ArrayList();
-//		SootMethod callee = ie.getMethod();
-//		int subSig = methSubsigNumberer.getOrMakeId(callee);
-//		
-//		//pass the subsig of the callee
-//		symArgs.add(IntConstant.v(subSig));
-//		
-//		List args = new ArrayList();
-//		if (ie instanceof InstanceInvokeExpr) {
-//			Immediate base = (Immediate) ((InstanceInvokeExpr) ie).getBase();
-//			args.add(base);
-//			//symArgs.add(symLocalfor(base));
-//			symArgs.add(NullConstant.v());
-//		}
-//		for (Iterator it = ie.getArgs().iterator(); it.hasNext();) {
-//			Immediate arg = (Immediate) it.next();
-//			args.add(arg);
-//			symArgs.add(addSymLocationFor(arg.getType()) ? symLocalfor(arg) : NullConstant.v());
-//		}
-//
-//		G.invoke(G.staticInvokeExpr(G.argPush[symArgs.size()-1], symArgs));
-//
-//		if (s instanceof AssignStmt) {
-//			Local retValue = (Local) ((AssignStmt) s).getLeftOp();
-//			if(addSymLocationFor(retValue.getType())) {
-//				G.editor.insertStmtAfter(G.jimple.newAssignStmt(symLocalfor(retValue),
-//																G.staticInvokeExpr(G.retPop, IntConstant.v(subSig))));
-//				
-//				SootMethod modelInvoker = ModelMethodsHandler.getModelInvokerFor(callee);
-//				if (modelInvoker != null) {
-//					G.editor.insertStmtAfter(G.jimple.newInvokeStmt(G.staticInvokeExpr(modelInvoker.makeRef(), args)));
-//				}
-//			}
-//		}
-	}
-
+	
 	public void caseAssignStmt(AssignStmt as)
 	{
 		Value rightOp = as.getRightOp();
@@ -262,19 +235,59 @@ public class Propagator extends AbstractStmtSwitch {
 		else if (rightOp instanceof Immediate && leftOp instanceof Local) {
 			handleSimpleAssignStmt((Local) leftOp, (Immediate) rightOp);
 		}
+		else if(rightOp instanceof InvokeExpr) {
+			Local retValue = (Local) leftOp;
+			handleInvokeExpr((InvokeExpr) rightOp, retValue);
+		}
+	}
+
+	private void handleInvokeExpr(InvokeExpr ie, Local retValue) {
+		CallSite callSite = new CallSite();
+		
+		//signature
+		SootMethod calleeMethod = ie.getMethod();
+		callSite.setSignature(calleeMethod.getSignature());
+		
+		//args: callee and arguments
+		if(ie instanceof InstanceInvokeExpr) {
+			Immediate base = (Immediate) ((InstanceInvokeExpr) ie).getBase();
+			assert(!(base instanceof Constant));
+			Expression expr = getMap((Local) base);
+			callSite.setCallee(base, expr);
+		}
+		for(Iterator it = ie.getArgs().iterator(); it.hasNext();) {
+			Immediate arg = (Immediate) it.next();
+			Expression expr = arg instanceof Constant ? getConstant((Constant) arg) : getMap((Local) arg);
+			callSite.putArgsMap(arg, expr);
+		}
+		
+		if(retValue != null) {
+			callSite.setRetVar(retValue);
+
+			//add new symbolic local to localsMap
+			Expression retSym = getRetSym(ie, retValue);
+			putMap(retValue, retSym);
+		}
+		
+		//add callsite to stateNode
+		this.stateNode.addCallSite(callSite);
+		
+	}
+
+	private Expression getRetSym(InvokeExpr ie, Local retValue) {
+		// TODO Auto-generated method stub
+		return null;
 	}
 
 	public void caseIdentityStmt(IdentityStmt is)
 	{
 		Local lhs = (Local) is.getLeftOp();
 		Value rhs = ((DefinitionStmt) is).getRightOp();
-		String rhs_name = rhs.toString();
-
 		
 		if (rhs instanceof ParameterRef) {
 			Expression sym_para = null;
 			int index = ((ParameterRef) rhs).getIndex();
-			rhs_name = "@para" + index;
+			String rhs_name = "@para" + index;
 			if(rhs.getType() instanceof PrimType){
 				//split the cases
 				if(rhs.getType() instanceof BooleanType){
@@ -301,7 +314,7 @@ public class Propagator extends AbstractStmtSwitch {
 				else if(rhs.getType() instanceof DoubleType){
 					sym_para = new SymbolicDouble(rhs_name, index);
 				}
-				localsMap.put(lhs, sym_para);
+				putMap(lhs, sym_para);
 			}
 			else if(rhs.getType() instanceof RefLikeType){
 				sym_para = new SymbolicRef(rhs_name, null);
@@ -313,15 +326,24 @@ public class Propagator extends AbstractStmtSwitch {
 			
 		}
 		else if(rhs instanceof ThisRef){
-			rhs_name = "@this";
+			String rhs_name = "@this";
 			Expression sym = new SymbolicRef(rhs_name, null);
-			localsMap.put(lhs, sym);
+			putMap(lhs, sym);
 		}
 		else{
 			assert(rhs instanceof CaughtExceptionRef);
 		}
 		
 	}
+
+	private void putMap(Local var, Expression sym_expr) {
+		stateNode.getLocalsMap().put(var, sym_expr);
+	}
+	
+	private Expression getMap(Local var) {
+		return stateNode.getLocalsMap().get(var);
+	}
+	
 
 	void handleBinopStmt(Local leftOp, BinopExpr binExpr)
 	{
@@ -331,15 +353,13 @@ public class Propagator extends AbstractStmtSwitch {
 		if(!(op1.getType() instanceof PrimType) || !(op2.getType() instanceof PrimType))
 			return;
 
-		Expression symOp1 = op1 instanceof Constant ? getConstant((Constant) op1) : localsMap.get((Local) op1);
-		Expression symOp2 = op2 instanceof Constant ? getConstant((Constant) op2) : localsMap.get((Local) op2);
-		
-//		BinaryOperator binop = getBinaryOperator(binExpr);
-//		Expression rightOp_sym = binop.apply(symOp1, symOp2);
+		Expression symOp1 = op1 instanceof Constant ? getConstant((Constant) op1) : getMap((Local) op1);
+		Expression symOp2 = op2 instanceof Constant ? getConstant((Constant) op2) : getMap((Local) op2);
 		
 		Expression rightOp_sym = getBinaryExpression(binExpr, symOp1, symOp2);
-		localsMap.put(leftOp, rightOp_sym);
+		putMap(leftOp, rightOp_sym);
 	}
+
 	
 	public static Expression getBinaryExpression(BinopExpr binExpr, Expression symOp1, Expression symOp2) {
 		String binExprSymbol = binExpr.getSymbol().trim();
@@ -584,7 +604,7 @@ public class Propagator extends AbstractStmtSwitch {
 
 
 	public static Expression getConstant(Constant operand){
-		assert(operand.getType() instanceof PrimType);
+//		assert(operand.getType() instanceof PrimType);
 		
 		Type constType = operand.getType();
 		if(constType instanceof IntegerType){
@@ -598,6 +618,9 @@ public class Propagator extends AbstractStmtSwitch {
 		}
 		else if(constType instanceof DoubleType){
 			return DoubleConstant.get(((soot.jimple.DoubleConstant)operand).value);
+		}
+		else if(constType instanceof RefLikeType) {
+			return RefConstant.get(operand);
 		}
 		else{
 			System.err.println("wrong type: " + constType.toString());
@@ -613,10 +636,10 @@ public class Propagator extends AbstractStmtSwitch {
 			return;
 		}
 		
-		Expression symOp = op instanceof Constant ? getConstant((Constant) op) : localsMap.get((Local) op);
+		Expression symOp = op instanceof Constant ? getConstant((Constant) op) : getMap((Local) op);
 		UnaryOperator unaop = getNegOperator(negExpr);
 		Expression rightOp_sym = unaop.apply(symOp);
-		localsMap.put(leftOp, rightOp_sym);
+		putMap(leftOp, rightOp_sym);
 	}
 	
 	private UnaryOperator getNegOperator(UnopExpr unaryExpr) {
@@ -652,9 +675,9 @@ public class Propagator extends AbstractStmtSwitch {
 		}
 		else{
 			assert(rightOp instanceof Local);
-			exp = localsMap.get((Local) rightOp);
+			exp = getMap((Local) rightOp);
 		}
-		localsMap.put(leftOp, exp);
+		putMap(leftOp, exp);
 	}
 
 	void handleStoreStmt(FieldRef leftOp, Immediate rightOp) 
@@ -719,9 +742,9 @@ public class Propagator extends AbstractStmtSwitch {
 			} 
 			else {
 				assert(op instanceof Local);
-				exp = localsMap.get((Local) op);
+				exp = getMap((Local) op);
 			}
-			localsMap.put(leftOp, exp);
+			putMap(leftOp, exp);
 		}
 	}
 
