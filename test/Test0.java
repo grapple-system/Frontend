@@ -126,6 +126,10 @@ public class Test0 {
 	
 	
 	public static void main(String[] args) {
-		
+		Test0 t00 = new Test0();
+		Test0 t01 = new Test0();
+		if(t00 == t01) {
+			System.out.println("Equal");
+		}
 	}
 }

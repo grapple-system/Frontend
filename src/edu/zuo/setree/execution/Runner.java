@@ -158,11 +158,11 @@ public class Runner {
 			setConditional(ifstmt, node);
 			
 			
-			StateNode nTrue = new StateNode(node.getLocalsMap());
+			StateNode nTrue = new StateNode(node);
 			node.setTrueChild(nTrue);
 			traverseCFG(succs.get(0), nTrue);
 			
-			StateNode nFalse = new StateNode(node.getLocalsMap());
+			StateNode nFalse = new StateNode(node);
 			node.setFalseChild(nFalse);
 			traverseCFG(succs.get(1), nFalse);
 		}
@@ -193,7 +193,7 @@ public class Runner {
 		System.out.println(conditionExpr.toString());
 		System.out.println();
 		
-		Conditional conditional = getConditional(conditionExpr, node.getLocalsMap()); 
+		Expression conditional = getConditional(conditionExpr, node); 
 		node.setConditional(conditional);
 	}
 	
@@ -204,22 +204,20 @@ public class Runner {
 	 * @param localsMap
 	 * @return
 	 */
-	private Conditional getConditional(ConditionExpr conditionExpr, Map<Local, Expression> localsMap) {
+	private Expression getConditional(ConditionExpr conditionExpr, StateNode node) {
 		Immediate op1 = (Immediate) conditionExpr.getOp1();
         Immediate op2 = (Immediate) conditionExpr.getOp2();
 		
 		assert((op1.getType() instanceof PrimType) && (op2.getType() instanceof PrimType));
+		//TODO: fix bug in case of object equality
 
 		//TODO: deal with non-primitive constant
-		Expression symOp1 = op1 instanceof Constant ? Propagator.getConstant((Constant) op1) : localsMap.get((Local) op1);
-		Expression symOp2 = op2 instanceof Constant ? Propagator.getConstant((Constant) op2) : localsMap.get((Local) op2);
-		
-//		BinaryOperator binop = Propagator.getBinaryOperator(conditionExpr);
-//		Expression constraint = binop.apply(symOp1, symOp2);
+		Expression symOp1 = op1 instanceof Constant ? Propagator.getConstant((Constant) op1) : node.getFromLocalsMap((Local) op1);
+		Expression symOp2 = op2 instanceof Constant ? Propagator.getConstant((Constant) op2) : node.getFromLocalsMap((Local) op2);
 		
 		Expression constraint = Propagator.getBinaryExpression(conditionExpr, symOp1, symOp2);
 		
-		return new Conditional(constraint);
+		return constraint;
 	}
 
 //	public static BinaryOperator getConditionOperator(ConditionExpr conditionExpr) {
@@ -252,7 +250,6 @@ public class Runner {
 //	}
 
 	private void operate(Block block, StateNode node) {
-		// TODO Auto-generated method stub
 		Propagator p = new Propagator(node);
 		for(Iterator<Unit> it = block.iterator(); it.hasNext();){
 			Stmt stmt = (Stmt) it.next();

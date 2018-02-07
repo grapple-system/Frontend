@@ -189,8 +189,22 @@ public class Test0 extends java.lang.Object
     public static void main(java.lang.String[])
     {
         java.lang.String[] args;
+        Test0 $r0, t00, t01;
+        java.io.PrintStream $r1;
 
         args := @parameter0: java.lang.String[];
+        $r0 = new Test0;
+        specialinvoke $r0.<Test0: void <init>()>();
+        t00 = $r0;
+        $r0 = new Test0;
+        specialinvoke $r0.<Test0: void <init>()>();
+        t01 = $r0;
+        if t00 != t01 goto label0;
+
+        $r1 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r1.<java.io.PrintStream: void println(java.lang.String)>("Equal");
+
+     label0:
         return;
     }
 }

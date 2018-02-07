@@ -11,41 +11,54 @@ import soot.Local;
 public class StateNode {
 	
 	//state map containing <variable, symbolic expression> mapping
-//	private State state;
-	private Map<Local, Expression> localsMap;
+	private final Map<Local, Expression> localsMap;
 	
 	//symbolic conditional
-	private Conditional conditional;
+	private Expression conditional;
+	
+	//list of call-sites ahead of the node
+	private List<CallSite> callsites;
+	
+	//formal symbolic return if applicable (only for the node containing return statement) 
+	private Expression returnExpr;
+
 	
 	//two children
 	private StateNode trueChild;
 	private StateNode falseChild;
-
-	//list of call-sites ahead of the node
-	private final List<CallSite> callsites;
-	
-	//formal symbolic return if applicable (only for the node containing return statement) 
-	private Expression returnExpr;
 	
 	
 	public StateNode(){
-//		state = new State();
 		this.localsMap = new LinkedHashMap<Local, Expression>();
+		
 		this.conditional = null;
+		this.callsites = null;
+		this.returnExpr = null;
+
 		this.trueChild = null;
 		this.falseChild = null;
-		this.callsites = new ArrayList<CallSite>();
-		this.returnExpr = null;
 	}
 	
-	public StateNode(Map parentMap){
-//		this.state = new State(s);
-		localsMap = new LinkedHashMap<Local, Expression>(parentMap);
+	public StateNode(StateNode parentNode){
+		localsMap = new LinkedHashMap<Local, Expression>(parentNode.localsMap);
+		
 		this.conditional = null;
+		this.callsites = null;
+		this.returnExpr = null;
+
 		this.trueChild = null;
 		this.falseChild = null;
-		this.callsites = new ArrayList<CallSite>();
+	}
+	
+	public StateNode(Map<Local, Expression> parentMap){
+		localsMap = new LinkedHashMap<Local, Expression>(parentMap);
+		
+		this.conditional = null;
+		this.callsites = null;
 		this.returnExpr = null;
+
+		this.trueChild = null;
+		this.falseChild = null;
 	}
 
 
@@ -65,23 +78,30 @@ public class StateNode {
 		this.falseChild = falseChild;
 	}
 
-	public Conditional getConditional() {
+	public Expression getConditional() {
 		return conditional;
 	}
 
-	public void setConditional(Conditional conditional) {
+	public void setConditional(Expression conditional) {
 		this.conditional = conditional;
 	}
 	
-	public Map<Local, Expression> getLocalsMap() {
-		return localsMap;
-	}
-
-	public void setLocalsMap(Map<Local, Expression> localsMap) {
-		this.localsMap = localsMap;
+//	public Map<Local, Expression> getLocalsMap() {
+//		return localsMap;
+//	}
+	
+	public void putToLocalsMap(Local l, Expression expr) {
+		this.localsMap.put(l, expr);
 	}
 	
+	public Expression getFromLocalsMap(Local l) {
+		return this.localsMap.get(l);
+	}
+
 	public void addCallSite(CallSite cs) {
+		if(this.callsites == null) {
+			this.callsites = new ArrayList<CallSite>();
+		}
 		this.callsites.add(cs);
 	}
 	
