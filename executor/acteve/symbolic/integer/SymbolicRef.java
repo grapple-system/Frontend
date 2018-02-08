@@ -51,7 +51,8 @@ public class SymbolicRef extends RefExpression
 	
     public String toString() 
     {
-		return name + "[" + seed + "]";
+//		return name + "[" + seed + "]";
+    	return name;
     }
     
 	public String toYicesString()

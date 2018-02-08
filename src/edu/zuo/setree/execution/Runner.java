@@ -153,10 +153,9 @@ public class Runner {
 			//branch
 			assert(block.getTail() instanceof IfStmt);
 			
-			//set conditional
-			IfStmt ifstmt = (IfStmt) block.getTail();
-			setConditional(ifstmt, node);
-			
+//			//set conditional
+//			IfStmt ifstmt = (IfStmt) block.getTail();
+//			setConditional(ifstmt, node);
 			
 			StateNode nTrue = new StateNode(node);
 			node.setTrueChild(nTrue);
@@ -181,44 +180,7 @@ public class Runner {
 	}
 
 	
-	/**set the conditional constraint in StateNode 
-	 * @param ifstmt
-	 * @param node
-	 */
-	private void setConditional(IfStmt ifstmt, StateNode node) {
-		// TODO Auto-generated method stub
-		ConditionExpr conditionExpr = (ConditionExpr) ifstmt.getCondition();
-		
-		System.out.println("Condition expression ==>>");
-		System.out.println(conditionExpr.toString());
-		System.out.println();
-		
-		Expression conditional = getConditional(conditionExpr, node); 
-		node.setConditional(conditional);
-	}
-	
 
-
-	/**get the conditional expression
-	 * @param conditionExpr
-	 * @param localsMap
-	 * @return
-	 */
-	private Expression getConditional(ConditionExpr conditionExpr, StateNode node) {
-		Immediate op1 = (Immediate) conditionExpr.getOp1();
-        Immediate op2 = (Immediate) conditionExpr.getOp2();
-		
-		assert((op1.getType() instanceof PrimType) && (op2.getType() instanceof PrimType));
-		//TODO: fix bug in case of object equality
-
-		//TODO: deal with non-primitive constant
-		Expression symOp1 = op1 instanceof Constant ? Propagator.getConstant((Constant) op1) : node.getFromLocalsMap((Local) op1);
-		Expression symOp2 = op2 instanceof Constant ? Propagator.getConstant((Constant) op2) : node.getFromLocalsMap((Local) op2);
-		
-		Expression constraint = Propagator.getBinaryExpression(conditionExpr, symOp1, symOp2);
-		
-		return constraint;
-	}
 
 //	public static BinaryOperator getConditionOperator(ConditionExpr conditionExpr) {
 //		// TODO Auto-generated method stub

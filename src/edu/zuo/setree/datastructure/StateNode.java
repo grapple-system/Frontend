@@ -50,17 +50,20 @@ public class StateNode {
 		this.falseChild = null;
 	}
 	
-	public StateNode(Map<Local, Expression> parentMap){
-		localsMap = new LinkedHashMap<Local, Expression>(parentMap);
-		
-		this.conditional = null;
-		this.callsites = null;
-		this.returnExpr = null;
+//	public StateNode(Map<Local, Expression> parentMap){
+//		localsMap = new LinkedHashMap<Local, Expression>(parentMap);
+//		
+//		this.conditional = null;
+//		this.callsites = null;
+//		this.returnExpr = null;
+//
+//		this.trueChild = null;
+//		this.falseChild = null;
+//	}
 
-		this.trueChild = null;
-		this.falseChild = null;
+	public int getCallSiteIndex() {
+		return this.callsites.size();
 	}
-
 
 	public StateNode getTrueChild() {
 		return trueChild;
@@ -105,7 +108,14 @@ public class StateNode {
 		this.callsites.add(cs);
 	}
 	
-	
+	public Expression getReturnExpr() {
+		return returnExpr;
+	}
+
+	public void setReturnExpr(Expression returnExpr) {
+		this.returnExpr = returnExpr;
+	}
+
 	public String toString() {
 		StringBuilder builder = new StringBuilder();
 		
