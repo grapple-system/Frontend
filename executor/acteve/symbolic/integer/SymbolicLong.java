@@ -54,7 +54,8 @@ public class SymbolicLong extends LongExpression
 
     public String toString() 
     {
-		return name + "[" + seed + "]";
+//		return name + "[" + seed + "]";
+    	return name;
     }
     
     public String toYicesString()

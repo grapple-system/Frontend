@@ -49,7 +49,8 @@ public class NegatedBooleanExpression extends BooleanExpression
 	
 	public String toString()
 	{
-		return toYicesString();
+//		return toYicesString();
+		return "(" + BooleanExpression.NEGATION.op + " " + e.toString() + ")";
 	}
 	
 }

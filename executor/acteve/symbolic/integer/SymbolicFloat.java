@@ -54,7 +54,8 @@ public class SymbolicFloat extends FloatExpression
 
     public String toString() 
     {
-		return name + "[" + seed + "]";
+//		return name + "[" + seed + "]";
+    	return name;
     }
     
     public String toYicesString()

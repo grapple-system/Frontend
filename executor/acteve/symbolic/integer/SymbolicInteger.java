@@ -88,7 +88,8 @@ public class SymbolicInteger extends IntegerExpression
 	
     public String toString() 
     {
-		return exprString + "[" + seed + "]";
+//		return exprString + "[" + seed + "]";
+    	return exprString;
     }
     
     public String toYicesString()
