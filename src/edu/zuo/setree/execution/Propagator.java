@@ -299,6 +299,7 @@ public class Propagator extends AbstractStmtSwitch {
 			callSite.putArgsMap(arg, expr);
 		}
 		
+		//return value
 		if(retValue != null) {
 			callSite.setRetVar(retValue);
 
