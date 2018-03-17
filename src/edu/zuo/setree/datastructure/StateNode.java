@@ -107,6 +107,10 @@ public class StateNode {
 		}
 		this.callsites.add(cs);
 	}
+
+	public List<CallSite> getCallsites() {
+		return callsites;
+	}
 	
 	public Expression getReturnExpr() {
 		return returnExpr;

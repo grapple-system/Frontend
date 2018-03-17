@@ -2,6 +2,7 @@ package edu.zuo.setree.datastructure;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.concurrent.ExecutorService;
 
 import acteve.symbolic.integer.Expression;
 import soot.Immediate;
@@ -38,6 +39,12 @@ public class CallSite {
 		return callee;
 	}
 
+	public String getCalleeString() {
+	    if(callee != null) {
+            return callee.toString();
+        }else return null;
+	}
+
 	public void setCallee(Immediate callee, Expression expr) {
 		this.callee = new Tuple(callee, expr);
 	}
@@ -54,6 +61,10 @@ public class CallSite {
 		this.argumentsMap.put(im, expr);
 	}
 
+	public Map<Immediate, Expression> getArgumentsMap() {
+	    return argumentsMap;
+    }
+
 
 
 
@@ -69,7 +80,11 @@ public class CallSite {
 			this.expression = expr;
 		}
 		
-		
+		public String toString(){
+		    if(callee != null && expression != null) {
+                return callee.toString() + " = " + expression.exprString();
+            }else return null;
+		}
 		
 	}
 }
