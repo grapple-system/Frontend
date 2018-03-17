@@ -98,92 +98,71 @@ public class Test0 extends java.lang.Object
         x := @parameter0: int;
         a = 19 / x;
         i = 0;
-        goto label6;
+        if i >= 9 goto label3;
+
+        j = 0;
+        if j >= 10 goto label2;
+
+        if a >= 100 goto label1;
 
      label0:
-        j = 0;
-        goto label4;
+        return;
 
      label1:
-        if a >= 100 goto label3;
+        a = a + 1;
+        j = j + 1;
+        goto label4;
 
      label2:
-        return;
+        i = i + 1;
+        goto label7;
 
      label3:
-        a = a + 1;
-        j = j + 1;
-        goto label11;
-
-     label4:
-        if j < 10 goto label1;
-
-     label5:
-        i = i + 1;
-        goto label17;
-
-     label6:
-        if i < 9 goto label0;
-
-     label7:
         return;
 
-     label8:
-        if a >= 100 goto label10;
+     label4:
+        if j >= 10 goto label2;
 
-     label9:
-        goto label2;
+        if a >= 100 goto label6;
 
-     label10:
+     label5:
+        goto label0;
+
+     label6:
         a = a + 1;
         j = j + 1;
+        goto label2;
+
+     label7:
+        if i >= 9 goto label3;
+
+        j = 0;
+        if j >= 10 goto label9;
+
+        if a >= 100 goto label8;
+
+        goto label0;
+
+     label8:
+        a = a + 1;
+        j = j + 1;
+        goto label10;
+
+     label9:
+        i = i + 1;
+        goto label3;
+
+     label10:
+        if j >= 10 goto label9;
+
+        if a >= 100 goto label11;
+
         goto label5;
 
      label11:
-        if j < 10 goto label8;
-
-        goto label5;
-
-     label12:
-        j = 0;
-        goto label15;
-
-     label13:
-        if a >= 100 goto label14;
-
-        goto label2;
-
-     label14:
         a = a + 1;
         j = j + 1;
-        goto label20;
-
-     label15:
-        if j < 10 goto label13;
-
-     label16:
-        i = i + 1;
-        goto label7;
-
-     label17:
-        if i < 9 goto label12;
-
-        goto label7;
-
-     label18:
-        if a >= 100 goto label19;
-
         goto label9;
-
-     label19:
-        a = a + 1;
-        j = j + 1;
-        goto label16;
-
-     label20:
-        if j < 10 goto label18;
-
-        goto label16;
     }
 
     public static void main(java.lang.String[])
