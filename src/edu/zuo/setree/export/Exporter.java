@@ -21,7 +21,7 @@ public class Exporter {
 		
 		//export symbolic execution tree info to output file
 		System.out.println("Exporting...");
-		export(root, mb);
+//		export(root, mb);
 		System.out.println("Finish exporting!!!");
 		
 	}
