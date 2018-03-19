@@ -122,6 +122,9 @@ public class StateNode {
 		builder.append("Conditional: ");
 		builder.append(this.getConditionalString());
 		builder.append("\t");
+		builder.append("ReturnExpr: ");
+		builder.append(this.getRetString());
+		builder.append("\t");
 		builder.append("State map: ");
 		builder.append(this.localsMap.toString());
 		
@@ -132,6 +135,9 @@ public class StateNode {
 		return conditional == null ? "null" : conditional.toString();
 	}
 	
+	public String getRetString() {
+		return returnExpr == null ? "null" : returnExpr.toString();
+	}
 
 	
 	
