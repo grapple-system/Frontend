@@ -9,6 +9,10 @@ public class JSON {
     //value != null
     public static String toJson(String value){
         if(value != null) {
+            if(value.contains("\"")){
+                String temp = value.replace("\"","\\\"");
+                value = temp;
+            }
             return "\"" + value + "\"";
         }else {
             return null;
@@ -48,6 +52,9 @@ public class JSON {
     //key != null
     //like "aaa":{"AAA":"BBB","CCC":"DDD","EEE":"FFF"}
     public static String toJsonSet(String key, List<String> stringList) {
+        if(stringList == null) {
+            return "{\"" + key + "\": null}";
+        }
         String str = null;
         for(int i=0; i<stringList.size(); i++) {
             if(str != null){
