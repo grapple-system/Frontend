@@ -67,7 +67,7 @@ public class Exporter {
 	private static void recursiveExport(StateNode root, int index, PrintWriter out, PrintWriter stateNodeOut) {
 		//termination
 		if(root == null) {
-		    stateNodeOut.println(JSON.toJson("stateNode",null));
+		    stateNodeOut.println(JSON.toJsonSet("stateNode",null));
 			return;
 		}
 		
