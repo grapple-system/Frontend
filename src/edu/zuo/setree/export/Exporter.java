@@ -100,13 +100,13 @@ public class Exporter {
             for(int i=0;i<callSiteList.size();i++){
                 callSiteStringList.add(getCallSite(callSiteList.get(i)));
             }
-            stringList.add(JSON.toJsonArray("callSites", callSiteStringList));
+            stringList.add(JSON.toJsonArray("callsites", callSiteStringList));
         }else {
             stringList.add(JSON.toJson("callsites", null));
         }
         //print returnExpr
         if(root.getReturnExpr() != null) {
-            stringList.add(JSON.toJson("returnExp", root.getReturnExpr().exprString()));
+            stringList.add(JSON.toJson("returnExp", root.getReturnExpr().toString()));
         }else {
             stringList.add(JSON.toJson("returnExp", null));
         }
