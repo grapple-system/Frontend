@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 
 import acteve.symbolic.integer.Expression;
+import edu.zuo.pegraph.datastructure.PegIntra_block;
 import soot.Local;
 
 public class StateNode {
@@ -26,6 +27,12 @@ public class StateNode {
 	//two children
 	private StateNode trueChild;
 	private StateNode falseChild;
+	
+	
+	//---------------------------------------------------------
+	//specific to alias analysis
+	private PegIntra_block peg_intra_block = null;
+	
 	
 	
 	public StateNode(){
@@ -137,6 +144,14 @@ public class StateNode {
 	
 	public String getRetString() {
 		return returnExpr == null ? "null" : returnExpr.toString();
+	}
+
+	public PegIntra_block getPeg_intra_block() {
+		return peg_intra_block;
+	}
+
+	public void setPeg_intra_block(PegIntra_block peg_intra_block) {
+		this.peg_intra_block = peg_intra_block;
 	}
 
 	
