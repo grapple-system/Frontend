@@ -15,6 +15,8 @@ import acteve.symbolic.integer.Expression;
 import acteve.symbolic.integer.FloatBinaryOperator;
 import acteve.symbolic.integer.IntegerBinaryOperator;
 import acteve.symbolic.integer.LongBinaryOperator;
+import edu.zuo.pegraph.PEGGenerator_block;
+import edu.zuo.pegraph.datastructure.PegIntra_block;
 import edu.zuo.setree.datastructure.Conditional;
 import edu.zuo.setree.datastructure.StateNode;
 import edu.zuo.setree.export.Exporter;
@@ -171,7 +173,6 @@ public class Runner {
 		}
 		else if(succs.size() == 0){
 			//end
-
 		}
 		else if(succs.size() > 2){
 			//error
@@ -219,6 +220,12 @@ public class Runner {
 //			System.out.println(stmt);
 			stmt.apply(p);
 		}
+		
+		//generate peg_block for alias analysis
+		PegIntra_block peg_block = new PegIntra_block();
+		PEGGenerator_block generator_block = new PEGGenerator_block(block, peg_block);
+		generator_block.process();
+		node.setPeg_intra_block(peg_block);
 	}
 
 //	/** get the unique entry block starting with Parameter or This rather than CaughtException
