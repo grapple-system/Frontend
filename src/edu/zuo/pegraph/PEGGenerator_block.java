@@ -141,8 +141,8 @@ public class PEGGenerator_block {
 	
 	private void addFlowEdges(Stmt s) {
 
-//		// case 0: call site
-//		if (s.containsInvokeExpr()) {
+		// case 0: call site
+		if (s.containsInvokeExpr()) {
 //			InvokeExpr ie = s.getInvokeExpr();			
 //			
 //			//local = invokeExpr()
@@ -180,18 +180,18 @@ public class PEGGenerator_block {
 //				}
 //			}
 //
-//			return;
-//		}
+			return;
+		}
 
 
-//		// case 1: ReturnStmt
-//		if (s instanceof ReturnStmt) {
+		// case 1: ReturnStmt
+		if (s instanceof ReturnStmt) {
 //			Value v = ((ReturnStmt) s).getOp();
 //			if ((v instanceof Local && isTypeofInterest(v)) || (v instanceof StringConstant) || (v instanceof ClassConstant)) {
 //				intra_graph.setFormalReturn(v);
 //			}
-//			return;
-//		}
+			return;
+		}
 
 		// case 2: ThrowStmt
 		if (s instanceof ThrowStmt) {
@@ -202,9 +202,8 @@ public class PEGGenerator_block {
 		Value lhs = ((DefinitionStmt) s).getLeftOp();
 		Value rhs = ((DefinitionStmt) s).getRightOp();
 
-//		// case 3: IdentityStmt
-//		if (s instanceof IdentityStmt) {
-//
+		// case 3: IdentityStmt
+		if (s instanceof IdentityStmt) {
 ////			if (rhs instanceof CaughtExceptionRef) {
 ////			
 ////			}
@@ -213,8 +212,8 @@ public class PEGGenerator_block {
 //					&& isTypeofInterest(rhs)) {
 //				intra_graph.addFormalParameter((Local) lhs);
 //			}
-//			return;
-//		}
+			return;
+		}
 
 		// case 4: AssignStmt
 		if (s instanceof AssignStmt) {
