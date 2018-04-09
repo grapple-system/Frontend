@@ -1,0 +1,69 @@
+public class Test1 extends java.lang.Object
+{
+    private Test2 t2;
+
+    public void <init>()
+    {
+        Test1 this;
+
+        this := @this: Test1;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public static int multiply(int, int)
+    {
+        int x, y, $i0;
+
+        x := @parameter0: int;
+        y := @parameter1: int;
+        $i0 = x * y;
+        return $i0;
+    }
+
+    private int add(int, int)
+    {
+        Test1 this;
+        int x, y, $i0;
+
+        this := @this: Test1;
+        x := @parameter0: int;
+        y := @parameter1: int;
+        $i0 = x + y;
+        return $i0;
+    }
+
+    public static Test2 createTest2(Test2, java.lang.String)
+    {
+        Test2 o2;
+        java.lang.String s;
+
+        o2 := @parameter0: Test2;
+        s := @parameter1: java.lang.String;
+        return o2;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+        Test1 $r0, t1;
+        Test2 t2, $r1, $r2;
+        int $i0, $i1;
+
+        args := @parameter0: java.lang.String[];
+        $r0 = new Test1;
+        specialinvoke $r0.<Test1: void <init>()>();
+        t1 = $r0;
+        $r1 = new Test2;
+        specialinvoke $r1.<Test2: void <init>(int)>(1);
+        t2 = $r1;
+        $i0 = virtualinvoke t2.<Test2: int getA()>();
+        $i1 = specialinvoke t1.<Test1: int add(int,int)>(2, $i0);
+        t2.<Test2: int a> = $i1;
+        $r2 = new Test2;
+        specialinvoke $r2.<Test2: void <init>(int)>(0);
+        $r2 = staticinvoke <Test1: Test2 createTest2(Test2,java.lang.String)>($r2, "hello");
+        t1.<Test1: Test2 t2> = $r2;
+        return;
+    }
+}
