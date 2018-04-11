@@ -1,12 +1,7 @@
 package edu.zuo.setree.export;
 
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
-import java.io.IOException;
-import java.io.PrintWriter;
-import java.util.ArrayList;
-import java.util.List;
+import java.io.*;
+import java.util.*;
 
 import acteve.symbolic.integer.Expression;
 import edu.zuo.setree.datastructure.CallSite;
@@ -19,6 +14,8 @@ public class Exporter {
 	
 	public static final File outFile = new File("set.conditional");
 	public static final File stateNodeFile = new File("stateNode.json");
+	public static final File constraintEdgeFile = new File("constraintEdge");
+	private static Map<String,List<Integer>> constraintEdgeMap = new LinkedHashMap<>();
 	
 	public static void run(StateNode root, Body mb) {
 		//for debugging
@@ -28,7 +25,7 @@ public class Exporter {
 		
 		//export symbolic execution tree info to output file
 		System.out.println("Exporting...");
-//		export(root, mb);
+		export(root, mb);
 		System.out.println("Finish exporting!!!");
 		
 	}
@@ -37,6 +34,7 @@ public class Exporter {
 	private static void export(StateNode root, Body mb) {
 		PrintWriter out = null;
 		PrintWriter stateNodeOut = null;
+		PrintWriter constraintEdgeOut = null;
 		try {
 			if(!outFile.exists()) {
 				outFile.createNewFile();
@@ -44,18 +42,30 @@ public class Exporter {
 			if(!stateNodeFile.exists()) {
 				stateNodeFile.createNewFile();
 			}
+			if(!constraintEdgeFile.exists()) {
+				constraintEdgeFile.createNewFile();
+			}
 			out = new PrintWriter(new BufferedWriter(new FileWriter(outFile, true)));
 			stateNodeOut = new PrintWriter(new BufferedWriter(new FileWriter(stateNodeFile, true)));
-			
+			constraintEdgeOut = new PrintWriter(new BufferedWriter(new FileWriter(constraintEdgeFile, true)));
+
 			out.println(mb.getMethod().getSignature());
             stateNodeOut.println(mb.getMethod().getSignature());
+            constraintEdgeOut.println(mb.getMethod().getSignature());
 
-			recursiveExport(root, 1, out, stateNodeOut);
+			recursiveExport(root, 0, out, stateNodeOut, constraintEdgeOut);
+			constraintEdgeMap.clear();
+			recursiveConstraintEdge(root, 0);
+			printConstraintEdge(constraintEdgeOut);
+
+
 			out.println();
 			stateNodeOut.println();
-			
+			constraintEdgeOut.println();
+
 			out.close();
 			stateNodeOut.close();
+			constraintEdgeOut.close();
 		}
 		catch(IOException e) {
 			e.printStackTrace();
@@ -64,7 +74,7 @@ public class Exporter {
 	
 	
 	
-	private static void recursiveExport(StateNode root, int index, PrintWriter out, PrintWriter stateNodeOut) {
+	private static void recursiveExport(StateNode root, int index, PrintWriter out, PrintWriter stateNodeOut, PrintWriter constraintEdgeOut) {
 		//termination
 		if(root == null) {
 		    stateNodeOut.println(JSON.toJsonSet("stateNode",null));
@@ -79,9 +89,38 @@ public class Exporter {
 		//export stateNode
         printStateNode(root, stateNodeOut);
 
+
 		//recursive operation 
-		recursiveExport(root.getTrueChild(), 2 * index, out, stateNodeOut);
-		recursiveExport(root.getFalseChild(), 2 * index + 1, out, stateNodeOut);
+		recursiveExport(root.getTrueChild(), 2 * index + 1, out, stateNodeOut, constraintEdgeOut);
+		recursiveExport(root.getFalseChild(), 2 * index + 2, out, stateNodeOut, constraintEdgeOut);
+	}
+
+	private static void recursiveConstraintEdge(StateNode root, int index) {
+		if(root == null){
+			return;
+		}
+		Set<String> Vars = root.getPegIntra_blockVars();
+		for(String s: Vars){
+			if(!constraintEdgeMap.containsKey(s)) {
+				constraintEdgeMap.put(s, new LinkedList<Integer>());
+			}
+			constraintEdgeMap.get(s).add(index);
+			//System.out.print(index);
+		}
+		//recursive operation
+		recursiveConstraintEdge(root.getTrueChild(), 2 * index + 1);
+		recursiveConstraintEdge(root.getFalseChild(), 2 * index + 2);
+	}
+
+	private static void printConstraintEdge(PrintWriter constraintEdgeOut) {
+		for(String str: constraintEdgeMap.keySet()){
+			constraintEdgeOut.print(str+": ");
+			List<Integer> list = constraintEdgeMap.get(str);
+			for(Integer index: list){
+				constraintEdgeOut.print(index.toString()+", ");
+			}
+			constraintEdgeOut.println();
+		}
 	}
 
 	//root != null

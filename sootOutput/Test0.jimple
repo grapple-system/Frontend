@@ -162,13 +162,7 @@ public class Test0 extends java.lang.Object
      label11:
         a = a + 1;
         j = j + 1;
-
-        goto label16;
-
-     label20:
-        if j < 10 goto label18;
-
-        goto label16;
+        goto label9;
     }
 
     public static void main(java.lang.String[])
