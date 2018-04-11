@@ -64,7 +64,57 @@ public class PegIntra_block {
 		//TODO
 		
 	}
-	
+
+	public Set<String> getVars(){
+		Set<String> Vars = new HashSet<>();
+		//local2local: Assign
+		for(Value loc1: this.local2Local.keySet()){
+			HashSet<Local> locs = this.local2Local.get(loc1);
+			Vars.add(loc1.toString());
+			for(Value loc2: locs) {
+				Vars.add(loc2.toString());
+			}
+		}
+
+		//obj2local: New
+		for(Value v: this.obj2Local.keySet()){
+			HashSet<Local> locs = this.obj2Local.get(v);
+			Vars.add(v.toString());
+			for(Value loc: locs) {
+				Vars.add(loc.toString());
+			}
+		}
+
+		//ref2local
+		for(ConcreteRef ref: this.ref2Local.keySet()){
+			HashSet<Local> locs = this.ref2Local.get(ref);
+			Vars.add(ref.toString());
+			for(Value loc: locs) {
+				Vars.add(loc.toString());
+			}
+		}
+
+		//local2ref
+		for(Local local: this.local2Ref.keySet()){
+			HashSet<ConcreteRef> refs = this.local2Ref.get(local);
+			Vars.add(local.toString());
+			for(ConcreteRef ref: refs){
+				Vars.add(ref.toString());
+			}
+		}
+
+		//const2ref: New & Store
+		for(Constant cons: this.const2Ref.keySet()){
+			HashSet<ConcreteRef> refs = this.const2Ref.get(cons);
+			Vars.add(cons.toString());
+			for(ConcreteRef ref: refs){
+				Vars.add(ref.toString());
+			}
+		}
+		//System.out.println("Vars: "+Vars.size());
+		return Vars;
+	}
+
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
 		

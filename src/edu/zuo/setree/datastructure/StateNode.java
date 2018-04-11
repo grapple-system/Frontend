@@ -1,9 +1,6 @@
 package edu.zuo.setree.datastructure;
 
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 import acteve.symbolic.integer.Expression;
 import edu.zuo.pegraph.datastructure.PegIntra_block;
@@ -156,6 +153,11 @@ public class StateNode {
 
 	public void setPeg_intra_block(PegIntra_block peg_intra_block) {
 		this.peg_intra_block = peg_intra_block;
+	}
+
+	public Set<String> getPegIntra_blockVars() {
+		if(peg_intra_block == null) return null;
+		return peg_intra_block.getVars();
 	}
 
 	
