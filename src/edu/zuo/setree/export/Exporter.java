@@ -4,18 +4,45 @@ import java.io.*;
 import java.util.*;
 
 import acteve.symbolic.integer.Expression;
+import com.sun.org.apache.xpath.internal.operations.Bool;
 import edu.zuo.setree.datastructure.CallSite;
 import edu.zuo.setree.datastructure.StateNode;
 import edu.zuo.setree.JSON.JSON;
 import soot.Body;
 import soot.Immediate;
 
+class PrintStack<E> extends Stack<E> {
+	private boolean isPrint;
+
+	public PrintStack() {
+		isPrint=false;
+	}
+
+	public E push(E item) {
+		isPrint = false;
+		return super.push(item);
+	}
+
+	public synchronized E pop(String s, PrintWriter printWriter) {
+		if(!isPrint) {
+			isPrint = true;
+			printWriter.print(s+": ");
+			for(int i=0; i< elementCount; i++){
+				printWriter.print(elementData[i]+", ");
+			}
+			printWriter.println();
+		}
+		return super.pop();
+	}
+}
+
 public class Exporter {
 	
 	public static final File outFile = new File("set.conditional");
 	public static final File stateNodeFile = new File("stateNode.json");
 	public static final File constraintEdgeFile = new File("constraintEdge");
-	private static Map<String,List<Integer>> constraintEdgeMap = new LinkedHashMap<>();
+
+	private static Map<String,PrintStack<Integer>> constraintEdgeMap = new LinkedHashMap<>();
 	
 	public static void run(StateNode root, Body mb) {
 		//for debugging
@@ -55,8 +82,8 @@ public class Exporter {
 
 			recursiveExport(root, 0, out, stateNodeOut, constraintEdgeOut);
 			constraintEdgeMap.clear();
-			recursiveConstraintEdge(root, 0);
-			printConstraintEdge(constraintEdgeOut);
+			recursiveConstraintEdge(root, 0, constraintEdgeOut);
+			//printConstraintEdge(constraintEdgeOut);
 
 
 			out.println();
@@ -95,33 +122,39 @@ public class Exporter {
 		recursiveExport(root.getFalseChild(), 2 * index + 2, out, stateNodeOut, constraintEdgeOut);
 	}
 
-	private static void recursiveConstraintEdge(StateNode root, int index) {
+	private static void recursiveConstraintEdge(StateNode root, int index, PrintWriter constraintEdgeOut) {
 		if(root == null){
 			return;
 		}
 		Set<String> Vars = root.getPegIntra_blockVars();
+		// push
 		for(String s: Vars){
 			if(!constraintEdgeMap.containsKey(s)) {
-				constraintEdgeMap.put(s, new LinkedList<Integer>());
+				constraintEdgeMap.put(s, new PrintStack<Integer>());
 			}
-			constraintEdgeMap.get(s).add(index);
+			constraintEdgeMap.get(s).push(index);
 			//System.out.print(index);
 		}
 		//recursive operation
-		recursiveConstraintEdge(root.getTrueChild(), 2 * index + 1);
-		recursiveConstraintEdge(root.getFalseChild(), 2 * index + 2);
-	}
-
-	private static void printConstraintEdge(PrintWriter constraintEdgeOut) {
-		for(String str: constraintEdgeMap.keySet()){
-			constraintEdgeOut.print(str+": ");
-			List<Integer> list = constraintEdgeMap.get(str);
-			for(Integer index: list){
-				constraintEdgeOut.print(index.toString()+", ");
-			}
-			constraintEdgeOut.println();
+		recursiveConstraintEdge(root.getTrueChild(), 2 * index + 1, constraintEdgeOut);
+		recursiveConstraintEdge(root.getFalseChild(), 2 * index + 2, constraintEdgeOut);
+		// pop
+		for(String s: Vars){
+            constraintEdgeMap.get(s).pop(s, constraintEdgeOut);
+			//System.out.print(index);
 		}
 	}
+
+//	private static void printConstraintEdge(PrintWriter constraintEdgeOut) {
+//		for(String str: constraintEdgeMap.keySet()){
+//			constraintEdgeOut.print(str+": ");
+//			List<Integer> list = constraintEdgeMap.get(str);
+//			for(Integer index: list){
+//				constraintEdgeOut.print(index.toString()+", ");
+//			}
+//			constraintEdgeOut.println();
+//		}
+//	}
 
 	//root != null
 	private static void printStateNode(StateNode root, PrintWriter stateNodeOut) {
