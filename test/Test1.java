@@ -22,6 +22,8 @@ public class Test1 {
 		Test1 t1 = new Test1();
 		Test2 t2 = new Test2(1);
 		t2.a = t1.add(2, t2.getA());
+
+		if(t2.a < 5){}
 		
 		t1.t2 = createTest2(new Test2(0), "hello");
 	}

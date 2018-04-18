@@ -67,59 +67,59 @@ public class PegIntra {
 
 	public String toString(){
 		StringBuilder builder = new StringBuilder();
-        System.out.println("local2Local: "+local2Local.size() +"\nobj2local: "+ obj2Local.size() +"\nref2Local: "+ ref2Local.size() +"\nlocal2Ref: "+ local2Ref.size() +"\nconst2Ref: "+ const2Ref.size());
+		System.out.println("local2Local: "+local2Local.size() +"\nobj2local: "+ obj2Local.size() +"\nref2Local: "+ ref2Local.size() +"\nlocal2Ref: "+ local2Ref.size() +"\nconst2Ref: "+ const2Ref.size());
 		//--method signature
-		
+
 		//--formal parameters
-		
+
 		//--formal return
-		
+
 		//--call sites
-		
+
 		//--edges
 		//local2local: Assign
 		for(Value loc1: this.local2Local.keySet()){
-            HashSet<Local> locs = this.local2Local.get(loc1);
-            for(Value loc2: locs) {
-                builder.append(loc2.toString() + " {Assign} " + loc1.toString() + "\n");
-            }
-        }
+			HashSet<Local> locs = this.local2Local.get(loc1);
+			for(Value loc2: locs) {
+				builder.append(loc2.toString() + " {Assign} " + loc1.toString() + "\n");
+			}
+		}
 
 		//obj2local: New
 		for(Value v: this.obj2Local.keySet()){
-		    HashSet<Local> locs = this.obj2Local.get(v);
-            for(Value loc: locs) {
-                if (v instanceof StringConstant) {
-                    builder.append(loc.toString() + " {New} " + v.toString() + "\n");
-                } else if (v instanceof ClassConstant) {
-                    builder.append(loc.toString() + " {New} " + v.toString() + "\n");
-                } else if (v instanceof AnyNewExpr) {
-                    assert (v instanceof NewExpr || v instanceof NewArrayExpr || v instanceof NewMultiArrayExpr);
-                    builder.append(loc.toString() + " {New} " + v.toString() + "\n");
-                } else if (v instanceof InvokeExpr) {
-                    builder.append(loc.toString() + " {New} " + v.toString() + "\n");
-                } else {
-                    System.err.println("obj type error!!!");
-                }
-            }
+			HashSet<Local> locs = this.obj2Local.get(v);
+			for(Value loc: locs) {
+				if (v instanceof StringConstant) {
+					builder.append(loc.toString() + " {New} " + v.toString() + "\n");
+				} else if (v instanceof ClassConstant) {
+					builder.append(loc.toString() + " {New} " + v.toString() + "\n");
+				} else if (v instanceof AnyNewExpr) {
+					assert (v instanceof NewExpr || v instanceof NewArrayExpr || v instanceof NewMultiArrayExpr);
+					builder.append(loc.toString() + " {New} " + v.toString() + "\n");
+				} else if (v instanceof InvokeExpr) {
+					builder.append(loc.toString() + " {New} " + v.toString() + "\n");
+				} else {
+					System.err.println("obj type error!!!");
+				}
+			}
 		}
-		
+
 		//ref2local
 		for(ConcreteRef ref: this.ref2Local.keySet()){
-		    HashSet<Local> locs = this.ref2Local.get(ref);
-            for(Value loc: locs) {
-                if (ref instanceof InstanceFieldRef) {//Load
-                    builder.append(loc.toString() + " {Load} " + ref.toString() + "\n");
-                } else if (ref instanceof StaticFieldRef) {//Assign
-                    builder.append(loc.toString() + " {Assign} " + ref.toString() + "\n");
-                } else if (ref instanceof ArrayRef) {//Load
-                    builder.append(loc.toString() + " {Load} " + ref.toString() + "\n");
-                } else {
-                    System.err.println("ref type error!!!");
-                }
-            }
+			HashSet<Local> locs = this.ref2Local.get(ref);
+			for(Value loc: locs) {
+				if (ref instanceof InstanceFieldRef) {//Load
+					builder.append(loc.toString() + " {Load} " + ref.toString() + "\n");
+				} else if (ref instanceof StaticFieldRef) {//Assign
+					builder.append(loc.toString() + " {Assign} " + ref.toString() + "\n");
+				} else if (ref instanceof ArrayRef) {//Load
+					builder.append(loc.toString() + " {Load} " + ref.toString() + "\n");
+				} else {
+					System.err.println("ref type error!!!");
+				}
+			}
 		}
-		
+
 		//local2ref
 		for(Local local: this.local2Ref.keySet()){
 			HashSet<ConcreteRef> refs = this.local2Ref.get(local);
@@ -138,7 +138,7 @@ public class PegIntra {
 				}
 			}
 		}
-		
+
 		//const2ref: New & Store
 		for(Constant cons: this.const2Ref.keySet()){
 			HashSet<ConcreteRef> refs = this.const2Ref.get(cons);
@@ -147,18 +147,18 @@ public class PegIntra {
 					builder.append(ref.toString() + " {New & Store} " + cons.toString() + "\n");
 				}
 				else if(ref instanceof StaticFieldRef){//New: (X.f = constant) <==> (f <-New- constant)
-                    builder.append(ref.toString() + " {New} " + cons.toString() + "\n");
+					builder.append(ref.toString() + " {New} " + cons.toString() + "\n");
 				}
 				else if (ref instanceof ArrayRef){//New & Store: (array[*] = constant) <==> (array <-Store[E]- tmp <-New- constant)
-                    builder.append(ref.toString() + " {New & Store} " + cons.toString() + "\n");
+					builder.append(ref.toString() + " {New & Store} " + cons.toString() + "\n");
 				}
 				else{
 					System.err.println("ref type error!!!");
 				}
 			}
 		}
-		
-		
+
+
 		return builder.toString();
 	}
 

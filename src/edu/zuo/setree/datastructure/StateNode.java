@@ -66,7 +66,7 @@ public class StateNode {
 //	}
 
 	public int getCallSiteIndex() {
-		return this.callsites.size();
+			return callsites == null ? 0 : this.callsites.size();
 	}
 
 	public StateNode getTrueChild() {
