@@ -24,14 +24,14 @@ class PrintStack<E> extends Stack<E> {
 	}
 
 	public synchronized E pop(String s, PrintWriter printWriter) {
-		if(!isPrint) {
-			isPrint = true;
-			printWriter.print(s+": ");
-			for(int i=0; i< elementCount; i++){
-				printWriter.print(elementData[i]+", ");
-			}
-			printWriter.println();
-		}
+//		if(!isPrint) {
+//			isPrint = true;
+//			printWriter.print(s+": ");
+//			for(int i=0; i< elementCount; i++){
+//				printWriter.print(elementData[i]+", ");
+//			}
+//			printWriter.println();
+//		}
 		return super.pop();
 	}
 }
@@ -40,14 +40,16 @@ public class Exporter {
 	
 	public static final File outFile = new File("set.conditional");
 	public static final File stateNodeFile = new File("stateNode.json");
-	public static final File constraintEdgeFile = new File("constraintEdge");
+	public static final File consEdgeGraphFile = new File("consEdgeGraph");
+	public static final File var2indexMapFile = new File("var2indexMap");
 
 	private static Map<String,PrintStack<Integer>> constraintEdgeMap = new LinkedHashMap<>();
+	private static Map<String, Integer> var2indexMap = new LinkedHashMap<>();
 	
 	public static void run(StateNode root, Body mb) {
 		//for debugging
 		System.out.println("STATE ==>>");
-		printOutInfo(root, 1);
+		printOutInfo(root, 0);
 		System.out.println("\n");
 		
 		//export symbolic execution tree info to output file
@@ -61,7 +63,8 @@ public class Exporter {
 	private static void export(StateNode root, Body mb) {
 		PrintWriter out = null;
 		PrintWriter stateNodeOut = null;
-		PrintWriter constraintEdgeOut = null;
+		PrintWriter consEdgeGraphOut = null;
+		PrintWriter var2indexMapOut = null;
 		try {
 			if(!outFile.exists()) {
 				outFile.createNewFile();
@@ -69,37 +72,52 @@ public class Exporter {
 			if(!stateNodeFile.exists()) {
 				stateNodeFile.createNewFile();
 			}
-			if(!constraintEdgeFile.exists()) {
-				constraintEdgeFile.createNewFile();
+			if(!consEdgeGraphFile.exists()) {
+				consEdgeGraphFile.createNewFile();
+			}
+			if(!var2indexMapFile.exists()) {
+				var2indexMapFile.createNewFile();
 			}
 			out = new PrintWriter(new BufferedWriter(new FileWriter(outFile, true)));
 			stateNodeOut = new PrintWriter(new BufferedWriter(new FileWriter(stateNodeFile, true)));
-			constraintEdgeOut = new PrintWriter(new BufferedWriter(new FileWriter(constraintEdgeFile, true)));
+			consEdgeGraphOut = new PrintWriter(new BufferedWriter(new FileWriter(consEdgeGraphFile, true)));
+			var2indexMapOut = new PrintWriter(new BufferedWriter(new FileWriter(var2indexMapFile, true)));
 
+			//Print Function Signature
 			out.println(mb.getMethod().getSignature());
             stateNodeOut.println(mb.getMethod().getSignature());
-            constraintEdgeOut.println(mb.getMethod().getSignature());
+			consEdgeGraphOut.println(mb.getMethod().getSignature());
+            var2indexMapOut.println(mb.getMethod().getSignature());
 
-			recursiveExport(root, 0, out, stateNodeOut, constraintEdgeOut);
+            // Recursive
+			recursiveExport(root, 0, out, stateNodeOut, consEdgeGraphOut);
 			constraintEdgeMap.clear();
-			recursiveConstraintEdge(root, 0, constraintEdgeOut);
+			var2indexMap.clear();
+			recursiveconsEdgeGraph(root, 0, consEdgeGraphOut);
 			//printConstraintEdge(constraintEdgeOut);
+			printVar2indexMap(var2indexMapOut);
 
 
 			out.println();
 			stateNodeOut.println();
-			constraintEdgeOut.println();
+			consEdgeGraphOut.println();
+			var2indexMapOut.println();
 
 			out.close();
 			stateNodeOut.close();
-			constraintEdgeOut.close();
+			consEdgeGraphOut.close();
+			var2indexMapOut.close();
 		}
 		catch(IOException e) {
 			e.printStackTrace();
 		}
 	}
 	
-	
+	private static void putVar2indexMap(String s){
+		if(!var2indexMap.containsKey(s)){
+			var2indexMap.put(s, var2indexMap.size());
+		}
+	}
 	
 	private static void recursiveExport(StateNode root, int index, PrintWriter out, PrintWriter stateNodeOut, PrintWriter constraintEdgeOut) {
 		//termination
@@ -122,25 +140,31 @@ public class Exporter {
 		recursiveExport(root.getFalseChild(), 2 * index + 2, out, stateNodeOut, constraintEdgeOut);
 	}
 
-	private static void recursiveConstraintEdge(StateNode root, int index, PrintWriter constraintEdgeOut) {
+	private static void recursiveconsEdgeGraph(StateNode root, int index, PrintWriter consEdgeGraphOut) {
 		if(root == null){
 			return;
 		}
 		Set<String> Vars = root.getPegIntra_blockVars();
 		// push
 		for(String s: Vars){
+			putVar2indexMap(index+"."+s);
 			if(!constraintEdgeMap.containsKey(s)) {
 				constraintEdgeMap.put(s, new PrintStack<Integer>());
+			}else if (constraintEdgeMap.get(s).size() != 0){
+				int start = constraintEdgeMap.get(s).peek();
+				consEdgeGraphOut.println(var2indexMap.get(start+"."+s)+", "+var2indexMap.get(index+"."+s)+", ["+start+", "+index+"]");
 			}
 			constraintEdgeMap.get(s).push(index);
 			//System.out.print(index);
 		}
+		//
+		consEdgeGraphOut.print(root.getPeg_intra_block().toString(var2indexMap, index));
 		//recursive operation
-		recursiveConstraintEdge(root.getTrueChild(), 2 * index + 1, constraintEdgeOut);
-		recursiveConstraintEdge(root.getFalseChild(), 2 * index + 2, constraintEdgeOut);
+		recursiveconsEdgeGraph(root.getTrueChild(), 2 * index + 1, consEdgeGraphOut);
+		recursiveconsEdgeGraph(root.getFalseChild(), 2 * index + 2, consEdgeGraphOut);
 		// pop
 		for(String s: Vars){
-            constraintEdgeMap.get(s).pop(s, constraintEdgeOut);
+            constraintEdgeMap.get(s).pop(s, consEdgeGraphOut);
 			//System.out.print(index);
 		}
 	}
@@ -185,6 +209,12 @@ public class Exporter {
         stateNodeOut.println(JSON.toJsonSet("stateNode", stringList));
     }
 
+    private static void printVar2indexMap(PrintWriter var2indexMapOut) {
+		for(String s: var2indexMap.keySet()){
+			var2indexMapOut.println(var2indexMap.get(s) + " : " + s);
+		}
+	}
+
     private static String getCallSite(CallSite callSite) {
 	    List<String> stringList = new ArrayList<>();
 	    //print signature
@@ -228,8 +258,8 @@ public class Exporter {
 			return;
 		}
 		System.out.println(id + ": " + root.toString());
-		printOutInfo(root.getTrueChild(), 2 * id);
-		printOutInfo(root.getFalseChild(), 2 * id + 1);
+		printOutInfo(root.getTrueChild(), 2 * id + 1);
+		printOutInfo(root.getFalseChild(), 2 * id + 2);
 	}
 
 }
