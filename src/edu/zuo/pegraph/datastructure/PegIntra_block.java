@@ -28,14 +28,14 @@ public class PegIntra_block {
 	
 //	private SootMethod soot_method;
 	
-//	//--formal parameters
-//	private List<Local> formal_paras = new ArrayList<Local>();
-//	
-//	//--formal return: could be {Local, StringConstant, ClassConstant}
-//	private Value formal_return;
-//
-//	//--call sites
-//	private Map callSites = new HashMap<InvokeExpr, CallSite>();
+	//--formal parameters
+	private List<Local> formal_paras = new ArrayList<Local>();
+	
+	//--formal return: could be {Local, StringConstant, ClassConstant}
+	private Value formal_return;
+
+	//--call sites
+	private Map callSites = new HashMap<InvokeExpr, CallSite>();
 	
 	
 	//--edges
@@ -354,5 +354,44 @@ public class PegIntra_block {
 		}
 	}
 
+	
+	public class CallSite{
+		
+		//arg could be {Local or StringConstant or ClassConstant}
+		private List<Value> actual_args = new ArrayList<Value>();
+		
+		private Local actural_return;
+		
+		public CallSite(){
+			
+		}
+
+		public void addReceiver(Local base) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		public void setActualReturn(Local lhs) {
+			// TODO Auto-generated method stub
+			this.actural_return = lhs;
+		}
+
+		public void addArg(Value arg) {
+			// TODO Auto-generated method stub
+			if(arg instanceof Local){
+
+			}
+			else if(arg instanceof StringConstant){
+				
+			}
+			else if(arg instanceof ClassConstant){
+				
+			}
+			else{
+				System.err.println("error!!!");
+			}
+		}
+		
+	}
 	
 }
