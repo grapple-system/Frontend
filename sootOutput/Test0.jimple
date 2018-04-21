@@ -1,5 +1,6 @@
 public class Test0 extends java.lang.Object
 {
+    int f;
 
     public void <init>()
     {
@@ -7,13 +8,14 @@ public class Test0 extends java.lang.Object
 
         this := @this: Test0;
         specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<Test0: int f> = 1;
         return;
     }
 
     private void while_dowhile(int, int)
     {
-        Test0 this;
-        int x, y, a, c, l5, $i0, $i1;
+        Test0 this, t;
+        int x, y, a, c, l5, d, $i0, $i1;
         double dd;
         boolean bool2, $z0, $z1;
         long ll, l2, $l4;
@@ -86,6 +88,9 @@ public class Test0 extends java.lang.Object
         c = c + 1;
 
      label10:
+        t = this;
+        $i1 = t.<Test0: int f>;
+        d = a + $i1;
         return;
     }
 
