@@ -7,12 +7,12 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import edu.zuo.pegraph.datastructure.PegIntra;
-import edu.zuo.pegraph.datastructure.PegIntra.CallSite;
 import edu.zuo.pegraph.datastructure.PegIntra_block;
+import edu.zuo.pegraph.datastructure.PegIntra_block.CallSite;
 import soot.ArrayType;
 import soot.Body;
 import soot.BodyTransformer;
+import soot.Immediate;
 import soot.Local;
 import soot.RefType;
 import soot.SootMethod;
@@ -143,53 +143,53 @@ public class PEGGenerator_block {
 
 		// case 0: call site
 		if (s.containsInvokeExpr()) {
-//			InvokeExpr ie = s.getInvokeExpr();			
-//			
-//			//local = invokeExpr()
-//			if (s instanceof AssignStmt) {
-//				Local lhs = (Local) ((AssignStmt) s).getLeftOp();
-//				
-//				// deals with certain special cases and since they are special, the parameters of them are not handled
-//				if(isJavaObjectNew(ie)){
-//					intra_graph.addJavaClassObj2Local(ie, lhs);
-//					return;
-//				}
-//			}
-//
-//			// deals with actual arguments
-//			CallSite callsite = intra_graph.createCallSite(ie);
-//			
-//			//add receiver
-//			if (s.getInvokeExpr() instanceof InstanceInvokeExpr) {
-//				Local base = (Local) ((InstanceInvokeExpr) s.getInvokeExpr()).getBase();
-//				callsite.addReceiver(base);
-//			}
-//
-//			//add actual arguments
-//			for(Value arg: s.getInvokeExpr().getArgs()){
-//				if((arg instanceof Local && isTypeofInterest(arg)) || (arg instanceof StringConstant) || (arg instanceof ClassConstant)){
-//					callsite.addArg(arg);
-//				}
-//			}
-//			
-//			// deals with return values (which matters only for AssignStmt)
-//			if(s instanceof AssignStmt){
-//				Value lhs = ((AssignStmt) s).getLeftOp();
-//				if (isTypeofInterest(lhs)) {
-//					callsite.setActualReturn((Local) lhs);
-//				}
-//			}
-//
+			InvokeExpr ie = s.getInvokeExpr();			
+			
+			//local = invokeExpr()
+			if (s instanceof AssignStmt) {
+				Local lhs = (Local) ((AssignStmt) s).getLeftOp();
+				
+				// deals with certain special cases and since they are special, the parameters of them are not handled
+				if(isJavaObjectNew(ie)){
+					intra_graph_block.addJavaClassObj2Local(ie, lhs);
+					return;
+				}
+			}
+
+			// deals with actual arguments
+			CallSite callsite = intra_graph_block.createCallSite(ie);
+			
+			//add receiver
+			if (s.getInvokeExpr() instanceof InstanceInvokeExpr) {
+				Immediate base = (Immediate) ((InstanceInvokeExpr) s.getInvokeExpr()).getBase();
+				callsite.setReceiver(base);
+			}
+
+			//add actual arguments
+			for(Value arg: s.getInvokeExpr().getArgs()){
+				if((arg instanceof Local && isTypeofInterest(arg)) || (arg instanceof StringConstant) || (arg instanceof ClassConstant)){
+					callsite.addArg((Immediate) arg);
+				}
+			}
+			
+			// deals with return values (which matters only for AssignStmt)
+			if(s instanceof AssignStmt){
+				Value lhs = ((AssignStmt) s).getLeftOp();
+				if (isTypeofInterest(lhs)) {
+					callsite.setActualReturn((Local) lhs);
+				}
+			}
+
 			return;
 		}
 
 
 		// case 1: ReturnStmt
 		if (s instanceof ReturnStmt) {
-//			Value v = ((ReturnStmt) s).getOp();
-//			if ((v instanceof Local && isTypeofInterest(v)) || (v instanceof StringConstant) || (v instanceof ClassConstant)) {
-//				intra_graph.setFormalReturn(v);
-//			}
+			Immediate v = (Immediate) ((ReturnStmt) s).getOp();
+			if ((v instanceof Local && isTypeofInterest(v)) || (v instanceof StringConstant) || (v instanceof ClassConstant)) {
+				intra_graph_block.setFormalReturn(v);
+			}
 			return;
 		}
 
@@ -204,14 +204,17 @@ public class PEGGenerator_block {
 
 		// case 3: IdentityStmt
 		if (s instanceof IdentityStmt) {
-////			if (rhs instanceof CaughtExceptionRef) {
-////			
-////			}
-//
-//			if ((rhs instanceof ThisRef || rhs instanceof ParameterRef)
-//					&& isTypeofInterest(rhs)) {
-//				intra_graph.addFormalParameter((Local) lhs);
+//			if (rhs instanceof CaughtExceptionRef) {
+//			
 //			}
+			
+			if(rhs instanceof ThisRef) {
+				intra_graph_block.setFormalCallee((Local) lhs);
+			}
+
+			if ((rhs instanceof ParameterRef && isTypeofInterest(rhs)) || (rhs instanceof StringConstant) || (rhs instanceof ClassConstant)) {
+				intra_graph_block.addFormalParameter((Local) lhs);
+			}
 			return;
 		}
 
