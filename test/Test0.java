@@ -1,9 +1,9 @@
 
 public class Test0 {
-//	int f;
+	int f;
 	
 	public Test0(){
-//		this.f = 1;
+		this.f = 1;
 	}
 
 	private void while_dowhile(int x, int y){
@@ -34,11 +34,13 @@ public class Test0 {
 			c++;
 		}
 		
+		
 //		while(a < 0){
 //			a--;
 //		}
 //		c+=2;
-//		int d = b + this.f;
+		Test0 t = this;
+		int d = a + t.f;
 //		
 //		c = lookup_switch(a, c);
 //		

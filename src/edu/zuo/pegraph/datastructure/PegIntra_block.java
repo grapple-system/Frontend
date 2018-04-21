@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import soot.Immediate;
 import soot.Local;
 import soot.SootMethod;
 import soot.Value;
@@ -28,14 +29,16 @@ public class PegIntra_block {
 	
 //	private SootMethod soot_method;
 	
-//	//--formal parameters
-//	private List<Local> formal_paras = new ArrayList<Local>();
-//	
-//	//--formal return: could be {Local, StringConstant, ClassConstant}
-//	private Value formal_return;
-//
-//	//--call sites
-//	private Map callSites = new HashMap<InvokeExpr, CallSite>();
+	//--formal parameters
+	private Local formal_callee = null;
+	
+	private List<Local> formal_paras = new ArrayList<Local>();
+	
+	//--formal return: could be {Local, StringConstant, ClassConstant}
+	private Immediate formal_return = null;
+
+	//--call sites
+	private Map callSites = new HashMap<InvokeExpr, CallSite>();
 	
 	
 	//--edges
@@ -56,7 +59,7 @@ public class PegIntra_block {
 
 
 	public PegIntra_block(){
-
+		
 	}
 	
 	
@@ -67,6 +70,7 @@ public class PegIntra_block {
 
 	public Set<String> getVars(){
 		Set<String> Vars = new HashSet<>();
+
 		//local2local: Assign
 		for(Value loc1: this.local2Local.keySet()){
 			HashSet<Local> locs = this.local2Local.get(loc1);
@@ -219,35 +223,41 @@ public class PegIntra_block {
 	}
 
 
-//	public CallSite createCallSite(InvokeExpr ie) {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
-//
-//
-//
-//	public void setFormalReturn(Value v) {
-//		// TODO Auto-generated method stub
-//		if(v instanceof Local){
-//			
-//		}
-//		else if (v instanceof StringConstant){
-//			
-//			
-//		}
-//		else if(v instanceof ClassConstant){
-//			
-//		}
-//		else{
-//			System.err.println("error!!!");
-//		}
-//	}
-//	
-//
-//	public void addFormalParameter(Local lhs) {
-//		// TODO Auto-generated method stub
-//		
-//	}
+	public CallSite createCallSite(InvokeExpr ie) {
+		// TODO Auto-generated method stub
+		CallSite callsite = new CallSite();
+		this.callSites.put(ie, callsite);
+		return callsite;
+	}
+
+
+
+	public void setFormalReturn(Immediate v) {
+		// TODO Auto-generated method stub
+		if(v instanceof Local){
+			
+		}
+		else if (v instanceof StringConstant){
+			
+			
+		}
+		else if(v instanceof ClassConstant){
+			
+		}
+		else{
+			System.err.println("error!!!");
+		}
+		this.formal_return = v;
+	}
+	
+	public void setFormalCallee(Local lhs) {
+		this.formal_callee = lhs;
+	}
+
+	public void addFormalParameter(Local lhs) {
+		// TODO Auto-generated method stub
+		this.formal_paras.add(lhs);
+	}
 
 
 	public void addLocal2ArrayRef(Local rhs, ArrayRef lhs) {
@@ -408,6 +418,112 @@ public class PegIntra_block {
 			this.const2Ref.put(cons, set);
 		}
 	}
+	
+	
+	
 
+	
+	public Local getFormal_callee() {
+		return formal_callee;
+	}
+
+
+	public List<Local> getFormal_paras() {
+		return formal_paras;
+	}
+
+
+	public Immediate getFormal_return() {
+		return formal_return;
+	}
+
+
+	public Map getCallSites() {
+		return callSites;
+	}
+
+
+	public Map<Local, HashSet<Local>> getLocal2Local() {
+		return local2Local;
+	}
+
+
+	public Map<Value, HashSet<Local>> getObj2Local() {
+		return obj2Local;
+	}
+
+
+	public Map<ConcreteRef, HashSet<Local>> getRef2Local() {
+		return ref2Local;
+	}
+
+
+	public Map<Local, HashSet<ConcreteRef>> getLocal2Ref() {
+		return local2Ref;
+	}
+
+
+	public Map<Constant, HashSet<ConcreteRef>> getConst2Ref() {
+		return const2Ref;
+	}
+
+
+
+
+
+	public class CallSite{
+		
+		private Immediate actual_callee = null;
+		
+		//arg could be {Local or StringConstant or ClassConstant}
+		private List<Immediate> actual_args = new ArrayList<Immediate>();
+		
+		private Local actural_return = null;
+		
+		public CallSite(){
+			
+		}
+
+		public void setReceiver(Immediate base) {
+			// TODO Auto-generated method stub
+			this.actual_callee = base;
+		}
+
+		public void setActualReturn(Local lhs) {
+			// TODO Auto-generated method stub
+			this.actural_return = lhs;
+		}
+
+		public void addArg(Immediate arg) {
+			// TODO Auto-generated method stub
+			if(arg instanceof Local){
+
+			}
+			else if(arg instanceof StringConstant){
+				
+			}
+			else if(arg instanceof ClassConstant){
+				
+			}
+			else{
+				System.err.println("error!!!");
+			}
+			this.actual_args.add(arg);
+		}
+
+		public Immediate getActual_callee() {
+			return actual_callee;
+		}
+
+		public List<Immediate> getActual_args() {
+			return actual_args;
+		}
+
+		public Local getActural_return() {
+			return actural_return;
+		}
+		
+		
+	}
 	
 }
