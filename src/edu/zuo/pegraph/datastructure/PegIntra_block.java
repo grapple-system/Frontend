@@ -1,12 +1,8 @@
 package edu.zuo.pegraph.datastructure;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
+import edu.zuo.setree.datastructure.CallSite;
 import soot.Immediate;
 import soot.Local;
 import soot.SootMethod;
@@ -70,6 +66,56 @@ public class PegIntra_block {
 
 	public Set<String> getVars(){
 		Set<String> Vars = new HashSet<>();
+		//--formal parameters
+		//System.out.println("formal_callee");
+		if(formal_callee!=null){
+			//System.out.println(formal_callee.toString());
+		}
+		//System.out.println("formal_paras"+formal_paras.size());
+		for (Local loc:formal_paras){
+			//System.out.println(loc.toString());
+			Vars.add(loc.toString());
+		}
+		//--formal return: could be {Local, StringConstant, ClassConstant}
+		//System.out.println("formal_return");
+		if(formal_return!=null){
+			//System.out.println(formal_return.toString());
+			Vars.add(formal_return.toString());
+		}
+		////--call sites
+		//System.out.println("callsite"+callSites.size());
+
+		Iterator<InvokeExpr> iter = callSites.keySet().iterator();
+		while(iter.hasNext()){
+			System.out.println("----------");
+			InvokeExpr key = iter.next();
+			System.out.println(key.toString());
+			CallSite callsite = (CallSite)callSites.get(key);
+			Immediate actual_callee = callsite.getActual_callee();
+
+			//arg could be {Local or StringConstant or ClassConstant}
+			List<Immediate> actual_args = callsite.getActual_args();
+
+			Local actural_return = callsite.getActural_return();
+
+			//Vars.add(key.getMethod().getSignature());
+			if(actual_callee!=null){
+				//System.out.println("callee"+actual_callee);
+			}
+			//System.out.println("actual_args");
+//			for(Immediate im: actual_args){
+//				System.out.println(im.toString());
+//				Vars.add(im.toString());
+//			}
+			for(Value val:key.getArgs()){
+				//System.out.println(val.toString());
+				Vars.add(val.toString());
+			}
+			if(actural_return!=null){
+				//System.out.println("return"+actural_return.toString());
+				Vars.add(actural_return.toString());
+			}
+		}
 
 		//local2local: Assign
 		for(Value loc1: this.local2Local.keySet()){
@@ -125,10 +171,42 @@ public class PegIntra_block {
 		//--method signature
 
 		//--formal parameters
-
+		if(formal_callee!=null){
+		}
+		for (Local loc:formal_paras){
+			builder.append(var2indexMap.get(index+"."+loc.toString())+", [Para"+formal_paras.indexOf(loc)+"]\n");
+		}
 		//--formal return
-
+		if(formal_return!=null){
+			builder.append(var2indexMap.get(index+"."+formal_return.toString())+", [Return]\n");
+		}
 		//--call sites
+		Iterator<InvokeExpr> iter = callSites.keySet().iterator();
+		while(iter.hasNext()){
+			InvokeExpr key = iter.next();
+			String method = key.getMethod().getSignature();
+			CallSite callsite = (CallSite)callSites.get(key);
+			Immediate actual_callee = callsite.getActual_callee();
+
+			//arg could be {Local or StringConstant or ClassConstant}
+			List<Immediate> actual_args = callsite.getActual_args();
+
+			Local actural_return = callsite.getActural_return();
+			if(actual_callee!=null){
+			}
+			String args="";
+			for(Value val:key.getArgs()){
+				args = args + ", "+var2indexMap.get(index+"."+val.toString()).toString();
+			}
+			if(args.length()>1)args="[" + args.substring(2) + "]";
+			else args="[]";
+			String ret="[";
+			if(actural_return!=null){
+				ret = ret + var2indexMap.get(index+"."+actural_return.toString()).toString();
+			}
+			ret = ret + "]";
+			builder.append(ret+", "+method+", [Call], "+args+"\n");
+		}
 
 		//--edges
 		//local2local: Assign
