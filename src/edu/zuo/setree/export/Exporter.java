@@ -144,6 +144,7 @@ public class Exporter {
 		if(root == null){
 			return;
 		}
+		System.out.println("----------"+index+"----------");
 		Set<String> Vars = root.getPegIntra_blockVars();
 		// push
 		for(String s: Vars){
