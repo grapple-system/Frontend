@@ -70,6 +70,7 @@ public class PegIntra_block {
 		//System.out.println("formal_callee");
 		if(formal_callee!=null){
 			//System.out.println(formal_callee.toString());
+			Vars.add(formal_callee.toString());
 		}
 		//System.out.println("formal_paras"+formal_paras.size());
 		for (Local loc:formal_paras){
@@ -101,6 +102,7 @@ public class PegIntra_block {
 			//Vars.add(key.getMethod().getSignature());
 			if(actual_callee!=null){
 				//System.out.println("callee"+actual_callee);
+				Vars.add(actual_callee.toString());
 			}
 			//System.out.println("actual_args");
 //			for(Immediate im: actual_args){
@@ -172,6 +174,7 @@ public class PegIntra_block {
 
 		//--formal parameters
 		if(formal_callee!=null){
+			builder.append(var2indexMap.get(index+"."+formal_callee.toString())+", [Callee]\n");
 		}
 		for (Local loc:formal_paras){
 			builder.append(var2indexMap.get(index+"."+loc.toString())+", [Para"+formal_paras.indexOf(loc)+"]\n");
@@ -200,12 +203,17 @@ public class PegIntra_block {
 			}
 			if(args.length()>1)args="[" + args.substring(2) + "]";
 			else args="[]";
+			String callee="[";
+			if(actual_callee!=null){
+				callee = callee + var2indexMap.get(index+"."+actual_callee.toString()).toString();
+			}
+			callee = callee + "]";
 			String ret="[";
 			if(actural_return!=null){
 				ret = ret + var2indexMap.get(index+"."+actural_return.toString()).toString();
 			}
 			ret = ret + "]";
-			builder.append(ret+", "+method+", [Call], "+args+"\n");
+			builder.append(ret+", "+method+", [Call], "+callee+", "+args+"\n");
 		}
 
 		//--edges
