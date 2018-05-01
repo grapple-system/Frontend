@@ -105,14 +105,14 @@ public class PegIntra_block {
 				Vars.add(actual_callee.toString());
 			}
 			//System.out.println("actual_args");
-//			for(Immediate im: actual_args){
-//				System.out.println(im.toString());
-//				Vars.add(im.toString());
-//			}
-			for(Value val:key.getArgs()){
-				//System.out.println(val.toString());
-				Vars.add(val.toString());
+			for(Immediate im: actual_args){
+				//System.out.println(im.toString());
+				Vars.add(im.toString());
 			}
+//			for(Value val:key.getArgs()){
+				//System.out.println(val.toString());
+//				Vars.add(val.toString());
+//			}
 			if(actural_return!=null){
 				//System.out.println("return"+actural_return.toString());
 				Vars.add(actural_return.toString());
@@ -181,7 +181,7 @@ public class PegIntra_block {
 		}
 		//--formal return
 		if(formal_return!=null){
-			builder.append(var2indexMap.get(index+"."+formal_return.toString())+", [Return]\n");
+			builder.append(var2indexMap.get(index+"."+formal_return.toString())+", [Return"+index+"]\n");
 		}
 		//--call sites
 		Iterator<InvokeExpr> iter = callSites.keySet().iterator();
@@ -198,7 +198,7 @@ public class PegIntra_block {
 			if(actual_callee!=null){
 			}
 			String args="";
-			for(Value val:key.getArgs()){
+			for(Immediate val:actual_args){
 				args = args + ", "+var2indexMap.get(index+"."+val.toString()).toString();
 			}
 			if(args.length()>1)args="[" + args.substring(2) + "]";
@@ -213,7 +213,7 @@ public class PegIntra_block {
 				ret = ret + var2indexMap.get(index+"."+actural_return.toString()).toString();
 			}
 			ret = ret + "]";
-			builder.append(ret+", "+method+", [Call], "+callee+", "+args+"\n");
+			builder.append(ret+", "+index+", "+method+", [Call], "+callee+", "+args+"\n");
 		}
 
 		//--edges
