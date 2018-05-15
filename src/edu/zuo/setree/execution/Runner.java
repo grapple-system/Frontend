@@ -224,7 +224,7 @@ public class Runner {
 		}
 		
 		//---------------------------------------------------------
-		//generate peg_block for alias analysis
+		//generate peg_block (PEG) for alias analysis
 		PegIntra_block peg_block = new PegIntra_block();
 		PEGGenerator_block generator_block = new PEGGenerator_block(block, peg_block);
 		generator_block.process();
