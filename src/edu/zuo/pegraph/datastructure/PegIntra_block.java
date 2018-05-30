@@ -513,11 +513,17 @@ public class PegIntra_block {
 		return formal_callee;
 	}
 
+	public void clearFormal_callee() {
+		this.formal_callee=null;
+	}
 
 	public List<Local> getFormal_paras() {
 		return formal_paras;
 	}
 
+	public void clearFormal_paras() {
+		this.formal_paras.clear();
+	}
 
 	public Immediate getFormal_return() {
 		return formal_return;
