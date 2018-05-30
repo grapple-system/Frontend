@@ -53,9 +53,12 @@ import soot.util.Chain;
 public class Runner {
 	
 	private final StateNode root;
+
+	private final StateNode funcEntry;
 	
 	public Runner() {
 		this.root = new StateNode();
+		this.funcEntry = new StateNode();
 	}
 	
 	public void run(Chain<SootClass> classes){
@@ -83,13 +86,31 @@ public class Runner {
 		
 		//execute the body symbolically
 		execute(mb);
+
+		//separate func entry
+        separate();
 		
 		//export the symbolic execution tree
 		export(mb);
 	}
+
+	/* Add by wefcser */
+	private void separate() {
+        PegIntra_block first_peg_block = root.getPeg_intra_block();
+        PegIntra_block peg_block = new PegIntra_block();
+        peg_block.setFormalCallee(first_peg_block.getFormal_callee());
+        List<Local> formal_paras = first_peg_block.getFormal_paras();
+        for(Local loc:formal_paras) {
+            peg_block.addFormalParameter(loc);
+        }
+        root.getPeg_intra_block().clearFormal_callee();
+        root.getPeg_intra_block().clearFormal_paras();
+        funcEntry.setTrueChild(root);
+        funcEntry.setPeg_intra_block(peg_block);
+    }
 	
 	private void export(Body mb) {
-		Exporter.run(root, mb);
+		Exporter.run(funcEntry, mb);
 	}
 
 	private void confirm_no_loop(Body mb) {
@@ -109,9 +130,10 @@ public class Runner {
 		
 		List<Block> entries = cfg.getHeads();
 		filterEntries(entries);
-		
+
 		assert(entries.size() == 1);
 		Block entry = entries.get(0);
+		// recursive construct stateNode tree
 		traverseCFG(entry, root);
 	}
 
