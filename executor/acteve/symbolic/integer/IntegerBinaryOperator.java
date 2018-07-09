@@ -37,7 +37,7 @@ public class IntegerBinaryOperator extends BinaryOperator
     {
 		super(op);
     }
-    
+
     public Expression apply(Expression leftOp, Expression rightOp)
     {
 //		IntegerExpression left = (IntegerExpression) leftOp;

@@ -50,7 +50,12 @@ public final class LongConstant extends LongExpression implements Constant
     {
 	return Operations.v.longConstant(seed);
     }
-    
+
+    @Override
+    public String toSmt2String() {
+        return "LongConstant"+seed;
+    }
+
     public static LongConstant get(long c)
     {
 	return cache.get(c);

@@ -36,7 +36,7 @@ public class FloatUnaryOperator extends UnaryOperator
     {
 		super(op);
     }
-    
+
     public Expression apply(Expression e)
     {
 		if(e instanceof Constant)

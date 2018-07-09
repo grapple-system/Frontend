@@ -183,11 +183,11 @@ public class Runner {
 			
 			StateNode nTrue = new StateNode(node);
 			node.setTrueChild(nTrue);
-			traverseCFG(succs.get(0), nTrue);
+			traverseCFG(succs.get(1), nTrue);
 			
 			StateNode nFalse = new StateNode(node);
 			node.setFalseChild(nFalse);
-			traverseCFG(succs.get(1), nFalse);
+			traverseCFG(succs.get(0), nFalse);
 		}
 		else if(succs.size() == 1){
 			//fall-through

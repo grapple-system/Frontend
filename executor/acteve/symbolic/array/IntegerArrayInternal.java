@@ -54,4 +54,9 @@ class IntegerArrayInternal extends ArrayInternal
 	{
 		return new UpdatedIntegerArrayInternal(this, (IntegerExpression) index, (IntegerExpression) value);
 	}
+
+	@Override
+	public String toSmt2String() {
+		return "IntegerArrayInternal";
+	}
 }

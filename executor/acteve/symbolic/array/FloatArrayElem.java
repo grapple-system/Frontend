@@ -50,4 +50,9 @@ public class FloatArrayElem extends FloatExpression
 		return super.toYicesString(Operations.v.array_get(array.exprString(), index.exprString()));
 	}
 
+	@Override
+	public String toSmt2String() {
+		return "FloatArrayElem";
+	}
+
 }

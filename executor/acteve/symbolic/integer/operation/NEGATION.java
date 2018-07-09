@@ -38,7 +38,7 @@ public class NEGATION extends UnaryOperator
 	{
 		super(str);
 	}
-	
+
 	public Expression apply(Expression operand)
 	{
 		if(operand instanceof NegatedBooleanExpression)

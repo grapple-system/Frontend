@@ -48,7 +48,12 @@ public class UpdatedFloatArrayInternal extends UpdatedArrayInternal
 		Expression.pc.printConstraint("(= " + newName + " " + str + ")");
 		return newName;
 	}
-	
+
+	@Override
+	public String toSmt2String() {
+		return "UpdatedFloatArrayInternal";
+	}
+
 	public Expression get(Expression index)
 	{
 		return new FloatArrayElem(this, (IntegerExpression) index);

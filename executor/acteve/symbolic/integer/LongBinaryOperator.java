@@ -37,7 +37,7 @@ public class LongBinaryOperator extends BinaryOperator
     {
 		super(op);
     }
-    
+
     public Expression apply(Expression leftOp, Expression rightOp)
     {
 		LongExpression left = (LongExpression) leftOp;

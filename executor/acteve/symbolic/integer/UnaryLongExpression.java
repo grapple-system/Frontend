@@ -52,4 +52,9 @@ public class UnaryLongExpression extends LongExpression
     {
 		return super.toYicesString(op.toYicesString(operand.exprString()));
     }
+
+    @Override
+    public String toSmt2String() {
+        return "UnaryLongExpression";
+    }
 }

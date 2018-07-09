@@ -52,4 +52,9 @@ public class SymbolicFloatArray1 extends Expression
 	{
 		return "";
 	}
+
+	@Override
+	public String toSmt2String() {
+		return "SymbolicFloatArray1";
+	}
 }

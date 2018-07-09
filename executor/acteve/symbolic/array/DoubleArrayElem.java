@@ -48,6 +48,11 @@ public class DoubleArrayElem extends DoubleExpression
 	public String toYicesString()
 	{
 		return super.toYicesString(Operations.v.array_get(array.exprString(), index.exprString()));
-	}	
+	}
+
+	@Override
+	public String toSmt2String() {
+		return null;
+	}
 
 }

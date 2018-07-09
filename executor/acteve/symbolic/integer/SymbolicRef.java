@@ -59,4 +59,9 @@ public class SymbolicRef extends RefExpression
 	{
 		return name;
 	}
+
+	@Override
+	public String toSmt2String() {
+		return name;
+	}
 }

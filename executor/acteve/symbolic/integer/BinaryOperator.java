@@ -44,4 +44,5 @@ public abstract class BinaryOperator extends Operator
 		//return op + "(" + leftOp + "," + rightOp + ")";
 		return "(" + op + " " + leftOp + " " + rightOp + ")"; // +"[" + seed + "]";
     }
+
 }

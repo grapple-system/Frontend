@@ -48,7 +48,12 @@ public final class FloatConstant extends FloatExpression implements Constant
     {
 	return Operations.v.floatConstant(seed);
     }
-    
+
+    @Override
+    public String toSmt2String() {
+        return seed+"";
+    }
+
     public static FloatConstant get(float c)
     {
 	return new FloatConstant(c);

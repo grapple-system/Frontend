@@ -52,4 +52,9 @@ public class BinaryFloatExpression extends FloatExpression
     {
 		return super.toYicesString(op.toYicesString(left.exprString(), right.exprString()));
     }
+
+    @Override
+    public String toSmt2String() {
+        return "(" + op.toString() + " " + left.toSmt2String() + " " + right.toSmt2String() + ")";
+    }
 }

@@ -62,4 +62,9 @@ public class SymbolicDouble extends DoubleExpression
     {
 		return name;
     }
+
+    @Override
+    public String toSmt2String() {
+        return name;
+    }
 }

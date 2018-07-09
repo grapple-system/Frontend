@@ -51,4 +51,9 @@ public class UnaryFloatExpression extends FloatExpression
     {
 		return super.toYicesString(op.toYicesString(operand.exprString()));
     }
+
+    @Override
+    public String toSmt2String() {
+        return "UnaryFloatExpression";
+    }
 }

@@ -50,4 +50,11 @@ public class UnaryDoubleExpression extends DoubleExpression
     {
 		return super.toYicesString(op.toYicesString(operand.exprString()));
     }
+
+    @Override
+    public String toSmt2String() {
+        return "UnaryDoubleExpression";
+    }
+
+
 }

@@ -62,5 +62,10 @@ public class SymbolicLong extends LongExpression
     {
 		return name;
     }
-	
+
+    @Override
+    public String toSmt2String() {
+        return name;
+    }
+
 }

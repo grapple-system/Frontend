@@ -56,4 +56,9 @@ class LongArrayInternal extends ArrayInternal
 	{
 		return new UpdatedLongArrayInternal(this, (IntegerExpression) index, (LongExpression) value);
 	}
+
+	@Override
+	public String toSmt2String() {
+		return "LongArrayInternal";
+	}
 }

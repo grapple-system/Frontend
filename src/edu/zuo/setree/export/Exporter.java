@@ -3,47 +3,22 @@ package edu.zuo.setree.export;
 import java.io.*;
 import java.util.*;
 
-import acteve.symbolic.integer.Expression;
+import acteve.symbolic.integer.*;
 import com.sun.org.apache.xpath.internal.operations.Bool;
 import edu.zuo.setree.datastructure.CallSite;
 import edu.zuo.setree.datastructure.StateNode;
 import edu.zuo.setree.JSON.JSON;
-import soot.Body;
-import soot.Immediate;
-
-class PrintStack<E> extends Stack<E> {
-	private boolean isPrint;
-
-	public PrintStack() {
-		isPrint=false;
-	}
-
-	public E push(E item) {
-		isPrint = false;
-		return super.push(item);
-	}
-
-	public synchronized E pop(String s, PrintWriter printWriter) {
-//		if(!isPrint) {
-//			isPrint = true;
-//			printWriter.print(s+": ");
-//			for(int i=0; i< elementCount; i++){
-//				printWriter.print(elementData[i]+", ");
-//			}
-//			printWriter.println();
-//		}
-		return super.pop();
-	}
-}
+import soot.*;
 
 public class Exporter {
 	
-	public static final File outFile = new File("set.conditional");
-	public static final File stateNodeFile = new File("stateNode.json");
-	public static final File consEdgeGraphFile = new File("consEdgeGraph");
-	public static final File var2indexMapFile = new File("var2indexMap");
+	public static final File outFile = new File("intraOutput/set.conditional");
+	public static final File stateNodeFile = new File("intraOutput/stateNode.json");
+	public static final File conditionalSmt2File = new File("intraOutput/conditionalSmt2");
+	public static final File consEdgeGraphFile = new File("intraOutput/consEdgeGraph");
+	public static final File var2indexMapFile = new File("intraOutput/var2indexMap");
 
-	private static Map<String,PrintStack<Integer>> constraintEdgeMap = new LinkedHashMap<>();
+	private static Map<String,Stack<Integer>> constraintEdgeMap = new LinkedHashMap<>();
 	private static Map<String, Integer> var2indexMap = new LinkedHashMap<>();
 	
 	public static void run(StateNode root, Body mb) {
@@ -65,12 +40,16 @@ public class Exporter {
 		PrintWriter stateNodeOut = null;
 		PrintWriter consEdgeGraphOut = null;
 		PrintWriter var2indexMapOut = null;
+		PrintWriter conditionalSmt2Out = null;
 		try {
 			if(!outFile.exists()) {
 				outFile.createNewFile();
 			}
 			if(!stateNodeFile.exists()) {
 				stateNodeFile.createNewFile();
+			}
+			if(!conditionalSmt2File.exists()) {
+				conditionalSmt2File.createNewFile();
 			}
 			if(!consEdgeGraphFile.exists()) {
 				consEdgeGraphFile.createNewFile();
@@ -80,31 +59,41 @@ public class Exporter {
 			}
 			out = new PrintWriter(new BufferedWriter(new FileWriter(outFile, true)));
 			stateNodeOut = new PrintWriter(new BufferedWriter(new FileWriter(stateNodeFile, true)));
+			conditionalSmt2Out = new PrintWriter((new BufferedWriter(new FileWriter(conditionalSmt2File,true))));
 			consEdgeGraphOut = new PrintWriter(new BufferedWriter(new FileWriter(consEdgeGraphFile, true)));
 			var2indexMapOut = new PrintWriter(new BufferedWriter(new FileWriter(var2indexMapFile, true)));
 
 			//Print Function Signature
 			out.println(mb.getMethod().getSignature());
             stateNodeOut.println(mb.getMethod().getSignature());
+            conditionalSmt2Out.println(mb.getMethod().getSignature());
 			consEdgeGraphOut.println(mb.getMethod().getSignature());
             var2indexMapOut.println(mb.getMethod().getSignature());
 
             // Recursive
-			recursiveExport(root, 0, out, stateNodeOut, consEdgeGraphOut);
+			System.out.println("Exporting set.conditional, conditionalSmt2...");
+			recursiveExport(root, 0, out, conditionalSmt2Out);
+			System.out.println("Exporting stateNode.json...");
+			recursiveStateNode(root, 0, stateNodeOut);
+			//
 			constraintEdgeMap.clear();
 			var2indexMap.clear();
-			recursiveconsEdgeGraph(root, 0, consEdgeGraphOut);
-			//printConstraintEdge(constraintEdgeOut);
+			System.out.println("Exporting consEdgeGraph...");
+			recursiveConsEdgeGraph(root, 0, consEdgeGraphOut);
+			System.out.println("Exporting var2indexMap...");
 			printVar2indexMap(var2indexMapOut);
 
-
+			// Output End
 			out.println();
 			stateNodeOut.println();
+			conditionalSmt2Out.println();
 			consEdgeGraphOut.println();
 			var2indexMapOut.println();
 
+			// Output close
 			out.close();
 			stateNodeOut.close();
+			conditionalSmt2Out.close();
 			consEdgeGraphOut.close();
 			var2indexMapOut.close();
 		}
@@ -119,38 +108,87 @@ public class Exporter {
 		}
 	}
 	
-	private static void recursiveExport(StateNode root, int index, PrintWriter out, PrintWriter stateNodeOut, PrintWriter constraintEdgeOut) {
+	private static void recursiveExport(StateNode root, int index, PrintWriter out, PrintWriter conditionalSmt2Out) {
 		//termination
 		if(root == null) {
-		    stateNodeOut.println(JSON.toJsonSet("stateNode",null));
 			return;
 		}
 		
 		//export operation
 		if(root.getConditional() != null) {
-			out.println(index + ":" + root.getConditional().toString());
+			out.println(index + ":" + root.getConditional().toSmt2String());
+			conditionalSmt2Out.println(index + ":" + root.getConditional().toSmt2String());
+			List<CallSite> callSites = root.getCallsites();
+			if(callSites!=null) {
+				for (CallSite cs : callSites) {
+					Map<Immediate, Expression> map = cs.getArgumentsMap();
+					conditionalSmt2Out.print(index+":"+cs.getSignature());
+					for (Immediate im : map.keySet()) {
+						conditionalSmt2Out.print("#"+map.get(im).toSmt2String());
+					}
+					conditionalSmt2Out.println();
+					conditionalSmt2Out.println(cs.getRetVar());
+					Type type =cs.getRetVar().getType();
+
+				}
+			}
+		}
+
+		//recursive operation 
+		recursiveExport(root.getTrueChild(), 2 * index + 1, out, conditionalSmt2Out);
+		recursiveExport(root.getFalseChild(), 2 * index + 2, out, conditionalSmt2Out);
+	}
+
+	private static void recursiveStateNode(StateNode root, int index, PrintWriter stateNodeOut){
+		//termination
+		if(root == null) {
+			return;
 		}
 
 		//export stateNode
-        printStateNode(root, stateNodeOut);
+		List<String> stringList = new ArrayList<>();
+		//print conditional
+		if(root.getConditional() != null) {
+			stringList.add(JSON.toJson("conditional",root.getConditional().toString()));
+		}else {
+			stringList.add(JSON.toJson("conditional", null));
+		}
+		//print callSites
+		if(root.getCallsites() != null) {
+			List<String> callSiteStringList = new ArrayList<>();
+			List<CallSite> callSiteList = root.getCallsites();
+			for(int i=0;i<callSiteList.size();i++){
+				callSiteStringList.add(getCallSite(callSiteList.get(i)));
+			}
+			stringList.add(JSON.toJsonArray("callsites", callSiteStringList));
+		}else {
+			stringList.add(JSON.toJson("callsites", null));
+		}
+		//print returnExpr
+		if(root.getReturnExpr() != null) {
+			stringList.add(JSON.toJson("returnExp", root.getReturnExpr().toString()));
+		}else {
+			stringList.add(JSON.toJson("returnExp", null));
+		}
+		stateNodeOut.println(JSON.toJsonSet("stateNode", stringList));
 
 
-		//recursive operation 
-		recursiveExport(root.getTrueChild(), 2 * index + 1, out, stateNodeOut, constraintEdgeOut);
-		recursiveExport(root.getFalseChild(), 2 * index + 2, out, stateNodeOut, constraintEdgeOut);
+		//recursive operation
+		recursiveStateNode(root.getTrueChild(), 2 * index + 1,  stateNodeOut);
+		recursiveStateNode(root.getFalseChild(), 2 * index + 2,  stateNodeOut);
 	}
 
-	private static void recursiveconsEdgeGraph(StateNode root, int index, PrintWriter consEdgeGraphOut) {
+	private static void recursiveConsEdgeGraph(StateNode root, int index, PrintWriter consEdgeGraphOut) {
 		if(root == null){
 			return;
 		}
-		System.out.println("----------"+index+"----------");
+		//System.out.println("----------"+index+"----------");
 		Set<String> Vars = root.getPegIntra_blockVars();
 		// push
 		for(String s: Vars){
 			putVar2indexMap(index+"."+s);
 			if(!constraintEdgeMap.containsKey(s)) {
-				constraintEdgeMap.put(s, new PrintStack<Integer>());
+				constraintEdgeMap.put(s, new Stack<Integer>());
 			}else if (constraintEdgeMap.get(s).size() != 0){
 				int start = constraintEdgeMap.get(s).peek();
 				consEdgeGraphOut.println(var2indexMap.get(start+"."+s)+", "+var2indexMap.get(index+"."+s)+", ["+start+", "+index+"]");
@@ -161,54 +199,14 @@ public class Exporter {
 		//
 		consEdgeGraphOut.print(root.getPeg_intra_block().toString(var2indexMap, index));
 		//recursive operation
-		recursiveconsEdgeGraph(root.getTrueChild(), 2 * index + 1, consEdgeGraphOut);
-		recursiveconsEdgeGraph(root.getFalseChild(), 2 * index + 2, consEdgeGraphOut);
+		recursiveConsEdgeGraph(root.getTrueChild(), 2 * index + 1, consEdgeGraphOut);
+		recursiveConsEdgeGraph(root.getFalseChild(), 2 * index + 2, consEdgeGraphOut);
 		// pop
 		for(String s: Vars){
-            constraintEdgeMap.get(s).pop(s, consEdgeGraphOut);
+            constraintEdgeMap.get(s).pop();
 			//System.out.print(index);
 		}
 	}
-
-//	private static void printConstraintEdge(PrintWriter constraintEdgeOut) {
-//		for(String str: constraintEdgeMap.keySet()){
-//			constraintEdgeOut.print(str+": ");
-//			List<Integer> list = constraintEdgeMap.get(str);
-//			for(Integer index: list){
-//				constraintEdgeOut.print(index.toString()+", ");
-//			}
-//			constraintEdgeOut.println();
-//		}
-//	}
-
-	//root != null
-	private static void printStateNode(StateNode root, PrintWriter stateNodeOut) {
-	    List<String> stringList = new ArrayList<>();
-        //print conditional
-        if(root.getConditional() != null) {
-            stringList.add(JSON.toJson("conditional",root.getConditional().toString()));
-        }else {
-            stringList.add(JSON.toJson("conditional", null));
-        }
-        //print callSites
-        if(root.getCallsites() != null) {
-            List<String> callSiteStringList = new ArrayList<>();
-            List<CallSite> callSiteList = root.getCallsites();
-            for(int i=0;i<callSiteList.size();i++){
-                callSiteStringList.add(getCallSite(callSiteList.get(i)));
-            }
-            stringList.add(JSON.toJsonArray("callsites", callSiteStringList));
-        }else {
-            stringList.add(JSON.toJson("callsites", null));
-        }
-        //print returnExpr
-        if(root.getReturnExpr() != null) {
-            stringList.add(JSON.toJson("returnExp", root.getReturnExpr().toString()));
-        }else {
-            stringList.add(JSON.toJson("returnExp", null));
-        }
-        stateNodeOut.println(JSON.toJsonSet("stateNode", stringList));
-    }
 
     private static void printVar2indexMap(PrintWriter var2indexMapOut) {
 		for(String s: var2indexMap.keySet()){
@@ -231,7 +229,7 @@ public class Exporter {
         for (Immediate im : callSite.getArgumentsMap().keySet()) {
             Expression expr = callSite.getArgumentsMap().get(im);
             if(im != null && im != null) {
-                argStringList.add(JSON.toJson(im.toString()+" = "+expr.exprString()));
+                argStringList.add(JSON.toJson(im.toString()+" = "+expr.toString()));
             }
         }
         if(argStringList.size() != 0){

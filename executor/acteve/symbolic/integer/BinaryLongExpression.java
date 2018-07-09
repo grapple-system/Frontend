@@ -53,5 +53,10 @@ public class BinaryLongExpression extends LongExpression
     {
 		return super.toYicesString(op.toYicesString(left.exprString(), right.exprString())); // +"[" + seed + "]";
     }
-     
+
+    @Override
+    public String toSmt2String() {
+        return "(" + op.toString() + " " + left.toSmt2String() + " " + right.toSmt2String() + ")";
+    }
+
 }

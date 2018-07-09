@@ -50,8 +50,13 @@ public class IntegerConstant extends IntegerExpression implements Constant
     {
 		return Operations.v.intConstant(seed);
     }
-    
-    public static IntegerConstant get(int c)
+
+	@Override
+	public String toSmt2String() {
+		return String.valueOf(seed);
+	}
+
+	public static IntegerConstant get(int c)
     {
 		return cache.get(c);
     }
