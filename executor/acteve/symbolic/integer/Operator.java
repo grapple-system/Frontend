@@ -50,4 +50,21 @@ public abstract class Operator
     {
 		return this.op;
     }
+
+    public String toSmt2String() {
+        switch(op){
+            case "dadd":
+                return "+";
+            case "lcmp":case "fcmpl":case "fcmpg":case "dsub":case "dcmpl":case "dcmpg":
+                return "-";
+            case "dmul":
+                return "*";
+            case "div":case "ddiv":
+                return "/";
+            case "drem":
+                return "rem";
+            default:
+                return op;
+        }
+    }
 }

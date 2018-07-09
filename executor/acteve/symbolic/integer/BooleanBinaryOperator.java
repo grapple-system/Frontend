@@ -36,7 +36,14 @@ public class BooleanBinaryOperator extends BinaryOperator
     {
 		super(op);
     }
-	
+
+//    @Override
+//    String toSmt2String() {
+//        switch (op){
+//
+//        }
+//    }
+
     public Expression apply(Expression left, Expression right)
     {
 //		if(left instanceof Constant && right instanceof Constant){

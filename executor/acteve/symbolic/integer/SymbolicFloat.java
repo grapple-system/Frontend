@@ -62,4 +62,9 @@ public class SymbolicFloat extends FloatExpression
     {
 		return name;
     }
+
+    @Override
+    public String toSmt2String() {
+        return name;
+    }
 }

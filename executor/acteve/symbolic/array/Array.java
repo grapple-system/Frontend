@@ -67,6 +67,10 @@ public abstract class Array extends Expression
 		return this.array.toYicesString();
 	}
 
+	public String toSmt2String() {
+		return "Array";
+	}
+
 	public String exprString()
 	{
 		return this.array.exprString();

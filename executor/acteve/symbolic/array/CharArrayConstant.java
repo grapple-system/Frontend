@@ -45,4 +45,8 @@ public class CharArrayConstant extends Array
 		return new CharArrayConstant(new CharConstantArrayInternal(copy));
 	}
 
+	@Override
+	public String toSmt2String() {
+		return "CharArrayConstant";
+	}
 }

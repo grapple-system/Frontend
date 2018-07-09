@@ -1,6 +1,7 @@
 package edu.zuo.setree.datastructure;
 
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.Map;
 import java.util.concurrent.ExecutorService;
 
@@ -22,7 +23,7 @@ public class CallSite {
 	public CallSite() {
 		this.signature = null;
 		this.callee = null;
-		this.argumentsMap = new HashMap<Immediate, Expression>();
+		this.argumentsMap = new LinkedHashMap<Immediate, Expression>();
 		this.retVar = null;
 	}
 	

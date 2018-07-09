@@ -45,4 +45,9 @@ public class ArrayLength extends IntegerExpression
 	{
 		return super.toYicesString("array_len("+array.exprString()+")");
 	}
+
+	@Override
+	public String toSmt2String() {
+		return "ArrayLength";
+	}
 }

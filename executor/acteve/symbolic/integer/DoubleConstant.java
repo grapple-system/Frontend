@@ -48,7 +48,12 @@ public final class DoubleConstant extends DoubleExpression implements Constant
     {
 	return Operations.v.doubleConstant(seed);
     }
-    
+
+    @Override
+    public String toSmt2String() {
+        return seed+"";
+    }
+
     public static DoubleConstant get(double c)
     {
 	return new DoubleConstant(c);

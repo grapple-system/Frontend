@@ -51,4 +51,9 @@ public class UnaryIntegerExpression extends IntegerExpression
     {
 		return super.toYicesString(op.toYicesString(operand.exprString()));
     }
+
+    @Override
+    public String toSmt2String() {
+        return "UnaryIntegerExpression";
+    }
 }

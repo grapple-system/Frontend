@@ -37,7 +37,12 @@ public class IntegerUnaryOperator extends UnaryOperator
     {
 		super(op);
     }
-    
+
+    @Override
+    public String toSmt2String() {
+        return "IntegerUnaryOperator"+op;
+    }
+
     public Expression apply(Expression e)
     {
 		if(e instanceof Constant)

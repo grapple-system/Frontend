@@ -52,5 +52,10 @@ public class BinaryDoubleExpression extends DoubleExpression
     {
 		return super.toYicesString(op.toYicesString(left.exprString(), right.exprString())); // +"[" + seed + "]";
     }
-    
+
+    @Override
+    public String toSmt2String() {
+        return "(" + op.toSmt2String() + " " + left.toSmt2String() + " " + right.toSmt2String() + ")";
+    }
+
 }

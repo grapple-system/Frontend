@@ -56,6 +56,10 @@ abstract class ArrayInternal extends Expression
 		return exprString;
 	}
 
+	public String toSmt2String() {
+		return null;
+	}
+
 	public abstract Expression get(Expression index);
 	
 	public abstract ArrayInternal set(Expression index, Expression value);

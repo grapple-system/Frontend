@@ -36,10 +36,11 @@ import acteve.symbolic.SException;
 public abstract class Expression
 {
     public static final PathCondition pc = new PathCondition();
-    
+
     protected String exprString;
-    
+
     public abstract String toYicesString();
+    public abstract String toSmt2String();
 
     //this should be faster at the cost of memory
     public String exprString()

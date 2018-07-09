@@ -67,5 +67,10 @@ public class SymbolicIntegerArray extends Array
 	{
 		return typePrefix+count++;
 	}
+
+	@Override
+	public String toSmt2String() {
+		return "SymbolicIntegerArray";
+	}
 }
 	

@@ -30,10 +30,12 @@
 */
 package acteve.symbolic.integer;
 
+import acteve.symbolic.Symbolic;
+
 public class BinaryBooleanExpression extends BooleanExpression
 {
     Expression left;
-    BinaryOperator   op;
+    BinaryOperator op;
     Expression right;
     
     public BinaryBooleanExpression (BinaryOperator o, Expression l, Expression r) 
@@ -51,5 +53,16 @@ public class BinaryBooleanExpression extends BooleanExpression
     public String toYicesString()
     {
 		return op.toYicesString(left.exprString(), right.exprString()); // +"[" + seed + "]";
+    }
+
+    @Override
+    public String toSmt2String() {
+        if(left instanceof SymbolicDouble || left instanceof SymbolicFloat){
+
+        }
+        else if(left instanceof SymbolicInteger || left instanceof SymbolicLong){
+
+        }
+        return "(" +op.toSmt2String() + " " + left.toSmt2String() + " " + right.toSmt2String() + ")";
     }
 }

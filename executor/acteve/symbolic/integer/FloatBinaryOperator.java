@@ -36,7 +36,7 @@ public class FloatBinaryOperator extends BinaryOperator
     {
 		super(op);
     }
-    
+
     public Expression apply(Expression leftOp, Expression rightOp)
     {
 		FloatExpression left = (FloatExpression) leftOp;

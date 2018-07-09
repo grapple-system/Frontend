@@ -88,9 +88,9 @@ public class PegIntra_block {
 
 		Iterator<InvokeExpr> iter = callSites.keySet().iterator();
 		while(iter.hasNext()){
-			System.out.println("----------");
+			//System.out.println("----------");
 			InvokeExpr key = iter.next();
-			System.out.println(key.toString());
+			//System.out.println(key.toString());
 			CallSite callsite = (CallSite)callSites.get(key);
 			Immediate actual_callee = callsite.getActual_callee();
 
@@ -110,7 +110,7 @@ public class PegIntra_block {
 				Vars.add(im.toString());
 			}
 //			for(Value val:key.getArgs()){
-				//System.out.println(val.toString());
+//				System.out.println(val.toString());
 //				Vars.add(val.toString());
 //			}
 			if(actural_return!=null){

@@ -46,7 +46,12 @@ public class NegatedBooleanExpression extends BooleanExpression
 	{
 		return BooleanExpression.NEGATION.toYicesString(e.toYicesString());
 	}
-	
+
+	@Override
+	public String toSmt2String() {
+		return "(" + BooleanExpression.NEGATION.toSmt2String() + " " + e.toSmt2String() + ")";
+	}
+
 	public String toString()
 	{
 //		return toYicesString();

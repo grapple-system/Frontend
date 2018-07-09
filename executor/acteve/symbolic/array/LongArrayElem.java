@@ -49,4 +49,9 @@ public class LongArrayElem extends LongExpression
 	{
 		return super.toYicesString(Operations.v.array_get(array.exprString(), index.exprString()));
 	}
+
+	@Override
+	public String toSmt2String() {
+		return "LongArrayElem";
+	}
 }

@@ -96,5 +96,10 @@ public class SymbolicInteger extends IntegerExpression
     {
 		return exprString;
     }
-    
+
+	@Override
+	public String toSmt2String() {
+		return exprString;
+	}
+
 }

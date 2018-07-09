@@ -38,6 +38,11 @@ public class LongUnaryOperator extends UnaryOperator
 		super(op);
     }
 
+    @Override
+    public String toSmt2String() {
+        return "LongUnaryOperator"+op;
+    }
+
     public Expression apply(Expression e)
     {
 		if(e instanceof Constant)
