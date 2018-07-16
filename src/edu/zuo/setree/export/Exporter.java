@@ -71,8 +71,10 @@ public class Exporter {
             var2indexMapOut.println(mb.getMethod().getSignature());
 
             // Recursive
-			System.out.println("Exporting set.conditional, conditionalSmt2...");
-			recursiveExport(root, 0, out, conditionalSmt2Out);
+			System.out.println("Exporting set.conditional...");
+			recursiveExport(root, 0, out);
+			System.out.println("Exporting conditionalSmt2...");
+			recursiveConditionalSmt2(root, 0, conditionalSmt2Out);
 			System.out.println("Exporting stateNode.json...");
 			recursiveStateNode(root, 0, stateNodeOut);
 			//
@@ -108,7 +110,7 @@ public class Exporter {
 		}
 	}
 	
-	private static void recursiveExport(StateNode root, int index, PrintWriter out, PrintWriter conditionalSmt2Out) {
+	private static void recursiveExport(StateNode root, int index, PrintWriter out) {
 		//termination
 		if(root == null) {
 			return;
@@ -117,26 +119,52 @@ public class Exporter {
 		//export operation
 		if(root.getConditional() != null) {
 			out.println(index + ":" + root.getConditional().toSmt2String());
+		}
+
+		//recursive operation 
+		recursiveExport(root.getTrueChild(), 2 * index + 1, out);
+		recursiveExport(root.getFalseChild(), 2 * index + 2, out);
+	}
+
+	private static void recursiveConditionalSmt2(StateNode root, int index, PrintWriter conditionalSmt2Out){
+		//termination
+		if(root == null) {
+			return;
+		}
+
+		//export operation
+		if(root.getConditional() != null) {
 			conditionalSmt2Out.println(index + ":" + root.getConditional().toSmt2String());
 			List<CallSite> callSites = root.getCallsites();
 			if(callSites!=null) {
 				for (CallSite cs : callSites) {
 					Map<Immediate, Expression> map = cs.getArgumentsMap();
-					conditionalSmt2Out.print(index+":"+cs.getSignature());
+					conditionalSmt2Out.print(index+":#c#"+cs.getRetSym()+"#"+cs.getSignature());
 					for (Immediate im : map.keySet()) {
 						conditionalSmt2Out.print("#"+map.get(im).toSmt2String());
 					}
 					conditionalSmt2Out.println();
-					conditionalSmt2Out.println(cs.getRetVar());
-					Type type =cs.getRetVar().getType();
-
 				}
 			}
 		}
+		if(root.getReturnExpr() != null) {
+			conditionalSmt2Out.println(index + ":#r#" +root.getReturnExpr().toSmt2String());
+		}
+		if(index == 0){
+			Map<Local, Expression> localExpressionMap = root.getLocalsMap();
+			conditionalSmt2Out.print(index+":#p");
+			for(Local l: localExpressionMap.keySet()){
+				String expr = localExpressionMap.get(l).toSmt2String();
+				if(!expr.contains(" ")&&expr.contains("@para")) {
+					conditionalSmt2Out.print("#"+ localExpressionMap.get(l).toSmt2String());
+				}
+			}
+			conditionalSmt2Out.println();
+		}
 
-		//recursive operation 
-		recursiveExport(root.getTrueChild(), 2 * index + 1, out, conditionalSmt2Out);
-		recursiveExport(root.getFalseChild(), 2 * index + 2, out, conditionalSmt2Out);
+		//recursive operation
+		recursiveConditionalSmt2(root.getTrueChild(), 2 * index + 1, conditionalSmt2Out);
+		recursiveConditionalSmt2(root.getFalseChild(), 2 * index + 2, conditionalSmt2Out);
 	}
 
 	private static void recursiveStateNode(StateNode root, int index, PrintWriter stateNodeOut){
@@ -182,7 +210,7 @@ public class Exporter {
 		if(root == null){
 			return;
 		}
-		//System.out.println("----------"+index+"----------");
+		//consEdgeGraphOut.println("----------"+index+"----------");
 		Set<String> Vars = root.getPegIntra_blockVars();
 		// push
 		for(String s: Vars){
@@ -196,8 +224,17 @@ public class Exporter {
 			constraintEdgeMap.get(s).push(index);
 			//System.out.print(index);
 		}
-		//
+		// params rets
+		//consEdgeGraphOut.println(root.getPeg_intra_block().getCallSites().size());
+		//consEdgeGraphOut.println("----in----");
 		consEdgeGraphOut.print(root.getPeg_intra_block().toString(var2indexMap, index));
+		//consEdgeGraphOut.println("----out----");
+		List<CallSite> callSites = root.getCallsites();
+		if(callSites!=null) {
+			for (CallSite cs : callSites) {
+				//consEdgeGraphOut.println("#" + cs.getSignature());
+			}
+		}
 		//recursive operation
 		recursiveConsEdgeGraph(root.getTrueChild(), 2 * index + 1, consEdgeGraphOut);
 		recursiveConsEdgeGraph(root.getFalseChild(), 2 * index + 2, consEdgeGraphOut);

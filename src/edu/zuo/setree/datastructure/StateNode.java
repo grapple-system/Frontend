@@ -93,9 +93,9 @@ public class StateNode {
 		this.conditional = conditional;
 	}
 	
-//	public Map<Local, Expression> getLocalsMap() {
-//		return localsMap;
-//	}
+	public Map<Local, Expression> getLocalsMap() {
+		return localsMap;
+	}
 	
 	public void putToLocalsMap(Local l, Expression expr) {
 		this.localsMap.put(l, expr);

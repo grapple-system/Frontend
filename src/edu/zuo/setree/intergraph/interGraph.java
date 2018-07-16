@@ -53,22 +53,41 @@ public class interGraph {
     private static Map<String, Integer> func2indexMap = new LinkedHashMap<>();
     private static Map<Integer, Map<String, Integer>> funcParamReturn = new LinkedHashMap<>();
 
-    /* each line of pair2varMapFile is
-    * (funcIndex,inFuncVarIndex) : outFuncVarIndex
-    */
+    /** each line of pair2varMapFile is
+     * (funcIndex,inFuncVarIndex) : outFuncVarIndex
+     */
     public static final File pair2indexMapFile = new File("interOutput/pair2indexMap");
-    /* each line of index2varMapFile is
-    * outFuncVarIndex : funcIndex.inFuncVarIndex.nodeIndex.varName
-    */
+
+    /** each line of index2varMapFile is
+     * outFuncVarIndex : funcIndex.inFuncVarIndex.nodeIndex.varName
+     */
     public static final File index2varMapFile = new File("interOutput/index2varMap");
-    /* each line of func2indexMapFile is
-    * funcIndex : funcName
-    */
+
+    /** each line of func2indexMapFile is
+     * funcIndex : funcName
+     */
     public static final File func2indexMapFile = new File("interOutput/func2indexMap");
-    /* each line of interGraphFile is
-    * (funcIndex,inFuncVarIndex)
-    */
+
+    /** each line of interGraphFile is
+     * outFuncVarIndex  outFuncVarIndex label   constraint
+     * label: a|e|l|n|o|p|r|s
+     * constraint: [T]|[pair,pair]
+     * pair: (funcIndex, nodeIndex)
+     *
+     * [Assign] a
+     * [Load]   l
+     * [New]    n
+     * [Callee] c
+     * [Param]  p
+     * [Return] r
+     * [Store]  s
+     * other    e
+     */
     public static final File interGraphFile = new File("interOutput/interGraph");
+
+    /** each line of interSmt2File is
+     * (funcIndex, nodeIndex):constraintString
+     */
     public static final File interSmt2File = new File("interOutput/interSmt2");
 
     public static void genMap(){
@@ -338,8 +357,12 @@ public class interGraph {
                     ++funcIndex;
                 }else {
                     String []tokens=line.split(":");
-                    String t = tokens[1].replace("$I","$I$"+funcIndex).replace("$L","$L$"+funcIndex).replace("$F","$F$"+funcIndex).replace("$D","$D$"+funcIndex);
-                    interSmt2Out.println("("+funcIndex+","+tokens[0]+"):"+t);
+                    if(tokens[1].startsWith("#")){
+
+                    }else {
+                        String t = tokens[1].replace("$I", "$I$" + funcIndex).replace("$L", "$L$" + funcIndex).replace("$F", "$F$" + funcIndex).replace("$D", "$D$" + funcIndex);
+                        interSmt2Out.println("(" + funcIndex + "," + tokens[0] + "):" + t);
+                    }
                 }
             }
             conditionalSmt2Input.close();

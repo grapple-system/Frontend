@@ -306,6 +306,8 @@ public class Propagator extends AbstractStmtSwitch {
 			//add new symbolic local to localsMap
 			Expression retSym = getRetSym(ie, retValue);
 			putMap(retValue, retSym);
+
+			callSite.setRetSym(retSym);
 		}
 		
 		//add callsite to stateNode
@@ -316,7 +318,7 @@ public class Propagator extends AbstractStmtSwitch {
 	private Expression getRetSym(InvokeExpr ie, Local retValue) {
 		String sym_ret = "@ret" + this.stateNode.getCallSiteIndex();
 		Type type = retValue.getType();
-		
+
 		return createSymVariable(sym_ret, type);
 	}
 

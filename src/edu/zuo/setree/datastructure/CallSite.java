@@ -18,6 +18,8 @@ public class CallSite {
 	private final Map<Immediate, Expression> argumentsMap;
 	
 	private Local retVar;
+
+	private Expression retSym;
 	
 	
 	public CallSite() {
@@ -56,6 +58,14 @@ public class CallSite {
 
 	public void setRetVar(Local retVar) {
 		this.retVar = retVar;
+	}
+
+	public Expression getRetSym() {
+		return retSym;
+	}
+
+	public void setRetSym(Expression retSym) {
+		this.retSym = retSym;
 	}
 
 	public void putArgsMap(Immediate im, Expression expr) {
