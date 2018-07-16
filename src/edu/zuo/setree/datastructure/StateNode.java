@@ -69,6 +69,9 @@ public class StateNode {
 //	}
 
 	public int getCallSiteIndex() {
+		if(this.callsites == null) {
+			return 0;
+		}
 		return this.callsites.size();
 	}
 

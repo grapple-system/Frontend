@@ -19,7 +19,7 @@ public class Test2 {
 	}
 	
 	
-	public void foo(int x) throws IOException {
+	public void foo0(int x) throws IOException {
 		FileWriter out = null, out2 = null;
 
 		if(x >= 0) {
@@ -58,7 +58,7 @@ public class Test2 {
 	}
 	
 	//under path-sensitive typestate checking: path-sensitive alias vs. path-insensitive alias 
-	public void foo2(int x) throws IOException {
+	public void foo(int x) throws IOException {
 		FileWriter out = null, out2 = null;
 
 		if(x >= 0) {
@@ -71,9 +71,11 @@ public class Test2 {
 			out2.close();
 		}
 		
-		if(x == 0 && out2 != null) {
+		if(x == 0) {
 			out2.close();
 		}
+		
+		return;
 	}
 	
 
