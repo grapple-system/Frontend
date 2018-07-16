@@ -1,0 +1,36 @@
+<test5: void <init>()>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.lang.Object: void <init>()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+
+<test5: int random()>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.lang.System: long nanoTime()>", "callee": null, "argumentsMap": null, "retVar": "$l0"}], "returnExp": "($L$@ret0 rem 29)"}}
+
+<test5: Int add(Int,Int)>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<Int: int value()>", "callee": "i1 = $R$@para0", "argumentsMap": null, "retVar": "$i0"}, {"signature": "<Int: int value()>", "callee": "i2 = $R$@para1", "argumentsMap": null, "retVar": "$i1"}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$0", "argumentsMap": ["$i0 = ($I$@ret0 + $I$@ret1)"], "retVar": null}], "returnExp": "$R$0"}}
+
+<test5: Int sub(Int,Int)>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": "($I$@ret0 >= $I$@ret1)", "callsites": [{"signature": "<test5: int random()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": "x"}, {"signature": "<test5: int random()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": "y"}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<Int: int value()>", "callee": "i2 = $R$@para1", "argumentsMap": null, "retVar": "$i0"}, {"signature": "<Int: int value()>", "callee": "i1 = $R$@para0", "argumentsMap": null, "retVar": "$i1"}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$1", "argumentsMap": ["$i0 = ($I$@ret0 - $I$@ret1)"], "retVar": null}], "returnExp": "$R$1"}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<Int: int value()>", "callee": "i1 = $R$@para0", "argumentsMap": null, "retVar": "$i0"}, {"signature": "<Int: int value()>", "callee": "i2 = $R$@para1", "argumentsMap": null, "retVar": "$i1"}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$2", "argumentsMap": ["$i0 = ($I$@ret0 - $I$@ret1)"], "retVar": null}], "returnExp": "$R$2"}}
+
+<test5: void main()>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": "($I$@ret0 >= $I$@ret1)", "callsites": [{"signature": "<test5: int random()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": "x"}, {"signature": "<test5: int random()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": "y"}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$3", "argumentsMap": ["5 = 5"], "retVar": null}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$4", "argumentsMap": ["6 = 6"], "retVar": null}, {"signature": "<Int: void <init>()>", "callee": "$r0 = $R$5", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": "($I$@ret0 >= ($I$@ret0 + $I$@ret1))", "callsites": [{"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$6", "argumentsMap": ["x = $I$@ret0"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": "(($I$@ret0 - ($I$@ret0 + $I$@ret1)) >= ($I$@ret0 + $I$@ret1))", "callsites": [{"signature": "<test5: Int sub(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": "($I$@ret0 >= (($I$@ret0 + $I$@ret1) - $I$@ret0))", "callsites": [{"signature": "<test5: Int sub(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": "(($I$@ret0 + $I$@ret1) >= $I$@ret1)", "callsites": [{"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$7", "argumentsMap": ["x = ($I$@ret0 + $I$@ret1)"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": "((($I$@ret0 + $I$@ret1) - $I$@ret1) >= $I$@ret1)", "callsites": [{"signature": "<test5: Int sub(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": "(($I$@ret0 + $I$@ret1) >= ($I$@ret1 - ($I$@ret0 + $I$@ret1)))", "callsites": [{"signature": "<test5: Int sub(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+

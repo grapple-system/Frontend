@@ -105,6 +105,10 @@ public class Runner {
         }
         root.getPeg_intra_block().clearFormal_callee();
         root.getPeg_intra_block().clearFormal_paras();
+        Map<Local, Expression> localExpressionMap=root.getLocalsMap();
+        for(Local l:localExpressionMap.keySet()){
+        	funcEntry.putToLocalsMap(l, localExpressionMap.get(l));
+		}
         funcEntry.setTrueChild(root);
         funcEntry.setPeg_intra_block(peg_block);
     }

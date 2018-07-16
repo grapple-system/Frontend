@@ -1,0 +1,18 @@
+<test5: void <init>()>
+
+<test5: int random()>
+
+<test5: Int add(Int,Int)>
+
+<test5: Int sub(Int,Int)>
+1:(>= $I$@ret0 $I$@ret1)
+
+<test5: void main()>
+1:(>= $I$@ret0 $I$@ret1)
+3:(>= $I$@ret0 (+ $I$@ret0 $I$@ret1))
+7:(>= (- $I$@ret0 (+ $I$@ret0 $I$@ret1)) (+ $I$@ret0 $I$@ret1))
+8:(>= $I$@ret0 (- (+ $I$@ret0 $I$@ret1) $I$@ret0))
+4:(>= (+ $I$@ret0 $I$@ret1) $I$@ret1)
+9:(>= (- (+ $I$@ret0 $I$@ret1) $I$@ret1) $I$@ret1)
+10:(>= (+ $I$@ret0 $I$@ret1) (- $I$@ret1 (+ $I$@ret0 $I$@ret1)))
+
