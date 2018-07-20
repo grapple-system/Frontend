@@ -239,6 +239,8 @@ public class Runner {
 //	}
 
 	private void operate(Block block, StateNode node) {
+		//---------------------------------------------------------
+		//generate symbolic execution graph (SEG) 
 		Propagator p = new Propagator(node);
 		for(Iterator<Unit> it = block.iterator(); it.hasNext();){
 			Stmt stmt = (Stmt) it.next();
@@ -247,11 +249,13 @@ public class Runner {
 			stmt.apply(p);
 		}
 		
-		//generate peg_block for alias analysis
+		//---------------------------------------------------------
+		//generate peg_block (PEG) for alias analysis
 		PegIntra_block peg_block = new PegIntra_block();
 		PEGGenerator_block generator_block = new PEGGenerator_block(block, peg_block);
 		generator_block.process();
 		node.setPeg_intra_block(peg_block);
+		
 	}
 
 //	/** get the unique entry block starting with Parameter or This rather than CaughtException

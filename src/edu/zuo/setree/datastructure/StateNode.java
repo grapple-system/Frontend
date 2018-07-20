@@ -66,7 +66,10 @@ public class StateNode {
 //	}
 
 	public int getCallSiteIndex() {
-			return callsites == null ? 0 : this.callsites.size();
+		if(this.callsites == null) {
+			return 0;
+		}
+		return this.callsites.size();
 	}
 
 	public StateNode getTrueChild() {
@@ -103,6 +106,10 @@ public class StateNode {
 	
 	public Expression getFromLocalsMap(Local l) {
 		return this.localsMap.get(l);
+	}
+	
+	public boolean containsLocal(Local l) {
+		return this.localsMap.containsKey(l);
 	}
 
 	public void addCallSite(CallSite cs) {

@@ -69,7 +69,7 @@ public final class LoopTransformer {
 
     private static Chain STMTS;
     
-    public static final int mode = 2;
+    public static final int mode = 0;
     
 	private LoopTransformer() { }
 	
@@ -184,12 +184,13 @@ public final class LoopTransformer {
 
 
     private static void breakLoop(Loop loop, SootMethod method) {
-    	Stmt target = getTargetOfLoopExits(loop);
+//    	Stmt target = getTargetOfLoopExits(loop);
     	
     	Chain stmts = method.retrieveActiveBody().getUnits().getNonPatchingChain();
 
 		Stmt backJump = loop.getBackJumpStmt();
 		Stmt header = loop.getHead();
+		Stmt exit = loop.getLoopExits().iterator().next();
 		
 		if(backJump instanceof IfStmt) {//do-while
 			System.out.println("BackJump is IfStmt: " + backJump);
@@ -205,8 +206,10 @@ public final class LoopTransformer {
 		}
 		else {//while
 			System.out.println("BackJump is OtherStmt: " + backJump);
-			assert(target == stmts.getSuccOf(header));
-			GotoStmt newGoto = jimple.newGotoStmt((Stmt) stmts.getSuccOf(header));
+//			assert(target == stmts.getSuccOf(header));
+//			GotoStmt newGoto = jimple.newGotoStmt((Stmt) stmts.getSuccOf(header));
+			Stmt loopExitTarget = loop.targetsOfLoopExit(exit).iterator().next();
+			GotoStmt newGoto = jimple.newGotoStmt(loopExitTarget);
 			
 			stmts.insertAfter(newGoto, backJump);
 		}
@@ -214,8 +217,8 @@ public final class LoopTransformer {
 
 
 	private static void unrollLoop(Loop loop, SootMethod method) {
-		//get the exit target of the loop
-		Stmt target = getTargetOfLoopExits(loop);
+//		//get the exit target of the loop
+//		Stmt target = getTargetOfLoopExits(loop);
 		
     	Chain stmts = method.retrieveActiveBody().getUnits().getNonPatchingChain();
     	
@@ -287,7 +290,7 @@ public final class LoopTransformer {
 			GotoStmt newGoto = jimple.newGotoStmt(newHeader);
 			stmts.insertAfter(newGoto, backJump);
 			
-			assert(target == stmts.getSuccOf(header));
+//			assert(target == stmts.getSuccOf(header));
 			GotoStmt newGoto2 = jimple.newGotoStmt((Stmt) stmts.getSuccOf(header));
 			stmts.insertAfter(newGoto2, newBackJump);
 		}
@@ -323,6 +326,7 @@ public final class LoopTransformer {
     		System.err.println("unexpected loop case!!!");
     		System.err.println("loop: " + loop.getLoopStatements());
     		throw new RuntimeException();
+//    		return loop.targetsOfLoopExit(backJump).iterator().next();
     	}
     	
     }

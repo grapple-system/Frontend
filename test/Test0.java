@@ -9,38 +9,49 @@ public class Test0 {
 	private void while_dowhile(int x, int y){
 		int a = x * x;
 		int c = a + x;
-		if(c + a > 0 + x){
-			int b = y - c;			
-		}
-		else{
-			c-=2;
-		}
-		a++;
-		
-		double dd = 0d;
-//		boolean bool = dd < 0.4f;
-		if(dd < 0.4f) {
-			a++;
+
+		if(this.f > x) {
+			this.f = a;
+//			c = this.f;
 		}
 		
-		boolean bool2 = x <= c == dd < 0.4d;
-		if(!bool2) {
+		int b = this.f;
+		if(c < 0) {
 			a--;
 		}
 		
-		long ll = 9;
-		long l2 = ll - x;
-		if(l2 < 10) {
-			c++;
-		}
+//		if(c + a > 0 + x){
+//			int b = y - c;			
+//		}
+//		else{
+//			c-=2;
+//		}
+//		a++;
+//		
+//		double dd = 0d;
+////		boolean bool = dd < 0.4f;
+//		if(dd < 0.4f) {
+//			a++;
+//		}
+//		
+//		boolean bool2 = x <= c == dd < 0.4d;
+//		if(!bool2) {
+//			a--;
+//		}
+//		
+//		long ll = 9;
+//		long l2 = ll - x;
+//		if(l2 < 10) {
+//			c++;
+//		}
 		
 		
 //		while(a < 0){
 //			a--;
 //		}
 //		c+=2;
-		Test0 t = this;
-		int d = a + t.f;
+//		Test0 t = this;
+//		int d = a + t.f;
 //		
 //		c = lookup_switch(a, c);
 //		
@@ -110,28 +121,28 @@ public class Test0 {
 //	}
 	
 	
-	private void nest_for(int x){
-		int a = 19 / x;
-		for(int i = 0; i < 9; i++) {
-//			a = 2 * x;
-//			a -= 5;
-			for(int j = 0; j < 10; j++) {
-				if(a < 100) {
-					return;
-				}
-				a++;
-			}
-		}
-//		x++;
-		
-	}
+//	private void nest_for(int x){
+//		int a = 19 / x;
+//		for(int i = 0; i < 9; i++) {
+////			a = 2 * x;
+////			a -= 5;
+//			for(int j = 0; j < 10; j++) {
+//				if(a < 100) {
+//					return;
+//				}
+//				a++;
+//			}
+//		}
+////		x++;
+//		
+//	}
 	
 	
-	public static void main(String[] args) {
-		Test0 t00 = new Test0();
-		Test0 t01 = new Test0();
-		if(t00 == t01) {
-			System.out.println("Equal");
-		}
-	}
+//	public static void main(String[] args) {
+//		Test0 t00 = new Test0();
+//		Test0 t01 = new Test0();
+//		if(t00 == t01) {
+//			System.out.println("Equal");
+//		}
+//	}
 }
