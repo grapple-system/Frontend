@@ -9,6 +9,17 @@ public class Test0 {
 	private void while_dowhile(int x, int y){
 		int a = x * x;
 		int c = a + x;
+
+		if(this.f > x) {
+			this.f = a;
+//			c = this.f;
+		}
+		
+		int b = this.f;
+		if(c < 0) {
+			a--;
+		}
+		
 //		if(c + a > 0 + x){
 //			int b = y - c;			
 //		}
@@ -35,20 +46,20 @@ public class Test0 {
 //		}
 		
 		
-		while(a < 0){
-			a--;
-		}
+//		while(a < 0){
+//			a--;
+//		}
 //		c+=2;
 //		Test0 t = this;
 //		int d = a + t.f;
 //		
 //		c = lookup_switch(a, c);
 //		
-		do {
-			a+=3;
-			c-=4;
-		}
-		while(c != 0);
+//		do {
+//			a+=3;
+//			c-=4;
+//		}
+//		while(c != 0);
 //		
 //
 //		
@@ -70,44 +81,44 @@ public class Test0 {
 //		return c;
 //	}
 //
-	private void true_while(int a, int c) {
-		a+=7;
-		
-		while(true) {
-			a++;
-			if(a == 0) {
-				break;
-			}
-			if(a == 1) {
-				return;
-			}
-			a--;
-		}
-		
-		do{
-			a+=2;
-			if(a == 0) {
-				break;
-			}
-			a-=2;
-		}
-		while(true);
-		
-		
-		while(true) {
-			a+=3;
+//	private void true_while(int a, int c) {
+//		a+=7;
+//		
+//		while(true) {
+//			a++;
 //			if(a == 0) {
 //				break;
 //			}
-			
-			if(a == 1) {
-				break;
-			}
-			a-=3;
-		}
-		
-		c++;
-	}
+//			if(a == 1) {
+//				return;
+//			}
+//			a--;
+//		}
+//		
+//		do{
+//			a+=2;
+//			if(a == 0) {
+//				break;
+//			}
+//			a-=2;
+//		}
+//		while(true);
+//		
+//		
+//		while(true) {
+//			a+=3;
+////			if(a == 0) {
+////				break;
+////			}
+//			
+//			if(a == 1) {
+//				break;
+//			}
+//			a-=3;
+//		}
+//		
+//		c++;
+//	}
 	
 	
 //	private void nest_for(int x){

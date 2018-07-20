@@ -110,6 +110,10 @@ public class StateNode {
 	public Expression getFromLocalsMap(Local l) {
 		return this.localsMap.get(l);
 	}
+	
+	public boolean containsLocal(Local l) {
+		return this.localsMap.containsKey(l);
+	}
 
 	public void addCallSite(CallSite cs) {
 		if(this.callsites == null) {
