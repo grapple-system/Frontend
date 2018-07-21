@@ -1,0 +1,72 @@
+public class test extends java.lang.Object
+{
+    public static java.util.List tlist;
+
+    static void <clinit>()
+    {
+        java.util.ArrayList $r0;
+
+        $r0 = new java.util.ArrayList;
+        specialinvoke $r0.<java.util.ArrayList: void <init>()>();
+        <test: java.util.List tlist> = $r0;
+        return;
+    }
+
+    public void <init>()
+    {
+        test this;
+
+        this := @this: test;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public static void main(java.lang.String[])
+    {
+        java.lang.String[] args;
+        T[] ar;
+        T c1, c2, c, c3, $r0;
+        byte in;
+        java.util.List $r1;
+        java.lang.Object $r2;
+        null_type c1, c2, ar;
+
+        args := @parameter0: java.lang.String[];
+        ar = newarray (T)[2];
+        $r0 = new T;
+        specialinvoke $r0.<T: void <init>()>();
+        c1 = $r0;
+        $r0 = new T;
+        specialinvoke $r0.<T: void <init>()>();
+        c2 = $r0;
+        $r1 = <test: java.util.List tlist>;
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>(c1);
+        $r1 = <test: java.util.List tlist>;
+        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>(c2);
+        c1.<T: int a> = 0;
+        c2.<T: int a> = 1;
+        c2 = c1;
+        c1.<T: int a> = 2;
+        in = 1;
+        $r1 = <test: java.util.List tlist>;
+        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>(in);
+        c = (T) $r2;
+        c1 = null;
+        c2 = c1;
+        c3 = virtualinvoke c2.<T: T interfunc(T,T)>(c1, c2);
+        c1 = c3;
+        ar[1] = c1;
+        c2 = ar[0];
+        if c1 == null goto label0;
+
+        c2 = c1;
+        goto label1;
+
+     label0:
+        c2 = null;
+
+     label1:
+        ar = null;
+        return;
+    }
+}

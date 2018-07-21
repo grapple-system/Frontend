@@ -1,81 +1,404 @@
-<test5: void <init>()>
-0 : 0.this
-1 : 1.this
+<T: void <init>()>
 
-<test5: int random()>
-0 : 0.this
+<T: void testTry()>
 
-<test5: Int add(Int,Int)>
-0 : 0.this
-1 : 0.i2
-2 : 0.i1
-3 : 1.$r0
-4 : 1.new Int
-5 : 1.i2
-6 : 1.i1
+<T: void throwexc()>
 
-<test5: Int sub(Int,Int)>
-0 : 0.this
-1 : 0.i2
-2 : 0.i1
-3 : 1.this
-4 : 3.$r0
-5 : 3.new Int
-6 : 3.i2
-7 : 3.i1
-8 : 4.$r0
-9 : 4.new Int
-10 : 4.i2
-11 : 4.i1
+<T: void testFW()>
+0 : fw.0.error_1227621553
+1 : fw.-1.error_<T: void testFW()>
+2 : fw.-1.opened_<T: void testFW()>
+3 : fw.-1.uninit_<T: void testFW()>
+4 : fw.0.opened_1227621553
+5 : fw.0.uninit_1227621553
+6 : fw.-2.opened_-<T: void testFW()>
+7 : fw.0.opened_2075569828
+8 : fw.0.uninit_2075569828
+9 : fw.0.error_814855969
+10 : fw.0.error_1755603184
+11 : fw.0.error_1461276943
+12 : fw.0.error_943345026
+13 : fw.0.uninit_-1468115780
+14 : fw.0.uninit_1461276943
+15 : fw.0.opened_814855969
+16 : fw.0.error_-1468115780
+17 : fw.0.uninit_814855969
+18 : fw.0.uninit_1760044542
+19 : fw.0.error_2075569828
+20 : fw.0.error_505774685
+21 : fw.0.uninit_943345026
+22 : fw.0.opened_505774685
+23 : fw.-2.uninit_-<T: void testFW()>
+24 : fw.0.uninit_1468115780
+25 : fw.0.opened_-1468115780
+26 : fw.0.uninit_1755603184
+27 : fw.-2.error_-<T: void testFW()>
+28 : fw.0.error_1468115780
+29 : fw.0.uninit_505774685
+30 : fw.0.opened_1755603184
+31 : fw.0.opened_1461276943
+32 : fw.0.opened_943345026
+33 : fw.0.error_1760044542
+34 : fw.0.opened_1760044542
+35 : fw.0.opened_1468115780
 
-<test5: void main()>
-0 : 0.this
-1 : 1.$r0
-2 : 1.b
-3 : 1.c
-4 : 1.a
-5 : 1.new Int
-6 : 1.this
-7 : 3.$r0
-8 : 3.c
-9 : 3.new Int
-10 : 7.b
-11 : 7.a
-12 : 7.this
-13 : 15.b
-14 : 15.a
-15 : 15.this
-16 : 16.b
-17 : 16.a
-18 : 16.this
-19 : 8.b
-20 : 8.a
-21 : 8.this
-22 : 17.b
-23 : 17.a
-24 : 17.this
-25 : 18.b
-26 : 18.a
-27 : 18.this
-28 : 4.$r0
-29 : 4.c
-30 : 4.new Int
-31 : 9.b
-32 : 9.a
-33 : 9.this
-34 : 19.b
-35 : 19.a
-36 : 19.this
-37 : 20.b
-38 : 20.a
-39 : 20.this
-40 : 10.b
-41 : 10.a
-42 : 10.this
-43 : 21.b
-44 : 21.a
-45 : 21.this
-46 : 22.b
-47 : 22.a
-48 : 22.this
+<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+0 : par.-1.error_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+1 : par.0.error_1152159231
+2 : par.0.uninit_1152159231
+3 : par.0.opened_1152159231
+4 : par.-1.opened_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+5 : par.-1.uninit_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+6 : par.0.uninit_1223582485
+7 : par.0.uninit_480150418
+8 : par.0.uninit_1740802666
+9 : par.0.uninit_1804686128
+10 : par.0.uninit_1792013547
+11 : par.0.opened_599936030
+12 : par.0.opened_1740802666
+13 : par.-2.error_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+14 : par.0.opened_558223855
+15 : par.0.opened_1792013547
+16 : par.0.error_480150418
+17 : par.0.opened_1804686128
+18 : par.0.error_633442997
+19 : par.0.opened_633442997
+20 : par.0.error_1792013547
+21 : par.-2.opened_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+22 : par.0.opened_300723068
+23 : par.0.opened_480150418
+24 : par.0.uninit_558223855
+25 : par.0.error_1740802666
+26 : par.0.error_300723068
+27 : par.0.uninit_599936030
+28 : par.0.error_1223582485
+29 : par.0.error_558223855
+30 : par.0.uninit_300723068
+31 : par.0.opened_1223582485
+32 : par.0.error_599936030
+33 : par.0.error_1804686128
+34 : par.-2.uninit_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+35 : par.0.uninit_633442997
+
+<T: void testSwitch()>
+0 : fw.-1.uninit_<T: void testSwitch()>
+1 : fw.0.opened_923902476
+2 : fw.-1.error_<T: void testSwitch()>
+3 : fw.0.uninit_923902476
+4 : fw.0.error_923902476
+5 : fw.-1.opened_<T: void testSwitch()>
+6 : fw.0.opened_605336949
+7 : fw.2.uninit_489062498
+8 : fw.0.error_1722146322
+9 : fw.2.opened_489062498
+10 : fw.0.uninit_865507805
+11 : fw.0.error_605336949
+12 : fw.1.opened_1268066004
+13 : fw.0.opened_865507805
+14 : fw.1.uninit_1268066004
+15 : fw.1.error_1268066004
+16 : fw.2.error_489062498
+17 : fw.0.uninit_1077610384
+18 : fw.0.uninit_1722146322
+19 : fw.0.uninit_1668128737
+20 : fw.0.error_1077610384
+21 : fw.0.error_623515091
+22 : fw.0.opened_623515091
+23 : fw.0.error_1668128737
+24 : fw.0.opened_1077610384
+25 : fw.0.error_865507805
+26 : fw.0.uninit_623515091
+27 : fw.0.uninit_605336949
+28 : fw.0.opened_1668128737
+29 : fw.0.opened_1722146322
+30 : fw.4.error_2107442815
+31 : fw.3.uninit_757616400
+32 : fw.3.error_757616400
+33 : fw.4.opened_2107442815
+34 : fw.4.uninit_2107442815
+35 : fw.3.opened_757616400
+36 : fw.7.error_828291737
+37 : fw.7.opened_828291737
+38 : fw.8.error_1123795133
+39 : fw.8.opened_1123795133
+40 : fw.7.uninit_828291737
+41 : fw.8.uninit_1123795133
+42 : fw.-2.error_-<T: void testSwitch()>
+43 : fw.-2.opened_-<T: void testSwitch()>
+44 : fw.7.opened_506124966
+45 : fw.-2.uninit_-<T: void testSwitch()>
+46 : fw.7.uninit_506124966
+47 : fw.7.error_506124966
+48 : fw.8.uninit_506124966
+49 : fw.8.opened_506124966
+50 : fw.8.error_506124966
+51 : fw.4.error_506124966
+52 : fw.4.error_1123795133
+53 : fw.4.opened_506124966
+54 : fw.4.uninit_1123795133
+55 : fw.4.opened_1123795133
+56 : fw.4.uninit_506124966
+57 : fw.2.opened_2107442815
+58 : fw.2.uninit_486430071
+59 : fw.2.error_2107442815
+60 : fw.2.uninit_804872132
+61 : fw.2.opened_506124966
+62 : fw.2.opened_804872132
+63 : fw.2.error_1123795133
+64 : fw.2.uninit_2107442815
+65 : fw.2.opened_486430071
+66 : fw.2.uninit_506124966
+67 : fw.2.uninit_1123795133
+68 : fw.2.error_506124966
+69 : fw.2.opened_1123795133
+70 : fw.2.error_486430071
+71 : fw.2.error_804872132
+
+<T: T interfunc(T,T)>
+
+<T: T test(T)>
+
+<T: void call()>
+
+<T: void testlist()>
+0 : fileWriter.0.error_361601707
+1 : fileWriter.-1.opened_<T: void testlist()>
+2 : fileWriter.-1.uninit_<T: void testlist()>
+3 : fileWriter.-1.error_<T: void testlist()>
+4 : fileWriter.0.opened_361601707
+5 : fileWriter.0.uninit_361601707
+6 : fileWriter.0.error_1034903836
+7 : fileWriter.0.opened_945233790
+8 : fileWriter.0.opened_1843355845
+9 : fileWriter.0.opened_61168539
+10 : fileWriter.0.error_389387596
+11 : fileWriter.0.opened_1521203684
+12 : fileWriter.0.uninit_389387596
+13 : fileWriter.0.opened_400314935
+14 : fileWriter.0.uninit_1843355845
+15 : fileWriter.-2.opened_-<T: void testlist()>
+16 : fileWriter.0.uninit_232411003
+17 : fileWriter.0.opened_1953101428
+18 : fileWriter.0.error_1521203684
+19 : fileWriter.0.opened_1329924716
+20 : fileWriter.0.error_1035091326
+21 : fileWriter.0.uninit_1077499453
+22 : fileWriter.0.opened_1488156001
+23 : fileWriter.0.uninit_1035091326
+24 : fileWriter.0.error_1960080009
+25 : fileWriter.0.error_2056951815
+26 : fileWriter.0.opened_1510473970
+27 : fileWriter.0.uninit_1510473970
+28 : fileWriter.0.uninit_945233790
+29 : fileWriter.0.error_1329924716
+30 : fileWriter.0.opened_232411003
+31 : fileWriter.0.error_590031384
+32 : fileWriter.0.error_1158714599
+33 : fileWriter.0.error_477426518
+34 : fileWriter.0.error_1488156001
+35 : fileWriter.0.error_1953101428
+36 : fileWriter.0.error_1054653563
+37 : fileWriter.-2.uninit_-<T: void testlist()>
+38 : fileWriter.0.opened_2077684805
+39 : fileWriter.0.opened_477426518
+40 : fileWriter.0.uninit_1034903836
+41 : fileWriter.0.opened_2056951815
+42 : fileWriter.0.error_1510473970
+43 : fileWriter.0.uninit_590031384
+44 : fileWriter.0.error_61168539
+45 : fileWriter.0.uninit_1329924716
+46 : fileWriter.0.uninit_400314935
+47 : fileWriter.-2.error_-<T: void testlist()>
+48 : fileWriter.0.opened_590031384
+49 : fileWriter.0.opened_1035091326
+50 : fileWriter.0.error_31744296
+51 : fileWriter.0.uninit_1488156001
+52 : fileWriter.0.error_400314935
+53 : fileWriter.0.uninit_61168539
+54 : fileWriter.0.error_945233790
+55 : fileWriter.0.opened_1077499453
+56 : fileWriter.0.uninit_1960080009
+57 : fileWriter.0.error_950438416
+58 : fileWriter.0.error_232411003
+59 : fileWriter.0.uninit_950438416
+60 : fileWriter.0.uninit_477426518
+61 : fileWriter.0.opened_1960080009
+62 : fileWriter.0.uninit_1054653563
+63 : fileWriter.0.uninit_1521203684
+64 : fileWriter.0.uninit_1953101428
+65 : fileWriter.0.opened_950438416
+66 : fileWriter.0.opened_1034903836
+67 : fileWriter.0.opened_1158714599
+68 : fileWriter.0.uninit_2077684805
+69 : fileWriter.0.error_1843355845
+70 : fileWriter.0.opened_1054653563
+71 : fileWriter.0.opened_31744296
+72 : fileWriter.0.error_2077684805
+73 : fileWriter.0.uninit_31744296
+74 : fileWriter.0.uninit_2056951815
+75 : fileWriter.0.uninit_1158714599
+76 : fileWriter.0.error_1077499453
+77 : fileWriter.0.opened_389387596
+78 : fileWriter2.0.error_361601707
+79 : fileWriter2.-1.opened_<T: void testlist()>
+80 : fileWriter2.-1.uninit_<T: void testlist()>
+81 : fileWriter2.-1.error_<T: void testlist()>
+82 : fileWriter2.0.opened_361601707
+83 : fileWriter2.0.uninit_361601707
+84 : fileWriter2.0.error_1034903836
+85 : fileWriter2.0.opened_945233790
+86 : fileWriter2.0.opened_1843355845
+87 : fileWriter2.0.opened_61168539
+88 : fileWriter2.0.error_389387596
+89 : fileWriter2.0.opened_1521203684
+90 : fileWriter2.0.uninit_389387596
+91 : fileWriter2.0.opened_400314935
+92 : fileWriter2.0.uninit_1843355845
+93 : fileWriter2.-2.opened_-<T: void testlist()>
+94 : fileWriter2.0.uninit_232411003
+95 : fileWriter2.0.opened_1953101428
+96 : fileWriter2.0.error_1521203684
+97 : fileWriter2.0.opened_1329924716
+98 : fileWriter2.0.error_1035091326
+99 : fileWriter2.0.uninit_1077499453
+100 : fileWriter2.0.opened_1488156001
+101 : fileWriter2.0.uninit_1035091326
+102 : fileWriter2.0.error_1960080009
+103 : fileWriter2.0.error_2056951815
+104 : fileWriter2.0.opened_1510473970
+105 : fileWriter2.0.uninit_1510473970
+106 : fileWriter2.0.uninit_945233790
+107 : fileWriter2.0.error_1329924716
+108 : fileWriter2.0.opened_232411003
+109 : fileWriter2.0.error_590031384
+110 : fileWriter2.0.error_1158714599
+111 : fileWriter2.0.error_477426518
+112 : fileWriter2.0.error_1488156001
+113 : fileWriter2.0.error_1953101428
+114 : fileWriter2.0.error_1054653563
+115 : fileWriter2.-2.uninit_-<T: void testlist()>
+116 : fileWriter2.0.opened_2077684805
+117 : fileWriter2.0.opened_477426518
+118 : fileWriter2.0.uninit_1034903836
+119 : fileWriter2.0.opened_2056951815
+120 : fileWriter2.0.error_1510473970
+121 : fileWriter2.0.uninit_590031384
+122 : fileWriter2.0.error_61168539
+123 : fileWriter2.0.uninit_1329924716
+124 : fileWriter2.0.uninit_400314935
+125 : fileWriter2.-2.error_-<T: void testlist()>
+126 : fileWriter2.0.opened_590031384
+127 : fileWriter2.0.opened_1035091326
+128 : fileWriter2.0.error_31744296
+129 : fileWriter2.0.uninit_1488156001
+130 : fileWriter2.0.error_400314935
+131 : fileWriter2.0.uninit_61168539
+132 : fileWriter2.0.error_945233790
+133 : fileWriter2.0.opened_1077499453
+134 : fileWriter2.0.uninit_1960080009
+135 : fileWriter2.0.error_950438416
+136 : fileWriter2.0.error_232411003
+137 : fileWriter2.0.uninit_950438416
+138 : fileWriter2.0.uninit_477426518
+139 : fileWriter2.0.opened_1960080009
+140 : fileWriter2.0.uninit_1054653563
+141 : fileWriter2.0.uninit_1521203684
+142 : fileWriter2.0.uninit_1953101428
+143 : fileWriter2.0.opened_950438416
+144 : fileWriter2.0.opened_1034903836
+145 : fileWriter2.0.opened_1158714599
+146 : fileWriter2.0.uninit_2077684805
+147 : fileWriter2.0.error_1843355845
+148 : fileWriter2.0.opened_1054653563
+149 : fileWriter2.0.opened_31744296
+150 : fileWriter2.0.error_2077684805
+151 : fileWriter2.0.uninit_31744296
+152 : fileWriter2.0.uninit_2056951815
+153 : fileWriter2.0.uninit_1158714599
+154 : fileWriter2.0.error_1077499453
+155 : fileWriter2.0.opened_389387596
+156 : br.0.error_361601707
+157 : br.-1.opened_<T: void testlist()>
+158 : br.-1.uninit_<T: void testlist()>
+159 : br.-1.error_<T: void testlist()>
+160 : br.0.opened_361601707
+161 : br.0.uninit_361601707
+162 : br.0.error_1034903836
+163 : br.0.opened_945233790
+164 : br.0.opened_1843355845
+165 : br.0.opened_61168539
+166 : br.0.error_389387596
+167 : br.0.opened_1521203684
+168 : br.0.uninit_389387596
+169 : br.0.opened_400314935
+170 : br.0.uninit_1843355845
+171 : br.-2.opened_-<T: void testlist()>
+172 : br.0.uninit_232411003
+173 : br.0.opened_1953101428
+174 : br.0.error_1521203684
+175 : br.0.opened_1329924716
+176 : br.0.error_1035091326
+177 : br.0.uninit_1077499453
+178 : br.0.opened_1488156001
+179 : br.0.uninit_1035091326
+180 : br.0.error_1960080009
+181 : br.0.error_2056951815
+182 : br.0.opened_1510473970
+183 : br.0.uninit_1510473970
+184 : br.0.uninit_945233790
+185 : br.0.error_1329924716
+186 : br.0.opened_232411003
+187 : br.0.error_590031384
+188 : br.0.error_1158714599
+189 : br.0.error_477426518
+190 : br.0.error_1488156001
+191 : br.0.error_1953101428
+192 : br.0.error_1054653563
+193 : br.-2.uninit_-<T: void testlist()>
+194 : br.0.opened_2077684805
+195 : br.0.opened_477426518
+196 : br.0.uninit_1034903836
+197 : br.0.opened_2056951815
+198 : br.0.error_1510473970
+199 : br.0.uninit_590031384
+200 : br.0.error_61168539
+201 : br.0.uninit_1329924716
+202 : br.0.uninit_400314935
+203 : br.-2.error_-<T: void testlist()>
+204 : br.0.opened_590031384
+205 : br.0.opened_1035091326
+206 : br.0.error_31744296
+207 : br.0.uninit_1488156001
+208 : br.0.error_400314935
+209 : br.0.uninit_61168539
+210 : br.0.error_945233790
+211 : br.0.opened_1077499453
+212 : br.0.uninit_1960080009
+213 : br.0.error_950438416
+214 : br.0.error_232411003
+215 : br.0.uninit_950438416
+216 : br.0.uninit_477426518
+217 : br.0.opened_1960080009
+218 : br.0.uninit_1054653563
+219 : br.0.uninit_1521203684
+220 : br.0.uninit_1953101428
+221 : br.0.opened_950438416
+222 : br.0.opened_1034903836
+223 : br.0.opened_1158714599
+224 : br.0.uninit_2077684805
+225 : br.0.error_1843355845
+226 : br.0.opened_1054653563
+227 : br.0.opened_31744296
+228 : br.0.error_2077684805
+229 : br.0.uninit_31744296
+230 : br.0.uninit_2056951815
+231 : br.0.uninit_1158714599
+232 : br.0.error_1077499453
+233 : br.0.opened_389387596
+
+<test: void <clinit>()>
+
+<test: void <init>()>
+
+<test: void main(java.lang.String[])>
 

@@ -306,8 +306,6 @@ public class Propagator extends AbstractStmtSwitch {
 			//add new symbolic local to localsMap
 			Expression retSym = getRetSym(ie, retValue);
 			putMap(retValue, retSym);
-
-			callSite.setRetSym(retSym);
 		}
 		
 		//add callsite to stateNode
@@ -318,7 +316,7 @@ public class Propagator extends AbstractStmtSwitch {
 	private Expression getRetSym(InvokeExpr ie, Local retValue) {
 		String sym_ret = "@ret" + this.stateNode.getCallSiteIndex();
 		Type type = retValue.getType();
-
+		
 		return createSymVariable(sym_ret, type);
 	}
 
@@ -393,6 +391,15 @@ public class Propagator extends AbstractStmtSwitch {
 	}
 	
 	private Expression getMap(Local var) {
+		//for the case where var is not added into the localsMap due to skipping certain kinds of statements
+		if(!stateNode.containsLocal(var)) {
+//			Type type = var.getType();
+//			String var_name = "@var" + var.getName();
+//			Expression sym_var = createSymVariable(var_name, type);
+//			stateNode.putToLocalsMap(var, sym_var);
+			setInitialSymVar(var);
+		}
+		
 		return stateNode.getFromLocalsMap(var);
 	}
 	
@@ -423,28 +430,22 @@ public class Propagator extends AbstractStmtSwitch {
 		
 		//PrimType
 		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
-			//System.out.println("IntType||ShortType||CharType||ByteType");
 			return getIntegerBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof LongType){
-			//System.out.println("LongType");
 			return getLongBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof FloatType){
-			//System.out.println("FloatType");
 			return getFloatBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof DoubleType){
-			//System.out.println("DoubleType");
 			return getDoubleBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof BooleanType){
-			//System.out.println("BooleanType");
 			return getBooleanBinaryExpression(binExprSymbol, symOp1, symOp2);
 		}
 		//RefLikeType
 		else if(binType instanceof RefLikeType) {
-			//System.out.println("RefLikeType");
 			return getRefBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else{
@@ -726,28 +727,27 @@ public class Propagator extends AbstractStmtSwitch {
 		putMap(leftOp, exp);
 	}
 
-	void handleStoreStmt(FieldRef leftOp, Immediate rightOp) 
-	{
+
+	//used for NewStmt, NewArrayStmt, NewMultiArray
+	void createNewSymVar(Local leftOp) {
+		Expression sym_new = new SymbolicRef(null, null);
+		putMap(leftOp, sym_new);
 	}
 	
-	void handleLoadStmt(Local leftOp, FieldRef rightOp) 
-	{
-	}
-
 	void handleNewStmt(Local leftOp, NewExpr rightOp)
 	{
 		assert(rightOp.getType() instanceof RefLikeType);
-		String rhs_name = "@new" + rightOp.getBaseType();
-		Expression sym_new = new SymbolicRef(null, rightOp.getBaseType());
-		putMap(leftOp, sym_new);
+		createNewSymVar(leftOp);
 	}
 
 	void handleNewArrayStmt(Local leftOp, NewArrayExpr rightOp)
 	{
+		createNewSymVar(leftOp);
 	}
 
 	void handleNewMultiArrayStmt(Local leftOp, NewMultiArrayExpr rightOp)
 	{
+		createNewSymVar(leftOp);
 	}
 
 	public void caseReturnStmt(ReturnStmt rs)
@@ -768,13 +768,32 @@ public class Propagator extends AbstractStmtSwitch {
 		putMap(leftOp, exp);
 	}
 
+
+	void setInitialSymVar(Local leftOp) {
+		Type type = leftOp.getType();
+		String var_name = "@var" + leftOp.getName();
+		Expression sym_var = createSymVariable(var_name, type);
+		putMap(leftOp, sym_var);
+	}
+
+	void handleStoreStmt(FieldRef leftOp, Immediate rightOp) 
+	{
+	}
+	
+	//just reset leftOp as the initial symbolic variable
+	void handleLoadStmt(Local leftOp, FieldRef rightOp) 
+	{
+		setInitialSymVar(leftOp);
+	}
+	
 	void handleArrayLoadStmt(Local leftOp, ArrayRef rightOp)
 	{
+		setInitialSymVar(leftOp);
 	}
 
 	void handleArrayLengthStmt(Local leftOp, LengthExpr rightOp)
 	{
-		
+		setInitialSymVar(leftOp);
 	}
 
 	void handleArrayStoreStmt(ArrayRef leftOp, Immediate rightOp)
@@ -783,7 +802,7 @@ public class Propagator extends AbstractStmtSwitch {
 
 	void handleInstanceOfStmt(Local leftOp, InstanceOfExpr expr)
 	{
-
+		setInitialSymVar(leftOp);
 	}
 
 

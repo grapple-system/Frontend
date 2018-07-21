@@ -1,0 +1,162 @@
+block 0
+1826835713:a := @parameter0: int
+2123784121:i = 0
+1114024860:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+375189003:$r3 = <test: java.util.List tlist>
+789585829:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+630719962:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+1587466862:return -1
+block 1
+1653387474:$r0 = <test: java.util.List tlist>
+587501669:$r1 = interfaceinvoke $r0.<java.util.List: java.lang.Object get(int)>(i)
+10741977:$r2 = (T) $r1
+151781091:$i0 = $r2.<T: int a>
+2130511303:if $i0 != a goto i = i + 1
+block 2
+881832079:return i
+block 3
+1167103806:i = i + 1
+1418442930:goto [?= return i]
+block 2
+881832079:return i
+block 0
+584149535:a := @parameter0: int
+1672372376:i = 0
+1296551496:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+540304962:$r3 = <test: java.util.List tlist>
+1344636818:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+1337836835:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+370127509:return -1
+block 1
+624427163:$r0 = <test: java.util.List tlist>
+1884486338:$r1 = interfaceinvoke $r0.<java.util.List: java.lang.Object get(int)>(i)
+1473056810:$r2 = (T) $r1
+1474323054:$i0 = $r2.<T: int a>
+1141683575:if $i0 != a goto i = i + 1
+block 2
+461456971:return i
+block 3
+1143862280:i = i + 1
+1181550062:goto [?= return i]
+block 2
+461456971:return i
+block 0
+501081440:a := @parameter0: int
+638216392:i = 0
+1969567226:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+156476729:$r3 = <test: java.util.List tlist>
+1384400375:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+2096713019:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+1911776907:return -1
+block 1
+1203432524:$r0 = <test: java.util.List tlist>
+830019232:$r1 = interfaceinvoke $r0.<java.util.List: java.lang.Object get(int)>(i)
+79461312:$r2 = (T) $r1
+1918925997:$i0 = $r2.<T: int a>
+549326446:if $i0 != a goto i = i + 1
+block 2
+1450381359:return i
+block 3
+472623616:i = i + 1
+286726347:goto [?= return i]
+block 2
+1450381359:return i
+block 0
+263823398:a := @parameter0: int
+501081440:i = 0
+1392382193:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+472623616:$r3 = <test: java.util.List tlist>
+1990587506:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+706663152:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+2096713019:return -1
+block 0
+1673602778:a := @parameter0: int
+1392382193:i = 0
+638216392:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+1990587506:$r3 = <test: java.util.List tlist>
+156476729:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+1303027754:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+1396546710:return -1
+block 0
+638216392:a := @parameter0: int
+1203432524:i = 0
+1089443422:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+1779271027:$r3 = <test: java.util.List tlist>
+498366314:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+1911776907:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+1653484308:return -1
+block 0
+582122698:a := @parameter0: int
+263823398:i = 0
+1673602778:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+497379469:$r3 = <test: java.util.List tlist>
+1450381359:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+560753289:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+706663152:return -1
+block 0
+501081440:a := @parameter0: int
+638216392:i = 0
+1969567226:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+156476729:$r3 = <test: java.util.List tlist>
+1384400375:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+2096713019:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+1911776907:return -1
+block 0
+624427163:a := @parameter0: int
+1884486338:i = 0
+1473056810:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+215165522:$r3 = <test: java.util.List tlist>
+2071950353:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+1857143550:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+1785305512:return -1
+block 0
+2096713019:a := @parameter0: int
+1911776907:i = 0
+584149535:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+461456971:$r3 = <test: java.util.List tlist>
+1143862280:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+1237106295:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+1594049880:return -1
+block 0
+2123784121:a := @parameter0: int
+1653387474:i = 0
+44883338:goto [?= $r3 = <test: java.util.List tlist>]
+block 4
+1267573190:$r3 = <test: java.util.List tlist>
+1064826090:$i1 = interfaceinvoke $r3.<java.util.List: int size()>()
+1587466862:if i < $i1 goto $r0 = <test: java.util.List tlist>
+block 5
+1670855925:return -1
+block 1
+587501669:$r0 = <test: java.util.List tlist>
+151781091:$r1 = interfaceinvoke $r0.<java.util.List: java.lang.Object get(int)>(i)
+1921707448:$r2 = (T) $r1
+2130511303:$i0 = $r2.<T: int a>
+881832079:if $i0 != a goto i = i + 1
+block 2
+398035744:return i
+block 3
+375189003:i = i + 1
+521673013:goto [?= return -1]
+block 5
+1670855925:return -1

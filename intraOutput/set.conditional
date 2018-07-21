@@ -1,18 +1,32 @@
-<test5: void <init>()>
+<T: void <init>()>
 
-<test5: int random()>
+<T: void testTry()>
+0:$Z$@ret3
 
-<test5: Int add(Int,Int)>
+<T: void throwexc()>
 
-<test5: Int sub(Int,Int)>
-1:(>= $I$@ret0 $I$@ret1)
+<T: void testFW()>
 
-<test5: void main()>
-1:(>= $I$@ret0 $I$@ret1)
-3:(>= $I$@ret0 (+ $I$@ret0 $I$@ret1))
-7:(>= (- $I$@ret0 (+ $I$@ret0 $I$@ret1)) (+ $I$@ret0 $I$@ret1))
-8:(>= $I$@ret0 (- (+ $I$@ret0 $I$@ret1) $I$@ret0))
-4:(>= (+ $I$@ret0 $I$@ret1) $I$@ret1)
-9:(>= (- (+ $I$@ret0 $I$@ret1) $I$@ret1) $I$@ret1)
-10:(>= (+ $I$@ret0 $I$@ret1) (- $I$@ret1 (+ $I$@ret0 $I$@ret1)))
+<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+
+<T: void testSwitch()>
+0:(= 0 0)
+1:(= 0 1)
+3:(= 0 2)
+
+<T: T interfunc(T,T)>
+0:(= $R$@para0 soot.jimple.NullConstant@30342460)
+
+<T: T test(T)>
+
+<T: void call()>
+
+<T: void testlist()>
+
+<test: void <clinit>()>
+
+<test: void <init>()>
+
+<test: void main(java.lang.String[])>
+0:(= $R$@ret5 soot.jimple.NullConstant@30342460)
 

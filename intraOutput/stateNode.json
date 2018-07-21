@@ -1,36 +1,83 @@
-<test5: void <init>()>
+<T: void <init>()>
 {"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
 {"stateNode": {"conditional": null, "callsites": [{"signature": "<java.lang.Object: void <init>()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": null}], "returnExp": null}}
-
-<test5: int random()>
 {"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.lang.System: long nanoTime()>", "callee": null, "argumentsMap": null, "retVar": "$l0"}], "returnExp": "($L$@ret0 rem 29)"}}
 
-<test5: Int add(Int,Int)>
+<T: void testTry()>
 {"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<Int: int value()>", "callee": "i1 = $R$@para0", "argumentsMap": null, "retVar": "$i0"}, {"signature": "<Int: int value()>", "callee": "i2 = $R$@para1", "argumentsMap": null, "retVar": "$i1"}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$0", "argumentsMap": ["$i0 = ($I$@ret0 + $I$@ret1)"], "retVar": null}], "returnExp": "$R$0"}}
+{"stateNode": {"conditional": "$Z$@ret3", "callsites": [{"signature": "<java.io.File: void <init>(java.lang.String)>", "callee": "$r0 = $R$0", "argumentsMap": ["\"\" = soot.jimple.StringConstant@876038678"], "retVar": null}, {"signature": "<java.text.SimpleDateFormat: void <init>(java.lang.String)>", "callee": "$r1 = $R$1", "argumentsMap": ["format = soot.jimple.StringConstant@1822353056"], "retVar": null}, {"signature": "<java.text.DateFormat: java.util.Date parse(java.lang.String)>", "callee": "sdf = $R$1", "argumentsMap": ["format = soot.jimple.StringConstant@1822353056"], "retVar": null}, {"signature": "<java.io.File: boolean exists()>", "callee": "file = $R$0", "argumentsMap": null, "retVar": "$z0"}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.io.File: boolean createNewFile()>", "callee": "file = $R$0", "argumentsMap": null, "retVar": null}, {"signature": "<T: void testFW()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": null}, {"signature": "<T: void throwexc()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.lang.Object: java.lang.Class getClass()>", "callee": "file = $R$0", "argumentsMap": null, "retVar": null}, {"signature": "<T: void testFW()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": null}, {"signature": "<T: void throwexc()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
 
-<test5: Int sub(Int,Int)>
+<T: void throwexc()>
 {"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
-{"stateNode": {"conditional": "($I$@ret0 >= $I$@ret1)", "callsites": [{"signature": "<test5: int random()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": "x"}, {"signature": "<test5: int random()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": "y"}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<Int: int value()>", "callee": "i2 = $R$@para1", "argumentsMap": null, "retVar": "$i0"}, {"signature": "<Int: int value()>", "callee": "i1 = $R$@para0", "argumentsMap": null, "retVar": "$i1"}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$1", "argumentsMap": ["$i0 = ($I$@ret0 - $I$@ret1)"], "retVar": null}], "returnExp": "$R$1"}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<Int: int value()>", "callee": "i1 = $R$@para0", "argumentsMap": null, "retVar": "$i0"}, {"signature": "<Int: int value()>", "callee": "i2 = $R$@para1", "argumentsMap": null, "retVar": "$i1"}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$2", "argumentsMap": ["$i0 = ($I$@ret0 - $I$@ret1)"], "retVar": null}], "returnExp": "$R$2"}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.lang.NullPointerException: void <init>()>", "callee": "$r0 = $R$2", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
 
-<test5: void main()>
+<T: void testFW()>
 {"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
-{"stateNode": {"conditional": "($I$@ret0 >= $I$@ret1)", "callsites": [{"signature": "<test5: int random()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": "x"}, {"signature": "<test5: int random()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": "y"}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$3", "argumentsMap": ["5 = 5"], "retVar": null}, {"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$4", "argumentsMap": ["6 = 6"], "retVar": null}, {"signature": "<Int: void <init>()>", "callee": "$r0 = $R$5", "argumentsMap": null, "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": "($I$@ret0 >= ($I$@ret0 + $I$@ret1))", "callsites": [{"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$6", "argumentsMap": ["x = $I$@ret0"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": "(($I$@ret0 - ($I$@ret0 + $I$@ret1)) >= ($I$@ret0 + $I$@ret1))", "callsites": [{"signature": "<test5: Int sub(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": "($I$@ret0 >= (($I$@ret0 + $I$@ret1) - $I$@ret0))", "callsites": [{"signature": "<test5: Int sub(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": "(($I$@ret0 + $I$@ret1) >= $I$@ret1)", "callsites": [{"signature": "<Int: void <init>(int)>", "callee": "$r0 = $R$7", "argumentsMap": ["x = ($I$@ret0 + $I$@ret1)"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": "((($I$@ret0 + $I$@ret1) - $I$@ret1) >= $I$@ret1)", "callsites": [{"signature": "<test5: Int sub(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": "(($I$@ret0 + $I$@ret1) >= ($I$@ret1 - ($I$@ret0 + $I$@ret1)))", "callsites": [{"signature": "<test5: Int sub(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
-{"stateNode": {"conditional": null, "callsites": [{"signature": "<test5: Int add(Int,Int)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$3", "b = $R$4"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.io.File: void <init>(java.lang.String)>", "callee": "$r0 = $R$3", "argumentsMap": ["\"\" = soot.jimple.StringConstant@1012100881"], "retVar": null}, {"signature": "<T: java.io.FileWriter testCallFW(java.io.FileWriter)>", "callee": "this = $R$@this", "argumentsMap": ["fw = soot.jimple.NullConstant@30342460"], "retVar": "fw"}, {"signature": "<java.io.OutputStreamWriter: void close()>", "callee": "fw = $R$@ret1", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.io.File: void <init>(java.lang.String)>", "callee": "$r1 = $R$5", "argumentsMap": ["\"\" = soot.jimple.StringConstant@161539080"], "retVar": null}, {"signature": "<java.io.FileWriter: void <init>(java.io.File)>", "callee": "$r0 = $R$4", "argumentsMap": ["$r1 = $R$5"], "retVar": null}, {"signature": "<java.io.Writer: void write(java.lang.String)>", "callee": "par = $R$4", "argumentsMap": ["\"\" = soot.jimple.StringConstant@567987752"], "retVar": null}, {"signature": "<java.io.OutputStreamWriter: void close()>", "callee": "par = $R$4", "argumentsMap": null, "retVar": null}], "returnExp": "$R$4"}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<T: void testSwitch()>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": "(0 = 0)", "callsites": [{"signature": "<java.io.File: void <init>(java.lang.String)>", "callee": "$r0 = $R$6", "argumentsMap": ["\"\" = soot.jimple.StringConstant@1110223905"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": "(0 = 1)", "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": "(0 = 2)", "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.io.OutputStreamWriter: void close()>", "callee": "fw = soot.jimple.NullConstant@30342460", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.io.OutputStreamWriter: void close()>", "callee": "fw = soot.jimple.NullConstant@30342460", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.io.FileWriter: void <init>(java.io.File)>", "callee": "$r1 = $R$7", "argumentsMap": ["file = $R$6"], "retVar": null}, {"signature": "<java.io.OutputStreamWriter: void close()>", "callee": "fw = $R$7", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<T: T interfunc(T,T)>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": "($R$@para0 = soot.jimple.NullConstant@30342460)", "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": "$R$@para0"}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": "soot.jimple.NullConstant@30342460"}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<T: T test(T)>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": "$R$@var$r0"}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<T: void call()>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<T: void <init>()>", "callee": "$r0 = $R$8", "argumentsMap": null, "retVar": null}, {"signature": "<T: T test(T)>", "callee": "this = $R$@this", "argumentsMap": ["a = $R$8"], "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<T: void testlist()>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.io.File: void <init>(java.lang.String)>", "callee": "$r0 = $R$9", "argumentsMap": ["\"\" = soot.jimple.StringConstant@47762552"], "retVar": null}, {"signature": "<java.io.FileWriter: void <init>(java.io.File)>", "callee": "$r2 = $R$10", "argumentsMap": ["file = $R$9"], "retVar": null}, {"signature": "<java.io.FileWriter: void <init>(java.lang.String)>", "callee": "$r2 = $R$11", "argumentsMap": ["\"\" = soot.jimple.StringConstant@1733811133"], "retVar": null}, {"signature": "<java.io.FileInputStream: void <init>(java.io.File)>", "callee": "$r1 = $R$14", "argumentsMap": ["file = $R$9"], "retVar": null}, {"signature": "<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>", "callee": "$r4 = $R$13", "argumentsMap": ["$r1 = $R$14", "\"UTF-8\" = soot.jimple.StringConstant@958106188"], "retVar": null}, {"signature": "<java.io.BufferedReader: void <init>(java.io.Reader)>", "callee": "$r3 = $R$12", "argumentsMap": ["$r4 = $R$13"], "retVar": null}, {"signature": "<java.io.BufferedReader: java.lang.String readLine()>", "callee": "br = $R$12", "argumentsMap": null, "retVar": null}, {"signature": "<java.io.BufferedReader: void close()>", "callee": "br = $R$12", "argumentsMap": null, "retVar": null}, {"signature": "<java.io.Writer: void write(java.lang.String)>", "callee": "fileWriter = $R$10", "argumentsMap": ["\"fw\" = soot.jimple.StringConstant@1058316510"], "retVar": null}, {"signature": "<java.io.Writer: void write(java.lang.String)>", "callee": "fileWriter2 = $R$11", "argumentsMap": ["\"test\" = soot.jimple.StringConstant@1666019116"], "retVar": null}, {"signature": "<java.io.OutputStreamWriter: void close()>", "callee": "fileWriter = $R$10", "argumentsMap": null, "retVar": null}, {"signature": "<java.io.OutputStreamWriter: void close()>", "callee": "fileWriter2 = $R$11", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<test: void <clinit>()>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.util.ArrayList: void <init>()>", "callee": "$r0 = $R$15", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<test: void <init>()>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": [{"signature": "<java.lang.Object: void <init>()>", "callee": "this = $R$@this", "argumentsMap": null, "retVar": null}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+
+<test: void main(java.lang.String[])>
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": "($R$@ret5 = soot.jimple.NullConstant@30342460)", "callsites": [{"signature": "<T: void <init>()>", "callee": "$r0 = $R$17", "argumentsMap": null, "retVar": null}, {"signature": "<T: void <init>()>", "callee": "$r0 = $R$18", "argumentsMap": null, "retVar": null}, {"signature": "<java.util.List: boolean add(java.lang.Object)>", "callee": "$r1 = $R$@var$r1", "argumentsMap": ["c1 = $R$17"], "retVar": null}, {"signature": "<java.util.List: boolean add(java.lang.Object)>", "callee": "$r1 = $R$@var$r1", "argumentsMap": ["c2 = $R$18"], "retVar": null}, {"signature": "<java.util.List: java.lang.Object get(int)>", "callee": "$r1 = $R$@var$r1", "argumentsMap": ["in = 1"], "retVar": "$r2"}, {"signature": "<T: T interfunc(T,T)>", "callee": "c2 = soot.jimple.NullConstant@30342460", "argumentsMap": ["c1 = soot.jimple.NullConstant@30342460", "c2 = soot.jimple.NullConstant@30342460"], "retVar": "c3"}], "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
+{"stateNode": {"conditional": null, "callsites": null, "returnExp": null}}
 

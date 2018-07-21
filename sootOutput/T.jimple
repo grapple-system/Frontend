@@ -1,0 +1,248 @@
+class T extends java.lang.Object
+{
+    T s;
+    int a;
+
+    void <init>()
+    {
+        T this;
+
+        this := @this: T;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        return;
+    }
+
+    public void testTry()
+    {
+        T this;
+        java.lang.String format;
+        java.io.File file, $r0;
+        java.text.SimpleDateFormat sdf, $r1;
+        java.text.ParseException e, $r3;
+        byte a;
+        boolean $z0;
+        java.io.IOException $r5, e;
+        java.lang.NullPointerException $r6, e;
+        int a;
+
+        this := @this: T;
+        format = "yyyy-MM-dd HH:mm:ss";
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("");
+        file = $r0;
+        $r1 = new java.text.SimpleDateFormat;
+        specialinvoke $r1.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(format);
+        sdf = $r1;
+
+     label0:
+        virtualinvoke sdf.<java.text.SimpleDateFormat: java.util.Date parse(java.lang.String)>(format);
+
+     label1:
+        goto label3;
+
+     label2:
+        $r3 := @caughtexception;
+        e = $r3;
+        virtualinvoke e.<java.text.ParseException: void printStackTrace()>();
+
+     label3:
+        $z0 = virtualinvoke file.<java.io.File: boolean exists()>();
+        if $z0 != 0 goto label4;
+
+        virtualinvoke file.<java.io.File: boolean createNewFile()>();
+        goto label5;
+
+     label4:
+        virtualinvoke file.<java.lang.Object: java.lang.Class getClass()>();
+
+     label5:
+        virtualinvoke this.<T: void testFW()>();
+
+     label6:
+        goto label8;
+
+     label7:
+        $r5 := @caughtexception;
+        e = $r5;
+        virtualinvoke file.<java.io.File: boolean delete()>();
+        virtualinvoke e.<java.io.IOException: void printStackTrace()>();
+
+     label8:
+        virtualinvoke this.<T: void throwexc()>();
+
+     label9:
+        goto label11;
+
+     label10:
+        $r6 := @caughtexception;
+        e = $r6;
+        virtualinvoke e.<java.lang.NullPointerException: void printStackTrace()>();
+        a = 0;
+        a = a + 1;
+
+     label11:
+        return;
+
+        catch java.text.ParseException from label0 to label1 with label2;
+        catch java.io.IOException from label3 to label6 with label7;
+        catch java.lang.NullPointerException from label8 to label9 with label10;
+    }
+
+    public void throwexc() throws java.lang.NullPointerException
+    {
+        T this;
+        java.lang.NullPointerException $r0;
+
+        this := @this: T;
+        $r0 = new java.lang.NullPointerException;
+        specialinvoke $r0.<java.lang.NullPointerException: void <init>()>();
+        throw $r0;
+    }
+
+    public void testFW() throws java.io.IOException
+    {
+        T this;
+        java.io.File $r0, file;
+        boolean a;
+        null_type fw;
+        java.io.FileWriter fw;
+
+        this := @this: T;
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("");
+        file = $r0;
+        a = 0;
+        fw = null;
+        fw = virtualinvoke this.<T: java.io.FileWriter testCallFW(java.io.FileWriter)>(fw);
+        virtualinvoke fw.<java.io.FileWriter: void close()>();
+        return;
+    }
+
+    public java.io.FileWriter testCallFW(java.io.FileWriter) throws java.io.IOException
+    {
+        T this;
+        java.io.FileWriter par, $r0, par;
+        java.io.File $r1;
+
+        this := @this: T;
+        par := @parameter0: java.io.FileWriter;
+        $r0 = new java.io.FileWriter;
+        $r1 = new java.io.File;
+        specialinvoke $r1.<java.io.File: void <init>(java.lang.String)>("");
+        specialinvoke $r0.<java.io.FileWriter: void <init>(java.io.File)>($r1);
+        par = $r0;
+        virtualinvoke par.<java.io.FileWriter: void write(java.lang.String)>("");
+        virtualinvoke par.<java.io.FileWriter: void close()>();
+        return par;
+    }
+
+    public void testSwitch() throws java.io.IOException
+    {
+        T this;
+        java.io.File $r0, file;
+        byte a;
+        java.io.FileWriter fw, $r1;
+        int a;
+
+        this := @this: T;
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("");
+        file = $r0;
+        a = 0;
+        fw = null;
+        if a == 0 goto label0;
+
+        if a == 1 goto label1;
+
+        if a == 2 goto label2;
+
+        goto label3;
+
+     label0:
+        $r1 = new java.io.FileWriter;
+        specialinvoke $r1.<java.io.FileWriter: void <init>(java.io.File)>(file);
+        fw = $r1;
+
+     label1:
+        a = a + 1;
+
+     label2:
+        virtualinvoke fw.<java.io.FileWriter: void close()>();
+
+     label3:
+        return;
+    }
+
+    public T interfunc(T, T)
+    {
+        T this, a, b;
+
+        this := @this: T;
+        a := @parameter0: T;
+        b := @parameter1: T;
+        if a == null goto label0;
+
+        return a;
+
+     label0:
+        return null;
+    }
+
+    public T test(T)
+    {
+        T this, a, $r0;
+
+        this := @this: T;
+        a := @parameter0: T;
+        this.<T: T s> = a;
+        $r0 = this.<T: T s>;
+        return $r0;
+    }
+
+    public void call()
+    {
+        T this, $r0, a;
+
+        this := @this: T;
+        $r0 = new T;
+        specialinvoke $r0.<T: void <init>()>();
+        a = $r0;
+        virtualinvoke this.<T: T test(T)>(a);
+        return;
+    }
+
+    public void testlist() throws java.io.IOException
+    {
+        T this;
+        java.io.File $r0, file;
+        java.io.FileWriter fileWriter, fileWriter2, $r2;
+        java.io.FileInputStream $r1;
+        java.io.BufferedReader br, $r3;
+        java.io.InputStreamReader $r4;
+
+        this := @this: T;
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("");
+        file = $r0;
+        $r2 = new java.io.FileWriter;
+        specialinvoke $r2.<java.io.FileWriter: void <init>(java.io.File)>(file);
+        fileWriter = $r2;
+        $r2 = new java.io.FileWriter;
+        specialinvoke $r2.<java.io.FileWriter: void <init>(java.lang.String)>("");
+        fileWriter2 = $r2;
+        $r3 = new java.io.BufferedReader;
+        $r4 = new java.io.InputStreamReader;
+        $r1 = new java.io.FileInputStream;
+        specialinvoke $r1.<java.io.FileInputStream: void <init>(java.io.File)>(file);
+        specialinvoke $r4.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r1, "UTF-8");
+        specialinvoke $r3.<java.io.BufferedReader: void <init>(java.io.Reader)>($r4);
+        br = $r3;
+        virtualinvoke br.<java.io.BufferedReader: java.lang.String readLine()>();
+        virtualinvoke br.<java.io.BufferedReader: void close()>();
+        virtualinvoke fileWriter.<java.io.FileWriter: void write(java.lang.String)>("fw");
+        virtualinvoke fileWriter2.<java.io.FileWriter: void write(java.lang.String)>("test");
+        virtualinvoke fileWriter.<java.io.FileWriter: void close()>();
+        virtualinvoke fileWriter2.<java.io.FileWriter: void close()>();
+        return;
+    }
+}

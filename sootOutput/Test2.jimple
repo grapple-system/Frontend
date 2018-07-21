@@ -1,0 +1,50 @@
+public class Test2 extends java.lang.Object
+{
+    public int a;
+
+    public void <init>(int)
+    {
+        Test2 this;
+        int a;
+
+        this := @this: Test2;
+        a := @parameter0: int;
+        specialinvoke this.<java.lang.Object: void <init>()>();
+        this.<Test2: int a> = a;
+        return;
+    }
+
+    public int getA()
+    {
+        Test2 this;
+        int $i0;
+
+        this := @this: Test2;
+        $i0 = this.<Test2: int a>;
+        return $i0;
+    }
+
+    public static void main(java.lang.String[]) throws java.io.IOException
+    {
+        java.lang.String[] args;
+        java.io.File $r0, f1, f2, $r2;
+        java.io.FileWriter fw1, fwa, $r1;
+
+        args := @parameter0: java.lang.String[];
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("f1");
+        f1 = $r0;
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("f2");
+        f2 = $r0;
+        $r1 = new java.io.FileWriter;
+        $r2 = new java.io.File;
+        specialinvoke $r2.<java.io.File: void <init>(java.lang.String)>("f1");
+        specialinvoke $r1.<java.io.FileWriter: void <init>(java.io.File)>($r2);
+        fw1 = $r1;
+        fwa = fw1;
+        virtualinvoke fwa.<java.io.FileWriter: void write(java.lang.String)>("fwa");
+        virtualinvoke fw1.<java.io.FileWriter: void close()>();
+        return;
+    }
+}

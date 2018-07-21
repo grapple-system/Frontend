@@ -4,6 +4,9 @@ import java.util.*;
 
 import acteve.symbolic.integer.Expression;
 import edu.zuo.pegraph.datastructure.PegIntra_block;
+import edu.zuo.typestate.datastructure.ConstraintGraph;
+import edu.zuo.typestate.datastructure.ConstraintGraphList;
+import edu.zuo.typestate.datastructure.TypeGraphList;
 import soot.Local;
 
 public class StateNode {
@@ -30,7 +33,24 @@ public class StateNode {
 	//specific to alias analysis
 	private PegIntra_block peg_intra_block = null;
 	
+	//specific to typestate checking, intra node edges
+	private TypeGraphList tgl = null;
 	
+	//conditional expression
+	private String constraintstr = "null";
+	
+	//specific to typestate checking, node to node edges
+	private ConstraintGraphList constraintGraph_list = null;
+	
+	public int index;
+	
+	public void setConStr(String str){
+		constraintstr = str;
+	}
+	
+	public String getConStr(){
+		return constraintstr;
+	}
 	
 	public StateNode(){
 		this.localsMap = new LinkedHashMap<Local, Expression>();
@@ -104,6 +124,10 @@ public class StateNode {
 	public Expression getFromLocalsMap(Local l) {
 		return this.localsMap.get(l);
 	}
+	
+	public boolean containsLocal(Local l) {
+		return this.localsMap.containsKey(l);
+	}
 
 	public void addCallSite(CallSite cs) {
 		if(this.callsites == null) {
@@ -160,6 +184,40 @@ public class StateNode {
 		return peg_intra_block.getVars();
 	}
 
+	public void setTypegraphList(TypeGraphList tgl){
+		this.tgl = tgl;
+	}
 	
+	public void addTypegraphList(TypeGraphList tgl) {
+		if(this.tgl == null){
+			this.tgl = tgl;
+			return;
+		}
+		this.tgl.addTypeGraphList(tgl);
+	}
 	
+	public TypeGraphList getTypegraphList(){
+		if(tgl == null) return null;
+		return tgl;
+	}
+	
+	public void setConstraintGraphList(ConstraintGraphList constraintGraph_list){
+		this.constraintGraph_list = constraintGraph_list;
+	}
+	
+	public void addConstraintGraphList(ConstraintGraphList constraintGraph_list){
+		this.tgl.addConstraintGraphList(constraintGraph_list);
+	}
+	
+	public ConstraintGraphList getConstraintGraphList(){
+		if(constraintGraph_list == null) return null;
+		return constraintGraph_list;
+	}
+	//get all pointStr of node
+	public Set<String> getTypeStateVars(){
+		Set<String> vars = new HashSet<String>();
+		vars.addAll(tgl.getVars(index));
+		vars.addAll(constraintGraph_list.getVars());
+		return vars;
+	}
 }

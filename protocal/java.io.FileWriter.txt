@@ -1,0 +1,20 @@
+java.io.FileWriter
+uninit opened error
+<java.io.FileWriter: void <init>(java.io.File)>@uninit,opened
+<java.io.FileWriter: void <init>(java.io.File)>@opened,error
+<java.io.FileWriter: void <init>(java.io.File)>@error,error
+<java.io.FileWriter: void <init>(java.lang.String)>@uninit,opened
+<java.io.FileWriter: void <init>(java.lang.String)>@opened,error
+<java.io.FileWriter: void <init>(java.lang.String)>@error,error
+<java.io.Writer: void write(java.lang.String)>@uninit,error
+<java.io.Writer: void write(java.lang.String)>@opened,opened
+<java.io.Writer: void write(java.lang.String)>@error,error
+<java.io.FileWriter: void write(java.lang.String)>@uninit,error
+<java.io.FileWriter: void write(java.lang.String)>@opened,opened
+<java.io.FileWriter: void write(java.lang.String)>@error,error
+<java.io.OutputStreamWriter: void close()>@uninit,error
+<java.io.OutputStreamWriter: void close()>@opened,uninit
+<java.io.OutputStreamWriter: void close()>@error,error
+<java.io.FileWriter: void close()>@uninit,error
+<java.io.FileWriter: void close()>@opened,uninit
+<java.io.FileWriter: void close()>@error,error

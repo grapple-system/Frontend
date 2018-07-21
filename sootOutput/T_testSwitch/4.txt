@@ -1,0 +1,8 @@
+digraph sootOutput/T_testSwitch/4{
+uninit_489062498 -> uninit_804872132
+opened_489062498 -> opened_804872132
+error_489062498 -> error_804872132
+uninit_804872132 -> opened_486430071
+opened_804872132 -> error_486430071
+error_804872132 -> error_486430071
+} 
