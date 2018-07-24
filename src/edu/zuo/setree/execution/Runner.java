@@ -1,10 +1,6 @@
 package edu.zuo.setree.execution;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import acteve.instrumentor.LoopTransformer;
 import acteve.instrumentor.SwitchTransformer;
@@ -79,19 +75,19 @@ public class Runner {
 		System.out.println("---------------------------------------------------");
 		
 		//transform the body
-		transform(mb.getMethod());
+		//transform(mb.getMethod());
 		
 		//confirm that there's no loop at all before executing it symbolically
-		confirm_no_loop(mb);
+		//confirm_no_loop(mb);
 		
 		//execute the body symbolically
-		execute(mb);
+		//execute(mb);
 
 		//separate func entry
-        separate();
+        //separate();
 		
 		//export the symbolic execution tree
-		export(mb);
+		//export(mb);
 	}
 
 	/* Add by wefcser */
@@ -132,7 +128,8 @@ public class Runner {
 		System.out.println("\n\nCFG before executing ==>>");
 		System.out.println(cfg.toString());
 		
-		List<Block> entries = cfg.getHeads();
+		//List<Block> entries = cfg.getHeads();
+		List<Block> entries = new ArrayList<Block>(cfg.getHeads());
 		filterEntries(entries);
 
 		assert(entries.size() == 1);
@@ -151,7 +148,7 @@ public class Runner {
 		SwitchTransformer.transform(method);
 		
 		//loop transform: unroll the loop twice
-		LoopTransformer.transform(method);
+		//LoopTransformer.transform(method);
 	}
 
 	

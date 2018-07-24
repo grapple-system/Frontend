@@ -121,21 +121,21 @@ public class Test0 {
 //	}
 	
 	
-//	private void nest_for(int x){
-//		int a = 19 / x;
-//		for(int i = 0; i < 9; i++) {
-////			a = 2 * x;
-////			a -= 5;
-//			for(int j = 0; j < 10; j++) {
-//				if(a < 100) {
-//					return;
-//				}
-//				a++;
-//			}
-//		}
-////		x++;
-//		
-//	}
+	private void nest_for(int x){
+		int a = 19 / x;
+		for(int i = 0; i < 9; i++) {
+			a = 2 * x;
+			a -= 5;
+			for(int j = 0; j < 10; j++) {
+				if(a < 100) {
+					return;
+				}
+				a++;
+			}
+		}
+		x++;
+
+	}
 	
 	
 //	public static void main(String[] args) {
