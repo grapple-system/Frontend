@@ -75,19 +75,19 @@ public class Runner {
 		System.out.println("---------------------------------------------------");
 		
 		//transform the body
-		//transform(mb.getMethod());
+		transform(mb.getMethod());
 		
 		//confirm that there's no loop at all before executing it symbolically
-		//confirm_no_loop(mb);
+		confirm_no_loop(mb);
 		
 		//execute the body symbolically
-		//execute(mb);
+		execute(mb);
 
 		//separate func entry
-        //separate();
+        separate();
 		
 		//export the symbolic execution tree
-		//export(mb);
+		export(mb);
 	}
 
 	/* Add by wefcser */
