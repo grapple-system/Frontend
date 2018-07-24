@@ -148,7 +148,7 @@ public class Runner {
 		SwitchTransformer.transform(method);
 		
 		//loop transform: unroll the loop twice
-		//LoopTransformer.transform(method);
+		LoopTransformer.transform(method);
 	}
 
 	

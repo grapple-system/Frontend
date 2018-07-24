@@ -112,7 +112,7 @@ public final class LoopTransformer {
 			}
 			
 			//break off the loop
-			//breakLoop(loop, method);
+			breakLoop(loop, method);
 		}
 	}
 
