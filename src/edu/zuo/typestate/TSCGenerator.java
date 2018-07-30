@@ -43,6 +43,7 @@ public class TSCGenerator {
 	private List<Local> interestLocal = new ArrayList<Local>();
 	private Stmt laststmt;
 	private static List<CallInfo> callInfoList = new ArrayList<CallInfo>();
+	private static List<String> calledVar = new ArrayList<String>();
 
 	public TSCGenerator(Block block, TypeGraphList typegraph_list) {
 		this.block = block;
@@ -63,8 +64,23 @@ public class TSCGenerator {
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}
-		
+		}		
+	}
+	
+	public static void printCalledVar(String filepath){
+		File file = new File(filepath);
+		try {
+			if(!file.exists())
+			file.createNewFile();		
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file, false)));
+			for(String calledvar : calledVar){
+				pw.println(calledvar);
+			}
+			pw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}		
 	}
 
 	public void recordCallInfo(String callmethod, String receivemethod, int index, String var, String par, int callhash) {
@@ -76,6 +92,9 @@ public class TSCGenerator {
 			String receiveStr = par+"."+"-1."+state+"_"+receivemethod;
 			CallInfo callInfo = new CallInfo(callmethod, receivemethod, index, callStr, receiveStr);
 			callInfoList.add(callInfo);
+			String calledvar = receivemethod+":"+par;
+			if(!calledVar.contains(calledvar))
+				calledVar.add(calledvar);
 		}
 		for(String state : allStates){
 			String callStr = par+"."+"-2."+state+"_-"+receivemethod;

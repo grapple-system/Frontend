@@ -1,0 +1,505 @@
+block 0
+1945421262:$r0 = class "acteve/instrumentor/G"
+1256624859:$z0 = virtualinvoke $r0.<java.lang.Class: boolean desiredAssertionStatus()>()
+1739820615:if $z0 != 0 goto $z0 = 0
+block 1
+1027738753:$z0 = 1
+994248850:goto [?= <acteve.instrumentor.G: boolean $assertionsDisabled> = $z0]
+block 3
+670412060:<acteve.instrumentor.G: boolean $assertionsDisabled> = $z0
+1916280258:$r3 = staticinvoke <soot.jimple.Jimple: soot.jimple.Jimple v()>()
+1110042147:<acteve.instrumentor.G: soot.jimple.Jimple jimple> = $r3
+1287923140:$r4 = new acteve.instrumentor.BodyEditor
+287765893:specialinvoke $r4.<acteve.instrumentor.BodyEditor: void <init>()>()
+348190607:<acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor> = $r4
+146593774:$r5 = new java.util.HashMap
+1691184586:specialinvoke $r5.<java.util.HashMap: void <init>()>()
+1793268857:<acteve.instrumentor.G: java.util.Map binopSymbolToMethodName> = $r5
+1684177601:$r5 = new java.util.HashMap
+1021781237:specialinvoke $r5.<java.util.HashMap: void <init>()>()
+1798008847:<acteve.instrumentor.G: java.util.Map negationMap> = $r5
+1892294592:$r5 = new java.util.HashMap
+315583893:specialinvoke $r5.<java.util.HashMap: void <init>()>()
+1881365208:<acteve.instrumentor.G: java.util.Map typeMap> = $r5
+555832428:$r6 = new java.io.PrintWriter
+337940276:$r1 = <java.lang.System: java.io.PrintStream out>
+1815456064:specialinvoke $r6.<java.io.PrintWriter: void <init>(java.io.OutputStream)>($r1)
+922411072:<acteve.instrumentor.G: java.io.PrintWriter printer> = $r6
+364313864:$r7 = staticinvoke <soot.RefType: soot.RefType v(java.lang.String)>("acteve.symbolic.integer.Expression")
+547234651:<acteve.instrumentor.G: soot.Type EXPRESSION_TYPE> = $r7
+1262371454:$r7 = staticinvoke <soot.RefType: soot.RefType v(java.lang.String)>("java.lang.Object")
+1686078665:<acteve.instrumentor.G: soot.Type OBJECT_TYPE> = $r7
+1877400490:$r8 = staticinvoke <soot.Scene: soot.Scene v()>()
+1961718781:$r9 = virtualinvoke $r8.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>("acteve.symbolic.Util")
+291119876:<acteve.instrumentor.G: soot.SootClass symUtilClass> = $r9
+1231695316:map = <acteve.instrumentor.G: java.util.Map binopSymbolToMethodName>
+1220617248:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("+", "_plus")
+2807345:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("-", "_minus")
+2085890828:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("*", "_mul")
+2044092568:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("/", "_div")
+1767889317:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">>", "_shiftR")
+332010927:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<<", "_shiftL")
+945135183:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">>>", "_shiftUR")
+2097967469:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("&", "_and")
+1005251390:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("|", "_or")
+1006260781:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("^", "_xor")
+791226142:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("%", "_rem")
+919026370:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("==", "_eq")
+1373811366:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("!=", "_ne")
+2050939465:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">=", "_ge")
+879570258:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">", "_gt")
+1807383905:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<=", "_le")
+545104520:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<", "_lt")
+406429538:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("cmp", "_cmp")
+1863247706:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("cmpl", "_cmpl")
+997654188:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("cmpg", "_cmpg")
+2093953833:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+21621940:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("==", "!=")
+1881265984:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+475209237:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("!=", "==")
+285972113:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+349963066:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">=", "<")
+1331291006:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+2019024776:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">", "<=")
+984165123:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+1360303985:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<=", ">")
+1585095739:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+518169933:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<", ">=")
+1934519451:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+565997377:$r12 = staticinvoke <soot.ByteType: soot.ByteType v()>()
+140475052:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(3)
+835875346:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r12, $r13)
+1990339484:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+282938269:$r14 = staticinvoke <soot.CharType: soot.CharType v()>()
+183215103:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1)
+1866405195:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r14, $r13)
+2004270537:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+346428517:$r15 = staticinvoke <soot.ShortType: soot.ShortType v()>()
+1880975053:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(2)
+378480636:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r15, $r13)
+2067779149:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+436297842:$r16 = staticinvoke <soot.IntType: soot.IntType v()>()
+232608167:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(4)
+277486838:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r16, $r13)
+2085702895:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+1032986284:$r17 = staticinvoke <soot.LongType: soot.LongType v()>()
+2103650406:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(5)
+1534288629:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r17, $r13)
+1742344664:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+499757356:$r18 = staticinvoke <soot.FloatType: soot.FloatType v()>()
+464966525:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(6)
+1952838074:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r18, $r13)
+2002592865:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+67082624:$r19 = staticinvoke <soot.DoubleType: soot.DoubleType v()>()
+2112693723:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(7)
+1356932617:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r19, $r13)
+1648823396:count = 31
+1177989050:argPushRetType = "void"
+403491614:$r20 = newarray (soot.SootMethodRef)[count]
+1877682919:<acteve.instrumentor.G: soot.SootMethodRef[] argPush> = $r20
+944626968:$r20 = <acteve.instrumentor.G: soot.SootMethodRef[] argPush>
+2128382805:$r21 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1094695556:$r2 = new java.lang.StringBuilder
+637482752:$r22 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(argPushRetType)
+376697981:specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r22)
+469732976:$r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" argpush(int)")
+652241260:$r23 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>()
+1462322532:$r24 = virtualinvoke $r21.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>($r23)
+1451939056:$r25 = virtualinvoke $r24.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+883033331:$r20[0] = $r25
+464785022:paramSig = "int,acteve.symbolic.integer.Expression"
+1623396407:i = 1
+643677314:goto [?= (branch)]
+block 5
+846404352:if i < count goto $r20 = <acteve.instrumentor.G: soot.SootMethodRef[] argPush>
+block 6
+586266336:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+215260145:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("acteve.symbolic.integer.Expression[] argpop(int,int,int)")
+1514795467:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+748778684:<acteve.instrumentor.G: soot.SootMethodRef argPop> = $r29
+469170568:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1667720706:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void retpush(int,acteve.symbolic.integer.Expression)")
+425345098:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1949484870:<acteve.instrumentor.G: soot.SootMethodRef retPush> = $r29
+834207811:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+667206989:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("acteve.symbolic.integer.Expression retpop(int)")
+1735743136:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1217025904:<acteve.instrumentor.G: soot.SootMethodRef retPop> = $r29
+1920114500:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+669202242:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void assume(acteve.symbolic.integer.Expression,int,boolean)")
+910221955:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1574380104:<acteve.instrumentor.G: soot.SootMethodRef assume> = $r29
+1460393241:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1589932297:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void read(java.lang.Object,int)")
+853096058:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1384619434:<acteve.instrumentor.G: soot.SootMethodRef explicit_read> = $r29
+1166028346:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1170538671:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void write(java.lang.Object,int)")
+145753330:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1544859730:<acteve.instrumentor.G: soot.SootMethodRef explicit_write> = $r29
+1380189880:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+70398892:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void read(int)")
+2078171994:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1162668350:<acteve.instrumentor.G: soot.SootMethodRef id_field_read> = $r29
+1013254397:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+446070279:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void write(int)")
+237767476:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1838385712:<acteve.instrumentor.G: soot.SootMethodRef id_field_write> = $r29
+1901432195:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+503596860:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void rw(int,int)")
+719373193:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+172322141:<acteve.instrumentor.G: soot.SootMethodRef rw> = $r29
+1410267631:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1871838971:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void ww(int,int)")
+1509640694:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+11854753:<acteve.instrumentor.G: soot.SootMethodRef ww> = $r29
+1674338147:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+988073411:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int eventId()")
+58776426:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+12914162:<acteve.instrumentor.G: soot.SootMethodRef eventId> = $r29
+152472387:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1157255003:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void readArray(java.lang.Object,int)")
+225444542:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+885264086:<acteve.instrumentor.G: soot.SootMethodRef readArray> = $r29
+866786986:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1996561940:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void writeArray(java.lang.Object,int)")
+1784541205:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1027418433:<acteve.instrumentor.G: soot.SootMethodRef writeArray> = $r29
+2053081551:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+206332717:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void only_write(int)")
+1795368361:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+463319330:<acteve.instrumentor.G: soot.SootMethodRef only_write> = $r29
+232275288:$r9 = staticinvoke <acteve.instrumentor.SymOpsClassGenerator: soot.SootClass generate()>()
+1872978817:<acteve.instrumentor.G: soot.SootClass symOpsClass> = $r9
+1339679593:return
+block 4
+1409486459:$r20 = <acteve.instrumentor.G: soot.SootMethodRef[] argPush>
+503807334:$r21 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+2109326064:$r2 = new java.lang.StringBuilder
+436156672:$r22 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(argPushRetType)
+1123499093:specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r22)
+1447561662:$r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" argpush(")
+473145665:$r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(paramSig)
+523186087:$r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")")
+1390513391:$r23 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>()
+1441515883:$r24 = virtualinvoke $r21.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>($r23)
+1794423774:$r25 = virtualinvoke $r24.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1767514797:$r20[i] = $r25
+479904228:$r26 = new java.lang.StringBuilder
+1762437008:$r27 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(paramSig)
+1036850385:specialinvoke $r26.<java.lang.StringBuilder: void <init>(java.lang.String)>($r27)
+597623983:$r26 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",")
+1857850775:$r26 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("acteve.symbolic.integer.Expression")
+1382050068:paramSig = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.String toString()>()
+932366924:i = i + 1
+1057591109:goto [?= $r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>]
+block 6
+586266336:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+215260145:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("acteve.symbolic.integer.Expression[] argpop(int,int,int)")
+1514795467:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+748778684:<acteve.instrumentor.G: soot.SootMethodRef argPop> = $r29
+469170568:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1667720706:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void retpush(int,acteve.symbolic.integer.Expression)")
+425345098:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1949484870:<acteve.instrumentor.G: soot.SootMethodRef retPush> = $r29
+834207811:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+667206989:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("acteve.symbolic.integer.Expression retpop(int)")
+1735743136:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1217025904:<acteve.instrumentor.G: soot.SootMethodRef retPop> = $r29
+1920114500:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+669202242:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void assume(acteve.symbolic.integer.Expression,int,boolean)")
+910221955:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1574380104:<acteve.instrumentor.G: soot.SootMethodRef assume> = $r29
+1460393241:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1589932297:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void read(java.lang.Object,int)")
+853096058:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1384619434:<acteve.instrumentor.G: soot.SootMethodRef explicit_read> = $r29
+1166028346:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1170538671:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void write(java.lang.Object,int)")
+145753330:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1544859730:<acteve.instrumentor.G: soot.SootMethodRef explicit_write> = $r29
+1380189880:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+70398892:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void read(int)")
+2078171994:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1162668350:<acteve.instrumentor.G: soot.SootMethodRef id_field_read> = $r29
+1013254397:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+446070279:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void write(int)")
+237767476:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1838385712:<acteve.instrumentor.G: soot.SootMethodRef id_field_write> = $r29
+1901432195:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+503596860:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void rw(int,int)")
+719373193:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+172322141:<acteve.instrumentor.G: soot.SootMethodRef rw> = $r29
+1410267631:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1871838971:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void ww(int,int)")
+1509640694:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+11854753:<acteve.instrumentor.G: soot.SootMethodRef ww> = $r29
+1674338147:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+988073411:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int eventId()")
+58776426:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+12914162:<acteve.instrumentor.G: soot.SootMethodRef eventId> = $r29
+152472387:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1157255003:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void readArray(java.lang.Object,int)")
+225444542:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+885264086:<acteve.instrumentor.G: soot.SootMethodRef readArray> = $r29
+866786986:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1996561940:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void writeArray(java.lang.Object,int)")
+1784541205:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1027418433:<acteve.instrumentor.G: soot.SootMethodRef writeArray> = $r29
+2053081551:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+206332717:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void only_write(int)")
+1795368361:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+463319330:<acteve.instrumentor.G: soot.SootMethodRef only_write> = $r29
+232275288:$r9 = staticinvoke <acteve.instrumentor.SymOpsClassGenerator: soot.SootClass generate()>()
+1872978817:<acteve.instrumentor.G: soot.SootClass symOpsClass> = $r9
+1339679593:return
+block 2
+770164643:$z0 = 0
+block 3
+670412060:<acteve.instrumentor.G: boolean $assertionsDisabled> = $z0
+1916280258:$r3 = staticinvoke <soot.jimple.Jimple: soot.jimple.Jimple v()>()
+1110042147:<acteve.instrumentor.G: soot.jimple.Jimple jimple> = $r3
+1287923140:$r4 = new acteve.instrumentor.BodyEditor
+287765893:specialinvoke $r4.<acteve.instrumentor.BodyEditor: void <init>()>()
+348190607:<acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor> = $r4
+146593774:$r5 = new java.util.HashMap
+1691184586:specialinvoke $r5.<java.util.HashMap: void <init>()>()
+1793268857:<acteve.instrumentor.G: java.util.Map binopSymbolToMethodName> = $r5
+1684177601:$r5 = new java.util.HashMap
+1021781237:specialinvoke $r5.<java.util.HashMap: void <init>()>()
+1798008847:<acteve.instrumentor.G: java.util.Map negationMap> = $r5
+1892294592:$r5 = new java.util.HashMap
+315583893:specialinvoke $r5.<java.util.HashMap: void <init>()>()
+1881365208:<acteve.instrumentor.G: java.util.Map typeMap> = $r5
+555832428:$r6 = new java.io.PrintWriter
+337940276:$r1 = <java.lang.System: java.io.PrintStream out>
+1815456064:specialinvoke $r6.<java.io.PrintWriter: void <init>(java.io.OutputStream)>($r1)
+922411072:<acteve.instrumentor.G: java.io.PrintWriter printer> = $r6
+364313864:$r7 = staticinvoke <soot.RefType: soot.RefType v(java.lang.String)>("acteve.symbolic.integer.Expression")
+547234651:<acteve.instrumentor.G: soot.Type EXPRESSION_TYPE> = $r7
+1262371454:$r7 = staticinvoke <soot.RefType: soot.RefType v(java.lang.String)>("java.lang.Object")
+1686078665:<acteve.instrumentor.G: soot.Type OBJECT_TYPE> = $r7
+1877400490:$r8 = staticinvoke <soot.Scene: soot.Scene v()>()
+1961718781:$r9 = virtualinvoke $r8.<soot.Scene: soot.SootClass getSootClass(java.lang.String)>("acteve.symbolic.Util")
+291119876:<acteve.instrumentor.G: soot.SootClass symUtilClass> = $r9
+1231695316:map = <acteve.instrumentor.G: java.util.Map binopSymbolToMethodName>
+1220617248:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("+", "_plus")
+2807345:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("-", "_minus")
+2085890828:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("*", "_mul")
+2044092568:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("/", "_div")
+1767889317:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">>", "_shiftR")
+332010927:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<<", "_shiftL")
+945135183:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">>>", "_shiftUR")
+2097967469:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("&", "_and")
+1005251390:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("|", "_or")
+1006260781:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("^", "_xor")
+791226142:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("%", "_rem")
+919026370:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("==", "_eq")
+1373811366:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("!=", "_ne")
+2050939465:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">=", "_ge")
+879570258:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">", "_gt")
+1807383905:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<=", "_le")
+545104520:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<", "_lt")
+406429538:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("cmp", "_cmp")
+1863247706:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("cmpl", "_cmpl")
+997654188:interfaceinvoke map.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("cmpg", "_cmpg")
+2093953833:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+21621940:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("==", "!=")
+1881265984:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+475209237:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("!=", "==")
+285972113:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+349963066:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">=", "<")
+1331291006:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+2019024776:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(">", "<=")
+984165123:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+1360303985:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<=", ">")
+1585095739:$r11 = <acteve.instrumentor.G: java.util.Map negationMap>
+518169933:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>("<", ">=")
+1934519451:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+565997377:$r12 = staticinvoke <soot.ByteType: soot.ByteType v()>()
+140475052:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(3)
+835875346:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r12, $r13)
+1990339484:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+282938269:$r14 = staticinvoke <soot.CharType: soot.CharType v()>()
+183215103:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(1)
+1866405195:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r14, $r13)
+2004270537:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+346428517:$r15 = staticinvoke <soot.ShortType: soot.ShortType v()>()
+1880975053:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(2)
+378480636:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r15, $r13)
+2067779149:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+436297842:$r16 = staticinvoke <soot.IntType: soot.IntType v()>()
+232608167:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(4)
+277486838:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r16, $r13)
+2085702895:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+1032986284:$r17 = staticinvoke <soot.LongType: soot.LongType v()>()
+2103650406:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(5)
+1534288629:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r17, $r13)
+1742344664:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+499757356:$r18 = staticinvoke <soot.FloatType: soot.FloatType v()>()
+464966525:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(6)
+1952838074:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r18, $r13)
+2002592865:$r11 = <acteve.instrumentor.G: java.util.Map typeMap>
+67082624:$r19 = staticinvoke <soot.DoubleType: soot.DoubleType v()>()
+2112693723:$r13 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>(7)
+1356932617:interfaceinvoke $r11.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>($r19, $r13)
+1648823396:count = 31
+1177989050:argPushRetType = "void"
+403491614:$r20 = newarray (soot.SootMethodRef)[count]
+1877682919:<acteve.instrumentor.G: soot.SootMethodRef[] argPush> = $r20
+944626968:$r20 = <acteve.instrumentor.G: soot.SootMethodRef[] argPush>
+2128382805:$r21 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1094695556:$r2 = new java.lang.StringBuilder
+637482752:$r22 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(argPushRetType)
+376697981:specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r22)
+469732976:$r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" argpush(int)")
+652241260:$r23 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>()
+1462322532:$r24 = virtualinvoke $r21.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>($r23)
+1451939056:$r25 = virtualinvoke $r24.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+883033331:$r20[0] = $r25
+464785022:paramSig = "int,acteve.symbolic.integer.Expression"
+1623396407:i = 1
+643677314:goto [?= (branch)]
+block 5
+846404352:if i < count goto $r20 = <acteve.instrumentor.G: soot.SootMethodRef[] argPush>
+block 6
+586266336:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+215260145:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("acteve.symbolic.integer.Expression[] argpop(int,int,int)")
+1514795467:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+748778684:<acteve.instrumentor.G: soot.SootMethodRef argPop> = $r29
+469170568:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1667720706:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void retpush(int,acteve.symbolic.integer.Expression)")
+425345098:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1949484870:<acteve.instrumentor.G: soot.SootMethodRef retPush> = $r29
+834207811:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+667206989:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("acteve.symbolic.integer.Expression retpop(int)")
+1735743136:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1217025904:<acteve.instrumentor.G: soot.SootMethodRef retPop> = $r29
+1920114500:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+669202242:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void assume(acteve.symbolic.integer.Expression,int,boolean)")
+910221955:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1574380104:<acteve.instrumentor.G: soot.SootMethodRef assume> = $r29
+1460393241:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1589932297:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void read(java.lang.Object,int)")
+853096058:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1384619434:<acteve.instrumentor.G: soot.SootMethodRef explicit_read> = $r29
+1166028346:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1170538671:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void write(java.lang.Object,int)")
+145753330:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1544859730:<acteve.instrumentor.G: soot.SootMethodRef explicit_write> = $r29
+1380189880:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+70398892:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void read(int)")
+2078171994:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1162668350:<acteve.instrumentor.G: soot.SootMethodRef id_field_read> = $r29
+1013254397:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+446070279:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void write(int)")
+237767476:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1838385712:<acteve.instrumentor.G: soot.SootMethodRef id_field_write> = $r29
+1901432195:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+503596860:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void rw(int,int)")
+719373193:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+172322141:<acteve.instrumentor.G: soot.SootMethodRef rw> = $r29
+1410267631:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1871838971:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void ww(int,int)")
+1509640694:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+11854753:<acteve.instrumentor.G: soot.SootMethodRef ww> = $r29
+1674338147:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+988073411:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int eventId()")
+58776426:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+12914162:<acteve.instrumentor.G: soot.SootMethodRef eventId> = $r29
+152472387:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1157255003:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void readArray(java.lang.Object,int)")
+225444542:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+885264086:<acteve.instrumentor.G: soot.SootMethodRef readArray> = $r29
+866786986:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1996561940:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void writeArray(java.lang.Object,int)")
+1784541205:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1027418433:<acteve.instrumentor.G: soot.SootMethodRef writeArray> = $r29
+2053081551:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+206332717:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void only_write(int)")
+1795368361:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+463319330:<acteve.instrumentor.G: soot.SootMethodRef only_write> = $r29
+232275288:$r9 = staticinvoke <acteve.instrumentor.SymOpsClassGenerator: soot.SootClass generate()>()
+1872978817:<acteve.instrumentor.G: soot.SootClass symOpsClass> = $r9
+1339679593:return
+block 4
+1409486459:$r20 = <acteve.instrumentor.G: soot.SootMethodRef[] argPush>
+503807334:$r21 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+2109326064:$r2 = new java.lang.StringBuilder
+436156672:$r22 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(argPushRetType)
+1123499093:specialinvoke $r2.<java.lang.StringBuilder: void <init>(java.lang.String)>($r22)
+1447561662:$r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" argpush(")
+473145665:$r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(paramSig)
+523186087:$r2 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(")")
+1390513391:$r23 = virtualinvoke $r2.<java.lang.StringBuilder: java.lang.String toString()>()
+1441515883:$r24 = virtualinvoke $r21.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>($r23)
+1794423774:$r25 = virtualinvoke $r24.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1767514797:$r20[i] = $r25
+479904228:$r26 = new java.lang.StringBuilder
+1762437008:$r27 = staticinvoke <java.lang.String: java.lang.String valueOf(java.lang.Object)>(paramSig)
+1036850385:specialinvoke $r26.<java.lang.StringBuilder: void <init>(java.lang.String)>($r27)
+597623983:$r26 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(",")
+1857850775:$r26 = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("acteve.symbolic.integer.Expression")
+1382050068:paramSig = virtualinvoke $r26.<java.lang.StringBuilder: java.lang.String toString()>()
+932366924:i = i + 1
+1057591109:goto [?= $r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>]
+block 6
+586266336:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+215260145:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("acteve.symbolic.integer.Expression[] argpop(int,int,int)")
+1514795467:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+748778684:<acteve.instrumentor.G: soot.SootMethodRef argPop> = $r29
+469170568:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1667720706:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void retpush(int,acteve.symbolic.integer.Expression)")
+425345098:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1949484870:<acteve.instrumentor.G: soot.SootMethodRef retPush> = $r29
+834207811:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+667206989:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("acteve.symbolic.integer.Expression retpop(int)")
+1735743136:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1217025904:<acteve.instrumentor.G: soot.SootMethodRef retPop> = $r29
+1920114500:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+669202242:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void assume(acteve.symbolic.integer.Expression,int,boolean)")
+910221955:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1574380104:<acteve.instrumentor.G: soot.SootMethodRef assume> = $r29
+1460393241:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1589932297:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void read(java.lang.Object,int)")
+853096058:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1384619434:<acteve.instrumentor.G: soot.SootMethodRef explicit_read> = $r29
+1166028346:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1170538671:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void write(java.lang.Object,int)")
+145753330:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1544859730:<acteve.instrumentor.G: soot.SootMethodRef explicit_write> = $r29
+1380189880:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+70398892:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void read(int)")
+2078171994:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1162668350:<acteve.instrumentor.G: soot.SootMethodRef id_field_read> = $r29
+1013254397:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+446070279:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void write(int)")
+237767476:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1838385712:<acteve.instrumentor.G: soot.SootMethodRef id_field_write> = $r29
+1901432195:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+503596860:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void rw(int,int)")
+719373193:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+172322141:<acteve.instrumentor.G: soot.SootMethodRef rw> = $r29
+1410267631:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1871838971:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void ww(int,int)")
+1509640694:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+11854753:<acteve.instrumentor.G: soot.SootMethodRef ww> = $r29
+1674338147:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+988073411:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("int eventId()")
+58776426:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+12914162:<acteve.instrumentor.G: soot.SootMethodRef eventId> = $r29
+152472387:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1157255003:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void readArray(java.lang.Object,int)")
+225444542:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+885264086:<acteve.instrumentor.G: soot.SootMethodRef readArray> = $r29
+866786986:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+1996561940:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void writeArray(java.lang.Object,int)")
+1784541205:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1027418433:<acteve.instrumentor.G: soot.SootMethodRef writeArray> = $r29
+2053081551:$r9 = <acteve.instrumentor.G: soot.SootClass symUtilClass>
+206332717:$r28 = virtualinvoke $r9.<soot.SootClass: soot.SootMethod getMethod(java.lang.String)>("void only_write(int)")
+1795368361:$r29 = virtualinvoke $r28.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+463319330:<acteve.instrumentor.G: soot.SootMethodRef only_write> = $r29
+232275288:$r9 = staticinvoke <acteve.instrumentor.SymOpsClassGenerator: soot.SootClass generate()>()
+1872978817:<acteve.instrumentor.G: soot.SootClass symOpsClass> = $r9
+1339679593:return

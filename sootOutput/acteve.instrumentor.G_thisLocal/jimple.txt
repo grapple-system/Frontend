@@ -1,0 +1,11 @@
+block 0
+2098935205:method := @parameter0: soot.SootMethod
+690465827:$r1 = virtualinvoke method.<soot.SootMethod: soot.SootClass getDeclaringClass()>()
+1805009648:$r2 = virtualinvoke $r1.<soot.SootClass: soot.RefType getType()>()
+1449540880:p = staticinvoke <acteve.instrumentor.G: soot.Local newLocal(soot.Type)>($r2)
+382893673:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+1804815635:$r3 = interfaceinvoke p.<soot.Local: soot.Type getType()>()
+329863570:$r4 = (soot.RefType) $r3
+1361728083:$r5 = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.ThisRef newThisRef(soot.RefType)>($r4)
+830664902:staticinvoke <acteve.instrumentor.G: void identity(soot.Local,soot.jimple.IdentityRef)>(p, $r5)
+1926808117:return p

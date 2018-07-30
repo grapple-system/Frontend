@@ -202,3 +202,11 @@ block 0
 701854595:this := @this: test
 52436708:specialinvoke this.<java.lang.Object: void <init>()>()
 835456086:return
+block 0
+847082345:this := @this: test
+78225219:specialinvoke this.<java.lang.Object: void <init>()>()
+471263769:return
+block 0
+919381433:this := @this: test
+336542017:specialinvoke this.<java.lang.Object: void <init>()>()
+1937237168:return

@@ -97,6 +97,7 @@ public class IntraMain extends BodyTransformer {
 		 */
 		soot.Main.main(args);
 		TSCGenerator.printCallInfo("intraOutput/callInfoFile");
+		TSCGenerator.printCalledVar("intraOutput/calledVarFile");
 	}
 
 }

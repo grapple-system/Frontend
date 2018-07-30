@@ -253,3 +253,13 @@ block 0
 1651545820:specialinvoke $r0.<java.util.ArrayList: void <init>()>()
 1050883265:<test: java.util.List tlist> = $r0
 1289521927:return
+block 0
+2034133477:$r0 = new java.util.ArrayList
+757091327:specialinvoke $r0.<java.util.ArrayList: void <init>()>()
+593324414:<test: java.util.List tlist> = $r0
+1236853077:return
+block 0
+1910689756:$r0 = new java.util.ArrayList
+713063356:specialinvoke $r0.<java.util.ArrayList: void <init>()>()
+1497074032:<test: java.util.List tlist> = $r0
+1404847572:return

@@ -1,0 +1,62 @@
+block 0
+1706322617:method := @parameter0: soot.SootMethod
+667601881:$r0 = new soot.toolkits.graph.LoopNestTree
+839698815:$r1 = virtualinvoke method.<soot.SootMethod: soot.Body retrieveActiveBody()>()
+1702939268:specialinvoke $r0.<soot.toolkits.graph.LoopNestTree: void <init>(soot.Body)>($r1)
+1785713707:loopNestTree = $r0
+592091386:$z0 = staticinvoke <acteve.instrumentor.LoopTransformer: boolean hasNestedLoops(soot.toolkits.graph.LoopNestTree)>(loopNestTree)
+1988187951:if $z0 == 0 goto l3 = virtualinvoke loopNestTree.<soot.toolkits.graph.LoopNestTree: java.util.Iterator iterator()>()
+block 1
+629345137:$r2 = <java.lang.System: java.io.PrintStream err>
+643467564:virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("Having nested loops.")
+39241320:l3 = virtualinvoke loopNestTree.<soot.toolkits.graph.LoopNestTree: java.util.Iterator iterator()>()
+251385611:goto [?= $z0 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>()]
+block 5
+1357170721:$z0 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>()
+1544493060:if $z0 != 0 goto $r3 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>()
+block 6
+1660018131:goto [?= return]
+block 12
+206422500:return
+block 2
+519601710:$r3 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>()
+1393302217:loop = (soot.jimple.toolkits.annotation.logic.Loop) $r3
+1802060556:staticinvoke <acteve.instrumentor.LoopTransformer: void printLoopInfo(soot.jimple.toolkits.annotation.logic.Loop)>(loop)
+1366410271:$z0 = virtualinvoke loop.<soot.jimple.toolkits.annotation.logic.Loop: boolean loopsForever()>()
+67303679:if $z0 == 0 goto staticinvoke <acteve.instrumentor.LoopTransformer: void breakLoop(soot.jimple.toolkits.annotation.logic.Loop,soot.SootMethod)>(loop, method)
+block 3
+1596534631:$r4 = new java.lang.RuntimeException
+541774655:specialinvoke $r4.<java.lang.RuntimeException: void <init>(java.lang.String)>("unexpected infinite loop!!!")
+275963305:throw $r4
+block 4
+2122854638:staticinvoke <acteve.instrumentor.LoopTransformer: void breakLoop(soot.jimple.toolkits.annotation.logic.Loop,soot.SootMethod)>(loop, method)
+205211482:goto [?= $r4 = new java.lang.RuntimeException]
+block 3
+1596534631:$r4 = new java.lang.RuntimeException
+541774655:specialinvoke $r4.<java.lang.RuntimeException: void <init>(java.lang.String)>("unexpected infinite loop!!!")
+275963305:throw $r4
+block 7
+1554460065:l3 = virtualinvoke loopNestTree.<soot.toolkits.graph.LoopNestTree: java.util.Iterator iterator()>()
+1671746700:goto [?= $z0 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>()]
+block 11
+1885164344:$z0 = interfaceinvoke l3.<java.util.Iterator: boolean hasNext()>()
+2130885417:if $z0 != 0 goto $r3 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>()
+block 12
+206422500:return
+block 8
+544681939:$r3 = interfaceinvoke l3.<java.util.Iterator: java.lang.Object next()>()
+1068568532:loop = (soot.jimple.toolkits.annotation.logic.Loop) $r3
+383691241:staticinvoke <acteve.instrumentor.LoopTransformer: void printLoopInfo(soot.jimple.toolkits.annotation.logic.Loop)>(loop)
+367319650:$z0 = virtualinvoke loop.<soot.jimple.toolkits.annotation.logic.Loop: boolean loopsForever()>()
+1673356072:if $z0 == 0 goto staticinvoke <acteve.instrumentor.LoopTransformer: void unrollLoop(soot.jimple.toolkits.annotation.logic.Loop,soot.SootMethod)>(loop, method)
+block 9
+649660992:$r4 = new java.lang.RuntimeException
+381618375:specialinvoke $r4.<java.lang.RuntimeException: void <init>(java.lang.String)>("unexpected infinite loop!!!")
+1473858683:throw $r4
+block 10
+81953004:staticinvoke <acteve.instrumentor.LoopTransformer: void unrollLoop(soot.jimple.toolkits.annotation.logic.Loop,soot.SootMethod)>(loop, method)
+1856811898:goto [?= $r4 = new java.lang.RuntimeException]
+block 9
+649660992:$r4 = new java.lang.RuntimeException
+381618375:specialinvoke $r4.<java.lang.RuntimeException: void <init>(java.lang.String)>("unexpected infinite loop!!!")
+1473858683:throw $r4

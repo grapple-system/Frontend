@@ -3237,3 +3237,180 @@ block 7
 1202784272:goto [?= return]
 block 9
 385238100:return
+block 0
+1957697945:this := @this: T
+1479616934:$r0 = newarray (char)[2]
+2094375425:$r0[0] = 97
+2090532742:$r0[1] = 98
+603846227:cca = $r0
+1499684043:$r1 = new java.lang.StringBuilder
+1996775420:specialinvoke $r1.<java.lang.StringBuilder: void <init>()>()
+1077532271:sb = $r1
+1307384882:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("str")
+165035670:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(115)
+1353117413:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>(sb)
+2140022208:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(0)
+1738320909:$r2 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>()
+1297129900:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2)
+1755728603:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(0)
+2105320841:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[])>(cca)
+39323068:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>(0.1)
+1625324247:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>(0.1F)
+832629489:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(0L)
+1000377771:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[],int,int)>(cca, 0, 1)
+699724834:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence,int,int)>(sb, 0, 0)
+405063339:format = "yyyy-MM-dd HH:mm:ss"
+654834066:virtualinvoke format.<java.lang.String: java.lang.String toString()>()
+1867672671:$r3 = new java.lang.String
+255076875:specialinvoke $r3.<java.lang.String: void <init>()>()
+699678713:f = $r3
+2027162066:$r4 = new java.io.File
+46126256:specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("")
+2388025:file = $r4
+1480830529:$r5 = new java.text.SimpleDateFormat
+2107296701:specialinvoke $r5.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(format)
+1035347383:sdf = $r5
+2089940034:virtualinvoke sdf.<java.text.SimpleDateFormat: java.util.Date parse(java.lang.String)>(format)
+1515325600:goto [?= $z0 = virtualinvoke file.<java.io.File: boolean exists()>()]
+block 2
+1485925049:$z0 = virtualinvoke file.<java.io.File: boolean exists()>()
+2004147498:if $z0 != 0 goto virtualinvoke file.<java.lang.Object: java.lang.Class getClass()>()
+block 3
+1379621106:virtualinvoke file.<java.io.File: boolean createNewFile()>()
+755379126:goto [?= virtualinvoke this.<T: void testFW()>()]
+block 5
+338956430:virtualinvoke this.<T: void testFW()>()
+1714087166:goto [?= virtualinvoke this.<T: void throwexc()>()]
+block 7
+1361953942:virtualinvoke this.<T: void throwexc()>()
+331709821:goto [?= return]
+block 9
+1576888364:return
+block 4
+910991883:virtualinvoke file.<java.lang.Object: java.lang.Class getClass()>()
+block 5
+338956430:virtualinvoke this.<T: void testFW()>()
+1714087166:goto [?= virtualinvoke this.<T: void throwexc()>()]
+block 7
+1361953942:virtualinvoke this.<T: void throwexc()>()
+331709821:goto [?= return]
+block 9
+1576888364:return
+block 0
+1607693721:this := @this: T
+540679342:$r0 = newarray (char)[2]
+1152304839:$r0[0] = 97
+909199460:$r0[1] = 98
+1569175815:cca = $r0
+1593916917:$r1 = new java.lang.StringBuilder
+1602354998:specialinvoke $r1.<java.lang.StringBuilder: void <init>()>()
+1335518006:sb = $r1
+92602994:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("str")
+1600359730:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(115)
+13303435:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>(sb)
+252532757:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(0)
+1965662413:$r2 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>()
+890360427:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2)
+621644293:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(0)
+467689796:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[])>(cca)
+672253352:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>(0.1)
+650620197:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>(0.1F)
+2134404102:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(0L)
+1362902826:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[],int,int)>(cca, 0, 1)
+1247217680:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence,int,int)>(sb, 0, 0)
+2070169469:format = "yyyy-MM-dd HH:mm:ss"
+399669393:virtualinvoke format.<java.lang.String: java.lang.String toString()>()
+130453102:$r3 = new java.lang.String
+1059772134:specialinvoke $r3.<java.lang.String: void <init>()>()
+360887920:f = $r3
+949452312:$r4 = new java.io.File
+252499436:specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("")
+330334380:file = $r4
+684697165:$r5 = new java.text.SimpleDateFormat
+2074148858:specialinvoke $r5.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(format)
+117814655:sdf = $r5
+2062123982:virtualinvoke sdf.<java.text.SimpleDateFormat: java.util.Date parse(java.lang.String)>(format)
+610258799:goto [?= $z0 = virtualinvoke file.<java.io.File: boolean exists()>()]
+block 2
+965719652:$z0 = virtualinvoke file.<java.io.File: boolean exists()>()
+142763233:if $z0 != 0 goto virtualinvoke file.<java.lang.Object: java.lang.Class getClass()>()
+block 3
+2026670188:virtualinvoke file.<java.io.File: boolean createNewFile()>()
+1394292689:goto [?= virtualinvoke this.<T: void testFW()>()]
+block 5
+134249562:virtualinvoke this.<T: void testFW()>()
+1474559184:goto [?= virtualinvoke this.<T: void throwexc()>()]
+block 7
+2043844858:virtualinvoke this.<T: void throwexc()>()
+1899594641:goto [?= return]
+block 9
+1381283048:return
+block 4
+1007724649:virtualinvoke file.<java.lang.Object: java.lang.Class getClass()>()
+block 5
+134249562:virtualinvoke this.<T: void testFW()>()
+1474559184:goto [?= virtualinvoke this.<T: void throwexc()>()]
+block 7
+2043844858:virtualinvoke this.<T: void throwexc()>()
+1899594641:goto [?= return]
+block 9
+1381283048:return
+block 0
+798565045:this := @this: T
+856388408:$r0 = newarray (char)[2]
+659090032:$r0[0] = 97
+271077746:$r0[1] = 98
+1190861735:cca = $r0
+998708940:$r1 = new java.lang.StringBuilder
+2075341352:specialinvoke $r1.<java.lang.StringBuilder: void <init>()>()
+832708490:sb = $r1
+237458788:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("str")
+945233790:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(115)
+1607771671:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>(sb)
+31744296:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(0)
+1238612859:$r2 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>()
+950438416:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2)
+1035091326:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(0)
+14891735:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[])>(cca)
+1177287093:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>(0.1)
+1897332240:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>(0.1F)
+478283377:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(0L)
+477426518:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[],int,int)>(cca, 0, 1)
+1108582834:virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence,int,int)>(sb, 0, 0)
+533872696:format = "yyyy-MM-dd HH:mm:ss"
+383569666:virtualinvoke format.<java.lang.String: java.lang.String toString()>()
+967930014:$r3 = new java.lang.String
+255430155:specialinvoke $r3.<java.lang.String: void <init>()>()
+194804732:f = $r3
+1318052696:$r4 = new java.io.File
+66812904:specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("")
+1938013794:file = $r4
+1313361709:$r5 = new java.text.SimpleDateFormat
+617539998:specialinvoke $r5.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(format)
+206280435:sdf = $r5
+2056951815:virtualinvoke sdf.<java.text.SimpleDateFormat: java.util.Date parse(java.lang.String)>(format)
+747083073:goto [?= $z0 = virtualinvoke file.<java.io.File: boolean exists()>()]
+block 2
+1974834442:$z0 = virtualinvoke file.<java.io.File: boolean exists()>()
+1590398914:if $z0 != 0 goto virtualinvoke file.<java.lang.Object: java.lang.Class getClass()>()
+block 3
+997405299:virtualinvoke file.<java.io.File: boolean createNewFile()>()
+1539768275:goto [?= virtualinvoke this.<T: void testFW()>()]
+block 5
+271981520:virtualinvoke this.<T: void testFW()>()
+1348205824:goto [?= virtualinvoke this.<T: void throwexc()>()]
+block 7
+2125962964:virtualinvoke this.<T: void throwexc()>()
+1226617162:goto [?= return]
+block 9
+654289727:return
+block 4
+133511811:virtualinvoke file.<java.lang.Object: java.lang.Class getClass()>()
+block 5
+271981520:virtualinvoke this.<T: void testFW()>()
+1348205824:goto [?= virtualinvoke this.<T: void throwexc()>()]
+block 7
+2125962964:virtualinvoke this.<T: void throwexc()>()
+1226617162:goto [?= return]
+block 9
+654289727:return

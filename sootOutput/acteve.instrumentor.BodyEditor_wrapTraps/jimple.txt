@@ -1,0 +1,84 @@
+block 0
+1369604783:this := @this: acteve.instrumentor.BodyEditor
+70375688:body := @parameter0: soot.Body
+727081198:$r0 = virtualinvoke body.<soot.Body: soot.PatchingChain getUnits()>()
+1257144458:stmts = virtualinvoke $r0.<soot.PatchingChain: soot.util.Chain getNonPatchingChain()>()
+819822395:$r1 = virtualinvoke body.<soot.Body: soot.util.Chain getTraps()>()
+1092066627:tit = interfaceinvoke $r1.<soot.util.Chain: java.util.Iterator iterator()>()
+1968552727:goto [?= $z0 = interfaceinvoke tit.<java.util.Iterator: boolean hasNext()>()]
+block 6
+539734313:$z0 = interfaceinvoke tit.<java.util.Iterator: boolean hasNext()>()
+343673663:if $z0 != 0 goto $r2 = interfaceinvoke tit.<java.util.Iterator: java.lang.Object next()>()
+block 7
+1539727258:return
+block 1
+1187082086:$r2 = interfaceinvoke tit.<java.util.Iterator: java.lang.Object next()>()
+2011796717:trap = (soot.Trap) $r2
+1158986359:beginUnit = interfaceinvoke trap.<soot.Trap: soot.Unit getBeginUnit()>()
+454930340:endUnit = interfaceinvoke trap.<soot.Trap: soot.Unit getEndUnit()>()
+972441060:$r3 = staticinvoke <soot.jimple.Jimple: soot.jimple.Jimple v()>()
+283459278:beginNop = virtualinvoke $r3.<soot.jimple.Jimple: soot.jimple.NopStmt newNopStmt()>()
+536067079:interfaceinvoke stmts.<soot.util.Chain: void insertBefore(java.lang.Object,java.lang.Object)>(beginNop, beginUnit)
+2031402128:interfaceinvoke trap.<soot.Trap: void setBeginUnit(soot.Unit)>(beginNop)
+1602969998:$r4 = this.<acteve.instrumentor.BodyEditor: java.util.Map beginUnitToTraps>
+2140559333:$r2 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>(beginNop)
+111736237:ts = (java.util.Set) $r2
+1010220574:if ts != null goto interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+block 2
+771474036:$r5 = new java.util.HashSet
+655672728:specialinvoke $r5.<java.util.HashSet: void <init>()>()
+1152946739:ts = $r5
+1921861250:$r4 = this.<acteve.instrumentor.BodyEditor: java.util.Map beginUnitToTraps>
+269281599:interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(beginNop, ts)
+block 3
+1067790164:interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+1377951717:$r3 = staticinvoke <soot.jimple.Jimple: soot.jimple.Jimple v()>()
+47799046:endNop = virtualinvoke $r3.<soot.jimple.Jimple: soot.jimple.NopStmt newNopStmt()>()
+1618590682:interfaceinvoke stmts.<soot.util.Chain: void insertAfter(java.lang.Object,java.lang.Object)>(endNop, endUnit)
+1663201535:interfaceinvoke trap.<soot.Trap: void setEndUnit(soot.Unit)>(endNop)
+322592618:$r4 = this.<acteve.instrumentor.BodyEditor: java.util.Map endUnitToTraps>
+951406889:$r2 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>(endNop)
+1724925182:ts = (java.util.Set) $r2
+327981897:if ts != null goto interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+block 4
+1948704677:$r5 = new java.util.HashSet
+2054762179:specialinvoke $r5.<java.util.HashSet: void <init>()>()
+703415046:ts = $r5
+638798081:$r4 = this.<acteve.instrumentor.BodyEditor: java.util.Map endUnitToTraps>
+1975932016:interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(endNop, ts)
+block 5
+802275704:interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+1276261335:goto [?= return]
+block 7
+1539727258:return
+block 5
+802275704:interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+1276261335:goto [?= return]
+block 7
+1539727258:return
+block 3
+1067790164:interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+1377951717:$r3 = staticinvoke <soot.jimple.Jimple: soot.jimple.Jimple v()>()
+47799046:endNop = virtualinvoke $r3.<soot.jimple.Jimple: soot.jimple.NopStmt newNopStmt()>()
+1618590682:interfaceinvoke stmts.<soot.util.Chain: void insertAfter(java.lang.Object,java.lang.Object)>(endNop, endUnit)
+1663201535:interfaceinvoke trap.<soot.Trap: void setEndUnit(soot.Unit)>(endNop)
+322592618:$r4 = this.<acteve.instrumentor.BodyEditor: java.util.Map endUnitToTraps>
+951406889:$r2 = interfaceinvoke $r4.<java.util.Map: java.lang.Object get(java.lang.Object)>(endNop)
+1724925182:ts = (java.util.Set) $r2
+327981897:if ts != null goto interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+block 4
+1948704677:$r5 = new java.util.HashSet
+2054762179:specialinvoke $r5.<java.util.HashSet: void <init>()>()
+703415046:ts = $r5
+638798081:$r4 = this.<acteve.instrumentor.BodyEditor: java.util.Map endUnitToTraps>
+1975932016:interfaceinvoke $r4.<java.util.Map: java.lang.Object put(java.lang.Object,java.lang.Object)>(endNop, ts)
+block 5
+802275704:interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+1276261335:goto [?= return]
+block 7
+1539727258:return
+block 5
+802275704:interfaceinvoke ts.<java.util.Set: boolean add(java.lang.Object)>(trap)
+1276261335:goto [?= return]
+block 7
+1539727258:return

@@ -1,0 +1,87 @@
+block 0
+685351105:this := @this: T
+1741222874:$r0 = new java.io.File
+1550766112:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("1")
+1864504392:file = $r0
+643939320:goto [?= $r0 = new java.io.File]
+block 3
+891110758:$r0 = new java.io.File
+880576277:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("first finally")
+1535676062:file = $r0
+1649104388:$r2 = <java.lang.System: java.io.PrintStream out>
+1320079291:virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("first finally")
+block 4
+919086680:$r0 = new java.io.File
+2075679098:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("2")
+66754571:file = $r0
+957611063:goto [?= $r0 = new java.io.File]
+block 6
+420042387:$r0 = new java.io.File
+353703090:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("second finally")
+453098734:file = $r0
+253410076:$r2 = <java.lang.System: java.io.PrintStream out>
+1911757924:virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("second finally")
+265102254:$r0 = new java.io.File
+103722464:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("3")
+1654214731:file = $r0
+1063689855:goto [?= return]
+block 8
+2046184745:return
+block 0
+830665064:this := @this: T
+196541501:$r0 = new java.io.File
+403298385:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("1")
+777566763:file = $r0
+1126593746:goto [?= $r0 = new java.io.File]
+block 3
+719378629:$r0 = new java.io.File
+1601520877:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("first finally")
+201348241:file = $r0
+1773142462:$r2 = <java.lang.System: java.io.PrintStream out>
+1104253699:virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("first finally")
+block 4
+638241719:$r0 = new java.io.File
+1553289654:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("2")
+1328001846:file = $r0
+929482451:goto [?= $r0 = new java.io.File]
+block 6
+1286880321:$r0 = new java.io.File
+1236204940:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("second finally")
+2139625502:file = $r0
+1072143099:$r2 = <java.lang.System: java.io.PrintStream out>
+1751100494:virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("second finally")
+1630104170:$r0 = new java.io.File
+1254811668:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("3")
+1330290536:file = $r0
+740789635:goto [?= return]
+block 8
+474805792:return
+block 0
+665566283:this := @this: T
+2077684805:$r0 = new java.io.File
+1077499453:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("1")
+1951195067:file = $r0
+1660201379:goto [?= $r0 = new java.io.File]
+block 3
+2005953523:$r0 = new java.io.File
+117417953:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("first finally")
+2053548125:file = $r0
+1773645938:$r2 = <java.lang.System: java.io.PrintStream out>
+1360713001:virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("first finally")
+block 4
+950050904:$r0 = new java.io.File
+898942199:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("2")
+974081948:file = $r0
+1127458955:goto [?= $r0 = new java.io.File]
+block 6
+132343495:$r0 = new java.io.File
+386314632:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("second finally")
+946955143:file = $r0
+473780484:$r2 = <java.lang.System: java.io.PrintStream out>
+1998789224:virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("second finally")
+563797747:$r0 = new java.io.File
+590061565:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("3")
+85241109:file = $r0
+275726414:goto [?= return]
+block 8
+835456086:return

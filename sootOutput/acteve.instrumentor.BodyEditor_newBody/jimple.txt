@@ -1,0 +1,25 @@
+block 0
+1279626539:this := @this: acteve.instrumentor.BodyEditor
+1781999915:body := @parameter0: soot.Body
+1265630343:originalMethod := @parameter1: soot.SootMethod
+2142123655:$r0 = virtualinvoke body.<soot.Body: soot.PatchingChain getUnits()>()
+108927630:$r1 = virtualinvoke $r0.<soot.PatchingChain: java.util.Iterator snapshotIterator()>()
+1090610166:specialinvoke this.<acteve.instrumentor.BodyEditor: void newBody(soot.Body,soot.SootMethod,java.util.Iterator)>(body, originalMethod, $r1)
+1112132817:return
+block 0
+1422284074:this := @this: acteve.instrumentor.BodyEditor
+687956961:body := @parameter0: soot.Body
+440688079:originalMethod := @parameter1: soot.SootMethod
+2120928897:stmtIterator := @parameter2: java.util.Iterator
+1225013667:this.<acteve.instrumentor.BodyEditor: int freshCount> = 0
+1174360329:$r0 = virtualinvoke body.<soot.Body: soot.util.Chain getLocals()>()
+2099333573:this.<acteve.instrumentor.BodyEditor: soot.util.Chain locals> = $r0
+1764190689:this.<acteve.instrumentor.BodyEditor: java.util.Iterator stmtIterator> = stmtIterator
+2094489466:$r1 = virtualinvoke body.<soot.Body: soot.PatchingChain getUnits()>()
+532513438:$r0 = virtualinvoke $r1.<soot.PatchingChain: soot.util.Chain getNonPatchingChain()>()
+1388995417:this.<acteve.instrumentor.BodyEditor: soot.util.Chain stmts> = $r0
+1266391578:$r0 = virtualinvoke body.<soot.Body: soot.util.Chain getTraps()>()
+532826029:this.<acteve.instrumentor.BodyEditor: soot.util.Chain traps> = $r0
+679560716:this.<acteve.instrumentor.BodyEditor: java.lang.String lastStmt> = null
+1641251897:this.<acteve.instrumentor.BodyEditor: soot.SootMethod originalMethod> = originalMethod
+93187164:return

@@ -526,3 +526,21 @@ block 1
 1098406057:return a
 block 2
 474242952:return null
+block 0
+29018212:this := @this: T
+230301215:a := @parameter0: T
+906988611:b := @parameter1: T
+1260661312:if a == null goto return null
+block 1
+1241550488:return a
+block 2
+127965677:return null
+block 0
+803019734:this := @this: T
+1565431590:a := @parameter0: T
+1386573733:b := @parameter1: T
+546221768:if a == null goto return null
+block 1
+425995691:return a
+block 2
+2045821149:return null

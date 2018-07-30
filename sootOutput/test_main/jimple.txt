@@ -2255,3 +2255,21 @@ block 2
 block 3
 1333371531:ar = null
 983465072:return
+block 0
+241552967:args := @parameter0: java.lang.String[]
+1036623539:$r0 = new T
+981832162:specialinvoke $r0.<T: void <init>()>()
+388803186:t = $r0
+235055097:virtualinvoke t.<T: void testFW()>()
+1348588446:goto [?= return]
+block 2
+1435248072:return
+block 0
+1204961737:args := @parameter0: java.lang.String[]
+1021122549:$r0 = new T
+1113624654:specialinvoke $r0.<T: void <init>()>()
+1369576173:t = $r0
+1052272137:virtualinvoke t.<T: void testFW()>()
+1009973514:goto [?= return]
+block 2
+934777417:return

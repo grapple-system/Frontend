@@ -1,0 +1,15 @@
+block 0
+1818840522:$r0 = class "acteve/instrumentor/LoopTransformer"
+1970421856:$z0 = virtualinvoke $r0.<java.lang.Class: boolean desiredAssertionStatus()>()
+534813405:if $z0 != 0 goto $z0 = 0
+block 1
+1389835140:$z0 = 1
+779569561:goto [?= <acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator: boolean $assertionsDisabled> = $z0]
+block 3
+1627103504:<acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator: boolean $assertionsDisabled> = $z0
+671830830:return
+block 2
+427881380:$z0 = 0
+block 3
+1627103504:<acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator: boolean $assertionsDisabled> = $z0
+671830830:return

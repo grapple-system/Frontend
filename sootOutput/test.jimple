@@ -24,49 +24,61 @@ public class test extends java.lang.Object
     public static void main(java.lang.String[])
     {
         java.lang.String[] args;
-        T[] ar;
-        T c1, c2, c, c3, $r0;
-        byte in;
-        java.util.List $r1;
-        java.lang.Object $r2;
-        null_type c1, c2, ar;
+        T $r0, t;
+        java.io.IOException e, $r1;
 
         args := @parameter0: java.lang.String[];
-        ar = newarray (T)[2];
         $r0 = new T;
         specialinvoke $r0.<T: void <init>()>();
-        c1 = $r0;
-        $r0 = new T;
-        specialinvoke $r0.<T: void <init>()>();
-        c2 = $r0;
-        $r1 = <test: java.util.List tlist>;
-        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>(c1);
-        $r1 = <test: java.util.List tlist>;
-        interfaceinvoke $r1.<java.util.List: boolean add(java.lang.Object)>(c2);
-        c1.<T: int a> = 0;
-        c2.<T: int a> = 1;
-        c2 = c1;
-        c1.<T: int a> = 2;
-        in = 1;
-        $r1 = <test: java.util.List tlist>;
-        $r2 = interfaceinvoke $r1.<java.util.List: java.lang.Object get(int)>(in);
-        c = (T) $r2;
-        c1 = null;
-        c2 = c1;
-        c3 = virtualinvoke c2.<T: T interfunc(T,T)>(c1, c2);
-        c1 = c3;
-        ar[1] = c1;
-        c2 = ar[0];
-        if c1 == null goto label0;
-
-        c2 = c1;
-        goto label1;
+        t = $r0;
 
      label0:
-        c2 = null;
+        virtualinvoke t.<T: void testFW()>();
 
      label1:
-        ar = null;
+        goto label3;
+
+     label2:
+        $r1 := @caughtexception;
+        e = $r1;
+        virtualinvoke e.<java.io.IOException: void printStackTrace()>();
+
+     label3:
         return;
+
+        catch java.io.IOException from label0 to label1 with label2;
+    }
+
+    public static int index(int)
+    {
+        int a, i, $i0, $i1;
+        java.util.List $r0, $r3;
+        java.lang.Object $r1;
+        T $r2;
+
+        a := @parameter0: int;
+        i = 0;
+        goto label2;
+
+     label0:
+        $r0 = <test: java.util.List tlist>;
+        $r1 = interfaceinvoke $r0.<java.util.List: java.lang.Object get(int)>(i);
+        $r2 = (T) $r1;
+        $i0 = $r2.<T: int a>;
+        if $i0 != a goto label1;
+
+        return i;
+
+     label1:
+        i = i + 1;
+        goto label3;
+
+     label2:
+        $r3 = <test: java.util.List tlist>;
+        $i1 = interfaceinvoke $r3.<java.util.List: int size()>();
+        if i < $i1 goto label0;
+
+     label3:
+        return -1;
     }
 }

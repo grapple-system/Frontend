@@ -1,0 +1,87 @@
+block 0
+1443252228:loop := @parameter0: soot.jimple.toolkits.annotation.logic.Loop
+912403131:method := @parameter1: soot.SootMethod
+1603396236:$r1 = virtualinvoke method.<soot.SootMethod: soot.Body retrieveActiveBody()>()
+1655735896:$r2 = virtualinvoke $r1.<soot.Body: soot.PatchingChain getUnits()>()
+1093248565:stmts = virtualinvoke $r2.<soot.PatchingChain: soot.util.Chain getNonPatchingChain()>()
+421084447:backJump = virtualinvoke loop.<soot.jimple.toolkits.annotation.logic.Loop: soot.jimple.Stmt getBackJumpStmt()>()
+529896728:header = virtualinvoke loop.<soot.jimple.toolkits.annotation.logic.Loop: soot.jimple.Stmt getHead()>()
+1171282651:$r3 = virtualinvoke loop.<soot.jimple.toolkits.annotation.logic.Loop: java.util.Collection getLoopExits()>()
+1912406955:$r4 = interfaceinvoke $r3.<java.util.Collection: java.util.Iterator iterator()>()
+435948036:$r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>()
+860705884:exit = (soot.jimple.Stmt) $r5
+479250960:$z0 = backJump instanceof soot.jimple.IfStmt
+1707208470:if $z0 == 0 goto $z0 = backJump instanceof soot.jimple.GotoStmt
+block 1
+523747723:$r6 = <java.lang.System: java.io.PrintStream out>
+92511408:$r0 = new java.lang.StringBuilder
+533770320:specialinvoke $r0.<java.lang.StringBuilder: void <init>(java.lang.String)>("BackJump is IfStmt: ")
+578253031:$r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(backJump)
+1335189342:$r7 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>()
+1470643491:virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>($r7)
+1715859914:$z0 = <acteve.instrumentor.LoopTransformer: boolean $assertionsDisabled>
+2047162682:if $z0 != 0 goto interfaceinvoke stmts.<soot.util.Chain: boolean remove(java.lang.Object)>(backJump)
+block 2
+342549421:$r8 = (soot.jimple.IfStmt) backJump
+1971944787:$r9 = interfaceinvoke $r8.<soot.jimple.IfStmt: soot.jimple.Stmt getTarget()>()
+1336651978:if $r9 == header goto interfaceinvoke stmts.<soot.util.Chain: boolean remove(java.lang.Object)>(backJump)
+block 3
+283362979:$r10 = new java.lang.AssertionError
+1072278238:specialinvoke $r10.<java.lang.AssertionError: void <init>()>()
+97580442:throw $r10
+block 4
+1629529677:interfaceinvoke stmts.<soot.util.Chain: boolean remove(java.lang.Object)>(backJump)
+1094783746:goto [?= return]
+block 11
+442277673:return
+block 4
+1629529677:interfaceinvoke stmts.<soot.util.Chain: boolean remove(java.lang.Object)>(backJump)
+1094783746:goto [?= return]
+block 11
+442277673:return
+block 5
+953332250:$z0 = backJump instanceof soot.jimple.GotoStmt
+279635483:if $z0 == 0 goto $r6 = <java.lang.System: java.io.PrintStream out>
+block 6
+1139343145:$r6 = <java.lang.System: java.io.PrintStream out>
+1976041363:$r0 = new java.lang.StringBuilder
+1632791109:specialinvoke $r0.<java.lang.StringBuilder: void <init>(java.lang.String)>("BackJump is GotoStmt: ")
+2099567831:$r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(backJump)
+2132731760:$r7 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>()
+1173138243:virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>($r7)
+887086994:$z0 = <acteve.instrumentor.LoopTransformer: boolean $assertionsDisabled>
+1439630684:if $z0 != 0 goto interfaceinvoke stmts.<soot.util.Chain: boolean remove(java.lang.Object)>(backJump)
+block 7
+1967940071:$r11 = (soot.jimple.GotoStmt) backJump
+1773125850:$r12 = interfaceinvoke $r11.<soot.jimple.GotoStmt: soot.Unit getTarget()>()
+877186006:if $r12 == header goto interfaceinvoke stmts.<soot.util.Chain: boolean remove(java.lang.Object)>(backJump)
+block 8
+389966187:$r10 = new java.lang.AssertionError
+1478766580:specialinvoke $r10.<java.lang.AssertionError: void <init>()>()
+801663329:throw $r10
+block 9
+646331148:interfaceinvoke stmts.<soot.util.Chain: boolean remove(java.lang.Object)>(backJump)
+270524791:goto [?= return]
+block 11
+442277673:return
+block 9
+646331148:interfaceinvoke stmts.<soot.util.Chain: boolean remove(java.lang.Object)>(backJump)
+270524791:goto [?= return]
+block 11
+442277673:return
+block 10
+487281638:$r6 = <java.lang.System: java.io.PrintStream out>
+1387343855:$r0 = new java.lang.StringBuilder
+1186644615:specialinvoke $r0.<java.lang.StringBuilder: void <init>(java.lang.String)>("BackJump is OtherStmt: ")
+2081124406:$r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(backJump)
+1391732953:$r7 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>()
+463857947:virtualinvoke $r6.<java.io.PrintStream: void println(java.lang.String)>($r7)
+1064425280:$r3 = virtualinvoke loop.<soot.jimple.toolkits.annotation.logic.Loop: java.util.Collection targetsOfLoopExit(soot.jimple.Stmt)>(exit)
+1256901450:$r4 = interfaceinvoke $r3.<java.util.Collection: java.util.Iterator iterator()>()
+2093518258:$r5 = interfaceinvoke $r4.<java.util.Iterator: java.lang.Object next()>()
+203268875:loopExitTarget = (soot.jimple.Stmt) $r5
+1840983395:$r13 = <acteve.instrumentor.LoopTransformer: soot.jimple.Jimple jimple>
+718722238:newGoto = virtualinvoke $r13.<soot.jimple.Jimple: soot.jimple.GotoStmt newGotoStmt(soot.Unit)>(loopExitTarget)
+590593901:interfaceinvoke stmts.<soot.util.Chain: void insertAfter(java.lang.Object,java.lang.Object)>(newGoto, backJump)
+block 11
+442277673:return

@@ -1,0 +1,8 @@
+block 0
+420531565:lhs := @parameter0: soot.Value
+505330678:rhs := @parameter1: soot.Value
+1942364908:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+639259577:as = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.AssignStmt newAssignStmt(soot.Value,soot.Value)>(lhs, rhs)
+175024698:$r1 = <acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor>
+1385869235:virtualinvoke $r1.<acteve.instrumentor.BodyEditor: void insertStmt(soot.jimple.Stmt)>(as)
+696597283:return

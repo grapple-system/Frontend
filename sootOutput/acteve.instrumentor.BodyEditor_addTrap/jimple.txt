@@ -1,0 +1,6 @@
+block 0
+1630559579:this := @this: acteve.instrumentor.BodyEditor
+776024886:newTrap := @parameter0: soot.Trap
+104137355:$r0 = this.<acteve.instrumentor.BodyEditor: soot.util.Chain traps>
+729671336:interfaceinvoke $r0.<soot.util.Chain: void addLast(java.lang.Object)>(newTrap)
+1454519782:return

@@ -1,7 +1,11 @@
 <T: void <init>()>
 
 <T: void testTry()>
-0:$Z$@ret3
+0:$Z$@ret19
+
+<T: void tryCatchFinally()>
+
+<T: java.lang.String retStr()>
 
 <T: void throwexc()>
 
@@ -15,7 +19,7 @@
 3:(= 0 2)
 
 <T: T interfunc(T,T)>
-0:(= $R$@para0 soot.jimple.NullConstant@30342460)
+0:(= $R$@para0 soot.jimple.NullConstant@2130078261)
 
 <T: T test(T)>
 
@@ -28,5 +32,8 @@
 <test: void <init>()>
 
 <test: void main(java.lang.String[])>
-0:(= $R$@ret5 soot.jimple.NullConstant@30342460)
+
+<test: int index(int)>
+0:(< 0 $I$@ret0)
+2:(not (= $I$@var$i0 $I$@para0))
 

@@ -1,0 +1,4 @@
+block 0
+409603574:this := @this: acteve.instrumentor.BodyEditor
+299564770:$i0 = this.<acteve.instrumentor.BodyEditor: int stmtsChanged>
+1083420822:return $i0

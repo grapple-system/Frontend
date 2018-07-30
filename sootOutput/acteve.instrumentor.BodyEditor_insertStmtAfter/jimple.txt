@@ -1,0 +1,7 @@
+block 0
+284414204:this := @this: acteve.instrumentor.BodyEditor
+1998412053:newStmt := @parameter0: soot.jimple.Stmt
+537437650:$r0 = this.<acteve.instrumentor.BodyEditor: soot.util.Chain stmts>
+1477450494:$r1 = this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt originalStmt>
+157042397:interfaceinvoke $r0.<soot.util.Chain: void insertAfter(java.lang.Object,java.lang.Object)>(newStmt, $r1)
+154164216:return

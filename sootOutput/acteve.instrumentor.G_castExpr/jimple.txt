@@ -1,0 +1,6 @@
+block 0
+230394652:l := @parameter0: soot.Local
+329900623:t := @parameter1: soot.Type
+1984477854:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+559587226:$r1 = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.CastExpr newCastExpr(soot.Value,soot.Type)>(l, t)
+1151617169:return $r1

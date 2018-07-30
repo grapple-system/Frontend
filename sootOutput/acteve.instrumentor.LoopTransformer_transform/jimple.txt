@@ -1,0 +1,8 @@
+block 0
+240573038:method := @parameter0: soot.SootMethod
+1910032025:body = virtualinvoke method.<soot.SootMethod: soot.Body retrieveActiveBody()>()
+1322688819:$r0 = <acteve.instrumentor.LoopTransformer: acteve.instrumentor.BodyEditor editor>
+524550770:virtualinvoke $r0.<acteve.instrumentor.BodyEditor: void newBody(soot.Body,soot.SootMethod)>(body, method)
+117241274:$r1 = virtualinvoke body.<soot.Body: soot.PatchingChain getUnits()>()
+1231587819:<acteve.instrumentor.LoopTransformer: soot.util.Chain STMTS> = $r1
+735086307:tableswitch(0) {     case 0: goto staticinvoke <acteve.instrumentor.LoopTransformer: void transform0(soot.SootMethod)>(method);     case 1: goto staticinvoke <acteve.instrumentor.LoopTransformer: void transform1(soot.SootMethod)>(method);     case 2: goto staticinvoke <acteve.instrumentor.LoopTransformer: void transform2(soot.SootMethod)>(method);     default: goto return; }

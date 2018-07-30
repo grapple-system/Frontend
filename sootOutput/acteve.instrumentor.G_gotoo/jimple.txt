@@ -1,0 +1,7 @@
+block 0
+1170163679:stmt := @parameter0: soot.jimple.Stmt
+285713727:$r0 = <acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor>
+217174997:$r1 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+1600688707:$r2 = virtualinvoke $r1.<soot.jimple.Jimple: soot.jimple.GotoStmt newGotoStmt(soot.Unit)>(stmt)
+1247452580:virtualinvoke $r0.<acteve.instrumentor.BodyEditor: void insertStmt(soot.jimple.Stmt)>($r2)
+52666399:return

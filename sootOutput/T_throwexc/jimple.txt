@@ -451,3 +451,18 @@ block 0
 418861688:$r0 = new java.lang.NullPointerException
 2099021379:specialinvoke $r0.<java.lang.NullPointerException: void <init>()>()
 1135824151:throw $r0
+block 0
+1309582018:this := @this: T
+585078423:$r0 = new java.lang.NullPointerException
+1399540440:specialinvoke $r0.<java.lang.NullPointerException: void <init>()>()
+687789489:throw $r0
+block 0
+1548889951:this := @this: T
+396637523:$r0 = new java.lang.NullPointerException
+1009326393:specialinvoke $r0.<java.lang.NullPointerException: void <init>()>()
+775359498:throw $r0
+block 0
+38012701:this := @this: T
+1076822548:$r0 = new java.lang.NullPointerException
+400738620:specialinvoke $r0.<java.lang.NullPointerException: void <init>()>()
+705269348:throw $r0

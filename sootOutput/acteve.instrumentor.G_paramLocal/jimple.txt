@@ -1,0 +1,10 @@
+block 0
+1009905908:method := @parameter0: soot.SootMethod
+1925333515:paramIndex := @parameter1: int
+2006760845:$r0 = virtualinvoke method.<soot.SootMethod: soot.Type getParameterType(int)>(paramIndex)
+1897540751:p = staticinvoke <acteve.instrumentor.G: soot.Local newLocal(soot.Type)>($r0)
+640084488:$r1 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+1667029353:$r2 = interfaceinvoke p.<soot.Local: soot.Type getType()>()
+1854037506:$r3 = virtualinvoke $r1.<soot.jimple.Jimple: soot.jimple.ParameterRef newParameterRef(soot.Type,int)>($r2, paramIndex)
+820645372:staticinvoke <acteve.instrumentor.G: void identity(soot.Local,soot.jimple.IdentityRef)>(p, $r3)
+177824209:return p

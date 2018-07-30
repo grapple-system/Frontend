@@ -1,0 +1,8 @@
+block 0
+2060884215:method := @parameter0: soot.SootMethod
+517259042:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+190490871:body = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.JimpleBody newBody(soot.SootMethod)>(method)
+2055501578:virtualinvoke method.<soot.SootMethod: void setActiveBody(soot.Body)>(body)
+245592157:$r1 = <acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor>
+251447190:virtualinvoke $r1.<acteve.instrumentor.BodyEditor: void newEmptyBody(soot.Body)>(body)
+445419181:return body

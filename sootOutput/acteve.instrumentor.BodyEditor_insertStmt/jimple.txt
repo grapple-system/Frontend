@@ -1,0 +1,52 @@
+block 0
+1392382193:this := @this: acteve.instrumentor.BodyEditor
+638216392:newStmt := @parameter0: soot.jimple.Stmt
+1969567226:redirect := @parameter1: boolean
+1089443422:$r0 = this.<acteve.instrumentor.BodyEditor: java.util.Iterator stmtIterator>
+472623616:if $r0 != null goto $r1 = this.<acteve.instrumentor.BodyEditor: soot.util.Chain stmts>
+block 1
+156476729:$r1 = this.<acteve.instrumentor.BodyEditor: soot.util.Chain stmts>
+1779271027:interfaceinvoke $r1.<soot.util.Chain: void addLast(java.lang.Object)>(newStmt)
+498366314:return
+block 2
+1349956892:$r1 = this.<acteve.instrumentor.BodyEditor: soot.util.Chain stmts>
+706663152:$r2 = this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt originalStmt>
+1303027754:interfaceinvoke $r1.<soot.util.Chain: void insertBefore(java.lang.Object,java.lang.Object)>(newStmt, $r2)
+1396546710:$r3 = this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt originalStmt>
+584149535:$r4 = this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt currentStmt>
+1653484308:if $r3 != $r4 goto (branch)
+block 3
+624427163:this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt firstInsertedStmt> = newStmt
+1884486338:if redirect == 0 goto (branch)
+block 4
+1474323054:$r3 = this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt originalStmt>
+1141683575:interfaceinvoke $r3.<soot.jimple.Stmt: void redirectJumpsToThisTo(soot.Unit)>(newStmt)
+block 5
+461456971:if redirect == 0 goto return
+block 6
+540304962:this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt currentStmt> = newStmt
+block 7
+1344636818:return
+block 7
+1344636818:return
+block 5
+461456971:if redirect == 0 goto return
+block 6
+540304962:this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt currentStmt> = newStmt
+block 7
+1344636818:return
+block 7
+1344636818:return
+block 5
+461456971:if redirect == 0 goto return
+block 6
+540304962:this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt currentStmt> = newStmt
+block 7
+1344636818:return
+block 7
+1344636818:return
+block 0
+1656245432:this := @this: acteve.instrumentor.BodyEditor
+833943210:newStmt := @parameter0: soot.jimple.Stmt
+608091719:virtualinvoke this.<acteve.instrumentor.BodyEditor: void insertStmt(soot.jimple.Stmt,boolean)>(newStmt, 1)
+322845160:return

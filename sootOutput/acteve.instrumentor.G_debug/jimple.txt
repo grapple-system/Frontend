@@ -1,0 +1,28 @@
+block 0
+1525061948:m := @parameter0: soot.SootMethod
+1498833091:flag := @parameter1: boolean
+1258264376:if flag == 0 goto return
+block 1
+1377895423:$r1 = staticinvoke <acteve.instrumentor.Printer: acteve.instrumentor.Printer v()>()
+502537875:$r2 = virtualinvoke m.<soot.SootMethod: soot.Body retrieveActiveBody()>()
+100881474:$r0 = <acteve.instrumentor.G: java.io.PrintWriter printer>
+1150336035:virtualinvoke $r1.<acteve.instrumentor.Printer: void printTo(soot.Body,java.io.PrintWriter)>($r2, $r0)
+2049949951:goto [?= $r11 = <acteve.instrumentor.G: java.io.PrintWriter printer>]
+block 6
+1314263913:$r11 = <acteve.instrumentor.G: java.io.PrintWriter printer>
+1964276396:virtualinvoke $r11.<java.io.PrintWriter: void flush()>()
+block 7
+327282241:return
+block 7
+327282241:return
+block 0
+1261612723:msg := @parameter0: java.lang.String
+1818988630:flag := @parameter1: boolean
+102581443:if flag == 0 goto return
+block 1
+1804427607:$r0 = <java.lang.System: java.io.PrintStream out>
+621151991:virtualinvoke $r0.<java.io.PrintStream: void println(java.lang.String)>(msg)
+block 2
+783504670:return
+block 2
+783504670:return

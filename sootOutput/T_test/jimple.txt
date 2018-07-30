@@ -351,3 +351,15 @@ block 0
 464724543:this.<T: T s> = a
 1035224021:$r0 = this.<T: T s>
 97612953:return $r0
+block 0
+689869859:this := @this: T
+378510060:a := @parameter0: T
+1365885549:this.<T: T s> = a
+2087728440:$r0 = this.<T: T s>
+716582747:return $r0
+block 0
+369285151:this := @this: T
+347793027:a := @parameter0: T
+1841273304:this.<T: T s> = a
+1664771697:$r0 = this.<T: T s>
+253474716:return $r0

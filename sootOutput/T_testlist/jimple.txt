@@ -1472,3 +1472,53 @@ block 0
 2077684805:virtualinvoke fileWriter.<java.io.FileWriter: void close()>()
 1521203684:virtualinvoke fileWriter2.<java.io.FileWriter: void close()>()
 1077499453:return
+block 0
+253742639:this := @this: T
+1897494378:$r0 = new java.io.File
+1829557644:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("")
+1704464962:file = $r0
+1658249001:$r2 = new java.io.FileWriter
+1460711883:specialinvoke $r2.<java.io.FileWriter: void <init>(java.io.File)>(file)
+151565077:fileWriter = $r2
+438643797:$r2 = new java.io.FileWriter
+1204819392:specialinvoke $r2.<java.io.FileWriter: void <init>(java.lang.String)>("")
+776213781:fileWriter2 = $r2
+2009345389:$r3 = new java.io.BufferedReader
+181956205:$r4 = new java.io.InputStreamReader
+1599068993:$r1 = new java.io.FileInputStream
+1434201962:specialinvoke $r1.<java.io.FileInputStream: void <init>(java.io.File)>(file)
+1786855347:specialinvoke $r4.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r1, "UTF-8")
+1266497381:specialinvoke $r3.<java.io.BufferedReader: void <init>(java.io.Reader)>($r4)
+163573403:br = $r3
+13792758:virtualinvoke br.<java.io.BufferedReader: java.lang.String readLine()>()
+65320940:virtualinvoke br.<java.io.BufferedReader: void close()>()
+1964480317:virtualinvoke fileWriter.<java.io.FileWriter: void write(java.lang.String)>("fw")
+1873864187:virtualinvoke fileWriter2.<java.io.FileWriter: void write(java.lang.String)>("test")
+942041913:virtualinvoke fileWriter.<java.io.FileWriter: void close()>()
+1233035814:virtualinvoke fileWriter2.<java.io.FileWriter: void close()>()
+415732348:return
+block 0
+807284497:this := @this: T
+228859333:$r0 = new java.io.File
+104808799:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("")
+584894253:file = $r0
+1285057852:$r2 = new java.io.FileWriter
+643638052:specialinvoke $r2.<java.io.FileWriter: void <init>(java.io.File)>(file)
+749610025:fileWriter = $r2
+1556616873:$r2 = new java.io.FileWriter
+1841231258:specialinvoke $r2.<java.io.FileWriter: void <init>(java.lang.String)>("")
+334399936:fileWriter2 = $r2
+295020153:$r3 = new java.io.BufferedReader
+823084291:$r4 = new java.io.InputStreamReader
+200845970:$r1 = new java.io.FileInputStream
+1875663709:specialinvoke $r1.<java.io.FileInputStream: void <init>(java.io.File)>(file)
+1250409756:specialinvoke $r4.<java.io.InputStreamReader: void <init>(java.io.InputStream,java.lang.String)>($r1, "UTF-8")
+361799550:specialinvoke $r3.<java.io.BufferedReader: void <init>(java.io.Reader)>($r4)
+1238832193:br = $r3
+914714026:virtualinvoke br.<java.io.BufferedReader: java.lang.String readLine()>()
+175812855:virtualinvoke br.<java.io.BufferedReader: void close()>()
+2036466599:virtualinvoke fileWriter.<java.io.FileWriter: void write(java.lang.String)>("fw")
+1453456727:virtualinvoke fileWriter2.<java.io.FileWriter: void write(java.lang.String)>("test")
+67400522:virtualinvoke fileWriter.<java.io.FileWriter: void close()>()
+1253217373:virtualinvoke fileWriter2.<java.io.FileWriter: void close()>()
+304778235:return

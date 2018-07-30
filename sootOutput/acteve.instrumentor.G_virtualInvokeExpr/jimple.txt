@@ -1,0 +1,48 @@
+block 0
+1792149557:local := @parameter0: soot.Local
+51971677:mref := @parameter1: soot.SootMethodRef
+1609614657:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+1100226514:$r1 = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.VirtualInvokeExpr newVirtualInvokeExpr(soot.Local,soot.SootMethodRef)>(local, mref)
+1672820128:return $r1
+block 0
+1810542352:local := @parameter0: soot.Local
+2089515721:mref := @parameter1: soot.SootMethodRef
+690643456:arg1 := @parameter2: soot.Immediate
+495452957:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+193086798:$r1 = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.VirtualInvokeExpr newVirtualInvokeExpr(soot.Local,soot.SootMethodRef,soot.Value)>(local, mref, arg1)
+362023369:return $r1
+block 0
+1093797345:local := @parameter0: soot.Local
+991959095:mref := @parameter1: soot.SootMethodRef
+940958004:arg1 := @parameter2: soot.Immediate
+611596720:arg2 := @parameter3: soot.Immediate
+1249338498:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+369644000:$r1 = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.VirtualInvokeExpr newVirtualInvokeExpr(soot.Local,soot.SootMethodRef,soot.Value,soot.Value)>(local, mref, arg1, arg2)
+2084000876:return $r1
+block 0
+566558098:local := @parameter0: soot.Local
+199462288:methodSig := @parameter1: java.lang.String
+140701449:$r0 = staticinvoke <soot.Scene: soot.Scene v()>()
+837515422:$r1 = virtualinvoke $r0.<soot.Scene: soot.SootMethod getMethod(java.lang.String)>(methodSig)
+312824956:mref = virtualinvoke $r1.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1436724741:$r2 = staticinvoke <acteve.instrumentor.G: soot.jimple.VirtualInvokeExpr virtualInvokeExpr(soot.Local,soot.SootMethodRef)>(local, mref)
+726595119:return $r2
+block 0
+489396160:local := @parameter0: soot.Local
+418893110:methodSig := @parameter1: java.lang.String
+885104904:arg1 := @parameter2: soot.Immediate
+338898759:$r0 = staticinvoke <soot.Scene: soot.Scene v()>()
+350735520:$r1 = virtualinvoke $r0.<soot.Scene: soot.SootMethod getMethod(java.lang.String)>(methodSig)
+1125374302:mref = virtualinvoke $r1.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+162263132:$r2 = staticinvoke <acteve.instrumentor.G: soot.jimple.VirtualInvokeExpr virtualInvokeExpr(soot.Local,soot.SootMethodRef,soot.Immediate)>(local, mref, arg1)
+1999711481:return $r2
+block 0
+1402438464:local := @parameter0: soot.Local
+2754976:methodSig := @parameter1: java.lang.String
+1205725045:arg1 := @parameter2: soot.Immediate
+965138223:arg2 := @parameter3: soot.Immediate
+1134128170:$r0 = staticinvoke <soot.Scene: soot.Scene v()>()
+2045814960:$r1 = virtualinvoke $r0.<soot.Scene: soot.SootMethod getMethod(java.lang.String)>(methodSig)
+1693505862:mref = virtualinvoke $r1.<soot.SootMethod: soot.SootMethodRef makeRef()>()
+1372358627:$r2 = staticinvoke <acteve.instrumentor.G: soot.jimple.VirtualInvokeExpr virtualInvokeExpr(soot.Local,soot.SootMethodRef,soot.Immediate,soot.Immediate)>(local, mref, arg1, arg2)
+1257075209:return $r2

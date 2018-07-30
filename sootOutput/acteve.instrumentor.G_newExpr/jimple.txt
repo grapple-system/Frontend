@@ -1,0 +1,5 @@
+block 0
+300615363:type := @parameter0: soot.RefType
+1560868197:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+464698003:$r1 = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.NewExpr newNewExpr(soot.RefType)>(type)
+1928795929:return $r1

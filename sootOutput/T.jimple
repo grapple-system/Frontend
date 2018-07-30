@@ -15,24 +15,51 @@ class T extends java.lang.Object
     public void testTry()
     {
         T this;
-        java.lang.String format;
-        java.io.File file, $r0;
-        java.text.SimpleDateFormat sdf, $r1;
-        java.text.ParseException e, $r3;
+        char[] cca, $r0;
+        java.lang.StringBuilder sb, $r1;
+        java.lang.String format, f, $r3;
+        java.io.File file, $r4;
+        java.text.SimpleDateFormat sdf, $r5;
+        java.text.ParseException e, $r7;
         byte a;
+        java.lang.Class $r2;
         boolean $z0;
-        java.io.IOException $r5, e;
-        java.lang.NullPointerException $r6, e;
+        java.io.IOException $r9, e;
+        java.lang.NullPointerException $r10, e;
         int a;
 
         this := @this: T;
+        $r0 = newarray (char)[2];
+        $r0[0] = 97;
+        $r0[1] = 98;
+        cca = $r0;
+        $r1 = new java.lang.StringBuilder;
+        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
+        sb = $r1;
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("str");
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(115);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>(sb);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(0);
+        $r2 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(0);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[])>(cca);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>(0.1);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>(0.1F);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(0L);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[],int,int)>(cca, 0, 1);
+        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence,int,int)>(sb, 0, 0);
         format = "yyyy-MM-dd HH:mm:ss";
-        $r0 = new java.io.File;
-        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("");
-        file = $r0;
-        $r1 = new java.text.SimpleDateFormat;
-        specialinvoke $r1.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(format);
-        sdf = $r1;
+        virtualinvoke format.<java.lang.String: java.lang.String toString()>();
+        $r3 = new java.lang.String;
+        specialinvoke $r3.<java.lang.String: void <init>()>();
+        f = $r3;
+        $r4 = new java.io.File;
+        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("");
+        file = $r4;
+        $r5 = new java.text.SimpleDateFormat;
+        specialinvoke $r5.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(format);
+        sdf = $r5;
 
      label0:
         virtualinvoke sdf.<java.text.SimpleDateFormat: java.util.Date parse(java.lang.String)>(format);
@@ -41,8 +68,8 @@ class T extends java.lang.Object
         goto label3;
 
      label2:
-        $r3 := @caughtexception;
-        e = $r3;
+        $r7 := @caughtexception;
+        e = $r7;
         virtualinvoke e.<java.text.ParseException: void printStackTrace()>();
 
      label3:
@@ -62,8 +89,8 @@ class T extends java.lang.Object
         goto label8;
 
      label7:
-        $r5 := @caughtexception;
-        e = $r5;
+        $r9 := @caughtexception;
+        e = $r9;
         virtualinvoke file.<java.io.File: boolean delete()>();
         virtualinvoke e.<java.io.IOException: void printStackTrace()>();
 
@@ -74,8 +101,8 @@ class T extends java.lang.Object
         goto label11;
 
      label10:
-        $r6 := @caughtexception;
-        e = $r6;
+        $r10 := @caughtexception;
+        e = $r10;
         virtualinvoke e.<java.lang.NullPointerException: void printStackTrace()>();
         a = 0;
         a = a + 1;
@@ -86,6 +113,122 @@ class T extends java.lang.Object
         catch java.text.ParseException from label0 to label1 with label2;
         catch java.io.IOException from label3 to label6 with label7;
         catch java.lang.NullPointerException from label8 to label9 with label10;
+    }
+
+    public void tryCatchFinally()
+    {
+        T this;
+        java.io.File $r0, file;
+        java.lang.Exception e, $r1, $r8;
+        java.lang.Throwable l3, l2, $r6, $r7;
+        java.io.PrintStream $r2;
+        java.lang.StringBuilder $r3;
+        java.lang.String $r4, $r5;
+
+        this := @this: T;
+
+     label0:
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("1");
+        file = $r0;
+
+     label1:
+        goto label5;
+
+     label2:
+        $r1 := @caughtexception;
+        e = $r1;
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("first catch");
+        file = $r0;
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+        $r3 = new java.lang.StringBuilder;
+        specialinvoke $r3.<java.lang.StringBuilder: void <init>(java.lang.String)>("first catchjaja");
+        $r4 = virtualinvoke this.<T: java.lang.String retStr()>();
+        $r3 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($r4);
+        $r5 = virtualinvoke $r3.<java.lang.StringBuilder: java.lang.String toString()>();
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>($r5);
+
+     label3:
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("first finally");
+        file = $r0;
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("first finally");
+        goto label6;
+
+     label4:
+        $r6 := @caughtexception;
+        l3 = $r6;
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("first finally");
+        file = $r0;
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("first finally");
+        throw l3;
+
+     label5:
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("first finally");
+        file = $r0;
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("first finally");
+
+     label6:
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("2");
+        file = $r0;
+        goto label8;
+
+     label7:
+        $r7 := @caughtexception;
+        l2 = $r7;
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("second finally");
+        file = $r0;
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("second finally");
+        throw l2;
+
+     label8:
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("second finally");
+        file = $r0;
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("second finally");
+
+     label9:
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("3");
+        file = $r0;
+
+     label10:
+        goto label12;
+
+     label11:
+        $r8 := @caughtexception;
+        e = $r8;
+        $r0 = new java.io.File;
+        specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("second catch");
+        file = $r0;
+        $r2 = <java.lang.System: java.io.PrintStream out>;
+        virtualinvoke $r2.<java.io.PrintStream: void println(java.lang.String)>("second catch");
+
+     label12:
+        return;
+
+        catch java.lang.Exception from label0 to label1 with label2;
+        catch java.lang.Throwable from label0 to label3 with label4;
+        catch java.lang.Throwable from label6 to label7 with label7;
+        catch java.lang.Exception from label9 to label10 with label11;
+    }
+
+    public java.lang.String retStr()
+    {
+        T this;
+
+        this := @this: T;
+        return "str";
     }
 
     public void throwexc() throws java.lang.NullPointerException

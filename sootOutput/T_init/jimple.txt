@@ -326,3 +326,15 @@ block 0
 152915301:this := @this: T
 574082015:specialinvoke this.<java.lang.Object: void <init>()>()
 955501542:return
+block 0
+26934713:this := @this: T
+1570573600:specialinvoke this.<java.lang.Object: void <init>()>()
+967930014:return
+block 0
+1437735132:this := @this: T
+842668987:specialinvoke this.<java.lang.Object: void <init>()>()
+384568943:return
+block 0
+1900927772:this := @this: T
+1983845739:specialinvoke this.<java.lang.Object: void <init>()>()
+508905937:return

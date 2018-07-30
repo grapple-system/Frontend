@@ -2558,3 +2558,23 @@ block 0
 1468115780:fw = virtualinvoke this.<T: java.io.FileWriter testCallFW(java.io.FileWriter)>(fw)
 943345026:virtualinvoke fw.<java.io.FileWriter: void close()>()
 2075569828:return
+block 0
+610947354:this := @this: T
+1072862371:$r0 = new java.io.File
+1096037584:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("")
+2136433969:file = $r0
+1709795975:a = 0
+1562484115:fw = null
+1015854055:fw = virtualinvoke this.<T: java.io.FileWriter testCallFW(java.io.FileWriter)>(fw)
+1011392530:virtualinvoke fw.<java.io.FileWriter: void close()>()
+1141185705:return
+block 0
+317652900:this := @this: T
+147943858:$r0 = new java.io.File
+1054127232:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("")
+2123784121:file = $r0
+1653387474:a = 0
+587501669:fw = null
+2130511303:fw = virtualinvoke this.<T: java.io.FileWriter testCallFW(java.io.FileWriter)>(fw)
+881832079:virtualinvoke fw.<java.io.FileWriter: void close()>()
+1167103806:return

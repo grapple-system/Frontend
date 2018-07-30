@@ -2108,3 +2108,75 @@ block 6
 1123795133:virtualinvoke fw.<java.io.FileWriter: void close()>()
 block 7
 506124966:return
+block 0
+1605185873:this := @this: T
+1669393897:$r0 = new java.io.File
+887140770:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("")
+195960269:file = $r0
+747753521:a = 0
+490924661:fw = null
+1060985093:if a == 0 goto $r1 = new java.io.FileWriter
+block 1
+1419737010:if a == 1 goto a = a + 1
+block 2
+829125253:if a == 2 goto virtualinvoke fw.<java.io.FileWriter: void close()>()
+block 3
+86741788:goto [?= return]
+block 7
+359064980:return
+block 6
+163571020:virtualinvoke fw.<java.io.FileWriter: void close()>()
+block 7
+359064980:return
+block 5
+842987522:a = a + 1
+block 6
+163571020:virtualinvoke fw.<java.io.FileWriter: void close()>()
+block 7
+359064980:return
+block 4
+2025115470:$r1 = new java.io.FileWriter
+411234841:specialinvoke $r1.<java.io.FileWriter: void <init>(java.io.File)>(file)
+1021596641:fw = $r1
+block 5
+842987522:a = a + 1
+block 6
+163571020:virtualinvoke fw.<java.io.FileWriter: void close()>()
+block 7
+359064980:return
+block 0
+342295918:this := @this: T
+2006287160:$r0 = new java.io.File
+2034865695:specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("")
+1310657390:file = $r0
+202067932:a = 0
+1782290572:fw = null
+891037013:if a == 0 goto $r1 = new java.io.FileWriter
+block 1
+1255606960:if a == 1 goto a = a + 1
+block 2
+1811861298:if a == 2 goto virtualinvoke fw.<java.io.FileWriter: void close()>()
+block 3
+634721026:goto [?= return]
+block 7
+1552652952:return
+block 6
+904726416:virtualinvoke fw.<java.io.FileWriter: void close()>()
+block 7
+1552652952:return
+block 5
+1445592009:a = a + 1
+block 6
+904726416:virtualinvoke fw.<java.io.FileWriter: void close()>()
+block 7
+1552652952:return
+block 4
+431270952:$r1 = new java.io.FileWriter
+1372926474:specialinvoke $r1.<java.io.FileWriter: void <init>(java.io.File)>(file)
+63461503:fw = $r1
+block 5
+1445592009:a = a + 1
+block 6
+904726416:virtualinvoke fw.<java.io.FileWriter: void close()>()
+block 7
+1552652952:return

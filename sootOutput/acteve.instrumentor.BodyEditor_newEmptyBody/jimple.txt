@@ -1,0 +1,5 @@
+block 0
+50039952:this := @this: acteve.instrumentor.BodyEditor
+1355367287:body := @parameter0: soot.Body
+1180026905:specialinvoke this.<acteve.instrumentor.BodyEditor: void newBody(soot.Body,soot.SootMethod,java.util.Iterator)>(body, null, null)
+700712290:return

@@ -1,0 +1,9 @@
+block 0
+1158616250:this := @this: acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator
+1786126004:specialinvoke this.<java.lang.Object: void <init>()>()
+1893331462:return
+block 0
+2085116975:l0 := @this: acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator
+1922847079:l1 := @parameter0: acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator
+1523012674:specialinvoke l0.<acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator: void <init>()>()
+1416423325:return

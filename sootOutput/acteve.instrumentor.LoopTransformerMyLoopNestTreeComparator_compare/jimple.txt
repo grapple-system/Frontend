@@ -1,0 +1,44 @@
+block 0
+1908061514:this := @this: acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator
+416565147:loop1 := @parameter0: soot.jimple.toolkits.annotation.logic.Loop
+413736409:loop2 := @parameter1: soot.jimple.toolkits.annotation.logic.Loop
+1344885353:stmts1 = virtualinvoke loop1.<soot.jimple.toolkits.annotation.logic.Loop: java.util.List getLoopStatements()>()
+1007053859:stmts2 = virtualinvoke loop2.<soot.jimple.toolkits.annotation.logic.Loop: java.util.List getLoopStatements()>()
+1283006722:$z0 = interfaceinvoke stmts1.<java.util.Collection: boolean equals(java.lang.Object)>(stmts2)
+610677127:if $z0 == 0 goto $z0 = interfaceinvoke stmts1.<java.util.Collection: boolean containsAll(java.util.Collection)>(stmts2)
+block 1
+826124476:$z0 = <acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator: boolean $assertionsDisabled>
+1192290277:if $z0 != 0 goto return 0
+block 2
+1849376398:$r0 = virtualinvoke loop1.<soot.jimple.toolkits.annotation.logic.Loop: soot.jimple.Stmt getHead()>()
+1797649742:$r1 = virtualinvoke loop2.<soot.jimple.toolkits.annotation.logic.Loop: soot.jimple.Stmt getHead()>()
+151784151:$z0 = virtualinvoke $r0.<java.lang.Object: boolean equals(java.lang.Object)>($r1)
+1973136868:if $z0 != 0 goto return 0
+block 3
+1068863502:$r2 = new java.lang.AssertionError
+1889868818:specialinvoke $r2.<java.lang.AssertionError: void <init>()>()
+1742084996:throw $r2
+block 4
+281828475:return 0
+block 4
+281828475:return 0
+block 5
+1408985210:$z0 = interfaceinvoke stmts1.<java.util.Collection: boolean containsAll(java.util.Collection)>(stmts2)
+512249001:if $z0 == 0 goto $z0 = interfaceinvoke stmts2.<java.util.Collection: boolean containsAll(java.util.Collection)>(stmts1)
+block 6
+1224251549:return 1
+block 7
+278987135:$z0 = interfaceinvoke stmts2.<java.util.Collection: boolean containsAll(java.util.Collection)>(stmts1)
+979976544:if $z0 == 0 goto return 2
+block 8
+64304747:return -1
+block 9
+402622915:return 2
+block 0
+1648791923:l0 := @this: acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator
+116868973:l1 := @parameter0: java.lang.Object
+1416775853:l2 := @parameter1: java.lang.Object
+1898822291:$r0 = (soot.jimple.toolkits.annotation.logic.Loop) l1
+504829511:$r1 = (soot.jimple.toolkits.annotation.logic.Loop) l2
+2109185727:$i0 = virtualinvoke l0.<acteve.instrumentor.LoopTransformer$MyLoopNestTreeComparator: int compare(soot.jimple.toolkits.annotation.logic.Loop,soot.jimple.toolkits.annotation.logic.Loop)>($r0, $r1)
+571952660:return $i0

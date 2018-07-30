@@ -1,7 +1,9 @@
 package edu.zuo.setree.intergraph;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Scanner;
 
@@ -56,6 +58,7 @@ public class interGraph {
 	public static final File var2indexMapFile = new File("intraOutput/var2indexMap");
 	public static final File conditionalSmt2File = new File("intraOutput/conditionalSmt2");
 	public static final File callInfoFile = new File("intraOutput/callInfoFile");
+	public static final File calledVarFile = new File("intraOutput/calledVarFile");
 	public static int funcIndex = -1;
 
 	private static Map<pair, Integer> pair2indexMap = new LinkedHashMap<>();
@@ -64,6 +67,7 @@ public class interGraph {
 	private static Map<Integer, String> index2varMap = new LinkedHashMap<>();
 	private static Map<String, Integer> func2indexMap = new LinkedHashMap<>();
 	private static Map<Integer, Map<String, Integer>> funcParamReturn = new LinkedHashMap<>();
+	private static List<String> calledVarList = new ArrayList<String>();
 
 	/**
 	 * each line of pair2varMapFile is (funcIndex,inFuncVarIndex) :
@@ -109,8 +113,13 @@ public class interGraph {
 				System.out.println("Error: var2indexMap file not exists.");
 				return;
 			}
+			if (!calledVarFile.exists()) {
+				System.out.println("Error: calledVar file not exists.");
+				return;
+			}
 			Scanner consEdgeGraphInput = new Scanner(consEdgeGraphFile);
 			Scanner var2indexMapInput = new Scanner(var2indexMapFile);
+			Scanner calledVarListInput = new Scanner(calledVarFile);
 			int varIndex = 0;
 			while (var2indexMapInput.hasNextLine()) {
 				String line = var2indexMapInput.nextLine();
@@ -149,8 +158,14 @@ public class interGraph {
 					}
 				}
 			}
+			
+			while(calledVarListInput.hasNextLine()){
+				String line = calledVarListInput.nextLine();
+				calledVarList.add(line);
+			}
 			consEdgeGraphInput.close();
 			var2indexMapInput.close();
+			calledVarListInput.close();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
@@ -202,7 +217,8 @@ public class interGraph {
 	}
 
 	public static void printGraph() {
-
+		String funcName="";
+		String calledVar="";
 		try {
 			Scanner consEdgeGraphInput = new Scanner(consEdgeGraphFile);
 			funcIndex = -1;
@@ -217,8 +233,10 @@ public class interGraph {
 				if (line.length() == 0) {
 
 				} else if (line.startsWith("<")) {
+					funcName = line;
 					++funcIndex;
 				} else if (line.startsWith(":")) {
+					calledVar = funcName + line;
 					continue;
 				} else {
 					String[] tokens = line.split(", ");
@@ -267,7 +285,7 @@ public class interGraph {
 						int n2_right = Integer.parseInt(tokens[3].substring(0, tokens[3].length() - 1));
 						pair p3 = new pair(funcIndex, n1_right);
 						pair p4 = new pair(funcIndex, n2_right);
-						if (n1_right == -1 && index2varMap.get(i1).contains("uninit"))
+						if (n1_right == -1 && index2varMap.get(i1).contains("uninit") && !calledVarList.contains(calledVar))
 							interGraphOut
 									.println(i1 + "\t" + i2 + "\tn\t[" + p3.toString() + "," + p4.toString() + "]");
 						else

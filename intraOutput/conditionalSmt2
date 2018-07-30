@@ -2,11 +2,34 @@
 0:#p
 
 <T: void testTry()>
-0:$Z$@ret3
-0:#c#null#<java.io.File: void <init>(java.lang.String)>#soot.jimple.StringConstant@876038678
-0:#c#null#<java.text.SimpleDateFormat: void <init>(java.lang.String)>#soot.jimple.StringConstant@1822353056
-0:#c#null#<java.text.DateFormat: java.util.Date parse(java.lang.String)>#soot.jimple.StringConstant@1822353056
+0:$Z$@ret19
+0:#c#null#<java.lang.StringBuilder: void <init>()>
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>#soot.jimple.StringConstant@1541320695
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(char)>#115
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>#$R$1
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(int)>#0
+0:#c#null#<java.lang.Object: java.lang.Class getClass()>
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>#$R$@ret5
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>#0
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(char[])>#$R$0
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(double)>#0.1
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(float)>#0.1
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(long)>#LongConstant0
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(char[],int,int)>#$R$0#0#1
+0:#c#null#<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence,int,int)>#$R$1#0
+0:#c#null#<java.lang.String: java.lang.String toString()>
+0:#c#null#<java.lang.String: void <init>()>
+0:#c#null#<java.io.File: void <init>(java.lang.String)>#soot.jimple.StringConstant@2029170751
+0:#c#null#<java.text.SimpleDateFormat: void <init>(java.lang.String)>#soot.jimple.StringConstant@437714810
+0:#c#null#<java.text.DateFormat: java.util.Date parse(java.lang.String)>#soot.jimple.StringConstant@437714810
 0:#c#null#<java.io.File: boolean exists()>
+0:#p
+
+<T: void tryCatchFinally()>
+0:#p
+
+<T: java.lang.String retStr()>
+0:#r#soot.jimple.StringConstant@2111146314
 0:#p
 
 <T: void throwexc()>
@@ -16,21 +39,21 @@
 0:#p
 
 <T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-0:#r#$R$4
+0:#r#$R$12
 0:#p#$R$@para0
 
 <T: void testSwitch()>
 0:(= 0 0)
-0:#c#null#<java.io.File: void <init>(java.lang.String)>#soot.jimple.StringConstant@1110223905
+0:#c#null#<java.io.File: void <init>(java.lang.String)>#soot.jimple.StringConstant@1205009333
 0:#p
 1:(= 0 1)
 3:(= 0 2)
 
 <T: T interfunc(T,T)>
-0:(= $R$@para0 soot.jimple.NullConstant@30342460)
+0:(= $R$@para0 soot.jimple.NullConstant@2130078261)
 0:#p#$R$@para0#$R$@para1
 1:#r#$R$@para0
-2:#r#soot.jimple.NullConstant@30342460
+2:#r#soot.jimple.NullConstant@2130078261
 
 <T: T test(T)>
 0:#r#$R$@var$r0
@@ -49,12 +72,15 @@
 0:#p
 
 <test: void main(java.lang.String[])>
-0:(= $R$@ret5 soot.jimple.NullConstant@30342460)
-0:#c#null#<T: void <init>()>
-0:#c#null#<T: void <init>()>
-0:#c#null#<java.util.List: boolean add(java.lang.Object)>#$R$17
-0:#c#null#<java.util.List: boolean add(java.lang.Object)>#$R$18
-0:#c#null#<java.util.List: java.lang.Object get(int)>#1
-0:#c#null#<T: T interfunc(T,T)>#soot.jimple.NullConstant@30342460#soot.jimple.NullConstant@30342460
 0:#p#$R$@para0
+
+<test: int index(int)>
+0:(< 0 $I$@ret0)
+0:#c#null#<java.util.List: int size()>
+0:#p#$I$@para0
+1:#r#-1
+2:(not (= $I$@var$i0 $I$@para0))
+2:#c#null#<java.util.List: java.lang.Object get(int)>#0
+5:#r#0
+6:#r#-1
 

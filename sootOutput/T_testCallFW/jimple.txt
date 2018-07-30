@@ -174,3 +174,25 @@ block 0
 1740802666:virtualinvoke par.<java.io.FileWriter: void write(java.lang.String)>("")
 599936030:virtualinvoke par.<java.io.FileWriter: void close()>()
 558223855:return par
+block 0
+225350965:this := @this: T
+1459999094:par := @parameter0: java.io.FileWriter
+1056622236:$r0 = new java.io.FileWriter
+1774522867:$r1 = new java.io.File
+1421610757:specialinvoke $r1.<java.io.File: void <init>(java.lang.String)>("")
+108936377:specialinvoke $r0.<java.io.FileWriter: void <init>(java.io.File)>($r1)
+1237620995:par = $r0
+1465255165:virtualinvoke par.<java.io.FileWriter: void write(java.lang.String)>("")
+1008136404:virtualinvoke par.<java.io.FileWriter: void close()>()
+1565011892:return par
+block 0
+867458714:this := @this: T
+112126715:par := @parameter0: java.io.FileWriter
+1170540586:$r0 = new java.io.FileWriter
+1319082521:$r1 = new java.io.File
+605679902:specialinvoke $r1.<java.io.File: void <init>(java.lang.String)>("")
+589626134:specialinvoke $r0.<java.io.FileWriter: void <init>(java.io.File)>($r1)
+1356886880:par = $r0
+310554884:virtualinvoke par.<java.io.FileWriter: void write(java.lang.String)>("")
+1156242922:virtualinvoke par.<java.io.FileWriter: void close()>()
+1108255086:return par

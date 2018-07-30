@@ -410,3 +410,17 @@ block 0
 767256074:a = $r0
 773943598:virtualinvoke this.<T: T test(T)>(a)
 2002929814:return
+block 0
+559924600:this := @this: T
+379411046:$r0 = new T
+1692056271:specialinvoke $r0.<T: void <init>()>()
+1411293123:a = $r0
+1041621969:virtualinvoke this.<T: T test(T)>(a)
+686126904:return
+block 0
+397396509:this := @this: T
+368984593:$r0 = new T
+477012858:specialinvoke $r0.<T: void <init>()>()
+598650155:a = $r0
+341074620:virtualinvoke this.<T: T test(T)>(a)
+549147867:return

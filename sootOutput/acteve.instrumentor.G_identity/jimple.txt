@@ -1,0 +1,8 @@
+block 0
+1720214401:lhs := @parameter0: soot.Local
+71098046:rhs := @parameter1: soot.jimple.IdentityRef
+943951390:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
+1187179057:is = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.IdentityStmt newIdentityStmt(soot.Value,soot.Value)>(lhs, rhs)
+647846722:$r1 = <acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor>
+1863330150:virtualinvoke $r1.<acteve.instrumentor.BodyEditor: void insertStmt(soot.jimple.Stmt)>(is)
+235806849:return
