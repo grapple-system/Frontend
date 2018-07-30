@@ -431,29 +431,23 @@ public class Propagator extends AbstractStmtSwitch {
 		Type binType = binExpr.getOp1().getType();
 		
 		//PrimType
-		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
-			//System.out.println("IntType||ShortType||CharType||ByteType");
+		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType || binType instanceof BooleanType){
 			return getIntegerBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof LongType){
-			//System.out.println("LongType");
 			return getLongBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof FloatType){
-			//System.out.println("FloatType");
 			return getFloatBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof DoubleType){
-			//System.out.println("DoubleType");
 			return getDoubleBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
-		else if(binType instanceof BooleanType){
-			//System.out.println("BooleanType");
+		/*else if(binType instanceof BooleanType){
 			return getBooleanBinaryExpression(binExprSymbol, symOp1, symOp2);
-		}
+		}*/
 		//RefLikeType
 		else if(binType instanceof RefLikeType) {
-			//System.out.println("RefLikeType");
 			return getRefBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else{

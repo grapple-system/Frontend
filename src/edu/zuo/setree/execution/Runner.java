@@ -41,6 +41,7 @@ import soot.jimple.Constant;
 import soot.jimple.IdentityStmt;
 import soot.jimple.IfStmt;
 import soot.jimple.Stmt;
+import soot.jimple.toolkits.annotation.logic.Loop;
 import soot.toolkits.graph.Block;
 import soot.toolkits.graph.BriefBlockGraph;
 import soot.toolkits.graph.LoopNestTree;
@@ -116,7 +117,13 @@ public class Runner {
 	private void confirm_no_loop(Body mb) {
 		// TODO Auto-generated method stub
 		LoopNestTree loopNestTree = new LoopNestTree(mb);
-		
+		List<Loop> need2Remove = new ArrayList<>();
+		for(Loop l: loopNestTree){
+			if(l.getHead() instanceof IdentityStmt && ((IdentityStmt)l.getHead()).getRightOp() instanceof CaughtExceptionRef){
+				need2Remove.add(l);
+			}
+		}
+		loopNestTree.removeAll(need2Remove);
 		if(!loopNestTree.isEmpty()) {
 			throw new RuntimeException("Unexpected loops existing!!!");
 		}
