@@ -1,10 +1,6 @@
 package edu.zuo.setree.execution;
 
-import java.util.HashSet;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import acteve.instrumentor.LoopTransformer;
 import acteve.instrumentor.SwitchTransformer;
@@ -45,6 +41,7 @@ import soot.jimple.Constant;
 import soot.jimple.IdentityStmt;
 import soot.jimple.IfStmt;
 import soot.jimple.Stmt;
+import soot.jimple.toolkits.annotation.logic.Loop;
 import soot.toolkits.graph.Block;
 import soot.toolkits.graph.BriefBlockGraph;
 import soot.toolkits.graph.LoopNestTree;
@@ -120,7 +117,13 @@ public class Runner {
 	private void confirm_no_loop(Body mb) {
 		// TODO Auto-generated method stub
 		LoopNestTree loopNestTree = new LoopNestTree(mb);
-		
+		List<Loop> need2Remove = new ArrayList<>();
+		for(Loop l: loopNestTree){
+			if(l.getHead() instanceof IdentityStmt && ((IdentityStmt)l.getHead()).getRightOp() instanceof CaughtExceptionRef){
+				need2Remove.add(l);
+			}
+		}
+		loopNestTree.removeAll(need2Remove);
 		if(!loopNestTree.isEmpty()) {
 			throw new RuntimeException("Unexpected loops existing!!!");
 		}
@@ -132,7 +135,8 @@ public class Runner {
 		System.out.println("\n\nCFG before executing ==>>");
 		System.out.println(cfg.toString());
 		
-		List<Block> entries = cfg.getHeads();
+		//List<Block> entries = cfg.getHeads();
+		List<Block> entries = new ArrayList<Block>(cfg.getHeads());
 		filterEntries(entries);
 
 		assert(entries.size() == 1);
@@ -239,6 +243,8 @@ public class Runner {
 //	}
 
 	private void operate(Block block, StateNode node) {
+		//---------------------------------------------------------
+		//generate symbolic execution graph (SEG) 
 		Propagator p = new Propagator(node);
 		for(Iterator<Unit> it = block.iterator(); it.hasNext();){
 			Stmt stmt = (Stmt) it.next();
@@ -247,11 +253,13 @@ public class Runner {
 			stmt.apply(p);
 		}
 		
-		//generate peg_block for alias analysis
+		//---------------------------------------------------------
+		//generate peg_block (PEG) for alias analysis
 		PegIntra_block peg_block = new PegIntra_block();
 		PEGGenerator_block generator_block = new PEGGenerator_block(block, peg_block);
 		generator_block.process();
 		node.setPeg_intra_block(peg_block);
+		
 	}
 
 //	/** get the unique entry block starting with Parameter or This rather than CaughtException

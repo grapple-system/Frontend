@@ -245,9 +245,11 @@ public class interGraph {
                         if(! func2indexMap.containsKey(tokens[2])) continue;
                         int funcNodeIndex = Integer.parseInt(tokens[1]);
                         int callFuncIndex = func2indexMap.get(tokens[2]);
+                        //System.out.println(funcNodeIndex+" "+callFuncIndex);
                         // callee   o
                         if(tokens[4].length()>2){
                             int first_right = Integer.parseInt(tokens[4].substring(1,tokens[4].length()-1));
+                            if(!(funcParamReturn.containsKey(callFuncIndex)&&funcParamReturn.get(callFuncIndex).containsKey("[Callee]")))continue;
                             int second_right = funcParamReturn.get(callFuncIndex).get("[Callee]");
                             pair p1 = new pair(funcIndex, first_right);
                             pair p2 = new pair(callFuncIndex, second_right);
@@ -262,6 +264,7 @@ public class interGraph {
                         if(paraN == 1){
                             if(tokens[5].length()==2)continue;
                             int first_right = Integer.parseInt(tokens[5].substring(1,tokens[5].length()-1));
+                            if(!(funcParamReturn.containsKey(callFuncIndex)&&funcParamReturn.get(callFuncIndex).containsKey("[Para0]")))continue;
                             int second_right = funcParamReturn.get(callFuncIndex).get("[Para0]");
                             pair p1 = new pair(funcIndex, first_right);
                             pair p2 = new pair(callFuncIndex, second_right);
@@ -272,6 +275,7 @@ public class interGraph {
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                         }else {
                             int first_right = Integer.parseInt(tokens[5].substring(1,tokens[5].length()));
+                            if(!(funcParamReturn.containsKey(callFuncIndex)&&funcParamReturn.get(callFuncIndex).containsKey("[Para0]")))continue;
                             int second_right = funcParamReturn.get(callFuncIndex).get("[Para0]");
                             pair p1 = new pair(funcIndex, first_right);
                             pair p2 = new pair(callFuncIndex, second_right);
@@ -360,7 +364,7 @@ public class interGraph {
                     if(tokens[1].startsWith("#")){
 
                     }else {
-                        String t = tokens[1].replace("$I", "$I$" + funcIndex).replace("$L", "$L$" + funcIndex).replace("$F", "$F$" + funcIndex).replace("$D", "$D$" + funcIndex);
+                        String t = tokens[1].replace("$I", "$I$" + funcIndex).replace("$L", "$L$" + funcIndex).replace("$F", "$F$" + funcIndex).replace("$D", "$D$" + funcIndex).replace("$Z", "$I$" + funcIndex).replace("$R", "$L$" + funcIndex).replace("$B", "$I$" + funcIndex);
                         interSmt2Out.println("(" + funcIndex + "," + tokens[0] + "):" + t);
                     }
                 }
@@ -375,8 +379,8 @@ public class interGraph {
 
     public static void main(String args[]){
         genMap();
-        printGraph();
         printMap();
+        printGraph();
         printSmt2();
     }
 }

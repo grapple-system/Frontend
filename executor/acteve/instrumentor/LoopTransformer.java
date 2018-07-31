@@ -33,16 +33,19 @@ package acteve.instrumentor;
 
 import soot.SootMethod;
 import soot.Unit;
+import soot.UnitBox;
 import soot.Body;
 import soot.Local;
 import soot.Immediate;
 import soot.jimple.TableSwitchStmt;
 import soot.jimple.toolkits.annotation.logic.Loop;
 import soot.toolkits.graph.BriefBlockGraph;
+import soot.toolkits.graph.BriefUnitGraph;
 import soot.toolkits.graph.LoopNestTree;
 import soot.toolkits.graph.UnitGraph;
 import soot.util.Chain;
 import soot.jimple.LookupSwitchStmt;
+import soot.jimple.NopStmt;
 import soot.jimple.Stmt;
 import soot.jimple.IfStmt;
 import soot.jimple.Constant;
@@ -69,7 +72,7 @@ public final class LoopTransformer {
 
     private static Chain STMTS;
     
-    public static final int mode = 2;
+    public static final int mode = 0;
     
 	private LoopTransformer() { }
 	
@@ -184,38 +187,68 @@ public final class LoopTransformer {
 
 
     private static void breakLoop(Loop loop, SootMethod method) {
-    	Stmt target = getTargetOfLoopExits(loop);
+//    	Stmt target = getTargetOfLoopExits(loop);
+    	BriefUnitGraph cfg = new BriefUnitGraph(method.getActiveBody());
     	
     	Chain stmts = method.retrieveActiveBody().getUnits().getNonPatchingChain();
-
-		Stmt backJump = loop.getBackJumpStmt();
 		Stmt header = loop.getHead();
+		Stmt exit = loop.getLoopExits().iterator().next();
+		Stmt loopExitTarget = loop.targetsOfLoopExit(exit).iterator().next();
 		
-		if(backJump instanceof IfStmt) {//do-while
-			System.out.println("BackJump is IfStmt: " + backJump);
-			assert(((IfStmt) backJump).getTarget() == header);
-			
-			stmts.remove(backJump);
+		for(Stmt stmt: loop.getLoopStatements()) {
+			if(reachHeader(stmt, cfg, loop.getHead())) {
+				System.err.println(stmt);
+				
+				Stmt backJump = stmt;
+				
+				if(backJump instanceof IfStmt) {//do-while
+					System.out.println("BackJump is IfStmt: " + backJump);
+//					assert(((IfStmt) backJump).getTarget() == header);
+					if(((IfStmt) backJump).getTarget() == header) {
+						((IfStmt) backJump).setTarget(loopExitTarget);
+					}
+					else {
+						GotoStmt newGoto = jimple.newGotoStmt(loopExitTarget);
+						stmts.insertAfter(newGoto, backJump);
+					}
+					
+//					stmts.remove(backJump);
+				}
+				else if(backJump instanceof GotoStmt) {//true-while
+					System.out.println("BackJump is GotoStmt: " + backJump);
+					assert(((GotoStmt) backJump).getTarget() == header);
+					((GotoStmt) backJump).setTarget(loopExitTarget);
+					
+//					stmts.remove(backJump);
+				}
+				else {//while
+					System.out.println("BackJump is OtherStmt: " + backJump);
+//					assert(target == stmts.getSuccOf(header));
+					
+					GotoStmt newGoto = jimple.newGotoStmt(loopExitTarget);
+					stmts.insertAfter(newGoto, backJump);
+				}
+			}
 		}
-		else if(backJump instanceof GotoStmt) {//true-while
-			System.out.println("BackJump is GotoStmt: " + backJump);
-			assert(((GotoStmt) backJump).getTarget() == header);
-			
-			stmts.remove(backJump);
+		
+	}
+
+
+    //determine whether a loop statement back jumps to header
+	private static boolean reachHeader(Stmt stmt, BriefUnitGraph cfg, Stmt head) {
+		// TODO Auto-generated method stub
+		for(Unit suc: cfg.getSuccsOf(stmt)) {
+			if(suc == head) {
+				return true;
+			}
 		}
-		else {//while
-			System.out.println("BackJump is OtherStmt: " + backJump);
-			assert(target == stmts.getSuccOf(header));
-			GotoStmt newGoto = jimple.newGotoStmt((Stmt) stmts.getSuccOf(header));
-			
-			stmts.insertAfter(newGoto, backJump);
-		}
+		return false;
 	}
 
 
 	private static void unrollLoop(Loop loop, SootMethod method) {
-		//get the exit target of the loop
-		Stmt target = getTargetOfLoopExits(loop);
+//		//get the exit target of the loop
+//		Stmt target = getTargetOfLoopExits(loop);
 		
     	Chain stmts = method.retrieveActiveBody().getUnits().getNonPatchingChain();
     	
@@ -287,7 +320,7 @@ public final class LoopTransformer {
 			GotoStmt newGoto = jimple.newGotoStmt(newHeader);
 			stmts.insertAfter(newGoto, backJump);
 			
-			assert(target == stmts.getSuccOf(header));
+//			assert(target == stmts.getSuccOf(header));
 			GotoStmt newGoto2 = jimple.newGotoStmt((Stmt) stmts.getSuccOf(header));
 			stmts.insertAfter(newGoto2, newBackJump);
 		}
@@ -323,6 +356,7 @@ public final class LoopTransformer {
     		System.err.println("unexpected loop case!!!");
     		System.err.println("loop: " + loop.getLoopStatements());
     		throw new RuntimeException();
+//    		return loop.targetsOfLoopExit(backJump).iterator().next();
     	}
     	
     }

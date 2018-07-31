@@ -40,6 +40,9 @@ public class LongBinaryOperator extends BinaryOperator
 
     public Expression apply(Expression leftOp, Expression rightOp)
     {
+        if(leftOp instanceof SymbolicInteger){
+            leftOp = ((SymbolicInteger) leftOp)._cast(Types.LONG);
+        }
 		LongExpression left = (LongExpression) leftOp;
 //		if(left instanceof Constant && rightOp instanceof Constant)
 //			assert false;

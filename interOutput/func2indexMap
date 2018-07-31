@@ -1,5 +1,0 @@
-0 : <test5: void <init>()>
-1 : <test5: int random()>
-2 : <test5: Int add(Int,Int)>
-3 : <test5: Int sub(Int,Int)>
-4 : <test5: void main()>
