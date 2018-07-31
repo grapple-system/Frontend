@@ -53,6 +53,7 @@ import soot.jimple.Constant;
 import soot.jimple.IdentityStmt;
 import soot.jimple.IfStmt;
 import soot.jimple.Stmt;
+import soot.jimple.toolkits.annotation.logic.Loop;
 import soot.toolkits.graph.Block;
 import soot.toolkits.graph.BriefBlockGraph;
 import soot.toolkits.graph.LoopNestTree;
@@ -194,8 +195,14 @@ public class Runner {
 	private void confirm_no_loop(Body mb) {
 		// TODO Auto-generated method stub
 		LoopNestTree loopNestTree = new LoopNestTree(mb);
-
-		if (!loopNestTree.isEmpty()) {
+		List<Loop> need2Remove = new ArrayList<>();
+		for(Loop l: loopNestTree){
+			if(l.getHead() instanceof IdentityStmt && ((IdentityStmt)l.getHead()).getRightOp() instanceof CaughtExceptionRef){
+				need2Remove.add(l);
+			}
+		}
+		loopNestTree.removeAll(need2Remove);
+		if(!loopNestTree.isEmpty()) {
 			throw new RuntimeException("Unexpected loops existing!!!");
 		}
 	}
@@ -204,8 +211,10 @@ public class Runner {
 		BriefBlockGraph cfg = new BriefBlockGraph(mb);
 		System.out.println("\n\nCFG before executing ==>>");
 		System.out.println(cfg.toString());
+		
+		//List<Block> entries = cfg.getHeads();
+		List<Block> entries = new ArrayList<Block>(cfg.getHeads());
 
-		List<Block> entries = cfg.getHeads();
 		filterEntries(entries);
 
 		assert(entries.size() == 1);
@@ -341,6 +350,8 @@ public class Runner {
 	// }
 
 	private void operate(Block block, StateNode node) {
+		//---------------------------------------------------------
+		//generate symbolic execution graph (SEG) 
 		Propagator p = new Propagator(node);
 		for (Iterator<Unit> it = block.iterator(); it.hasNext();) {
 			Stmt stmt = (Stmt) it.next();
@@ -365,6 +376,7 @@ public class Runner {
 		node.addTypegraphList(tgl);
 		node.getTypegraphList().simplifyGraph();
 		// node.setConStr(p.constraintstr);
+
 	}
 
 	// /** get the unique entry block starting with Parameter or This rather

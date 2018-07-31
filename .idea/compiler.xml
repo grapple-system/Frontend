@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="hadoop-annotations" />
+        <module name="hadoop-ant" />
+        <module name="hadoop-archives" />
+        <module name="hadoop-assemblies" />
+        <module name="hadoop-auth" />
+        <module name="hadoop-auth-examples" />
+        <module name="hadoop-aws" />
+        <module name="hadoop-azure" />
+        <module name="hadoop-build-tools" />
+        <module name="hadoop-client" />
+        <module name="hadoop-common" />
+        <module name="hadoop-datajoin" />
+        <module name="hadoop-dist" />
+        <module name="hadoop-distcp" />
+        <module name="hadoop-extras" />
+        <module name="hadoop-gridmix" />
+        <module name="hadoop-hdfs" />
+        <module name="hadoop-hdfs-bkjournal" />
+        <module name="hadoop-hdfs-httpfs" />
+        <module name="hadoop-hdfs-nfs" />
+        <module name="hadoop-kms" />
+        <module name="hadoop-mapreduce-client-app" />
+        <module name="hadoop-mapreduce-client-common" />
+        <module name="hadoop-mapreduce-client-core" />
+        <module name="hadoop-mapreduce-client-hs" />
+        <module name="hadoop-mapreduce-client-hs-plugins" />
+        <module name="hadoop-mapreduce-client-jobclient" />
+        <module name="hadoop-mapreduce-client-shuffle" />
+        <module name="hadoop-mapreduce-examples" />
+        <module name="hadoop-maven-plugins" />
+        <module name="hadoop-minicluster" />
+        <module name="hadoop-minikdc" />
+        <module name="hadoop-nfs" />
+        <module name="hadoop-openstack" />
+        <module name="hadoop-rumen" />
+        <module name="hadoop-sls" />
+        <module name="hadoop-streaming" />
+        <module name="hadoop-tools-dist" />
+        <module name="hadoop-yarn-api" />
+        <module name="hadoop-yarn-applications-distributedshell" />
+        <module name="hadoop-yarn-applications-unmanaged-am-launcher" />
+        <module name="hadoop-yarn-client" />
+        <module name="hadoop-yarn-common" />
+        <module name="hadoop-yarn-registry" />
+        <module name="hadoop-yarn-server-applicationhistoryservice" />
+        <module name="hadoop-yarn-server-common" />
+        <module name="hadoop-yarn-server-nodemanager" />
+        <module name="hadoop-yarn-server-resourcemanager" />
+        <module name="hadoop-yarn-server-sharedcachemanager" />
+        <module name="hadoop-yarn-server-tests" />
+        <module name="hadoop-yarn-server-web-proxy" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="hadoop-annotations" target="1.7" />
+      <module name="hadoop-ant" target="1.7" />
+      <module name="hadoop-archives" target="1.7" />
+      <module name="hadoop-assemblies" target="1.7" />
+      <module name="hadoop-auth" target="1.7" />
+      <module name="hadoop-auth-examples" target="1.7" />
+      <module name="hadoop-aws" target="1.7" />
+      <module name="hadoop-azure" target="1.7" />
+      <module name="hadoop-build-tools" target="1.5" />
+      <module name="hadoop-client" target="1.7" />
+      <module name="hadoop-common" target="1.7" />
+      <module name="hadoop-common-project" target="1.5" />
+      <module name="hadoop-datajoin" target="1.7" />
+      <module name="hadoop-dist" target="1.7" />
+      <module name="hadoop-distcp" target="1.7" />
+      <module name="hadoop-extras" target="1.7" />
+      <module name="hadoop-gridmix" target="1.7" />
+      <module name="hadoop-hdfs" target="1.7" />
+      <module name="hadoop-hdfs-bkjournal" target="1.7" />
+      <module name="hadoop-hdfs-httpfs" target="1.7" />
+      <module name="hadoop-hdfs-nfs" target="1.7" />
+      <module name="hadoop-hdfs-project" target="1.5" />
+      <module name="hadoop-kms" target="1.7" />
+      <module name="hadoop-main" target="1.5" />
+      <module name="hadoop-mapreduce" target="1.5" />
+      <module name="hadoop-mapreduce-client" target="1.5" />
+      <module name="hadoop-mapreduce-client-app" target="1.7" />
+      <module name="hadoop-mapreduce-client-common" target="1.7" />
+      <module name="hadoop-mapreduce-client-core" target="1.7" />
+      <module name="hadoop-mapreduce-client-hs" target="1.7" />
+      <module name="hadoop-mapreduce-client-hs-plugins" target="1.7" />
+      <module name="hadoop-mapreduce-client-jobclient" target="1.7" />
+      <module name="hadoop-mapreduce-client-shuffle" target="1.7" />
+      <module name="hadoop-mapreduce-examples" target="1.7" />
+      <module name="hadoop-maven-plugins" target="1.7" />
+      <module name="hadoop-minicluster" target="1.7" />
+      <module name="hadoop-minikdc" target="1.7" />
+      <module name="hadoop-nfs" target="1.7" />
+      <module name="hadoop-openstack" target="1.7" />
+      <module name="hadoop-pipes" target="1.5" />
+      <module name="hadoop-project" target="1.5" />
+      <module name="hadoop-project-dist" target="1.5" />
+      <module name="hadoop-rumen" target="1.7" />
+      <module name="hadoop-sls" target="1.7" />
+      <module name="hadoop-streaming" target="1.7" />
+      <module name="hadoop-tools" target="1.5" />
+      <module name="hadoop-tools-dist" target="1.7" />
+      <module name="hadoop-yarn" target="1.5" />
+      <module name="hadoop-yarn-api" target="1.7" />
+      <module name="hadoop-yarn-applications" target="1.5" />
+      <module name="hadoop-yarn-applications-distributedshell" target="1.7" />
+      <module name="hadoop-yarn-applications-unmanaged-am-launcher" target="1.7" />
+      <module name="hadoop-yarn-client" target="1.7" />
+      <module name="hadoop-yarn-common" target="1.7" />
+      <module name="hadoop-yarn-project" target="1.5" />
+      <module name="hadoop-yarn-registry" target="1.7" />
+      <module name="hadoop-yarn-server" target="1.5" />
+      <module name="hadoop-yarn-server-applicationhistoryservice" target="1.7" />
+      <module name="hadoop-yarn-server-common" target="1.7" />
+      <module name="hadoop-yarn-server-nodemanager" target="1.7" />
+      <module name="hadoop-yarn-server-resourcemanager" target="1.7" />
+      <module name="hadoop-yarn-server-sharedcachemanager" target="1.7" />
+      <module name="hadoop-yarn-server-tests" target="1.7" />
+      <module name="hadoop-yarn-server-web-proxy" target="1.7" />
+      <module name="hadoop-yarn-site" target="1.5" />
+    </bytecodeTargetLevel>
+  </component>
+</project>

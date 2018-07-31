@@ -461,7 +461,7 @@ public class PegIntra_block {
 //	}
 	
 	public void addRef2Local(ConcreteRef ref, Local l){
-		assert(ref instanceof InstanceFieldRef || ref instanceof ArrayRef);
+		assert(ref instanceof InstanceFieldRef || ref instanceof ArrayRef || ref instanceof StaticFieldRef);
 		if(this.ref2Local.containsKey(ref)){
 			this.ref2Local.get(ref).add(l);
 		}

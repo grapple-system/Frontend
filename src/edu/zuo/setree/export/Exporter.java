@@ -22,6 +22,7 @@ public class Exporter {
 	public static final File consEdgeGraphFile = new File("intraOutput/consEdgeGraph");
 	public static final File var2indexMapFile = new File("intraOutput/var2indexMap");
 
+
 	private static Map<String, Stack<Integer>> constraintEdgeMap = new LinkedHashMap<>();
 	private static Map<String, Integer> var2indexMap = new LinkedHashMap<>();
 

@@ -3,8 +3,15 @@
 	<classpathentry kind="src" path="src"/>
 	<classpathentry kind="src" path="executor"/>
 	<classpathentry kind="src" path="test"/>
+<<<<<<< HEAD
 	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
 	<classpathentry kind="lib" path="lib/sootclasses-trunk-jar-with-dependencies.jar" sourcepath="lib/sootsources-trunk.jar"/>
 	<classpathentry kind="lib" path="E:/Study/zuo_project/pepper_wef/pepper/lib/sootclasses-trunk.jar"/>
+=======
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER/org.eclipse.jdt.internal.debug.ui.launcher.StandardVMType/JavaSE-1.7"/>
+	<classpathentry kind="lib" path="lib/soot-2.5.0.jar" sourcepath="lib/sootsources-trunk.jar"/>
+	<classpathentry kind="lib" path="lib/sootsources-trunk.jar"/>
+	<classpathentry kind="lib" path="D:/project/workspace/TryCatch/lib/rt.jar"/>
+>>>>>>> wef
 	<classpathentry kind="output" path="bin"/>
 </classpath>

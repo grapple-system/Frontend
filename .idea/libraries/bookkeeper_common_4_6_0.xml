@@ -1,0 +1,21 @@
+<component name="libraryTable">
+  <library name="bookkeeper-common-4.6.0">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/lib/bookkeeper-common-4.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bookkeeper-common-4.7.1.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bookkeeper-benchmark-4.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bookkeeper-server-4.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/bookkeeper-stats-api-4.6.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stream-storage-common-4.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stream-storage-java-client-4.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stream-storage-api-4.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stream-storage-cli-4.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stream-storage-java-client-base-4.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stream-storage-java-kv-client-4.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stream-storage-proto-4.7.0.jar!/" />
+      <root url="jar://$PROJECT_DIR$/lib/stream-storage-server-4.7.0.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
