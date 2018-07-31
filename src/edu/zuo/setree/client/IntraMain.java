@@ -88,19 +88,19 @@ public class IntraMain extends BodyTransformer {
 		Options.v().set_output_format(Options.output_format_jimple);
 		Options.v().set_keep_line_number(true);
 		Options.v().set_prepend_classpath(true);
+		
 
 		PackManager.v().getPack("jtp").add(new Transform("jtp.setree", new IntraMain()));
-
 		/**
 		 * args should be in the following format:
 		 * "-cp path_of_classes_analyzed class_names" e.g., -cp
 		 * E:\Workspace\ws_program\taintanalysis\bin\ InterTest HelloWorld
 		 */
-		//synchronized (IntraMain.class) {
+		synchronized (IntraMain.class) {
 			soot.Main.main(args);
 			TSCGenerator.printCallInfo("intraOutput/callInfoFile");
 			TSCGenerator.printCalledVar("intraOutput/calledVarFile");
-		//}
+		}
 	}
 
 }

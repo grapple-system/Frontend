@@ -27,8 +27,8 @@ public class TypeGraphList {
 		for (Local local : locals) {
 			String classname = local.getType().toString();
 			if (IntraMain.allClass.contains(classname) && !local.getName().startsWith("$")) {
-				if(getTypeGraph(local.getName()) == null){
-					TypeGraph tg = new TypeGraph(classname, local.getName());
+				if(getTypeGraph(local.getName()+local.hashCode()) == null){
+					TypeGraph tg = new TypeGraph(classname, local.getName()+local.hashCode());
 					addTypeGraph(tg);
 				}
 			}

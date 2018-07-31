@@ -226,7 +226,7 @@ public class TSCGenerator {
 					}
 				}
 				if (contains(base.getName())) {
-					typegraph_list.transMethod(base.getName(), ie.getMethod().toString(), s.hashCode(),
+					typegraph_list.transMethod(base.getName()+base.hashCode(), ie.getMethod().toString(), s.hashCode(),
 							succst.hashCode());
 				}
 			} else {
@@ -237,8 +237,8 @@ public class TSCGenerator {
 					Value arg = ie.getArg(i);
 					if (arg instanceof Local && contains(((Local) arg).getName())) {
 						Local rarg = receiver.getActiveBody().getParameterLocal(i);
-						args.add(((Local) arg).getName());
-						rargs.add(rarg.getName());
+						args.add(((Local) arg).getName()+arg.hashCode());
+						rargs.add(rarg.getName()+rarg.hashCode());
 					}
 				}
 				if (args.size() > 0) {

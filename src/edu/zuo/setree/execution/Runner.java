@@ -75,11 +75,13 @@ public class Runner {
 	}
 
 	public void run(Chain<SootClass> classes) {
-		for (SootClass klass : classes) {
-			List<SootMethod> origMethods = klass.getMethods();
-			for (SootMethod m : origMethods) {
-				if (m.isConcrete()) {
-					run(m.retrieveActiveBody());
+		synchronized (this) {
+			for (SootClass klass : classes) {
+				List<SootMethod> origMethods = klass.getMethods();
+				for (SootMethod m : origMethods) {
+					if (m.isConcrete()) {
+						run(m.retrieveActiveBody());
+					}
 				}
 			}
 		}
@@ -196,13 +198,14 @@ public class Runner {
 		// TODO Auto-generated method stub
 		LoopNestTree loopNestTree = new LoopNestTree(mb);
 		List<Loop> need2Remove = new ArrayList<>();
-		for(Loop l: loopNestTree){
-			if(l.getHead() instanceof IdentityStmt && ((IdentityStmt)l.getHead()).getRightOp() instanceof CaughtExceptionRef){
+		for (Loop l : loopNestTree) {
+			if (l.getHead() instanceof IdentityStmt
+					&& ((IdentityStmt) l.getHead()).getRightOp() instanceof CaughtExceptionRef) {
 				need2Remove.add(l);
 			}
 		}
 		loopNestTree.removeAll(need2Remove);
-		if(!loopNestTree.isEmpty()) {
+		if (!loopNestTree.isEmpty()) {
 			throw new RuntimeException("Unexpected loops existing!!!");
 		}
 	}
@@ -211,8 +214,8 @@ public class Runner {
 		BriefBlockGraph cfg = new BriefBlockGraph(mb);
 		System.out.println("\n\nCFG before executing ==>>");
 		System.out.println(cfg.toString());
-		
-		//List<Block> entries = cfg.getHeads();
+
+		// List<Block> entries = cfg.getHeads();
 		List<Block> entries = new ArrayList<Block>(cfg.getHeads());
 
 		filterEntries(entries);
@@ -297,7 +300,6 @@ public class Runner {
 		} else if (succs.size() == 1) {
 			// fall-through
 
-
 			// warning: call_hashcode changed to temp.callhash: +/-hashcode
 			constraint_graph_list.temp2Constraint(block.getTail().hashCode(), succs.get(0).getHead().hashCode(),
 					node.index, node.index);
@@ -350,8 +352,8 @@ public class Runner {
 	// }
 
 	private void operate(Block block, StateNode node) {
-		//---------------------------------------------------------
-		//generate symbolic execution graph (SEG) 
+		// ---------------------------------------------------------
+		// generate symbolic execution graph (SEG)
 		Propagator p = new Propagator(node);
 		for (Iterator<Unit> it = block.iterator(); it.hasNext();) {
 			Stmt stmt = (Stmt) it.next();
