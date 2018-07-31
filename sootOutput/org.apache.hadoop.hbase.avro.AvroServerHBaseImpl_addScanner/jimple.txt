@@ -18,3 +18,13 @@ block 0
 2031705122:$stack6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack3)
 2087831689:virtualinvoke $stack5.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($stack6, scanner)
 430290487:return $stack3
+block 0
+1814730197:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+626889335:scanner := @parameter0: org.apache.hadoop.hbase.client.ResultScanner
+1407858699:$stack3 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: int nextScannerId>
+605787935:$stack4 = $stack3 + 1
+308221618:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: int nextScannerId> = $stack4
+320414325:$stack5 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.util.HashMap scannerMap>
+2031705122:$stack6 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack3)
+2087831689:virtualinvoke $stack5.<java.util.HashMap: java.lang.Object put(java.lang.Object,java.lang.Object)>($stack6, scanner)
+430290487:return $stack3

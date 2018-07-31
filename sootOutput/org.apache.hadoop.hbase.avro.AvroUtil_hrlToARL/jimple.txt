@@ -34,3 +34,21 @@ block 0
 243883582:$stack9 = virtualinvoke rl.<org.apache.hadoop.hbase.HServerLoad$RegionLoad: int getStores()>()
 2001170383:$stack2.<org.apache.hadoop.hbase.avro.generated.ARegionLoad: int stores> = $stack9
 243076530:return $stack2
+block 0
+1682663597:rl := @parameter0: org.apache.hadoop.hbase.HServerLoad$RegionLoad
+1296845588:$stack2 = new org.apache.hadoop.hbase.avro.generated.ARegionLoad
+286720552:specialinvoke $stack2.<org.apache.hadoop.hbase.avro.generated.ARegionLoad: void <init>()>()
+846570623:$stack3 = virtualinvoke rl.<org.apache.hadoop.hbase.HServerLoad$RegionLoad: int getMemStoreSizeMB()>()
+458946139:$stack2.<org.apache.hadoop.hbase.avro.generated.ARegionLoad: int memStoreSizeMB> = $stack3
+1797821749:$stack4 = virtualinvoke rl.<org.apache.hadoop.hbase.HServerLoad$RegionLoad: byte[] getName()>()
+1952551539:$stack5 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>($stack4)
+952457866:$stack2.<org.apache.hadoop.hbase.avro.generated.ARegionLoad: java.nio.ByteBuffer name> = $stack5
+852612805:$stack6 = virtualinvoke rl.<org.apache.hadoop.hbase.HServerLoad$RegionLoad: int getStorefileIndexSizeMB()>()
+1247492326:$stack2.<org.apache.hadoop.hbase.avro.generated.ARegionLoad: int storefileIndexSizeMB> = $stack6
+1049295917:$stack7 = virtualinvoke rl.<org.apache.hadoop.hbase.HServerLoad$RegionLoad: int getStorefiles()>()
+47280839:$stack2.<org.apache.hadoop.hbase.avro.generated.ARegionLoad: int storefiles> = $stack7
+147734311:$stack8 = virtualinvoke rl.<org.apache.hadoop.hbase.HServerLoad$RegionLoad: int getStorefileSizeMB()>()
+1632424327:$stack2.<org.apache.hadoop.hbase.avro.generated.ARegionLoad: int storefileSizeMB> = $stack8
+243883582:$stack9 = virtualinvoke rl.<org.apache.hadoop.hbase.HServerLoad$RegionLoad: int getStores()>()
+2001170383:$stack2.<org.apache.hadoop.hbase.avro.generated.ARegionLoad: int stores> = $stack9
+243076530:return $stack2

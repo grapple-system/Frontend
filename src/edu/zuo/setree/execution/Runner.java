@@ -287,10 +287,7 @@ public class Runner {
 			traverseCFG(succs.get(1), nFalse);
 		} else if (succs.size() == 1) {
 			// fall-through
-			// Change by pan
-			// StateNode nTrue = new StateNode(node);
-			// node.setTrueChild(nTrue);
-			// nTrue.index = 2 * node.index + 1;
+
 
 			// warning: call_hashcode changed to temp.callhash: +/-hashcode
 			constraint_graph_list.temp2Constraint(block.getTail().hashCode(), succs.get(0).getHead().hashCode(),

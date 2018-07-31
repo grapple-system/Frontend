@@ -47,3 +47,8 @@ block 6
 1131228089:goto [?= return]
 block 12
 14181307:return
+block 0
+515938920:this := @this: org.apache.hadoop.hbase.avro.generated.AGet
+2108273452:field$ := @parameter0: int
+2119994496:value$ := @parameter1: java.lang.Object
+1933458457:tableswitch(field$) {     case 0: goto $stack3 = (java.nio.ByteBuffer) value$;     case 1: goto $stack7 = (org.apache.avro.generic.GenericArray) value$;     case 2: goto $stack6 = (java.lang.Long) value$;     case 3: goto $stack5 = (org.apache.hadoop.hbase.avro.generated.ATimeRange) value$;     case 4: goto $stack4 = (java.lang.Integer) value$;     default: goto $stack10 = new org.apache.avro.AvroRuntimeException; }

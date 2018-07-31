@@ -6,3 +6,7 @@ block 0
 1664879201:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"error\",\"name\":\"AAlreadyExists\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"message\",\"type\":\"string\"}]}")
 1228025092:<org.apache.hadoop.hbase.avro.generated.AAlreadyExists: org.apache.avro.Schema SCHEMA$> = $stack0
 191591531:return
+block 0
+1664879201:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"error\",\"name\":\"AAlreadyExists\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"message\",\"type\":\"string\"}]}")
+1228025092:<org.apache.hadoop.hbase.avro.generated.AAlreadyExists: org.apache.avro.Schema SCHEMA$> = $stack0
+191591531:return

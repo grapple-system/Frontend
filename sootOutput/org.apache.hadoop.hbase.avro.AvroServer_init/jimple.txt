@@ -6,3 +6,7 @@ block 0
 2055183685:this := @this: org.apache.hadoop.hbase.avro.AvroServer
 155833159:specialinvoke this.<java.lang.Object: void <init>()>()
 533053618:return
+block 0
+2055183685:this := @this: org.apache.hadoop.hbase.avro.AvroServer
+155833159:specialinvoke this.<java.lang.Object: void <init>()>()
+533053618:return

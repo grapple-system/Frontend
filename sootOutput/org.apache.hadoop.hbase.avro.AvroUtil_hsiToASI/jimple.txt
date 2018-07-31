@@ -36,3 +36,22 @@ block 0
 479078480:$stack10 = virtualinvoke hsi.<org.apache.hadoop.hbase.HServerInfo: long getStartCode()>()
 1353454153:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerInfo: long startCode> = $stack10
 1413295859:return $stack2
+block 0
+179622586:hsi := @parameter0: org.apache.hadoop.hbase.HServerInfo
+1632419524:$stack2 = new org.apache.hadoop.hbase.avro.generated.AServerInfo
+41260873:specialinvoke $stack2.<org.apache.hadoop.hbase.avro.generated.AServerInfo: void <init>()>()
+1551660539:$stack3 = virtualinvoke hsi.<org.apache.hadoop.hbase.HServerInfo: int getInfoPort()>()
+1922920162:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerInfo: int infoPort> = $stack3
+121286266:$stack4 = virtualinvoke hsi.<org.apache.hadoop.hbase.HServerInfo: org.apache.hadoop.hbase.HServerLoad getLoad()>()
+945213643:$stack5 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AServerLoad hslToASL(org.apache.hadoop.hbase.HServerLoad)>($stack4)
+556094301:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerInfo: org.apache.hadoop.hbase.avro.generated.AServerLoad load> = $stack5
+1602363550:$stack6 = virtualinvoke hsi.<org.apache.hadoop.hbase.HServerInfo: org.apache.hadoop.hbase.HServerAddress getServerAddress()>()
+1365013293:$stack7 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AServerAddress hsaToASA(org.apache.hadoop.hbase.HServerAddress)>($stack6)
+1525186016:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerInfo: org.apache.hadoop.hbase.avro.generated.AServerAddress serverAddress> = $stack7
+1364051444:$stack8 = new org.apache.avro.util.Utf8
+2049210129:$stack9 = virtualinvoke hsi.<org.apache.hadoop.hbase.HServerInfo: java.lang.String getServerName()>()
+1225830367:specialinvoke $stack8.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>($stack9)
+1984803180:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerInfo: org.apache.avro.util.Utf8 serverName> = $stack8
+479078480:$stack10 = virtualinvoke hsi.<org.apache.hadoop.hbase.HServerInfo: long getStartCode()>()
+1353454153:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerInfo: long startCode> = $stack10
+1413295859:return $stack2

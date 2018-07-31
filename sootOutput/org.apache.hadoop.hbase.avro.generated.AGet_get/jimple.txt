@@ -31,3 +31,36 @@ block 7
 block 6
 333890884:$stack2 = this.<org.apache.hadoop.hbase.avro.generated.AGet: java.nio.ByteBuffer row>
 1818817180:return $stack2
+block 0
+1345962703:this := @this: org.apache.hadoop.hbase.avro.generated.AGet
+895175732:field$ := @parameter0: int
+1864679646:if field$ == 0 goto $stack2 = this.<org.apache.hadoop.hbase.avro.generated.AGet: java.nio.ByteBuffer row>
+block 1
+460257012:if field$ == 1 goto $stack6 = this.<org.apache.hadoop.hbase.avro.generated.AGet: org.apache.avro.generic.GenericArray columns>
+block 2
+1325246068:if field$ == 2 goto $stack5 = this.<org.apache.hadoop.hbase.avro.generated.AGet: java.lang.Long timestamp>
+block 3
+534575741:if field$ == 3 goto $stack4 = this.<org.apache.hadoop.hbase.avro.generated.AGet: org.apache.hadoop.hbase.avro.generated.ATimeRange timerange>
+block 4
+1454898024:if field$ == 4 goto $stack3 = this.<org.apache.hadoop.hbase.avro.generated.AGet: java.lang.Integer maxVersions>
+block 5
+981626396:goto [?= $stack8 = new org.apache.avro.AvroRuntimeException]
+block 11
+156684093:$stack8 = new org.apache.avro.AvroRuntimeException
+1478005042:specialinvoke $stack8.<org.apache.avro.AvroRuntimeException: void <init>(java.lang.String)>("Bad index")
+587573968:throw $stack8
+block 10
+1950456251:$stack3 = this.<org.apache.hadoop.hbase.avro.generated.AGet: java.lang.Integer maxVersions>
+1827192676:return $stack3
+block 9
+1207695710:$stack4 = this.<org.apache.hadoop.hbase.avro.generated.AGet: org.apache.hadoop.hbase.avro.generated.ATimeRange timerange>
+1229465441:return $stack4
+block 8
+732214059:$stack5 = this.<org.apache.hadoop.hbase.avro.generated.AGet: java.lang.Long timestamp>
+1395523773:return $stack5
+block 7
+1205331126:$stack6 = this.<org.apache.hadoop.hbase.avro.generated.AGet: org.apache.avro.generic.GenericArray columns>
+1648285165:return $stack6
+block 6
+333890884:$stack2 = this.<org.apache.hadoop.hbase.avro.generated.AGet: java.nio.ByteBuffer row>
+1818817180:return $stack2

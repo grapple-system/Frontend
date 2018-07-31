@@ -306,6 +306,8 @@ public class Propagator extends AbstractStmtSwitch {
 			//add new symbolic local to localsMap
 			Expression retSym = getRetSym(ie, retValue);
 			putMap(retValue, retSym);
+
+			callSite.setRetSym(retSym);
 		}
 		
 		//add callsite to stateNode
@@ -316,7 +318,7 @@ public class Propagator extends AbstractStmtSwitch {
 	private Expression getRetSym(InvokeExpr ie, Local retValue) {
 		String sym_ret = "@ret" + this.stateNode.getCallSiteIndex();
 		Type type = retValue.getType();
-		
+
 		return createSymVariable(sym_ret, type);
 	}
 
@@ -429,7 +431,7 @@ public class Propagator extends AbstractStmtSwitch {
 		Type binType = binExpr.getOp1().getType();
 		
 		//PrimType
-		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType){
+		if(binType instanceof IntType || binType instanceof ShortType || binType instanceof CharType || binType instanceof ByteType || binType instanceof BooleanType){
 			return getIntegerBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
 		else if(binType instanceof LongType){
@@ -441,9 +443,9 @@ public class Propagator extends AbstractStmtSwitch {
 		else if(binType instanceof DoubleType){
 			return getDoubleBinaryOperator(binExprSymbol).apply(symOp1, symOp2);
 		}
-		else if(binType instanceof BooleanType){
+		/*else if(binType instanceof BooleanType){
 			return getBooleanBinaryExpression(binExprSymbol, symOp1, symOp2);
-		}
+		}*/
 		//RefLikeType
 		else if(binType instanceof RefLikeType) {
 			return getRefBinaryOperator(binExprSymbol).apply(symOp1, symOp2);

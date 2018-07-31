@@ -12,3 +12,10 @@ block 0
 856901180:$stack5 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
 163631293:virtualinvoke $stack4.<org.apache.hadoop.hbase.client.HBaseAdmin: void deleteTable(byte[])>($stack5)
 417773355:return null
+block 0
+2109182431:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+469391891:table := @parameter0: java.nio.ByteBuffer
+1991193781:$stack4 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+856901180:$stack5 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+163631293:virtualinvoke $stack4.<org.apache.hadoop.hbase.client.HBaseAdmin: void deleteTable(byte[])>($stack5)
+417773355:return null

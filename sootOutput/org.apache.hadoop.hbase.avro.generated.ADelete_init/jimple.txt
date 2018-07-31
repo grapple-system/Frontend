@@ -2,3 +2,7 @@ block 0
 319323253:this := @this: org.apache.hadoop.hbase.avro.generated.ADelete
 1368568577:specialinvoke this.<org.apache.avro.specific.SpecificRecordBase: void <init>()>()
 27891346:return
+block 0
+319323253:this := @this: org.apache.hadoop.hbase.avro.generated.ADelete
+1368568577:specialinvoke this.<org.apache.avro.specific.SpecificRecordBase: void <init>()>()
+27891346:return

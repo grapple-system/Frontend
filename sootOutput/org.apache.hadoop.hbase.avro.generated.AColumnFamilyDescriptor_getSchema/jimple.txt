@@ -6,3 +6,7 @@ block 0
 1322600748:this := @this: org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor
 1030178285:$stack1 = <org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: org.apache.avro.Schema SCHEMA$>
 1611538432:return $stack1
+block 0
+1322600748:this := @this: org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor
+1030178285:$stack1 = <org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: org.apache.avro.Schema SCHEMA$>
+1611538432:return $stack1

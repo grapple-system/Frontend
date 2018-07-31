@@ -6,3 +6,7 @@ block 0
 179168674:this := @this: org.apache.hadoop.hbase.avro.generated.AColumn
 158551214:$stack1 = <org.apache.hadoop.hbase.avro.generated.AColumn: org.apache.avro.Schema SCHEMA$>
 1486717726:return $stack1
+block 0
+179168674:this := @this: org.apache.hadoop.hbase.avro.generated.AColumn
+158551214:$stack1 = <org.apache.hadoop.hbase.avro.generated.AColumn: org.apache.avro.Schema SCHEMA$>
+1486717726:return $stack1

@@ -26,3 +26,31 @@ block 6
 block 5
 258882407:$stack2 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.nio.ByteBuffer family>
 499302716:return $stack2
+block 0
+248512306:this := @this: org.apache.hadoop.hbase.avro.generated.AColumnValue
+1013314273:field$ := @parameter0: int
+91662279:if field$ == 0 goto $stack2 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.nio.ByteBuffer family>
+block 1
+1564067782:if field$ == 1 goto $stack5 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.nio.ByteBuffer qualifier>
+block 2
+1303703623:if field$ == 2 goto $stack4 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.nio.ByteBuffer value>
+block 3
+173415143:if field$ == 3 goto $stack3 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.lang.Long timestamp>
+block 4
+976149749:goto [?= $stack7 = new org.apache.avro.AvroRuntimeException]
+block 9
+1780936422:$stack7 = new org.apache.avro.AvroRuntimeException
+1992162329:specialinvoke $stack7.<org.apache.avro.AvroRuntimeException: void <init>(java.lang.String)>("Bad index")
+19173251:throw $stack7
+block 8
+707885815:$stack3 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.lang.Long timestamp>
+2067323681:return $stack3
+block 7
+767528188:$stack4 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.nio.ByteBuffer value>
+650191948:return $stack4
+block 6
+309534943:$stack5 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.nio.ByteBuffer qualifier>
+1815643381:return $stack5
+block 5
+258882407:$stack2 = this.<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.nio.ByteBuffer family>
+499302716:return $stack2

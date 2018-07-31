@@ -84,3 +84,46 @@ block 2
 554723402:virtualinvoke $stack7.<java.io.PrintStream: void println(java.lang.String)>(" help  Print this message and exit")
 995529850:staticinvoke <java.lang.System: void exit(int)>(0)
 1652114818:return
+block 0
+64330035:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit(java.lang.String)>(null)
+892626202:return
+block 0
+256167987:message := @parameter0: java.lang.String
+1621854559:if message == null goto $stack1 = <java.lang.System: java.io.PrintStream out>
+block 1
+1694587465:$stack8 = <java.lang.System: java.io.PrintStream err>
+1155566202:virtualinvoke $stack8.<java.io.PrintStream: void println(java.lang.String)>(message)
+block 2
+685428529:$stack1 = <java.lang.System: java.io.PrintStream out>
+127269549:virtualinvoke $stack1.<java.io.PrintStream: void println(java.lang.String)>("Usage: java org.apache.hadoop.hbase.avro.AvroServer --help | [--port=PORT] start")
+1777591638:$stack2 = <java.lang.System: java.io.PrintStream out>
+911284082:virtualinvoke $stack2.<java.io.PrintStream: void println(java.lang.String)>("Arguments:")
+665390309:$stack3 = <java.lang.System: java.io.PrintStream out>
+1235247239:virtualinvoke $stack3.<java.io.PrintStream: void println(java.lang.String)>(" start Start Avro server")
+1135930380:$stack4 = <java.lang.System: java.io.PrintStream out>
+1592099291:virtualinvoke $stack4.<java.io.PrintStream: void println(java.lang.String)>(" stop  Stop Avro server")
+1046396414:$stack5 = <java.lang.System: java.io.PrintStream out>
+67053257:virtualinvoke $stack5.<java.io.PrintStream: void println(java.lang.String)>("Options:")
+1706505865:$stack6 = <java.lang.System: java.io.PrintStream out>
+1525943877:virtualinvoke $stack6.<java.io.PrintStream: void println(java.lang.String)>(" port  Port to listen on. Default: 9090")
+1180245656:$stack7 = <java.lang.System: java.io.PrintStream out>
+554723402:virtualinvoke $stack7.<java.io.PrintStream: void println(java.lang.String)>(" help  Print this message and exit")
+995529850:staticinvoke <java.lang.System: void exit(int)>(0)
+1652114818:return
+block 2
+685428529:$stack1 = <java.lang.System: java.io.PrintStream out>
+127269549:virtualinvoke $stack1.<java.io.PrintStream: void println(java.lang.String)>("Usage: java org.apache.hadoop.hbase.avro.AvroServer --help | [--port=PORT] start")
+1777591638:$stack2 = <java.lang.System: java.io.PrintStream out>
+911284082:virtualinvoke $stack2.<java.io.PrintStream: void println(java.lang.String)>("Arguments:")
+665390309:$stack3 = <java.lang.System: java.io.PrintStream out>
+1235247239:virtualinvoke $stack3.<java.io.PrintStream: void println(java.lang.String)>(" start Start Avro server")
+1135930380:$stack4 = <java.lang.System: java.io.PrintStream out>
+1592099291:virtualinvoke $stack4.<java.io.PrintStream: void println(java.lang.String)>(" stop  Stop Avro server")
+1046396414:$stack5 = <java.lang.System: java.io.PrintStream out>
+67053257:virtualinvoke $stack5.<java.io.PrintStream: void println(java.lang.String)>("Options:")
+1706505865:$stack6 = <java.lang.System: java.io.PrintStream out>
+1525943877:virtualinvoke $stack6.<java.io.PrintStream: void println(java.lang.String)>(" port  Port to listen on. Default: 9090")
+1180245656:$stack7 = <java.lang.System: java.io.PrintStream out>
+554723402:virtualinvoke $stack7.<java.io.PrintStream: void println(java.lang.String)>(" help  Print this message and exit")
+995529850:staticinvoke <java.lang.System: void exit(int)>(0)
+1652114818:return

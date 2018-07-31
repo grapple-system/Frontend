@@ -48,3 +48,28 @@ block 3
 533689273:goto [?= return]
 block 6
 1976828628:return
+block 0
+1541263681:this := @this: org.apache.hadoop.hbase.avro.generated.AColumn
+1298147262:field$ := @parameter0: int
+1197389053:value$ := @parameter1: java.lang.Object
+2001483832:if field$ == 0 goto $stack4 = (java.nio.ByteBuffer) value$
+block 1
+305683385:if field$ == 1 goto $stack3 = (java.nio.ByteBuffer) value$
+block 2
+805774970:goto [?= $stack5 = new org.apache.avro.AvroRuntimeException]
+block 5
+1282386874:$stack5 = new org.apache.avro.AvroRuntimeException
+522065374:specialinvoke $stack5.<org.apache.avro.AvroRuntimeException: void <init>(java.lang.String)>("Bad index")
+782243359:throw $stack5
+block 4
+401325854:$stack3 = (java.nio.ByteBuffer) value$
+1550187113:this.<org.apache.hadoop.hbase.avro.generated.AColumn: java.nio.ByteBuffer qualifier> = $stack3
+953354471:goto [?= return]
+block 6
+1976828628:return
+block 3
+547458249:$stack4 = (java.nio.ByteBuffer) value$
+1632981528:this.<org.apache.hadoop.hbase.avro.generated.AColumn: java.nio.ByteBuffer family> = $stack4
+533689273:goto [?= return]
+block 6
+1976828628:return

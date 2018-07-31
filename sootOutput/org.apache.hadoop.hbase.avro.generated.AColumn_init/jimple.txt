@@ -6,3 +6,7 @@ block 0
 2145350489:this := @this: org.apache.hadoop.hbase.avro.generated.AColumn
 1435423859:specialinvoke this.<org.apache.avro.specific.SpecificRecordBase: void <init>()>()
 1364140064:return
+block 0
+2145350489:this := @this: org.apache.hadoop.hbase.avro.generated.AColumn
+1435423859:specialinvoke this.<org.apache.avro.specific.SpecificRecordBase: void <init>()>()
+1364140064:return

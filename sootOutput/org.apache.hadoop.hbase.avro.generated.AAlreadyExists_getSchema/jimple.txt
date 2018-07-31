@@ -6,3 +6,7 @@ block 0
 715949995:this := @this: org.apache.hadoop.hbase.avro.generated.AAlreadyExists
 72565662:$stack1 = <org.apache.hadoop.hbase.avro.generated.AAlreadyExists: org.apache.avro.Schema SCHEMA$>
 758348124:return $stack1
+block 0
+715949995:this := @this: org.apache.hadoop.hbase.avro.generated.AAlreadyExists
+72565662:$stack1 = <org.apache.hadoop.hbase.avro.generated.AAlreadyExists: org.apache.avro.Schema SCHEMA$>
+758348124:return $stack1

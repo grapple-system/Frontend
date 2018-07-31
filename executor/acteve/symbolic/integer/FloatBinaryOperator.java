@@ -39,7 +39,16 @@ public class FloatBinaryOperator extends BinaryOperator
 
     public Expression apply(Expression leftOp, Expression rightOp)
     {
+        if (leftOp instanceof SymbolicLong){
+            leftOp = ((SymbolicLong) leftOp)._cast(Types.FLOAT);
+        }
 		FloatExpression left = (FloatExpression) leftOp;
+
+		if(rightOp instanceof SymbolicInteger){
+            rightOp = ((SymbolicInteger) rightOp)._cast(Types.FLOAT);
+        }else if(rightOp instanceof SymbolicLong){
+		    rightOp = ((SymbolicLong) rightOp)._cast(Types.FLOAT);
+        }
 		FloatExpression right = (FloatExpression) rightOp;
 //		if(left instanceof Constant && right instanceof Constant)
 //			assert false;

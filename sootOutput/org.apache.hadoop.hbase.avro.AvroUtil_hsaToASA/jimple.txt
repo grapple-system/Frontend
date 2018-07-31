@@ -30,3 +30,19 @@ block 0
 1268858861:$stack8 = virtualinvoke hsa.<org.apache.hadoop.hbase.HServerAddress: int getPort()>()
 1696394747:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerAddress: int port> = $stack8
 1943548225:return $stack2
+block 0
+1195834252:hsa := @parameter0: org.apache.hadoop.hbase.HServerAddress
+18392277:$stack2 = new org.apache.hadoop.hbase.avro.generated.AServerAddress
+1958168955:specialinvoke $stack2.<org.apache.hadoop.hbase.avro.generated.AServerAddress: void <init>()>()
+1358584120:$stack3 = new org.apache.avro.util.Utf8
+1488320466:$stack4 = virtualinvoke hsa.<org.apache.hadoop.hbase.HServerAddress: java.lang.String getHostname()>()
+197470785:specialinvoke $stack3.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>($stack4)
+167018904:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerAddress: org.apache.avro.util.Utf8 hostname> = $stack3
+560565850:$stack5 = new org.apache.avro.util.Utf8
+780764854:$stack6 = virtualinvoke hsa.<org.apache.hadoop.hbase.HServerAddress: java.net.InetSocketAddress getInetSocketAddress()>()
+1462028250:$stack7 = virtualinvoke $stack6.<java.net.InetSocketAddress: java.lang.String toString()>()
+986875962:specialinvoke $stack5.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>($stack7)
+1477752059:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerAddress: org.apache.avro.util.Utf8 inetSocketAddress> = $stack5
+1268858861:$stack8 = virtualinvoke hsa.<org.apache.hadoop.hbase.HServerAddress: int getPort()>()
+1696394747:$stack2.<org.apache.hadoop.hbase.avro.generated.AServerAddress: int port> = $stack8
+1943548225:return $stack2

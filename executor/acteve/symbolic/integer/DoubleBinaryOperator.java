@@ -39,7 +39,20 @@ public class DoubleBinaryOperator extends BinaryOperator
 
     public Expression apply(Expression leftOp, Expression rightOp)
     {
+        if(leftOp instanceof SymbolicLong){
+            leftOp = ((SymbolicLong) leftOp)._cast(Types.FLOAT);
+        }else if(leftOp instanceof UnaryFloatExpression){
+            // not useful
+            leftOp = ((UnaryFloatExpression) leftOp)._cast(Types.FLOAT);
+        }
 		DoubleExpression left = (DoubleExpression) leftOp;
+
+        if(rightOp instanceof BinaryLongExpression){
+            rightOp = ((BinaryLongExpression) rightOp)._cast(Types.FLOAT);
+        }else if(rightOp instanceof UnaryFloatExpression){
+            // not useful
+            rightOp = ((UnaryFloatExpression) rightOp)._cast(Types.FLOAT);
+        }
 		DoubleExpression right = (DoubleExpression) rightOp;
 //		if(left instanceof Constant && right instanceof Constant)
 //			assert false;
