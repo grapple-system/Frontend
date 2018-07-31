@@ -1,0 +1,145 @@
+block 0
+1585347198:hsl := @parameter0: org.apache.hadoop.hbase.HServerLoad
+707108719:$stack7 = new org.apache.hadoop.hbase.avro.generated.AServerLoad
+1039352074:specialinvoke $stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: void <init>()>()
+1712597146:$stack8 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getLoad()>()
+1095290435:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int load> = $stack8
+117227681:$stack9 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getMaxHeapMB()>()
+1097558044:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int maxHeapMB> = $stack9
+1553686114:$stack10 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getMemStoreSizeInMB()>()
+1015178392:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int memStoreSizeInMB> = $stack10
+1425169218:$stack11 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getNumberOfRegions()>()
+1377593328:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int numberOfRegions> = $stack11
+1159395201:$stack12 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getNumberOfRequests()>()
+57973803:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int numberOfRequests> = $stack12
+1995273587:regionLoads = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: java.util.Collection getRegionsLoad()>()
+1367071968:$stack14 = <org.apache.hadoop.hbase.avro.generated.ARegionLoad: org.apache.avro.Schema SCHEMA$>
+1632677830:s = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema createArray(org.apache.avro.Schema)>($stack14)
+106784320:if regionLoads == null goto $stack16 = new org.apache.avro.generic.GenericData$Array
+block 1
+320043061:$stack21 = new org.apache.avro.generic.GenericData$Array
+570434649:$stack22 = interfaceinvoke regionLoads.<java.util.Collection: int size()>()
+700253546:specialinvoke $stack21.<org.apache.avro.generic.GenericData$Array: void <init>(int,org.apache.avro.Schema)>($stack22, s)
+568787640:aregionLoads = $stack21
+499774893:i$ = interfaceinvoke regionLoads.<java.util.Collection: java.util.Iterator iterator()>()
+81788921:$stack24 = interfaceinvoke i$.<java.util.Iterator: boolean hasNext()>()
+688176214:if $stack24 == 0 goto (branch)
+block 2
+2075283526:$stack36 = interfaceinvoke i$.<java.util.Iterator: java.lang.Object next()>()
+1773267192:rl = (org.apache.hadoop.hbase.HServerLoad$RegionLoad) $stack36
+503319063:$stack37 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.ARegionLoad hrlToARL(org.apache.hadoop.hbase.HServerLoad$RegionLoad)>(rl)
+2010733041:virtualinvoke $stack21.<org.apache.avro.generic.GenericData$Array: void add(java.lang.Object)>($stack37)
+block 3
+1425445649:goto [?= $stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads]
+block 5
+63221076:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads
+1263973655:$stack17 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileIndexSizeInMB()>()
+287628665:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileIndexSizeInMB> = $stack17
+1464949060:$stack18 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefiles()>()
+2049393953:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefiles> = $stack18
+508619583:$stack19 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileSizeInMB()>()
+316929198:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileSizeInMB> = $stack19
+1812378044:$stack20 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getUsedHeapMB()>()
+495828752:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int usedHeapMB> = $stack20
+1568666385:return $stack7
+block 3
+1425445649:goto [?= $stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads]
+block 5
+63221076:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads
+1263973655:$stack17 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileIndexSizeInMB()>()
+287628665:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileIndexSizeInMB> = $stack17
+1464949060:$stack18 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefiles()>()
+2049393953:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefiles> = $stack18
+508619583:$stack19 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileSizeInMB()>()
+316929198:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileSizeInMB> = $stack19
+1812378044:$stack20 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getUsedHeapMB()>()
+495828752:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int usedHeapMB> = $stack20
+1568666385:return $stack7
+block 4
+2006168925:$stack16 = new org.apache.avro.generic.GenericData$Array
+1254589807:specialinvoke $stack16.<org.apache.avro.generic.GenericData$Array: void <init>(int,org.apache.avro.Schema)>(0, s)
+1127171622:aregionLoads = $stack16
+block 5
+63221076:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads
+1263973655:$stack17 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileIndexSizeInMB()>()
+287628665:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileIndexSizeInMB> = $stack17
+1464949060:$stack18 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefiles()>()
+2049393953:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefiles> = $stack18
+508619583:$stack19 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileSizeInMB()>()
+316929198:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileSizeInMB> = $stack19
+1812378044:$stack20 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getUsedHeapMB()>()
+495828752:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int usedHeapMB> = $stack20
+1568666385:return $stack7
+block 0
+1585347198:hsl := @parameter0: org.apache.hadoop.hbase.HServerLoad
+707108719:$stack7 = new org.apache.hadoop.hbase.avro.generated.AServerLoad
+1039352074:specialinvoke $stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: void <init>()>()
+1712597146:$stack8 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getLoad()>()
+1095290435:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int load> = $stack8
+117227681:$stack9 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getMaxHeapMB()>()
+1097558044:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int maxHeapMB> = $stack9
+1553686114:$stack10 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getMemStoreSizeInMB()>()
+1015178392:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int memStoreSizeInMB> = $stack10
+1425169218:$stack11 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getNumberOfRegions()>()
+1377593328:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int numberOfRegions> = $stack11
+1159395201:$stack12 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getNumberOfRequests()>()
+57973803:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int numberOfRequests> = $stack12
+1995273587:regionLoads = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: java.util.Collection getRegionsLoad()>()
+1367071968:$stack14 = <org.apache.hadoop.hbase.avro.generated.ARegionLoad: org.apache.avro.Schema SCHEMA$>
+1632677830:s = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema createArray(org.apache.avro.Schema)>($stack14)
+106784320:if regionLoads == null goto $stack16 = new org.apache.avro.generic.GenericData$Array
+block 1
+320043061:$stack21 = new org.apache.avro.generic.GenericData$Array
+570434649:$stack22 = interfaceinvoke regionLoads.<java.util.Collection: int size()>()
+700253546:specialinvoke $stack21.<org.apache.avro.generic.GenericData$Array: void <init>(int,org.apache.avro.Schema)>($stack22, s)
+568787640:aregionLoads = $stack21
+499774893:i$ = interfaceinvoke regionLoads.<java.util.Collection: java.util.Iterator iterator()>()
+81788921:$stack24 = interfaceinvoke i$.<java.util.Iterator: boolean hasNext()>()
+688176214:if $stack24 == 0 goto (branch)
+block 2
+2075283526:$stack36 = interfaceinvoke i$.<java.util.Iterator: java.lang.Object next()>()
+1773267192:rl = (org.apache.hadoop.hbase.HServerLoad$RegionLoad) $stack36
+503319063:$stack37 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.ARegionLoad hrlToARL(org.apache.hadoop.hbase.HServerLoad$RegionLoad)>(rl)
+2010733041:virtualinvoke $stack21.<org.apache.avro.generic.GenericData$Array: void add(java.lang.Object)>($stack37)
+298424794:goto [?= (branch)]
+block 3
+1425445649:goto [?= $stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads]
+block 5
+63221076:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads
+1263973655:$stack17 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileIndexSizeInMB()>()
+287628665:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileIndexSizeInMB> = $stack17
+1464949060:$stack18 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefiles()>()
+2049393953:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefiles> = $stack18
+508619583:$stack19 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileSizeInMB()>()
+316929198:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileSizeInMB> = $stack19
+1812378044:$stack20 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getUsedHeapMB()>()
+495828752:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int usedHeapMB> = $stack20
+1568666385:return $stack7
+block 3
+1425445649:goto [?= $stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads]
+block 5
+63221076:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads
+1263973655:$stack17 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileIndexSizeInMB()>()
+287628665:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileIndexSizeInMB> = $stack17
+1464949060:$stack18 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefiles()>()
+2049393953:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefiles> = $stack18
+508619583:$stack19 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileSizeInMB()>()
+316929198:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileSizeInMB> = $stack19
+1812378044:$stack20 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getUsedHeapMB()>()
+495828752:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int usedHeapMB> = $stack20
+1568666385:return $stack7
+block 4
+2006168925:$stack16 = new org.apache.avro.generic.GenericData$Array
+1254589807:specialinvoke $stack16.<org.apache.avro.generic.GenericData$Array: void <init>(int,org.apache.avro.Schema)>(0, s)
+1127171622:aregionLoads = $stack16
+block 5
+63221076:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: org.apache.avro.generic.GenericArray regionsLoad> = aregionLoads
+1263973655:$stack17 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileIndexSizeInMB()>()
+287628665:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileIndexSizeInMB> = $stack17
+1464949060:$stack18 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefiles()>()
+2049393953:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefiles> = $stack18
+508619583:$stack19 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getStorefileSizeInMB()>()
+316929198:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int storefileSizeInMB> = $stack19
+1812378044:$stack20 = virtualinvoke hsl.<org.apache.hadoop.hbase.HServerLoad: int getUsedHeapMB()>()
+495828752:$stack7.<org.apache.hadoop.hbase.avro.generated.AServerLoad: int usedHeapMB> = $stack20
+1568666385:return $stack7

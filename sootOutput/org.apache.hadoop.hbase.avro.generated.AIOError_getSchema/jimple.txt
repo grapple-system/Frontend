@@ -1,0 +1,4 @@
+block 0
+1807402813:this := @this: org.apache.hadoop.hbase.avro.generated.AIOError
+157567214:$stack1 = <org.apache.hadoop.hbase.avro.generated.AIOError: org.apache.avro.Schema SCHEMA$>
+1498452883:return $stack1

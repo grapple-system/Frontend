@@ -1,0 +1,12 @@
+block 0
+702392974:this := @this: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo
+1422714112:$stack1 = this.<org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo: org.apache.hadoop.hdfs.protocol.ClientDatanodeProtocol proxy>
+1968190405:if null == $stack1 goto return
+block 1
+1531556319:$stack2 = this.<org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo: org.apache.hadoop.hdfs.protocol.ClientDatanodeProtocol proxy>
+1755229011:staticinvoke <org.apache.hadoop.ipc.RPC: void stopProxy(java.lang.Object)>($stack2)
+1553033411:this.<org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo: org.apache.hadoop.hdfs.protocol.ClientDatanodeProtocol proxy> = null
+block 2
+1461257215:return
+block 2
+1461257215:return

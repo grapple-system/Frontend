@@ -1,0 +1,8 @@
+block 0
+1898748879:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"record\",\"name\":\"AColumn\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"family\",\"type\":\"bytes\"},{\"name\":\"qualifier\",\"type\":[\"bytes\",\"null\"]}]}")
+1010091153:<org.apache.hadoop.hbase.avro.generated.AColumn: org.apache.avro.Schema SCHEMA$> = $stack0
+1352550658:return
+block 0
+1898748879:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"record\",\"name\":\"AColumn\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"family\",\"type\":\"bytes\"},{\"name\":\"qualifier\",\"type\":[\"bytes\",\"null\"]}]}")
+1010091153:<org.apache.hadoop.hbase.avro.generated.AColumn: org.apache.avro.Schema SCHEMA$> = $stack0
+1352550658:return

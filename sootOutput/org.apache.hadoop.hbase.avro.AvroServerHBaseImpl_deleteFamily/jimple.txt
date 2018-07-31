@@ -1,0 +1,18 @@
+block 0
+1977359388:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+90250170:table := @parameter0: java.nio.ByteBuffer
+1537311996:family := @parameter1: java.nio.ByteBuffer
+476759868:$stack5 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+696855159:$stack6 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+1396827930:$stack7 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(family)
+1079872128:virtualinvoke $stack5.<org.apache.hadoop.hbase.client.HBaseAdmin: void deleteColumn(byte[],byte[])>($stack6, $stack7)
+1795075885:return null
+block 0
+1977359388:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+90250170:table := @parameter0: java.nio.ByteBuffer
+1537311996:family := @parameter1: java.nio.ByteBuffer
+476759868:$stack5 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+696855159:$stack6 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+1396827930:$stack7 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(family)
+1079872128:virtualinvoke $stack5.<org.apache.hadoop.hbase.client.HBaseAdmin: void deleteColumn(byte[],byte[])>($stack6, $stack7)
+1795075885:return null

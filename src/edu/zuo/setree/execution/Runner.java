@@ -85,42 +85,45 @@ public class Runner {
 	}
 
 	public void run(Body mb) {
-		System.out.println("\n\n");
-		System.out.println("Method: " + mb.getMethod().getSubSignature().toString());
-		System.out.println("---------------------------------------------------");
+		synchronized (this) {
+			System.out.println("\n\n");
+			System.out.println("Method: " + mb.getMethod().getSubSignature().toString());
+			System.out.println("---------------------------------------------------");
 
-		// init the Directory to save the graph
-		dirPath = "sootOutput/" + mb.getMethod().getDeclaringClass().toString() + "_" + mb.getMethod().getName();
-		String regEx = "[`~!@#$%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
-		Pattern p = Pattern.compile(regEx);
-		// file_path = file_path + sm.getDeclaringClass().getName() + "_" +
-		// sm.getName()+".txt";
-		Matcher m = p.matcher(dirPath);
-		dirPath = m.replaceAll("").trim();
-		File dirFile = new File(dirPath);
-		if (!dirFile.exists())
-			dirFile.mkdirs();
+			// init the Directory to save the graph
+			dirPath = "sootOutput/" + mb.getMethod().getDeclaringClass().toString() + "_" + mb.getMethod().getName();
+			String regEx = "[`~!@#$%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
+			Pattern p = Pattern.compile(regEx);
+			// file_path = file_path + sm.getDeclaringClass().getName() + "_" +
+			// sm.getName()+".txt";
+			Matcher m = p.matcher(dirPath);
+			dirPath = m.replaceAll("").trim();
+			File dirFile = new File(dirPath);
+			if (!dirFile.exists())
+				dirFile.mkdirs();
 
-		// transform the body
-		transform(mb.getMethod());
+			// transform the body
+			transform(mb.getMethod());
 
-		// confirm that there's no loop at all before executing it symbolically
-		confirm_no_loop(mb);
+			// confirm that there's no loop at all before executing it
+			// symbolically
+			confirm_no_loop(mb);
 
-		// add func exit
-		addExitNode(mb);
+			// add func exit
+			addExitNode(mb);
 
-		// execute the body symbolically
-		execute(mb);
+			// execute the body symbolically
+			execute(mb);
 
-		// print the constraint edges
-		// constraint_graph.print(dirPath + "/constraint.txt");
+			// print the constraint edges
+			// constraint_graph.print(dirPath + "/constraint.txt");
 
-		// separate func entry
-		separateTS(mb);
+			// separate func entry
+			separateTS(mb);
 
-		// export the symbolic execution tree
-		export(mb);
+			// export the symbolic execution tree
+			export(mb);
+		}
 	}
 
 	/* Add by wefcser */
@@ -296,8 +299,8 @@ public class Runner {
 			node.addConstraintGraphList(constraint_graph_list);
 			traverseCFG(succs.get(0), node);
 		} else if (succs.size() == 0) {
-			constraint_graph_list.temp2Constraint(Integer.toString(block.getTail().hashCode()), "-"+block.getBody().getMethod().getSignature(),
-					node.index, -2);
+			constraint_graph_list.temp2Constraint(Integer.toString(block.getTail().hashCode()),
+					"-" + block.getBody().getMethod().getSignature(), node.index, -2);
 			constraint_graph_list.clearTemp();
 			node.setConstraintGraphList(constraint_graph_list);
 			node.setTrueChild(funcExit);

@@ -1,0 +1,4 @@
+block 0
+921975025:this := @this: org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor
+860326447:specialinvoke this.<org.apache.avro.specific.SpecificRecordBase: void <init>()>()
+618864390:return

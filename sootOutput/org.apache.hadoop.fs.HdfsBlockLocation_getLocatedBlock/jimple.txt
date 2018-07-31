@@ -1,0 +1,12 @@
+block 0
+1203016910:this := @this: org.apache.hadoop.fs.HdfsBlockLocation
+1534243130:$stack1 = this.<org.apache.hadoop.fs.HdfsBlockLocation: org.apache.hadoop.hdfs.protocol.LocatedBlock block>
+1676036256:return $stack1
+block 0
+1203016910:this := @this: org.apache.hadoop.fs.HdfsBlockLocation
+1534243130:$stack1 = this.<org.apache.hadoop.fs.HdfsBlockLocation: org.apache.hadoop.hdfs.protocol.LocatedBlock block>
+1676036256:return $stack1
+block 0
+1203016910:this := @this: org.apache.hadoop.fs.HdfsBlockLocation
+1534243130:$stack1 = this.<org.apache.hadoop.fs.HdfsBlockLocation: org.apache.hadoop.hdfs.protocol.LocatedBlock block>
+1676036256:return $stack1

@@ -29,7 +29,7 @@ public class IntraMain extends BodyTransformer {
 		Runner intra_executor = new Runner();
 		intra_executor.run(b);
 	}
-	
+
 	public static void init(String dirpath) {
 		File dirFile = new File(dirpath);
 		if (!dirFile.isDirectory()) {
@@ -61,12 +61,12 @@ public class IntraMain extends BodyTransformer {
 			}
 		}
 	}
-	
+
 	public static void main(String[] args) {
 		String sp = "lib/";
 		String dirpath = "protocal/";
 		init(dirpath);
-		//set the sootclass path
+		// set the sootclass path
 		File dirFile = new File(sp);
 		String path = "";
 		if (!dirFile.isDirectory()) {
@@ -82,22 +82,25 @@ public class IntraMain extends BodyTransformer {
 		}
 		path += sp + "test;";
 		Scene.v().setSootClassPath(path);
-		//set options
+		// set options
 		Options.v().setPhaseOption("jb", "use-original-names:true");
 		Options.v().setPhaseOption("tag", "off");
 		Options.v().set_output_format(Options.output_format_jimple);
 		Options.v().set_keep_line_number(true);
 		Options.v().set_prepend_classpath(true);
-		
+
 		PackManager.v().getPack("jtp").add(new Transform("jtp.setree", new IntraMain()));
 
-		
-		/**args should be in the following format: "-cp path_of_classes_analyzed class_names"
-		 * e.g., -cp E:\Workspace\ws_program\taintanalysis\bin\ InterTest HelloWorld
+		/**
+		 * args should be in the following format:
+		 * "-cp path_of_classes_analyzed class_names" e.g., -cp
+		 * E:\Workspace\ws_program\taintanalysis\bin\ InterTest HelloWorld
 		 */
-		soot.Main.main(args);
-		TSCGenerator.printCallInfo("intraOutput/callInfoFile");
-		TSCGenerator.printCalledVar("intraOutput/calledVarFile");
+		//synchronized (IntraMain.class) {
+			soot.Main.main(args);
+			TSCGenerator.printCallInfo("intraOutput/callInfoFile");
+			TSCGenerator.printCalledVar("intraOutput/calledVarFile");
+		//}
 	}
 
 }

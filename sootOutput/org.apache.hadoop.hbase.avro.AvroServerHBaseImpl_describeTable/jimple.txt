@@ -1,0 +1,16 @@
+block 0
+1538456363:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+753816421:table := @parameter0: java.nio.ByteBuffer
+98550436:$stack4 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+824199517:$stack5 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+2015110295:$stack6 = virtualinvoke $stack4.<org.apache.hadoop.hbase.client.HBaseAdmin: org.apache.hadoop.hbase.HTableDescriptor getTableDescriptor(byte[])>($stack5)
+192264336:$stack7 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.ATableDescriptor htdToATD(org.apache.hadoop.hbase.HTableDescriptor)>($stack6)
+1891930552:return $stack7
+block 0
+1538456363:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+753816421:table := @parameter0: java.nio.ByteBuffer
+98550436:$stack4 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+824199517:$stack5 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+2015110295:$stack6 = virtualinvoke $stack4.<org.apache.hadoop.hbase.client.HBaseAdmin: org.apache.hadoop.hbase.HTableDescriptor getTableDescriptor(byte[])>($stack5)
+192264336:$stack7 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.ATableDescriptor htdToATD(org.apache.hadoop.hbase.HTableDescriptor)>($stack6)
+1891930552:return $stack7

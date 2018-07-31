@@ -1,0 +1,20 @@
+block 0
+1426461720:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+41792607:table := @parameter0: java.nio.ByteBuffer
+1858328804:familyName := @parameter1: java.nio.ByteBuffer
+451934410:familyDescriptor := @parameter2: org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor
+342834466:$stack6 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+1723238207:$stack7 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+1378376287:$stack8 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.HColumnDescriptor afdToHCD(org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor)>(familyDescriptor)
+1336265843:virtualinvoke $stack6.<org.apache.hadoop.hbase.client.HBaseAdmin: void modifyColumn(byte[],org.apache.hadoop.hbase.HColumnDescriptor)>($stack7, $stack8)
+1880332929:return null
+block 0
+1426461720:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+41792607:table := @parameter0: java.nio.ByteBuffer
+1858328804:familyName := @parameter1: java.nio.ByteBuffer
+451934410:familyDescriptor := @parameter2: org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor
+342834466:$stack6 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+1723238207:$stack7 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+1378376287:$stack8 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.HColumnDescriptor afdToHCD(org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor)>(familyDescriptor)
+1336265843:virtualinvoke $stack6.<org.apache.hadoop.hbase.client.HBaseAdmin: void modifyColumn(byte[],org.apache.hadoop.hbase.HColumnDescriptor)>($stack7, $stack8)
+1880332929:return null

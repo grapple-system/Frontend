@@ -1,0 +1,12 @@
+block 0
+943512909:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+449954659:$stack3 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+1147888819:$stack4 = virtualinvoke $stack3.<org.apache.hadoop.hbase.client.HBaseAdmin: org.apache.hadoop.hbase.ClusterStatus getClusterStatus()>()
+900505277:$stack5 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AClusterStatus csToACS(org.apache.hadoop.hbase.ClusterStatus)>($stack4)
+1455466014:return $stack5
+block 0
+943512909:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+449954659:$stack3 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+1147888819:$stack4 = virtualinvoke $stack3.<org.apache.hadoop.hbase.client.HBaseAdmin: org.apache.hadoop.hbase.ClusterStatus getClusterStatus()>()
+900505277:$stack5 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AClusterStatus csToACS(org.apache.hadoop.hbase.ClusterStatus)>($stack4)
+1455466014:return $stack5

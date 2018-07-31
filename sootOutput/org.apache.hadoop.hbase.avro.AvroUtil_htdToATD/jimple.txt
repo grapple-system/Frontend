@@ -1,0 +1,211 @@
+block 0
+36819918:table := @parameter0: org.apache.hadoop.hbase.HTableDescriptor
+956321359:$stack8 = new org.apache.hadoop.hbase.avro.generated.ATableDescriptor
+1785343965:specialinvoke $stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: void <init>()>()
+1423138517:$stack9 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: byte[] getName()>()
+1870436181:$stack10 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>($stack9)
+1168882980:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.nio.ByteBuffer name> = $stack10
+1528045817:families = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: java.util.Collection getFamilies()>()
+1307131613:$stack12 = <org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: org.apache.avro.Schema SCHEMA$>
+702218380:afdSchema = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema createArray(org.apache.avro.Schema)>($stack12)
+743241707:$stack14 = interfaceinvoke families.<java.util.Collection: int size()>()
+891684741:if $stack14 <= 0 goto $stack15 = new org.apache.avro.generic.GenericData$Array
+block 1
+963138052:$stack30 = new org.apache.avro.generic.GenericData$Array
+2010067613:$stack31 = interfaceinvoke families.<java.util.Collection: int size()>()
+1080517451:specialinvoke $stack30.<org.apache.avro.generic.GenericData$Array: void <init>(int,org.apache.avro.Schema)>($stack31, afdSchema)
+996471089:afamilies = $stack30
+1012812460:i$ = interfaceinvoke families.<java.util.Collection: java.util.Iterator iterator()>()
+90547887:$stack33 = interfaceinvoke i$.<java.util.Iterator: boolean hasNext()>()
+35386120:if $stack33 == 0 goto (branch)
+block 2
+1289671373:$stack51 = interfaceinvoke i$.<java.util.Iterator: java.lang.Object next()>()
+316935832:hcd = (org.apache.hadoop.hbase.HColumnDescriptor) $stack51
+1571834834:afamily = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor hcdToAFD(org.apache.hadoop.hbase.HColumnDescriptor)>(hcd)
+835006543:virtualinvoke $stack30.<org.apache.avro.generic.GenericData$Array: void add(java.lang.Object)>(afamily)
+block 3
+1676857380:goto [?= $stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies]
+block 5
+958071237:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies
+419370272:$stack16 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMaxFileSize()>()
+907152011:$stack17 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack16)
+1674995553:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize> = $stack17
+1428242559:$stack18 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMemStoreFlushSize()>()
+1119158442:$stack19 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack18)
+119473514:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize> = $stack19
+773511134:$stack20 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isRootRegion()>()
+2086062353:$stack21 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack20)
+501668992:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion> = $stack21
+1479286669:$stack22 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaRegion()>()
+1902673295:$stack23 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack22)
+1144148902:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion> = $stack23
+1169197847:$stack24 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaTable()>()
+1730406067:$stack25 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack24)
+948155881:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable> = $stack25
+2104539672:$stack26 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isReadOnly()>()
+1778902730:$stack27 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack26)
+1919874730:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly> = $stack27
+1231445906:$stack28 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isDeferredLogFlush()>()
+191402795:$stack29 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack28)
+2008185687:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush> = $stack29
+1317049866:return $stack8
+block 3
+1676857380:goto [?= $stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies]
+block 5
+958071237:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies
+419370272:$stack16 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMaxFileSize()>()
+907152011:$stack17 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack16)
+1674995553:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize> = $stack17
+1428242559:$stack18 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMemStoreFlushSize()>()
+1119158442:$stack19 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack18)
+119473514:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize> = $stack19
+773511134:$stack20 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isRootRegion()>()
+2086062353:$stack21 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack20)
+501668992:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion> = $stack21
+1479286669:$stack22 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaRegion()>()
+1902673295:$stack23 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack22)
+1144148902:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion> = $stack23
+1169197847:$stack24 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaTable()>()
+1730406067:$stack25 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack24)
+948155881:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable> = $stack25
+2104539672:$stack26 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isReadOnly()>()
+1778902730:$stack27 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack26)
+1919874730:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly> = $stack27
+1231445906:$stack28 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isDeferredLogFlush()>()
+191402795:$stack29 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack28)
+2008185687:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush> = $stack29
+1317049866:return $stack8
+block 4
+1079124964:$stack15 = new org.apache.avro.generic.GenericData$Array
+1487381901:specialinvoke $stack15.<org.apache.avro.generic.GenericData$Array: void <init>(int,org.apache.avro.Schema)>(0, afdSchema)
+1300570879:afamilies = $stack15
+block 5
+958071237:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies
+419370272:$stack16 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMaxFileSize()>()
+907152011:$stack17 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack16)
+1674995553:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize> = $stack17
+1428242559:$stack18 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMemStoreFlushSize()>()
+1119158442:$stack19 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack18)
+119473514:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize> = $stack19
+773511134:$stack20 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isRootRegion()>()
+2086062353:$stack21 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack20)
+501668992:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion> = $stack21
+1479286669:$stack22 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaRegion()>()
+1902673295:$stack23 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack22)
+1144148902:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion> = $stack23
+1169197847:$stack24 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaTable()>()
+1730406067:$stack25 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack24)
+948155881:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable> = $stack25
+2104539672:$stack26 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isReadOnly()>()
+1778902730:$stack27 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack26)
+1919874730:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly> = $stack27
+1231445906:$stack28 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isDeferredLogFlush()>()
+191402795:$stack29 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack28)
+2008185687:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush> = $stack29
+1317049866:return $stack8
+block 0
+36819918:table := @parameter0: org.apache.hadoop.hbase.HTableDescriptor
+956321359:$stack8 = new org.apache.hadoop.hbase.avro.generated.ATableDescriptor
+1785343965:specialinvoke $stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: void <init>()>()
+1423138517:$stack9 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: byte[] getName()>()
+1870436181:$stack10 = staticinvoke <java.nio.ByteBuffer: java.nio.ByteBuffer wrap(byte[])>($stack9)
+1168882980:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.nio.ByteBuffer name> = $stack10
+1528045817:families = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: java.util.Collection getFamilies()>()
+1307131613:$stack12 = <org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: org.apache.avro.Schema SCHEMA$>
+702218380:afdSchema = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema createArray(org.apache.avro.Schema)>($stack12)
+743241707:$stack14 = interfaceinvoke families.<java.util.Collection: int size()>()
+891684741:if $stack14 <= 0 goto $stack15 = new org.apache.avro.generic.GenericData$Array
+block 1
+963138052:$stack30 = new org.apache.avro.generic.GenericData$Array
+2010067613:$stack31 = interfaceinvoke families.<java.util.Collection: int size()>()
+1080517451:specialinvoke $stack30.<org.apache.avro.generic.GenericData$Array: void <init>(int,org.apache.avro.Schema)>($stack31, afdSchema)
+996471089:afamilies = $stack30
+1012812460:i$ = interfaceinvoke families.<java.util.Collection: java.util.Iterator iterator()>()
+90547887:$stack33 = interfaceinvoke i$.<java.util.Iterator: boolean hasNext()>()
+35386120:if $stack33 == 0 goto (branch)
+block 2
+1289671373:$stack51 = interfaceinvoke i$.<java.util.Iterator: java.lang.Object next()>()
+316935832:hcd = (org.apache.hadoop.hbase.HColumnDescriptor) $stack51
+1571834834:afamily = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor hcdToAFD(org.apache.hadoop.hbase.HColumnDescriptor)>(hcd)
+835006543:virtualinvoke $stack30.<org.apache.avro.generic.GenericData$Array: void add(java.lang.Object)>(afamily)
+485375493:goto [?= (branch)]
+block 3
+1676857380:goto [?= $stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies]
+block 5
+958071237:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies
+419370272:$stack16 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMaxFileSize()>()
+907152011:$stack17 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack16)
+1674995553:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize> = $stack17
+1428242559:$stack18 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMemStoreFlushSize()>()
+1119158442:$stack19 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack18)
+119473514:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize> = $stack19
+773511134:$stack20 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isRootRegion()>()
+2086062353:$stack21 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack20)
+501668992:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion> = $stack21
+1479286669:$stack22 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaRegion()>()
+1902673295:$stack23 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack22)
+1144148902:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion> = $stack23
+1169197847:$stack24 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaTable()>()
+1730406067:$stack25 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack24)
+948155881:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable> = $stack25
+2104539672:$stack26 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isReadOnly()>()
+1778902730:$stack27 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack26)
+1919874730:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly> = $stack27
+1231445906:$stack28 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isDeferredLogFlush()>()
+191402795:$stack29 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack28)
+2008185687:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush> = $stack29
+1317049866:return $stack8
+block 3
+1676857380:goto [?= $stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies]
+block 5
+958071237:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies
+419370272:$stack16 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMaxFileSize()>()
+907152011:$stack17 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack16)
+1674995553:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize> = $stack17
+1428242559:$stack18 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMemStoreFlushSize()>()
+1119158442:$stack19 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack18)
+119473514:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize> = $stack19
+773511134:$stack20 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isRootRegion()>()
+2086062353:$stack21 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack20)
+501668992:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion> = $stack21
+1479286669:$stack22 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaRegion()>()
+1902673295:$stack23 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack22)
+1144148902:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion> = $stack23
+1169197847:$stack24 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaTable()>()
+1730406067:$stack25 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack24)
+948155881:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable> = $stack25
+2104539672:$stack26 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isReadOnly()>()
+1778902730:$stack27 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack26)
+1919874730:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly> = $stack27
+1231445906:$stack28 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isDeferredLogFlush()>()
+191402795:$stack29 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack28)
+2008185687:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush> = $stack29
+1317049866:return $stack8
+block 4
+1079124964:$stack15 = new org.apache.avro.generic.GenericData$Array
+1487381901:specialinvoke $stack15.<org.apache.avro.generic.GenericData$Array: void <init>(int,org.apache.avro.Schema)>(0, afdSchema)
+1300570879:afamilies = $stack15
+block 5
+958071237:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families> = afamilies
+419370272:$stack16 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMaxFileSize()>()
+907152011:$stack17 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack16)
+1674995553:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize> = $stack17
+1428242559:$stack18 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: long getMemStoreFlushSize()>()
+1119158442:$stack19 = staticinvoke <java.lang.Long: java.lang.Long valueOf(long)>($stack18)
+119473514:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize> = $stack19
+773511134:$stack20 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isRootRegion()>()
+2086062353:$stack21 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack20)
+501668992:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion> = $stack21
+1479286669:$stack22 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaRegion()>()
+1902673295:$stack23 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack22)
+1144148902:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion> = $stack23
+1169197847:$stack24 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isMetaTable()>()
+1730406067:$stack25 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack24)
+948155881:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable> = $stack25
+2104539672:$stack26 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isReadOnly()>()
+1778902730:$stack27 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack26)
+1919874730:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly> = $stack27
+1231445906:$stack28 = virtualinvoke table.<org.apache.hadoop.hbase.HTableDescriptor: boolean isDeferredLogFlush()>()
+191402795:$stack29 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack28)
+2008185687:$stack8.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush> = $stack29
+1317049866:return $stack8

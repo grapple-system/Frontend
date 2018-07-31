@@ -1,0 +1,19 @@
+block 0
+1387681307:$stack0 = new org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm
+1838459238:specialinvoke $stack0.<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: void <init>(java.lang.String,int)>("LZO", 0)
+616421782:<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm LZO> = $stack0
+1146832276:$stack1 = new org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm
+1467448355:specialinvoke $stack1.<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: void <init>(java.lang.String,int)>("GZ", 1)
+491548210:<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm GZ> = $stack1
+61210602:$stack2 = new org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm
+1902681826:specialinvoke $stack2.<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: void <init>(java.lang.String,int)>("NONE", 2)
+254493443:<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm NONE> = $stack2
+758750856:$stack3 = newarray (org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm)[3]
+1307963673:$stack4 = <org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm LZO>
+64731067:$stack3[0] = $stack4
+1714613017:$stack5 = <org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm GZ>
+70104063:$stack3[1] = $stack5
+85583486:$stack6 = <org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm NONE>
+1946337255:$stack3[2] = $stack6
+492394707:<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm[] $VALUES> = $stack3
+1785610508:return

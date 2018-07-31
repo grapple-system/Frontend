@@ -1,0 +1,48 @@
+block 0
+1011254112:this := @this: org.apache.hadoop.fs.VolumeId$1
+2017577360:arg0 := @parameter0: org.apache.hadoop.fs.VolumeId
+1756618311:if arg0 != null goto (branch)
+block 1
+667428844:return 1
+block 2
+187115616:if arg0 != this goto return -1
+block 3
+633366676:return 0
+block 4
+1853665306:return -1
+block 0
+451573149:this := @this: org.apache.hadoop.fs.VolumeId$1
+783300872:x0 := @parameter0: java.lang.Object
+2015091165:$stack2 = (org.apache.hadoop.fs.VolumeId) x0
+482618046:$stack3 = virtualinvoke this.<org.apache.hadoop.fs.VolumeId$1: int compareTo(org.apache.hadoop.fs.VolumeId)>($stack2)
+1862737164:return $stack3
+block 0
+1011254112:this := @this: org.apache.hadoop.fs.VolumeId$1
+2017577360:arg0 := @parameter0: org.apache.hadoop.fs.VolumeId
+1756618311:if arg0 != null goto (branch)
+block 1
+667428844:return 1
+block 2
+187115616:if arg0 != this goto return -1
+block 3
+633366676:return 0
+block 4
+1853665306:return -1
+block 0
+451573149:this := @this: org.apache.hadoop.fs.VolumeId$1
+783300872:x0 := @parameter0: java.lang.Object
+2015091165:$stack2 = (org.apache.hadoop.fs.VolumeId) x0
+482618046:$stack3 = virtualinvoke this.<org.apache.hadoop.fs.VolumeId$1: int compareTo(org.apache.hadoop.fs.VolumeId)>($stack2)
+1862737164:return $stack3
+block 0
+1011254112:this := @this: org.apache.hadoop.fs.VolumeId$1
+2017577360:arg0 := @parameter0: org.apache.hadoop.fs.VolumeId
+1756618311:if arg0 != null goto (branch)
+block 1
+667428844:return 1
+block 2
+187115616:if arg0 != this goto return -1
+block 3
+633366676:return 0
+block 4
+1853665306:return -1

@@ -1,0 +1,4 @@
+block 0
+465676958:this := @this: org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor
+1483438295:$stack1 = <org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: org.apache.avro.Schema SCHEMA$>
+1971858114:return $stack1

@@ -1,0 +1,8 @@
+block 0
+1552014763:this := @this: org.apache.hadoop.hbase.avro.generated.AClusterStatus
+1802857058:specialinvoke this.<org.apache.avro.specific.SpecificRecordBase: void <init>()>()
+961256994:return
+block 0
+1552014763:this := @this: org.apache.hadoop.hbase.avro.generated.AClusterStatus
+1802857058:specialinvoke this.<org.apache.avro.specific.SpecificRecordBase: void <init>()>()
+961256994:return

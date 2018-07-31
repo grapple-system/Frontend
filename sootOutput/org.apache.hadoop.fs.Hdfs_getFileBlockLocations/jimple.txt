@@ -1,0 +1,18 @@
+block 0
+1676500398:this := @this: org.apache.hadoop.fs.Hdfs
+1468111065:p := @parameter0: org.apache.hadoop.fs.Path
+81709688:start := @parameter1: long
+1600512192:len := @parameter2: long
+1318272241:$stack6 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+1922735165:$stack7 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(p)
+1464018925:$stack8 = virtualinvoke $stack6.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.fs.BlockLocation[] getBlockLocations(java.lang.String,long,long)>($stack7, start, len)
+1283403739:return $stack8
+block 0
+1676500398:this := @this: org.apache.hadoop.fs.Hdfs
+1468111065:p := @parameter0: org.apache.hadoop.fs.Path
+81709688:start := @parameter1: long
+1600512192:len := @parameter2: long
+1318272241:$stack6 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+1922735165:$stack7 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(p)
+1464018925:$stack8 = virtualinvoke $stack6.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.fs.BlockLocation[] getBlockLocations(java.lang.String,long,long)>($stack7, start, len)
+1283403739:return $stack8

@@ -1,0 +1,316 @@
+block 0
+1739628084:this := @this: org.apache.hadoop.fs.Hdfs
+1872061772:f := @parameter0: org.apache.hadoop.fs.Path
+1770920949:src = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+786542615:$stack13 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+2141086055:$stack12 = <org.apache.hadoop.hdfs.protocol.HdfsFileStatus: byte[] EMPTY_NAME>
+853932876:thisListing = virtualinvoke $stack13.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.protocol.DirectoryListing listPaths(java.lang.String,byte[])>(src, $stack12)
+490625541:if thisListing != null goto partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+block 1
+1392429120:$stack53 = new java.io.FileNotFoundException
+274020961:$stack54 = new java.lang.StringBuilder
+412494235:specialinvoke $stack54.<java.lang.StringBuilder: void <init>()>()
+1121446076:$stack55 = virtualinvoke $stack54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+2070434997:$stack56 = virtualinvoke $stack55.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+897374976:$stack57 = virtualinvoke $stack56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+470804165:$stack58 = virtualinvoke $stack57.<java.lang.StringBuilder: java.lang.String toString()>()
+1633714160:specialinvoke $stack53.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack58)
+1486115477:throw $stack53
+block 2
+172272947:partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+1652383641:$stack16 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+1155789797:if $stack16 != 0 goto $stack17 = lengthof partialListing
+block 3
+1777178337:$stack47 = lengthof partialListing
+1633979858:stats = newarray (org.apache.hadoop.fs.FileStatus)[$stack47]
+1583169772:i = 0
+1025197016:$stack48 = lengthof partialListing
+167063223:if i >= $stack48 goto return stats
+block 4
+878897562:$stack49 = partialListing[i]
+1392535885:$stack50 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>($stack49, f)
+1931506956:stats[i] = $stack50
+108889619:i = i + 1
+block 5
+124154861:return stats
+block 5
+124154861:return stats
+block 6
+86178665:$stack17 = lengthof partialListing
+1496536314:$stack18 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: int getRemainingEntries()>()
+1845411114:stats#5 = $stack17 + $stack18
+464583224:$stack19 = new java.util.ArrayList
+1080559851:specialinvoke $stack19.<java.util.ArrayList: void <init>(int)>(stats#5)
+1876767618:arr$ = partialListing
+1869758914:len$ = lengthof partialListing
+841243494:i$ = 0
+1660093884:if i$ >= len$ goto $stack20 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+block 7
+1922862575:fileStatus = arr$[i$]
+1340737883:$stack43 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>(fileStatus, f)
+1483280222:virtualinvoke $stack19.<java.util.ArrayList: boolean add(java.lang.Object)>($stack43)
+959016175:i$ = i$ + 1
+block 8
+1661349610:$stack20 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+105790402:$stack21 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: byte[] getLastName()>()
+1192555591:thisListing = virtualinvoke $stack20.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.protocol.DirectoryListing listPaths(java.lang.String,byte[])>(src, $stack21)
+1989034159:if thisListing != null goto partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+block 9
+1158747247:$stack37 = new java.io.FileNotFoundException
+1478094351:$stack38 = new java.lang.StringBuilder
+1112459664:specialinvoke $stack38.<java.lang.StringBuilder: void <init>()>()
+738648389:$stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+997722972:$stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1014870248:$stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+139193534:$stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>()
+333199419:specialinvoke $stack37.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack42)
+1753609207:throw $stack37
+block 10
+473440633:partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+363003357:arr$ = partialListing
+1160651280:len$ = lengthof partialListing
+415297573:i$ = 0
+1577826863:if i$ >= len$ goto $stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+block 11
+1104492563:fileStatus = arr$[i$]
+835522298:$stack33 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>(fileStatus, f)
+1268591854:virtualinvoke $stack19.<java.util.ArrayList: boolean add(java.lang.Object)>($stack33)
+1508155460:i$ = i$ + 1
+block 12
+1645805674:$stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+148823752:$stack29 = virtualinvoke $stack19.<java.util.ArrayList: int size()>()
+577672681:$stack30 = newarray (org.apache.hadoop.fs.FileStatus)[$stack29]
+666851147:$stack31 = virtualinvoke $stack19.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($stack30)
+1287328228:$stack32 = (org.apache.hadoop.fs.FileStatus[]) $stack31
+846052901:return $stack32
+block 12
+1645805674:$stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+148823752:$stack29 = virtualinvoke $stack19.<java.util.ArrayList: int size()>()
+577672681:$stack30 = newarray (org.apache.hadoop.fs.FileStatus)[$stack29]
+666851147:$stack31 = virtualinvoke $stack19.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($stack30)
+1287328228:$stack32 = (org.apache.hadoop.fs.FileStatus[]) $stack31
+846052901:return $stack32
+block 8
+1661349610:$stack20 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+105790402:$stack21 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: byte[] getLastName()>()
+1192555591:thisListing = virtualinvoke $stack20.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.protocol.DirectoryListing listPaths(java.lang.String,byte[])>(src, $stack21)
+1989034159:if thisListing != null goto partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+block 9
+1158747247:$stack37 = new java.io.FileNotFoundException
+1478094351:$stack38 = new java.lang.StringBuilder
+1112459664:specialinvoke $stack38.<java.lang.StringBuilder: void <init>()>()
+738648389:$stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+997722972:$stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1014870248:$stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+139193534:$stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>()
+333199419:specialinvoke $stack37.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack42)
+1753609207:throw $stack37
+block 10
+473440633:partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+363003357:arr$ = partialListing
+1160651280:len$ = lengthof partialListing
+415297573:i$ = 0
+1577826863:if i$ >= len$ goto $stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+block 11
+1104492563:fileStatus = arr$[i$]
+835522298:$stack33 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>(fileStatus, f)
+1268591854:virtualinvoke $stack19.<java.util.ArrayList: boolean add(java.lang.Object)>($stack33)
+1508155460:i$ = i$ + 1
+block 12
+1645805674:$stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+148823752:$stack29 = virtualinvoke $stack19.<java.util.ArrayList: int size()>()
+577672681:$stack30 = newarray (org.apache.hadoop.fs.FileStatus)[$stack29]
+666851147:$stack31 = virtualinvoke $stack19.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($stack30)
+1287328228:$stack32 = (org.apache.hadoop.fs.FileStatus[]) $stack31
+846052901:return $stack32
+block 12
+1645805674:$stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+148823752:$stack29 = virtualinvoke $stack19.<java.util.ArrayList: int size()>()
+577672681:$stack30 = newarray (org.apache.hadoop.fs.FileStatus)[$stack29]
+666851147:$stack31 = virtualinvoke $stack19.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($stack30)
+1287328228:$stack32 = (org.apache.hadoop.fs.FileStatus[]) $stack31
+846052901:return $stack32
+block 0
+1739628084:this := @this: org.apache.hadoop.fs.Hdfs
+1872061772:f := @parameter0: org.apache.hadoop.fs.Path
+1770920949:src = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+786542615:$stack13 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+2141086055:$stack12 = <org.apache.hadoop.hdfs.protocol.HdfsFileStatus: byte[] EMPTY_NAME>
+853932876:thisListing = virtualinvoke $stack13.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.protocol.DirectoryListing listPaths(java.lang.String,byte[])>(src, $stack12)
+490625541:if thisListing != null goto partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+block 1
+1392429120:$stack53 = new java.io.FileNotFoundException
+274020961:$stack54 = new java.lang.StringBuilder
+412494235:specialinvoke $stack54.<java.lang.StringBuilder: void <init>()>()
+1121446076:$stack55 = virtualinvoke $stack54.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+2070434997:$stack56 = virtualinvoke $stack55.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+897374976:$stack57 = virtualinvoke $stack56.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+470804165:$stack58 = virtualinvoke $stack57.<java.lang.StringBuilder: java.lang.String toString()>()
+1633714160:specialinvoke $stack53.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack58)
+1486115477:throw $stack53
+block 2
+172272947:partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+1652383641:$stack16 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+1155789797:if $stack16 != 0 goto $stack17 = lengthof partialListing
+block 3
+1777178337:$stack47 = lengthof partialListing
+1633979858:stats = newarray (org.apache.hadoop.fs.FileStatus)[$stack47]
+1583169772:i = 0
+1025197016:$stack48 = lengthof partialListing
+167063223:if i >= $stack48 goto return stats
+block 4
+878897562:$stack49 = partialListing[i]
+1392535885:$stack50 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>($stack49, f)
+1931506956:stats[i] = $stack50
+108889619:i = i + 1
+1449647504:goto [?= return stats]
+block 5
+124154861:return stats
+block 5
+124154861:return stats
+block 6
+86178665:$stack17 = lengthof partialListing
+1496536314:$stack18 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: int getRemainingEntries()>()
+1845411114:stats#5 = $stack17 + $stack18
+464583224:$stack19 = new java.util.ArrayList
+1080559851:specialinvoke $stack19.<java.util.ArrayList: void <init>(int)>(stats#5)
+1876767618:arr$ = partialListing
+1869758914:len$ = lengthof partialListing
+841243494:i$ = 0
+1660093884:if i$ >= len$ goto $stack20 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+block 7
+1922862575:fileStatus = arr$[i$]
+1340737883:$stack43 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>(fileStatus, f)
+1483280222:virtualinvoke $stack19.<java.util.ArrayList: boolean add(java.lang.Object)>($stack43)
+959016175:i$ = i$ + 1
+2113710566:goto [?= $stack20 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>]
+block 8
+1661349610:$stack20 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+105790402:$stack21 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: byte[] getLastName()>()
+1192555591:thisListing = virtualinvoke $stack20.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.protocol.DirectoryListing listPaths(java.lang.String,byte[])>(src, $stack21)
+1989034159:if thisListing != null goto partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+block 9
+1158747247:$stack37 = new java.io.FileNotFoundException
+1478094351:$stack38 = new java.lang.StringBuilder
+1112459664:specialinvoke $stack38.<java.lang.StringBuilder: void <init>()>()
+738648389:$stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+997722972:$stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1014870248:$stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+139193534:$stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>()
+333199419:specialinvoke $stack37.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack42)
+1753609207:throw $stack37
+block 10
+473440633:partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+363003357:arr$ = partialListing
+1160651280:len$ = lengthof partialListing
+415297573:i$ = 0
+1577826863:if i$ >= len$ goto $stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+block 11
+1104492563:fileStatus = arr$[i$]
+835522298:$stack33 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>(fileStatus, f)
+1268591854:virtualinvoke $stack19.<java.util.ArrayList: boolean add(java.lang.Object)>($stack33)
+1508155460:i$ = i$ + 1
+1273224758:goto [?= $stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()]
+block 12
+1645805674:$stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+511929069:if $stack24 != 0 goto $stack37 = new java.io.FileNotFoundException
+block 13
+148823752:$stack29 = virtualinvoke $stack19.<java.util.ArrayList: int size()>()
+577672681:$stack30 = newarray (org.apache.hadoop.fs.FileStatus)[$stack29]
+666851147:$stack31 = virtualinvoke $stack19.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($stack30)
+1287328228:$stack32 = (org.apache.hadoop.fs.FileStatus[]) $stack31
+846052901:return $stack32
+block 9
+1158747247:$stack37 = new java.io.FileNotFoundException
+1478094351:$stack38 = new java.lang.StringBuilder
+1112459664:specialinvoke $stack38.<java.lang.StringBuilder: void <init>()>()
+738648389:$stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+997722972:$stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1014870248:$stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+139193534:$stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>()
+333199419:specialinvoke $stack37.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack42)
+1753609207:throw $stack37
+block 12
+1645805674:$stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+511929069:if $stack24 != 0 goto $stack37 = new java.io.FileNotFoundException
+block 13
+148823752:$stack29 = virtualinvoke $stack19.<java.util.ArrayList: int size()>()
+577672681:$stack30 = newarray (org.apache.hadoop.fs.FileStatus)[$stack29]
+666851147:$stack31 = virtualinvoke $stack19.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($stack30)
+1287328228:$stack32 = (org.apache.hadoop.fs.FileStatus[]) $stack31
+846052901:return $stack32
+block 9
+1158747247:$stack37 = new java.io.FileNotFoundException
+1478094351:$stack38 = new java.lang.StringBuilder
+1112459664:specialinvoke $stack38.<java.lang.StringBuilder: void <init>()>()
+738648389:$stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+997722972:$stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1014870248:$stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+139193534:$stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>()
+333199419:specialinvoke $stack37.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack42)
+1753609207:throw $stack37
+block 8
+1661349610:$stack20 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+105790402:$stack21 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: byte[] getLastName()>()
+1192555591:thisListing = virtualinvoke $stack20.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.protocol.DirectoryListing listPaths(java.lang.String,byte[])>(src, $stack21)
+1989034159:if thisListing != null goto partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+block 9
+1158747247:$stack37 = new java.io.FileNotFoundException
+1478094351:$stack38 = new java.lang.StringBuilder
+1112459664:specialinvoke $stack38.<java.lang.StringBuilder: void <init>()>()
+738648389:$stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+997722972:$stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1014870248:$stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+139193534:$stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>()
+333199419:specialinvoke $stack37.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack42)
+1753609207:throw $stack37
+block 10
+473440633:partialListing = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: org.apache.hadoop.hdfs.protocol.HdfsFileStatus[] getPartialListing()>()
+363003357:arr$ = partialListing
+1160651280:len$ = lengthof partialListing
+415297573:i$ = 0
+1577826863:if i$ >= len$ goto $stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+block 11
+1104492563:fileStatus = arr$[i$]
+835522298:$stack33 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>(fileStatus, f)
+1268591854:virtualinvoke $stack19.<java.util.ArrayList: boolean add(java.lang.Object)>($stack33)
+1508155460:i$ = i$ + 1
+1273224758:goto [?= $stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()]
+block 12
+1645805674:$stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+511929069:if $stack24 != 0 goto $stack37 = new java.io.FileNotFoundException
+block 13
+148823752:$stack29 = virtualinvoke $stack19.<java.util.ArrayList: int size()>()
+577672681:$stack30 = newarray (org.apache.hadoop.fs.FileStatus)[$stack29]
+666851147:$stack31 = virtualinvoke $stack19.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($stack30)
+1287328228:$stack32 = (org.apache.hadoop.fs.FileStatus[]) $stack31
+846052901:return $stack32
+block 9
+1158747247:$stack37 = new java.io.FileNotFoundException
+1478094351:$stack38 = new java.lang.StringBuilder
+1112459664:specialinvoke $stack38.<java.lang.StringBuilder: void <init>()>()
+738648389:$stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+997722972:$stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1014870248:$stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+139193534:$stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>()
+333199419:specialinvoke $stack37.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack42)
+1753609207:throw $stack37
+block 12
+1645805674:$stack24 = virtualinvoke thisListing.<org.apache.hadoop.hdfs.protocol.DirectoryListing: boolean hasMore()>()
+511929069:if $stack24 != 0 goto $stack37 = new java.io.FileNotFoundException
+block 13
+148823752:$stack29 = virtualinvoke $stack19.<java.util.ArrayList: int size()>()
+577672681:$stack30 = newarray (org.apache.hadoop.fs.FileStatus)[$stack29]
+666851147:$stack31 = virtualinvoke $stack19.<java.util.ArrayList: java.lang.Object[] toArray(java.lang.Object[])>($stack30)
+1287328228:$stack32 = (org.apache.hadoop.fs.FileStatus[]) $stack31
+846052901:return $stack32
+block 9
+1158747247:$stack37 = new java.io.FileNotFoundException
+1478094351:$stack38 = new java.lang.StringBuilder
+1112459664:specialinvoke $stack38.<java.lang.StringBuilder: void <init>()>()
+738648389:$stack39 = virtualinvoke $stack38.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File ")
+997722972:$stack40 = virtualinvoke $stack39.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1014870248:$stack41 = virtualinvoke $stack40.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(" does not exist.")
+139193534:$stack42 = virtualinvoke $stack41.<java.lang.StringBuilder: java.lang.String toString()>()
+333199419:specialinvoke $stack37.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack42)
+1753609207:throw $stack37

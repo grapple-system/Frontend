@@ -1,0 +1,78 @@
+block 0
+1221878991:this := @this: org.apache.hadoop.fs.Hdfs
+504672873:f := @parameter0: org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus
+1750350389:parent := @parameter1: org.apache.hadoop.fs.Path
+571267668:$stack3 = new org.apache.hadoop.fs.LocatedFileStatus
+1295618213:$stack4 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: long getLen()>()
+417277601:$stack5 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: boolean isDir()>()
+1548063124:$stack6 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: short getReplication()>()
+1641587857:$stack7 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: long getBlockSize()>()
+1617280183:$stack8 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: long getModificationTime()>()
+32400436:$stack9 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: long getAccessTime()>()
+1909951660:$stack10 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.fs.permission.FsPermission getPermission()>()
+1427067435:$stack11 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: java.lang.String getOwner()>()
+407034937:$stack12 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: java.lang.String getGroup()>()
+1786758337:$stack13 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: boolean isSymlink()>()
+654350286:if $stack13 == 0 goto $stack14 = null
+block 1
+145823503:$stack14 = new org.apache.hadoop.fs.Path
+307307754:$stack21 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: java.lang.String getSymlink()>()
+827092873:specialinvoke $stack14.<org.apache.hadoop.fs.Path: void <init>(java.lang.String)>($stack21)
+826609600:goto [?= $stack15 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.fs.Path getFullPath(org.apache.hadoop.fs.Path)>(parent)]
+block 3
+43924520:$stack15 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.fs.Path getFullPath(org.apache.hadoop.fs.Path)>(parent)
+1900463850:$stack16 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.net.URI getUri()>()
+2035364310:$stack17 = virtualinvoke $stack15.<org.apache.hadoop.fs.Path: org.apache.hadoop.fs.Path makeQualified(java.net.URI,org.apache.hadoop.fs.Path)>($stack16, null)
+986473968:$stack18 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.hdfs.protocol.LocatedBlocks getBlockLocations()>()
+1508661771:$stack19 = staticinvoke <org.apache.hadoop.hdfs.DFSUtil: org.apache.hadoop.fs.BlockLocation[] locatedBlocks2Locations(org.apache.hadoop.hdfs.protocol.LocatedBlocks)>($stack18)
+692264801:specialinvoke $stack3.<org.apache.hadoop.fs.LocatedFileStatus: void <init>(long,boolean,int,long,long,long,org.apache.hadoop.fs.permission.FsPermission,java.lang.String,java.lang.String,org.apache.hadoop.fs.Path,org.apache.hadoop.fs.Path,org.apache.hadoop.fs.BlockLocation[])>($stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack10, $stack11, $stack12, $stack14, $stack17, $stack19)
+16354559:return $stack3
+block 2
+1387466189:$stack14 = null
+block 3
+43924520:$stack15 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.fs.Path getFullPath(org.apache.hadoop.fs.Path)>(parent)
+1900463850:$stack16 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.net.URI getUri()>()
+2035364310:$stack17 = virtualinvoke $stack15.<org.apache.hadoop.fs.Path: org.apache.hadoop.fs.Path makeQualified(java.net.URI,org.apache.hadoop.fs.Path)>($stack16, null)
+986473968:$stack18 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.hdfs.protocol.LocatedBlocks getBlockLocations()>()
+1508661771:$stack19 = staticinvoke <org.apache.hadoop.hdfs.DFSUtil: org.apache.hadoop.fs.BlockLocation[] locatedBlocks2Locations(org.apache.hadoop.hdfs.protocol.LocatedBlocks)>($stack18)
+692264801:specialinvoke $stack3.<org.apache.hadoop.fs.LocatedFileStatus: void <init>(long,boolean,int,long,long,long,org.apache.hadoop.fs.permission.FsPermission,java.lang.String,java.lang.String,org.apache.hadoop.fs.Path,org.apache.hadoop.fs.Path,org.apache.hadoop.fs.BlockLocation[])>($stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack10, $stack11, $stack12, $stack14, $stack17, $stack19)
+16354559:return $stack3
+block 0
+1221878991:this := @this: org.apache.hadoop.fs.Hdfs
+504672873:f := @parameter0: org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus
+1750350389:parent := @parameter1: org.apache.hadoop.fs.Path
+571267668:$stack3 = new org.apache.hadoop.fs.LocatedFileStatus
+1295618213:$stack4 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: long getLen()>()
+417277601:$stack5 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: boolean isDir()>()
+1548063124:$stack6 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: short getReplication()>()
+1641587857:$stack7 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: long getBlockSize()>()
+1617280183:$stack8 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: long getModificationTime()>()
+32400436:$stack9 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: long getAccessTime()>()
+1909951660:$stack10 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.fs.permission.FsPermission getPermission()>()
+1427067435:$stack11 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: java.lang.String getOwner()>()
+407034937:$stack12 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: java.lang.String getGroup()>()
+1786758337:$stack13 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: boolean isSymlink()>()
+654350286:if $stack13 == 0 goto $stack14 = null
+block 1
+145823503:$stack14 = new org.apache.hadoop.fs.Path
+307307754:$stack21 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: java.lang.String getSymlink()>()
+827092873:specialinvoke $stack14.<org.apache.hadoop.fs.Path: void <init>(java.lang.String)>($stack21)
+826609600:goto [?= $stack15 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.fs.Path getFullPath(org.apache.hadoop.fs.Path)>(parent)]
+block 3
+43924520:$stack15 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.fs.Path getFullPath(org.apache.hadoop.fs.Path)>(parent)
+1900463850:$stack16 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.net.URI getUri()>()
+2035364310:$stack17 = virtualinvoke $stack15.<org.apache.hadoop.fs.Path: org.apache.hadoop.fs.Path makeQualified(java.net.URI,org.apache.hadoop.fs.Path)>($stack16, null)
+986473968:$stack18 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.hdfs.protocol.LocatedBlocks getBlockLocations()>()
+1508661771:$stack19 = staticinvoke <org.apache.hadoop.hdfs.DFSUtil: org.apache.hadoop.fs.BlockLocation[] locatedBlocks2Locations(org.apache.hadoop.hdfs.protocol.LocatedBlocks)>($stack18)
+692264801:specialinvoke $stack3.<org.apache.hadoop.fs.LocatedFileStatus: void <init>(long,boolean,int,long,long,long,org.apache.hadoop.fs.permission.FsPermission,java.lang.String,java.lang.String,org.apache.hadoop.fs.Path,org.apache.hadoop.fs.Path,org.apache.hadoop.fs.BlockLocation[])>($stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack10, $stack11, $stack12, $stack14, $stack17, $stack19)
+16354559:return $stack3
+block 2
+1387466189:$stack14 = null
+block 3
+43924520:$stack15 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.fs.Path getFullPath(org.apache.hadoop.fs.Path)>(parent)
+1900463850:$stack16 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.net.URI getUri()>()
+2035364310:$stack17 = virtualinvoke $stack15.<org.apache.hadoop.fs.Path: org.apache.hadoop.fs.Path makeQualified(java.net.URI,org.apache.hadoop.fs.Path)>($stack16, null)
+986473968:$stack18 = virtualinvoke f.<org.apache.hadoop.hdfs.protocol.HdfsLocatedFileStatus: org.apache.hadoop.hdfs.protocol.LocatedBlocks getBlockLocations()>()
+1508661771:$stack19 = staticinvoke <org.apache.hadoop.hdfs.DFSUtil: org.apache.hadoop.fs.BlockLocation[] locatedBlocks2Locations(org.apache.hadoop.hdfs.protocol.LocatedBlocks)>($stack18)
+692264801:specialinvoke $stack3.<org.apache.hadoop.fs.LocatedFileStatus: void <init>(long,boolean,int,long,long,long,org.apache.hadoop.fs.permission.FsPermission,java.lang.String,java.lang.String,org.apache.hadoop.fs.Path,org.apache.hadoop.fs.Path,org.apache.hadoop.fs.BlockLocation[])>($stack4, $stack5, $stack6, $stack7, $stack8, $stack9, $stack10, $stack11, $stack12, $stack14, $stack17, $stack19)
+16354559:return $stack3

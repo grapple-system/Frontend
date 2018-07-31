@@ -1,0 +1,42 @@
+block 0
+328246293:s := @parameter0: java.net.InetSocketAddress
+979049207:poolId := @parameter1: java.lang.String
+1228068224:blockId := @parameter2: long
+2054033212:$stack4 = new java.lang.StringBuilder
+1872941234:specialinvoke $stack4.<java.lang.StringBuilder: void <init>()>()
+1237547288:$stack5 = virtualinvoke s.<java.net.InetSocketAddress: java.lang.String toString()>()
+1138657523:$stack6 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack5)
+880564001:$stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":")
+1294083676:$stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(poolId)
+528190809:$stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":")
+676665173:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(blockId)
+2126940193:$stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.String toString()>()
+571101539:return $stack11
+block 0
+328246293:s := @parameter0: java.net.InetSocketAddress
+979049207:poolId := @parameter1: java.lang.String
+1228068224:blockId := @parameter2: long
+2054033212:$stack4 = new java.lang.StringBuilder
+1872941234:specialinvoke $stack4.<java.lang.StringBuilder: void <init>()>()
+1237547288:$stack5 = virtualinvoke s.<java.net.InetSocketAddress: java.lang.String toString()>()
+1138657523:$stack6 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack5)
+880564001:$stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":")
+1294083676:$stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(poolId)
+528190809:$stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":")
+676665173:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(blockId)
+2126940193:$stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.String toString()>()
+571101539:return $stack11
+block 0
+328246293:s := @parameter0: java.net.InetSocketAddress
+979049207:poolId := @parameter1: java.lang.String
+1228068224:blockId := @parameter2: long
+2054033212:$stack4 = new java.lang.StringBuilder
+1872941234:specialinvoke $stack4.<java.lang.StringBuilder: void <init>()>()
+1237547288:$stack5 = virtualinvoke s.<java.net.InetSocketAddress: java.lang.String toString()>()
+1138657523:$stack6 = virtualinvoke $stack4.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack5)
+880564001:$stack7 = virtualinvoke $stack6.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":")
+1294083676:$stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(poolId)
+528190809:$stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(":")
+676665173:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(blockId)
+2126940193:$stack11 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.String toString()>()
+571101539:return $stack11

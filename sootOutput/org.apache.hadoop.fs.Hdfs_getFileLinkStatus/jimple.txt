@@ -1,0 +1,38 @@
+block 0
+1689840534:this := @this: org.apache.hadoop.fs.Hdfs
+2003467974:f := @parameter0: org.apache.hadoop.fs.Path
+854671988:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+2062904102:$stack4 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+108849833:fi = virtualinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.protocol.HdfsFileStatus getFileLinkInfo(java.lang.String)>($stack4)
+1876630105:if fi == null goto $stack6 = new java.io.FileNotFoundException
+block 1
+881578083:$stack11 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>(fi, f)
+1030999416:return $stack11
+block 2
+1171196949:$stack6 = new java.io.FileNotFoundException
+211207319:$stack7 = new java.lang.StringBuilder
+1403088342:specialinvoke $stack7.<java.lang.StringBuilder: void <init>()>()
+309167705:$stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File does not exist: ")
+677726975:$stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1576976929:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.String toString()>()
+99208085:specialinvoke $stack6.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack10)
+2076760639:throw $stack6
+block 0
+1689840534:this := @this: org.apache.hadoop.fs.Hdfs
+2003467974:f := @parameter0: org.apache.hadoop.fs.Path
+854671988:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+2062904102:$stack4 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+108849833:fi = virtualinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.protocol.HdfsFileStatus getFileLinkInfo(java.lang.String)>($stack4)
+1876630105:if fi == null goto $stack6 = new java.io.FileNotFoundException
+block 1
+881578083:$stack11 = specialinvoke this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.fs.FileStatus makeQualified(org.apache.hadoop.hdfs.protocol.HdfsFileStatus,org.apache.hadoop.fs.Path)>(fi, f)
+1030999416:return $stack11
+block 2
+1171196949:$stack6 = new java.io.FileNotFoundException
+211207319:$stack7 = new java.lang.StringBuilder
+1403088342:specialinvoke $stack7.<java.lang.StringBuilder: void <init>()>()
+309167705:$stack8 = virtualinvoke $stack7.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("File does not exist: ")
+677726975:$stack9 = virtualinvoke $stack8.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>(f)
+1576976929:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.String toString()>()
+99208085:specialinvoke $stack6.<java.io.FileNotFoundException: void <init>(java.lang.String)>($stack10)
+2076760639:throw $stack6

@@ -1,0 +1,8 @@
+block 0
+992596844:this := @this: org.apache.hadoop.fs.Hdfs
+224662681:f := @parameter0: org.apache.hadoop.fs.Path
+1666004025:replication := @parameter1: short
+562337324:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+1302056190:$stack4 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+1092894913:$stack5 = virtualinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient: boolean setReplication(java.lang.String,short)>($stack4, replication)
+918835529:return $stack5

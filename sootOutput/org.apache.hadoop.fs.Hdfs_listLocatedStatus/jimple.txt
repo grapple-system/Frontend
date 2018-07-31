@@ -1,0 +1,12 @@
+block 0
+1663801016:this := @this: org.apache.hadoop.fs.Hdfs
+5525099:p := @parameter0: org.apache.hadoop.fs.Path
+1000927054:$stack2 = new org.apache.hadoop.fs.Hdfs$1
+169505492:specialinvoke $stack2.<org.apache.hadoop.fs.Hdfs$1: void <init>(org.apache.hadoop.fs.Hdfs,org.apache.hadoop.fs.Path,boolean,org.apache.hadoop.fs.Path)>(this, p, 1, p)
+1725187457:return $stack2
+block 0
+1663801016:this := @this: org.apache.hadoop.fs.Hdfs
+5525099:p := @parameter0: org.apache.hadoop.fs.Path
+1000927054:$stack2 = new org.apache.hadoop.fs.Hdfs$1
+169505492:specialinvoke $stack2.<org.apache.hadoop.fs.Hdfs$1: void <init>(org.apache.hadoop.fs.Hdfs,org.apache.hadoop.fs.Path,boolean,org.apache.hadoop.fs.Path)>(this, p, 1, p)
+1725187457:return $stack2

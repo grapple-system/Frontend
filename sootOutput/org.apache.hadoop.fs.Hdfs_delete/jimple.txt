@@ -1,0 +1,24 @@
+block 0
+1847252568:this := @this: org.apache.hadoop.fs.Hdfs
+1215157782:f := @parameter0: org.apache.hadoop.fs.Path
+169710187:recursive := @parameter1: boolean
+1469899497:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+461376017:$stack4 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+4172373:$stack5 = virtualinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient: boolean delete(java.lang.String,boolean)>($stack4, recursive)
+448070390:return $stack5
+block 0
+1847252568:this := @this: org.apache.hadoop.fs.Hdfs
+1215157782:f := @parameter0: org.apache.hadoop.fs.Path
+169710187:recursive := @parameter1: boolean
+1469899497:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+461376017:$stack4 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+4172373:$stack5 = virtualinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient: boolean delete(java.lang.String,boolean)>($stack4, recursive)
+448070390:return $stack5
+block 0
+1847252568:this := @this: org.apache.hadoop.fs.Hdfs
+1215157782:f := @parameter0: org.apache.hadoop.fs.Path
+169710187:recursive := @parameter1: boolean
+1469899497:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+461376017:$stack4 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+4172373:$stack5 = virtualinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient: boolean delete(java.lang.String,boolean)>($stack4, recursive)
+448070390:return $stack5

@@ -1,0 +1,189 @@
+block 0
+1493382893:conf := @parameter0: org.apache.hadoop.conf.Configuration
+479708091:sock := @parameter1: java.net.Socket
+1761353343:file := @parameter2: java.lang.String
+161149981:block := @parameter3: org.apache.hadoop.hdfs.protocol.ExtendedBlock
+1231949725:blockToken := @parameter4: org.apache.hadoop.security.token.Token
+1799784208:startOffset := @parameter5: long
+1673618401:len := @parameter6: long
+1034246552:encryptionKey := @parameter7: org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey
+2074485713:bufferSize = virtualinvoke conf.<org.apache.hadoop.conf.Configuration: int getInt(java.lang.String,int)>("io.file.buffer.size", 4096)
+1841150825:$stack12 = new org.apache.hadoop.hdfs.DFSClient$Conf
+496534167:specialinvoke $stack12.<org.apache.hadoop.hdfs.DFSClient$Conf: void <init>(org.apache.hadoop.conf.Configuration)>(conf)
+292486757:$stack13 = staticinvoke <org.apache.hadoop.hdfs.BlockReaderFactory: org.apache.hadoop.hdfs.BlockReader newBlockReader(org.apache.hadoop.hdfs.DFSClient$Conf,java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>($stack12, sock, file, block, blockToken, startOffset, len, bufferSize, 1, "", encryptionKey, null)
+294156754:return $stack13
+block 0
+1425889113:conf := @parameter0: org.apache.hadoop.hdfs.DFSClient$Conf
+1781893382:sock := @parameter1: java.net.Socket
+143853598:file := @parameter2: java.lang.String
+1519656884:block := @parameter3: org.apache.hadoop.hdfs.protocol.ExtendedBlock
+1684921376:blockToken := @parameter4: org.apache.hadoop.security.token.Token
+576066578:startOffset := @parameter5: long
+840252350:len := @parameter6: long
+1208417271:bufferSize := @parameter7: int
+1115730443:verifyChecksum := @parameter8: boolean
+1357174989:clientName := @parameter9: java.lang.String
+1261949348:encryptionKey := @parameter10: org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey
+873546358:ioStreams := @parameter11: org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair
+1939597292:$stack15 = conf.<org.apache.hadoop.hdfs.DFSClient$Conf: boolean useLegacyBlockReader>
+502458215:if $stack15 == 0 goto (branch)
+block 1
+746240636:if encryptionKey == null goto $stack36 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader: org.apache.hadoop.hdfs.RemoteBlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName)
+block 2
+171022894:$stack37 = new java.lang.RuntimeException
+1426061914:specialinvoke $stack37.<java.lang.RuntimeException: void <init>(java.lang.String)>("Encryption is not supported with the legacy block reader.")
+1081944577:throw $stack37
+block 3
+327662980:$stack36 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader: org.apache.hadoop.hdfs.RemoteBlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName)
+948025476:return $stack36
+block 4
+247924517:if ioStreams != null goto $stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+block 5
+368191976:$stack17 = new org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair
+528938970:$stack18 = staticinvoke <org.apache.hadoop.net.NetUtils: org.apache.hadoop.net.SocketInputWrapper getInputStream(java.net.Socket)>(sock)
+682930446:$stack19 = <org.apache.hadoop.hdfs.server.common.HdfsServerConstants: int WRITE_TIMEOUT>
+739078297:$stack20 = (long) $stack19
+1954828170:$stack21 = staticinvoke <org.apache.hadoop.net.NetUtils: java.io.OutputStream getOutputStream(java.net.Socket,long)>(sock, $stack20)
+1553227495:specialinvoke $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: void <init>(java.io.InputStream,java.io.OutputStream)>($stack18, $stack21)
+1369811130:ioStreams = $stack17
+1078290151:if encryptionKey == null goto $stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+block 6
+1111811191:$stack34 = $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: java.io.OutputStream out>
+150499707:$stack33 = $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: java.io.InputStream in>
+513755348:encryptedStreams = staticinvoke <org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferEncryptor: org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair getEncryptedStreams(java.io.OutputStream,java.io.InputStream,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey)>($stack34, $stack33, encryptionKey)
+816162189:ioStreams = encryptedStreams
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16
+block 0
+1493382893:conf := @parameter0: org.apache.hadoop.conf.Configuration
+479708091:sock := @parameter1: java.net.Socket
+1761353343:file := @parameter2: java.lang.String
+161149981:block := @parameter3: org.apache.hadoop.hdfs.protocol.ExtendedBlock
+1231949725:blockToken := @parameter4: org.apache.hadoop.security.token.Token
+1799784208:startOffset := @parameter5: long
+1673618401:len := @parameter6: long
+1034246552:encryptionKey := @parameter7: org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey
+2074485713:bufferSize = virtualinvoke conf.<org.apache.hadoop.conf.Configuration: int getInt(java.lang.String,int)>("io.file.buffer.size", 4096)
+1841150825:$stack12 = new org.apache.hadoop.hdfs.DFSClient$Conf
+496534167:specialinvoke $stack12.<org.apache.hadoop.hdfs.DFSClient$Conf: void <init>(org.apache.hadoop.conf.Configuration)>(conf)
+292486757:$stack13 = staticinvoke <org.apache.hadoop.hdfs.BlockReaderFactory: org.apache.hadoop.hdfs.BlockReader newBlockReader(org.apache.hadoop.hdfs.DFSClient$Conf,java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>($stack12, sock, file, block, blockToken, startOffset, len, bufferSize, 1, "", encryptionKey, null)
+294156754:return $stack13
+block 0
+1425889113:conf := @parameter0: org.apache.hadoop.hdfs.DFSClient$Conf
+1781893382:sock := @parameter1: java.net.Socket
+143853598:file := @parameter2: java.lang.String
+1519656884:block := @parameter3: org.apache.hadoop.hdfs.protocol.ExtendedBlock
+1684921376:blockToken := @parameter4: org.apache.hadoop.security.token.Token
+576066578:startOffset := @parameter5: long
+840252350:len := @parameter6: long
+1208417271:bufferSize := @parameter7: int
+1115730443:verifyChecksum := @parameter8: boolean
+1357174989:clientName := @parameter9: java.lang.String
+1261949348:encryptionKey := @parameter10: org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey
+873546358:ioStreams := @parameter11: org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair
+1939597292:$stack15 = conf.<org.apache.hadoop.hdfs.DFSClient$Conf: boolean useLegacyBlockReader>
+502458215:if $stack15 == 0 goto (branch)
+block 1
+746240636:if encryptionKey == null goto $stack36 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader: org.apache.hadoop.hdfs.RemoteBlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName)
+block 2
+171022894:$stack37 = new java.lang.RuntimeException
+1426061914:specialinvoke $stack37.<java.lang.RuntimeException: void <init>(java.lang.String)>("Encryption is not supported with the legacy block reader.")
+1081944577:throw $stack37
+block 3
+327662980:$stack36 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader: org.apache.hadoop.hdfs.RemoteBlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName)
+948025476:return $stack36
+block 4
+247924517:if ioStreams != null goto $stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+block 5
+368191976:$stack17 = new org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair
+528938970:$stack18 = staticinvoke <org.apache.hadoop.net.NetUtils: org.apache.hadoop.net.SocketInputWrapper getInputStream(java.net.Socket)>(sock)
+682930446:$stack19 = <org.apache.hadoop.hdfs.server.common.HdfsServerConstants: int WRITE_TIMEOUT>
+739078297:$stack20 = (long) $stack19
+1954828170:$stack21 = staticinvoke <org.apache.hadoop.net.NetUtils: java.io.OutputStream getOutputStream(java.net.Socket,long)>(sock, $stack20)
+1553227495:specialinvoke $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: void <init>(java.io.InputStream,java.io.OutputStream)>($stack18, $stack21)
+1369811130:ioStreams = $stack17
+1078290151:if encryptionKey == null goto $stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+block 6
+1111811191:$stack34 = $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: java.io.OutputStream out>
+150499707:$stack33 = $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: java.io.InputStream in>
+513755348:encryptedStreams = staticinvoke <org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferEncryptor: org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair getEncryptedStreams(java.io.OutputStream,java.io.InputStream,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey)>($stack34, $stack33, encryptionKey)
+816162189:ioStreams = encryptedStreams
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16
+block 0
+1493382893:conf := @parameter0: org.apache.hadoop.conf.Configuration
+479708091:sock := @parameter1: java.net.Socket
+1761353343:file := @parameter2: java.lang.String
+161149981:block := @parameter3: org.apache.hadoop.hdfs.protocol.ExtendedBlock
+1231949725:blockToken := @parameter4: org.apache.hadoop.security.token.Token
+1799784208:startOffset := @parameter5: long
+1673618401:len := @parameter6: long
+1034246552:encryptionKey := @parameter7: org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey
+2074485713:bufferSize = virtualinvoke conf.<org.apache.hadoop.conf.Configuration: int getInt(java.lang.String,int)>("io.file.buffer.size", 4096)
+1841150825:$stack12 = new org.apache.hadoop.hdfs.DFSClient$Conf
+496534167:specialinvoke $stack12.<org.apache.hadoop.hdfs.DFSClient$Conf: void <init>(org.apache.hadoop.conf.Configuration)>(conf)
+292486757:$stack13 = staticinvoke <org.apache.hadoop.hdfs.BlockReaderFactory: org.apache.hadoop.hdfs.BlockReader newBlockReader(org.apache.hadoop.hdfs.DFSClient$Conf,java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>($stack12, sock, file, block, blockToken, startOffset, len, bufferSize, 1, "", encryptionKey, null)
+294156754:return $stack13
+block 0
+1425889113:conf := @parameter0: org.apache.hadoop.hdfs.DFSClient$Conf
+1781893382:sock := @parameter1: java.net.Socket
+143853598:file := @parameter2: java.lang.String
+1519656884:block := @parameter3: org.apache.hadoop.hdfs.protocol.ExtendedBlock
+1684921376:blockToken := @parameter4: org.apache.hadoop.security.token.Token
+576066578:startOffset := @parameter5: long
+840252350:len := @parameter6: long
+1208417271:bufferSize := @parameter7: int
+1115730443:verifyChecksum := @parameter8: boolean
+1357174989:clientName := @parameter9: java.lang.String
+1261949348:encryptionKey := @parameter10: org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey
+873546358:ioStreams := @parameter11: org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair
+1939597292:$stack15 = conf.<org.apache.hadoop.hdfs.DFSClient$Conf: boolean useLegacyBlockReader>
+502458215:if $stack15 == 0 goto (branch)
+block 1
+746240636:if encryptionKey == null goto $stack36 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader: org.apache.hadoop.hdfs.RemoteBlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName)
+block 2
+171022894:$stack37 = new java.lang.RuntimeException
+1426061914:specialinvoke $stack37.<java.lang.RuntimeException: void <init>(java.lang.String)>("Encryption is not supported with the legacy block reader.")
+1081944577:throw $stack37
+block 3
+327662980:$stack36 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader: org.apache.hadoop.hdfs.RemoteBlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName)
+948025476:return $stack36
+block 4
+247924517:if ioStreams != null goto $stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+block 5
+368191976:$stack17 = new org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair
+528938970:$stack18 = staticinvoke <org.apache.hadoop.net.NetUtils: org.apache.hadoop.net.SocketInputWrapper getInputStream(java.net.Socket)>(sock)
+682930446:$stack19 = <org.apache.hadoop.hdfs.server.common.HdfsServerConstants: int WRITE_TIMEOUT>
+739078297:$stack20 = (long) $stack19
+1954828170:$stack21 = staticinvoke <org.apache.hadoop.net.NetUtils: java.io.OutputStream getOutputStream(java.net.Socket,long)>(sock, $stack20)
+1553227495:specialinvoke $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: void <init>(java.io.InputStream,java.io.OutputStream)>($stack18, $stack21)
+1369811130:ioStreams = $stack17
+1078290151:if encryptionKey == null goto $stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+block 6
+1111811191:$stack34 = $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: java.io.OutputStream out>
+150499707:$stack33 = $stack17.<org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair: java.io.InputStream in>
+513755348:encryptedStreams = staticinvoke <org.apache.hadoop.hdfs.protocol.datatransfer.DataTransferEncryptor: org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair getEncryptedStreams(java.io.OutputStream,java.io.InputStream,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey)>($stack34, $stack33, encryptionKey)
+816162189:ioStreams = encryptedStreams
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16
+block 7
+279697743:$stack16 = staticinvoke <org.apache.hadoop.hdfs.RemoteBlockReader2: org.apache.hadoop.hdfs.BlockReader newBlockReader(java.net.Socket,java.lang.String,org.apache.hadoop.hdfs.protocol.ExtendedBlock,org.apache.hadoop.security.token.Token,long,long,int,boolean,java.lang.String,org.apache.hadoop.hdfs.security.token.block.DataEncryptionKey,org.apache.hadoop.hdfs.protocol.datatransfer.IOStreamPair)>(sock, file, block, blockToken, startOffset, len, bufferSize, verifyChecksum, clientName, encryptionKey, ioStreams)
+1203756577:return $stack16

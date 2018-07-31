@@ -1,0 +1,11 @@
+block 0
+887438338:this := @this: org.apache.hadoop.fs.Hdfs
+1899358413:f := @parameter0: org.apache.hadoop.fs.Path
+1056671292:bufferSize := @parameter1: int
+1921185713:$stack3 = new org.apache.hadoop.hdfs.DFSClient$DFSDataInputStream
+907823489:$stack4 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+905626554:$stack5 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+1352701387:$stack6 = this.<org.apache.hadoop.fs.Hdfs: boolean verifyChecksum>
+1059781259:$stack7 = virtualinvoke $stack4.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.hdfs.DFSInputStream open(java.lang.String,int,boolean)>($stack5, bufferSize, $stack6)
+1798241454:specialinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient$DFSDataInputStream: void <init>(org.apache.hadoop.hdfs.DFSInputStream)>($stack7)
+145364322:return $stack3

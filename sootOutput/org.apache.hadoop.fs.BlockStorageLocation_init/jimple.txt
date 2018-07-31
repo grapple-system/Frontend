@@ -1,0 +1,65 @@
+block 0
+661139369:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+32593740:loc := @parameter0: org.apache.hadoop.fs.BlockLocation
+382329720:volumeIds := @parameter1: org.apache.hadoop.fs.VolumeId[]
+964557800:$stack3 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getNames()>()
+2028277706:$stack4 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getHosts()>()
+626370950:$stack5 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getTopologyPaths()>()
+1992656846:$stack6 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getOffset()>()
+44989469:$stack7 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getLength()>()
+1382394077:$stack8 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: boolean isCorrupt()>()
+1525953166:specialinvoke this.<org.apache.hadoop.fs.BlockLocation: void <init>(java.lang.String[],java.lang.String[],java.lang.String[],long,long,boolean)>($stack3, $stack4, $stack5, $stack6, $stack7, $stack8)
+1911222122:this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds> = volumeIds
+1974317504:return
+block 0
+1152281446:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+1972489169:loc := @parameter0: org.apache.hadoop.fs.BlockLocation
+1557955737:volumeIds := @parameter1: org.apache.hadoop.fs.VolumeId[]
+215618634:$stack3 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getNames()>()
+1269530703:$stack4 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getHosts()>()
+250337667:$stack5 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getTopologyPaths()>()
+2047820764:$stack6 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getOffset()>()
+1487391298:$stack7 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getLength()>()
+1335460065:$stack8 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: boolean isCorrupt()>()
+527331152:specialinvoke this.<org.apache.hadoop.fs.BlockLocation: void <init>(java.lang.String[],java.lang.String[],java.lang.String[],long,long,boolean)>($stack3, $stack4, $stack5, $stack6, $stack7, $stack8)
+2037183157:this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds> = volumeIds
+378081024:return
+block 0
+685452027:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+1182959658:loc := @parameter0: org.apache.hadoop.fs.BlockLocation
+939523827:volumeIds := @parameter1: org.apache.hadoop.fs.VolumeId[]
+2036260314:$stack3 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getNames()>()
+236507810:$stack4 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getHosts()>()
+27754166:$stack5 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getTopologyPaths()>()
+1390015339:$stack6 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getOffset()>()
+1604238682:$stack7 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getLength()>()
+391903689:$stack8 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: boolean isCorrupt()>()
+766732122:specialinvoke this.<org.apache.hadoop.fs.BlockLocation: void <init>(java.lang.String[],java.lang.String[],java.lang.String[],long,long,boolean)>($stack3, $stack4, $stack5, $stack6, $stack7, $stack8)
+447906838:this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds> = volumeIds
+1682999176:return
+block 0
+685452027:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+1182959658:loc := @parameter0: org.apache.hadoop.fs.BlockLocation
+939523827:volumeIds := @parameter1: org.apache.hadoop.fs.VolumeId[]
+2036260314:$stack3 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getNames()>()
+236507810:$stack4 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getHosts()>()
+27754166:$stack5 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getTopologyPaths()>()
+1390015339:$stack6 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getOffset()>()
+1604238682:$stack7 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getLength()>()
+391903689:$stack8 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: boolean isCorrupt()>()
+766732122:specialinvoke this.<org.apache.hadoop.fs.BlockLocation: void <init>(java.lang.String[],java.lang.String[],java.lang.String[],long,long,boolean)>($stack3, $stack4, $stack5, $stack6, $stack7, $stack8)
+447906838:this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds> = volumeIds
+1682999176:return
+block 0
+685452027:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+1182959658:loc := @parameter0: org.apache.hadoop.fs.BlockLocation
+939523827:volumeIds := @parameter1: org.apache.hadoop.fs.VolumeId[]
+2036260314:$stack3 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getNames()>()
+236507810:$stack4 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getHosts()>()
+27754166:$stack5 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: java.lang.String[] getTopologyPaths()>()
+1390015339:$stack6 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getOffset()>()
+1604238682:$stack7 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: long getLength()>()
+391903689:$stack8 = virtualinvoke loc.<org.apache.hadoop.fs.BlockLocation: boolean isCorrupt()>()
+766732122:specialinvoke this.<org.apache.hadoop.fs.BlockLocation: void <init>(java.lang.String[],java.lang.String[],java.lang.String[],long,long,boolean)>($stack3, $stack4, $stack5, $stack6, $stack7, $stack8)
+447906838:this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds> = volumeIds
+1682999176:return

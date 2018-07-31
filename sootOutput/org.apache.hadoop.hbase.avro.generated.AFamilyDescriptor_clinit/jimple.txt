@@ -1,0 +1,4 @@
+block 0
+676470485:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"record\",\"name\":\"AFamilyDescriptor\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"name\",\"type\":\"bytes\"},{\"name\":\"compression\",\"type\":[{\"type\":\"enum\",\"name\":\"ACompressionAlgorithm\",\"symbols\":[\"LZO\",\"GZ\",\"NONE\"]},\"null\"]},{\"name\":\"maxVersions\",\"type\":[\"int\",\"null\"]},{\"name\":\"blocksize\",\"type\":[\"int\",\"null\"]},{\"name\":\"inMemory\",\"type\":[\"boolean\",\"null\"]},{\"name\":\"timeToLive\",\"type\":[\"int\",\"null\"]},{\"name\":\"blockCacheEnabled\",\"type\":[\"boolean\",\"null\"]}]}")
+721863560:<org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: org.apache.avro.Schema SCHEMA$> = $stack0
+1285287269:return

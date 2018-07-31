@@ -1,0 +1,27 @@
+block 0
+2053841228:this := @this: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1
+136108302:l1 := @parameter0: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo
+1710905079:x0 := @parameter1: int
+590078605:x1 := @parameter2: float
+6932197:x2 := @parameter3: boolean
+2043922005:this.<org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo this$0> = l1
+1122636984:specialinvoke this.<java.util.LinkedHashMap: void <init>(int,float,boolean)>(x0, x1, x2)
+1480051614:return
+block 0
+2053841228:this := @this: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1
+136108302:l1 := @parameter0: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo
+1710905079:x0 := @parameter1: int
+590078605:x1 := @parameter2: float
+6932197:x2 := @parameter3: boolean
+2043922005:this.<org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo this$0> = l1
+1122636984:specialinvoke this.<java.util.LinkedHashMap: void <init>(int,float,boolean)>(x0, x1, x2)
+1480051614:return
+block 0
+2053841228:this := @this: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1
+136108302:l1 := @parameter0: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo
+1710905079:x0 := @parameter1: int
+590078605:x1 := @parameter2: float
+6932197:x2 := @parameter3: boolean
+2043922005:this.<org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo this$0> = l1
+1122636984:specialinvoke this.<java.util.LinkedHashMap: void <init>(int,float,boolean)>(x0, x1, x2)
+1480051614:return

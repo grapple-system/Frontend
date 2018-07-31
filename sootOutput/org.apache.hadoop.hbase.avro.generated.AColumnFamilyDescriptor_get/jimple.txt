@@ -1,0 +1,108 @@
+block 0
+439645998:this := @this: org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor
+1074791118:field$ := @parameter0: int
+951692315:if field$ == 0 goto $stack2 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: java.nio.ByteBuffer name>
+block 1
+1672517663:if field$ == 1 goto $stack15 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm compression>
+block 2
+1850481069:if field$ == 2 goto $stack13 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int maxVersions>
+block 3
+147893516:if field$ == 3 goto $stack11 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int blocksize>
+block 4
+2113671545:if field$ == 4 goto $stack9 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean inMemory>
+block 5
+451612345:if field$ == 5 goto $stack7 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int timeToLive>
+block 6
+350551352:if field$ == 6 goto $stack5 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean blockCacheEnabled>
+block 7
+424778341:if field$ == 7 goto $stack3 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean bloomfilterEnabled>
+block 8
+79374319:goto [?= $stack17 = new org.apache.avro.AvroRuntimeException]
+block 17
+607042875:$stack17 = new org.apache.avro.AvroRuntimeException
+1855386573:specialinvoke $stack17.<org.apache.avro.AvroRuntimeException: void <init>(java.lang.String)>("Bad index")
+1242489018:throw $stack17
+block 16
+332065032:$stack3 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean bloomfilterEnabled>
+1136085369:$stack4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack3)
+1704641164:return $stack4
+block 15
+1548134743:$stack5 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean blockCacheEnabled>
+2106959639:$stack6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack5)
+1544507531:return $stack6
+block 14
+665598829:$stack7 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int timeToLive>
+1502551983:$stack8 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack7)
+73706477:return $stack8
+block 13
+1456713549:$stack9 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean inMemory>
+1136115034:$stack10 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack9)
+939346282:return $stack10
+block 12
+483582792:$stack11 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int blocksize>
+1941756340:$stack12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack11)
+665481876:return $stack12
+block 11
+267494816:$stack13 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int maxVersions>
+1975736398:$stack14 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack13)
+259749664:return $stack14
+block 10
+921273396:$stack15 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm compression>
+547048245:return $stack15
+block 9
+1808774497:$stack2 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: java.nio.ByteBuffer name>
+1918150282:return $stack2
+block 0
+439645998:this := @this: org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor
+1074791118:field$ := @parameter0: int
+2015687210:if field$ == 0 goto $stack2 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: java.nio.ByteBuffer name>
+block 1
+1808766834:if field$ == 1 goto $stack15 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm compression>
+block 2
+1869898126:if field$ == 2 goto $stack13 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int maxVersions>
+block 3
+1330939947:if field$ == 3 goto $stack11 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int blocksize>
+block 4
+272533065:if field$ == 4 goto $stack9 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean inMemory>
+block 5
+123598651:if field$ == 5 goto $stack7 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int timeToLive>
+block 6
+1273601615:if field$ == 6 goto $stack5 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean blockCacheEnabled>
+block 7
+546783945:if field$ == 7 goto $stack3 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean bloomfilterEnabled>
+block 8
+1149211740:goto [?= $stack17 = new org.apache.avro.AvroRuntimeException]
+block 17
+607042875:$stack17 = new org.apache.avro.AvroRuntimeException
+1855386573:specialinvoke $stack17.<org.apache.avro.AvroRuntimeException: void <init>(java.lang.String)>("Bad index")
+1242489018:throw $stack17
+block 16
+332065032:$stack3 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean bloomfilterEnabled>
+1136085369:$stack4 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack3)
+1704641164:return $stack4
+block 15
+1548134743:$stack5 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean blockCacheEnabled>
+2106959639:$stack6 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack5)
+1544507531:return $stack6
+block 14
+665598829:$stack7 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int timeToLive>
+1502551983:$stack8 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack7)
+73706477:return $stack8
+block 13
+1456713549:$stack9 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: boolean inMemory>
+1136115034:$stack10 = staticinvoke <java.lang.Boolean: java.lang.Boolean valueOf(boolean)>($stack9)
+939346282:return $stack10
+block 12
+483582792:$stack11 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int blocksize>
+1941756340:$stack12 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack11)
+665481876:return $stack12
+block 11
+267494816:$stack13 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: int maxVersions>
+1975736398:$stack14 = staticinvoke <java.lang.Integer: java.lang.Integer valueOf(int)>($stack13)
+259749664:return $stack14
+block 10
+921273396:$stack15 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm compression>
+547048245:return $stack15
+block 9
+1808774497:$stack2 = this.<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: java.nio.ByteBuffer name>
+1918150282:return $stack2

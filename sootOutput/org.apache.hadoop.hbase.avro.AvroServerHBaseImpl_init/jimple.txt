@@ -1,0 +1,62 @@
+block 0
+1608805714:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1040023210:$stack1 = staticinvoke <org.apache.hadoop.hbase.HBaseConfiguration: org.apache.hadoop.conf.Configuration create()>()
+2090593105:specialinvoke this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>(org.apache.hadoop.conf.Configuration)>($stack1)
+715504968:return
+block 0
+662109583:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+476234749:c := @parameter0: org.apache.hadoop.conf.Configuration
+374145466:specialinvoke this.<java.lang.Object: void <init>()>()
+1522549999:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.conf.Configuration conf> = null
+340097685:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin> = null
+283747838:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HTablePool htablePool> = null
+448581721:$stack2 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>()
+1638429542:$stack3 = virtualinvoke $stack2.<java.lang.Class: java.lang.String getName()>()
+1010040056:$stack4 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>($stack3)
+229483317:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.commons.logging.Log LOG> = $stack4
+1409215177:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: int nextScannerId> = 0
+274577741:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.util.HashMap scannerMap> = null
+957736899:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.conf.Configuration conf> = c
+2081289387:$stack5 = new org.apache.hadoop.hbase.client.HBaseAdmin
+948692477:$stack6 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.conf.Configuration conf>
+71364493:specialinvoke $stack5.<org.apache.hadoop.hbase.client.HBaseAdmin: void <init>(org.apache.hadoop.conf.Configuration)>($stack6)
+402389762:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin> = $stack5
+1865505544:$stack7 = new org.apache.hadoop.hbase.client.HTablePool
+619002012:$stack8 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.conf.Configuration conf>
+991363637:specialinvoke $stack7.<org.apache.hadoop.hbase.client.HTablePool: void <init>(org.apache.hadoop.conf.Configuration,int)>($stack8, 10)
+1587279684:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HTablePool htablePool> = $stack7
+1221439830:$stack9 = new java.util.HashMap
+1256782634:specialinvoke $stack9.<java.util.HashMap: void <init>()>()
+88286953:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.util.HashMap scannerMap> = $stack9
+725884502:return
+block 0
+1608805714:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1040023210:$stack1 = staticinvoke <org.apache.hadoop.hbase.HBaseConfiguration: org.apache.hadoop.conf.Configuration create()>()
+2090593105:specialinvoke this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>(org.apache.hadoop.conf.Configuration)>($stack1)
+715504968:return
+block 0
+662109583:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+476234749:c := @parameter0: org.apache.hadoop.conf.Configuration
+374145466:specialinvoke this.<java.lang.Object: void <init>()>()
+1522549999:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.conf.Configuration conf> = null
+340097685:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin> = null
+283747838:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HTablePool htablePool> = null
+448581721:$stack2 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>()
+1638429542:$stack3 = virtualinvoke $stack2.<java.lang.Class: java.lang.String getName()>()
+1010040056:$stack4 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>($stack3)
+229483317:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.commons.logging.Log LOG> = $stack4
+1409215177:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: int nextScannerId> = 0
+274577741:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.util.HashMap scannerMap> = null
+957736899:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.conf.Configuration conf> = c
+2081289387:$stack5 = new org.apache.hadoop.hbase.client.HBaseAdmin
+948692477:$stack6 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.conf.Configuration conf>
+71364493:specialinvoke $stack5.<org.apache.hadoop.hbase.client.HBaseAdmin: void <init>(org.apache.hadoop.conf.Configuration)>($stack6)
+402389762:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin> = $stack5
+1865505544:$stack7 = new org.apache.hadoop.hbase.client.HTablePool
+619002012:$stack8 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.conf.Configuration conf>
+991363637:specialinvoke $stack7.<org.apache.hadoop.hbase.client.HTablePool: void <init>(org.apache.hadoop.conf.Configuration,int)>($stack8, 10)
+1587279684:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HTablePool htablePool> = $stack7
+1221439830:$stack9 = new java.util.HashMap
+1256782634:specialinvoke $stack9.<java.util.HashMap: void <init>()>()
+88286953:this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.util.HashMap scannerMap> = $stack9
+725884502:return

@@ -1,410 +1,164 @@
-<T: void <init>()>
+<org.apache.hadoop.hbase.avro.AvroUtil: void <init>()>
 
-<T: void testTry()>
+<org.apache.hadoop.hbase.avro.generated.AAlreadyExists: void <init>()>
 
-<T: void tryCatchFinally()>
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: int addScanner(org.apache.hadoop.hbase.client.ResultScanner)>
 
-<T: java.lang.String retStr()>
+<org.apache.hadoop.hbase.avro.AvroServer: void <init>()>
 
-<T: void throwexc()>
+<org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AServerAddress hsaToASA(org.apache.hadoop.hbase.HServerAddress)>
 
-<T: void testFW()>
-0 : fw.-1.error_<T: void testFW()>
-1 : fw.-1.opened_<T: void testFW()>
-2 : fw.-1.uninit_<T: void testFW()>
-3 : fw.0.error_317652900
-4 : fw.0.opened_317652900
-5 : fw.0.uninit_317652900
-6 : fw.-2.opened_-<T: void testFW()>
-7 : fw.0.uninit_2123784121
-8 : fw.0.uninit_-2130511303
-9 : fw.0.opened_1054127232
-10 : fw.0.uninit_1167103806
-11 : fw.0.opened_1653387474
-12 : fw.0.uninit_587501669
-13 : fw.0.uninit_1653387474
-14 : fw.0.uninit_881832079
-15 : fw.0.opened_587501669
-16 : fw.0.uninit_1054127232
-17 : fw.0.uninit_147943858
-18 : fw.0.error_1653387474
-19 : fw.0.opened_1167103806
-20 : fw.0.error_-2130511303
-21 : fw.-2.uninit_-<T: void testFW()>
-22 : fw.0.error_2123784121
-23 : fw.-2.error_-<T: void testFW()>
-24 : fw.0.opened_2130511303
-25 : fw.0.error_1167103806
-26 : fw.0.opened_147943858
-27 : fw.0.uninit_2130511303
-28 : fw.0.error_2130511303
-29 : fw.0.opened_2123784121
-30 : fw.0.error_1054127232
-31 : fw.0.error_881832079
-32 : fw.0.opened_881832079
-33 : fw.0.error_147943858
-34 : fw.0.error_587501669
-35 : fw.0.opened_-2130511303
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.ResultScanner getScanner(int)>
 
-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-0 : par.-1.error_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-1 : par.-1.opened_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-2 : par.0.uninit_867458714
-3 : par.0.opened_867458714
-4 : par.-1.uninit_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-5 : par.0.error_867458714
-6 : par.0.uninit_1156242922
-7 : par.0.error_1170540586
-8 : par.0.error_605679902
-9 : par.0.error_112126715
-10 : par.0.opened_605679902
-11 : par.0.error_1356886880
-12 : par.0.error_589626134
-13 : par.0.error_1108255086
-14 : par.0.opened_1319082521
-15 : par.0.uninit_605679902
-16 : par.0.opened_112126715
-17 : par.0.opened_589626134
-18 : par.0.uninit_310554884
-19 : par.-2.error_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-20 : par.0.error_1156242922
-21 : par.0.opened_1156242922
-22 : par.0.opened_1356886880
-23 : par.0.error_310554884
-24 : par.-2.opened_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-25 : par.0.uninit_1356886880
-26 : par.0.uninit_1319082521
-27 : par.0.uninit_1170540586
-28 : par.0.uninit_1108255086
-29 : par.0.opened_1108255086
-30 : par.0.opened_310554884
-31 : par.0.uninit_112126715
-32 : par.-2.uninit_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-33 : par.0.uninit_589626134
-34 : par.0.error_1319082521
-35 : par.0.opened_1170540586
+<org.apache.hadoop.hbase.avro.generated.AAlreadyExists: org.apache.avro.Schema getSchema()>
 
-<T: void testSwitch()>
-0 : fw.-1.uninit_<T: void testSwitch()>
-1 : fw.0.error_342295918
-2 : fw.-1.error_<T: void testSwitch()>
-3 : fw.-1.opened_<T: void testSwitch()>
-4 : fw.0.opened_342295918
-5 : fw.0.uninit_342295918
-6 : fw.0.opened_2034865695
-7 : fw.2.error_431270952
-8 : fw.2.uninit_431270952
-9 : fw.0.uninit_1782290572
-10 : fw.0.uninit_1310657390
-11 : fw.0.error_2034865695
-12 : fw.2.opened_431270952
-13 : fw.0.error_1782290572
-14 : fw.0.opened_1310657390
-15 : fw.0.uninit_2006287160
-16 : fw.0.error_2006287160
-17 : fw.0.error_1310657390
-18 : fw.0.uninit_891037013
-19 : fw.0.opened_891037013
-20 : fw.0.opened_202067932
-21 : fw.1.uninit_1255606960
-22 : fw.0.opened_1782290572
-23 : fw.1.error_1255606960
-24 : fw.0.error_202067932
-25 : fw.0.opened_2006287160
-26 : fw.0.uninit_202067932
-27 : fw.1.opened_1255606960
-28 : fw.0.uninit_2034865695
-29 : fw.0.error_891037013
-30 : fw.4.opened_1445592009
-31 : fw.3.error_1811861298
-32 : fw.3.opened_1811861298
-33 : fw.4.error_1445592009
-34 : fw.4.uninit_1445592009
-35 : fw.3.uninit_1811861298
-36 : fw.7.opened_634721026
-37 : fw.8.opened_904726416
-38 : fw.8.error_904726416
-39 : fw.8.uninit_904726416
-40 : fw.7.error_634721026
-41 : fw.7.uninit_634721026
-42 : fw.-2.error_-<T: void testSwitch()>
-43 : fw.7.error_1552652952
-44 : fw.7.uninit_1552652952
-45 : fw.-2.opened_-<T: void testSwitch()>
-46 : fw.-2.uninit_-<T: void testSwitch()>
-47 : fw.7.opened_1552652952
-48 : fw.8.uninit_1552652952
-49 : fw.8.error_1552652952
-50 : fw.8.opened_1552652952
-51 : fw.4.error_1552652952
-52 : fw.4.opened_1552652952
-53 : fw.4.uninit_1552652952
-54 : fw.4.error_904726416
-55 : fw.4.opened_904726416
-56 : fw.4.uninit_904726416
-57 : fw.2.uninit_63461503
-58 : fw.2.opened_63461503
-59 : fw.2.uninit_1552652952
-60 : fw.2.uninit_904726416
-61 : fw.2.error_1445592009
-62 : fw.2.error_1552652952
-63 : fw.2.opened_1552652952
-64 : fw.2.opened_1445592009
-65 : fw.2.error_63461503
-66 : fw.2.uninit_1372926474
-67 : fw.2.opened_904726416
-68 : fw.2.error_904726416
-69 : fw.2.error_1372926474
-70 : fw.2.uninit_1445592009
-71 : fw.2.opened_1372926474
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.ResultScanner removeScanner(int)>
 
-<T: T interfunc(T,T)>
+<org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.ARegionLoad hrlToARL(org.apache.hadoop.hbase.HServerLoad$RegionLoad)>
 
-<T: T test(T)>
+<org.apache.hadoop.hbase.avro.generated.AAlreadyExists: java.lang.Object get(int)>
 
-<T: void call()>
+<org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>
 
-<T: void testlist()>
-0 : fileWriter.-1.opened_<T: void testlist()>
-1 : fileWriter.-1.uninit_<T: void testlist()>
-2 : fileWriter.0.opened_807284497
-3 : fileWriter.0.uninit_807284497
-4 : fileWriter.0.error_807284497
-5 : fileWriter.-1.error_<T: void testlist()>
-6 : fileWriter.0.uninit_1841231258
-7 : fileWriter.0.uninit_304778235
-8 : fileWriter.0.error_584894253
-9 : fileWriter.0.error_1453456727
-10 : fileWriter.0.opened_1253217373
-11 : fileWriter.-2.opened_-<T: void testlist()>
-12 : fileWriter.0.error_914714026
-13 : fileWriter.0.error_295020153
-14 : fileWriter.0.opened_361799550
-15 : fileWriter.0.error_304778235
-16 : fileWriter.0.uninit_67400522
-17 : fileWriter.0.opened_1285057852
-18 : fileWriter.0.opened_914714026
-19 : fileWriter.0.uninit_749610025
-20 : fileWriter.0.opened_643638052
-21 : fileWriter.0.error_1875663709
-22 : fileWriter.0.opened_1556616873
-23 : fileWriter.0.opened_295020153
-24 : fileWriter.0.error_1250409756
-25 : fileWriter.0.uninit_361799550
-26 : fileWriter.0.uninit_175812855
-27 : fileWriter.0.error_334399936
-28 : fileWriter.0.opened_175812855
-29 : fileWriter.0.opened_2036466599
-30 : fileWriter.0.error_1253217373
-31 : fileWriter.0.error_749610025
-32 : fileWriter.0.error_1285057852
-33 : fileWriter.0.opened_67400522
-34 : fileWriter.0.uninit_1285057852
-35 : fileWriter.0.error_175812855
-36 : fileWriter.0.error_2036466599
-37 : fileWriter.0.error_1841231258
-38 : fileWriter.0.uninit_823084291
-39 : fileWriter.0.error_1556616873
-40 : fileWriter.-2.uninit_-<T: void testlist()>
-41 : fileWriter.0.uninit_2036466599
-42 : fileWriter.0.opened_334399936
-43 : fileWriter.0.opened_823084291
-44 : fileWriter.0.error_104808799
-45 : fileWriter.0.error_228859333
-46 : fileWriter.0.opened_228859333
-47 : fileWriter.0.uninit_295020153
-48 : fileWriter.0.error_823084291
-49 : fileWriter.0.uninit_1253217373
-50 : fileWriter.0.error_361799550
-51 : fileWriter.0.opened_584894253
-52 : fileWriter.0.uninit_334399936
-53 : fileWriter.0.error_67400522
-54 : fileWriter.-2.error_-<T: void testlist()>
-55 : fileWriter.0.error_200845970
-56 : fileWriter.0.uninit_1556616873
-57 : fileWriter.0.opened_104808799
-58 : fileWriter.0.uninit_1875663709
-59 : fileWriter.0.error_643638052
-60 : fileWriter.0.uninit_1250409756
-61 : fileWriter.0.error_1238832193
-62 : fileWriter.0.opened_1238832193
-63 : fileWriter.0.opened_304778235
-64 : fileWriter.0.opened_749610025
-65 : fileWriter.0.uninit_643638052
-66 : fileWriter.0.opened_1453456727
-67 : fileWriter.0.uninit_1453456727
-68 : fileWriter.0.uninit_1238832193
-69 : fileWriter.0.uninit_200845970
-70 : fileWriter.0.opened_1841231258
-71 : fileWriter.0.opened_1250409756
-72 : fileWriter.0.uninit_228859333
-73 : fileWriter.0.uninit_584894253
-74 : fileWriter.0.uninit_914714026
-75 : fileWriter.0.uninit_104808799
-76 : fileWriter.0.opened_1875663709
-77 : fileWriter.0.opened_200845970
-78 : fileWriter2.-1.opened_<T: void testlist()>
-79 : fileWriter2.-1.uninit_<T: void testlist()>
-80 : fileWriter2.0.opened_807284497
-81 : fileWriter2.0.uninit_807284497
-82 : fileWriter2.0.error_807284497
-83 : fileWriter2.-1.error_<T: void testlist()>
-84 : fileWriter2.0.uninit_1841231258
-85 : fileWriter2.0.uninit_304778235
-86 : fileWriter2.0.error_584894253
-87 : fileWriter2.0.error_1453456727
-88 : fileWriter2.0.opened_1253217373
-89 : fileWriter2.-2.opened_-<T: void testlist()>
-90 : fileWriter2.0.error_914714026
-91 : fileWriter2.0.error_295020153
-92 : fileWriter2.0.opened_361799550
-93 : fileWriter2.0.error_304778235
-94 : fileWriter2.0.uninit_67400522
-95 : fileWriter2.0.opened_1285057852
-96 : fileWriter2.0.opened_914714026
-97 : fileWriter2.0.uninit_749610025
-98 : fileWriter2.0.opened_643638052
-99 : fileWriter2.0.error_1875663709
-100 : fileWriter2.0.opened_1556616873
-101 : fileWriter2.0.opened_295020153
-102 : fileWriter2.0.error_1250409756
-103 : fileWriter2.0.uninit_361799550
-104 : fileWriter2.0.uninit_175812855
-105 : fileWriter2.0.error_334399936
-106 : fileWriter2.0.opened_175812855
-107 : fileWriter2.0.opened_2036466599
-108 : fileWriter2.0.error_1253217373
-109 : fileWriter2.0.error_749610025
-110 : fileWriter2.0.error_1285057852
-111 : fileWriter2.0.opened_67400522
-112 : fileWriter2.0.uninit_1285057852
-113 : fileWriter2.0.error_175812855
-114 : fileWriter2.0.error_2036466599
-115 : fileWriter2.0.error_1841231258
-116 : fileWriter2.0.uninit_823084291
-117 : fileWriter2.0.error_1556616873
-118 : fileWriter2.-2.uninit_-<T: void testlist()>
-119 : fileWriter2.0.uninit_2036466599
-120 : fileWriter2.0.opened_334399936
-121 : fileWriter2.0.opened_823084291
-122 : fileWriter2.0.error_104808799
-123 : fileWriter2.0.error_228859333
-124 : fileWriter2.0.opened_228859333
-125 : fileWriter2.0.uninit_295020153
-126 : fileWriter2.0.error_823084291
-127 : fileWriter2.0.uninit_1253217373
-128 : fileWriter2.0.error_361799550
-129 : fileWriter2.0.opened_584894253
-130 : fileWriter2.0.uninit_334399936
-131 : fileWriter2.0.error_67400522
-132 : fileWriter2.-2.error_-<T: void testlist()>
-133 : fileWriter2.0.error_200845970
-134 : fileWriter2.0.uninit_1556616873
-135 : fileWriter2.0.opened_104808799
-136 : fileWriter2.0.uninit_1875663709
-137 : fileWriter2.0.error_643638052
-138 : fileWriter2.0.uninit_1250409756
-139 : fileWriter2.0.error_1238832193
-140 : fileWriter2.0.opened_1238832193
-141 : fileWriter2.0.opened_304778235
-142 : fileWriter2.0.opened_749610025
-143 : fileWriter2.0.uninit_643638052
-144 : fileWriter2.0.opened_1453456727
-145 : fileWriter2.0.uninit_1453456727
-146 : fileWriter2.0.uninit_1238832193
-147 : fileWriter2.0.uninit_200845970
-148 : fileWriter2.0.opened_1841231258
-149 : fileWriter2.0.opened_1250409756
-150 : fileWriter2.0.uninit_228859333
-151 : fileWriter2.0.uninit_584894253
-152 : fileWriter2.0.uninit_914714026
-153 : fileWriter2.0.uninit_104808799
-154 : fileWriter2.0.opened_1875663709
-155 : fileWriter2.0.opened_200845970
-156 : br.-1.opened_<T: void testlist()>
-157 : br.-1.uninit_<T: void testlist()>
-158 : br.0.opened_807284497
-159 : br.0.uninit_807284497
-160 : br.0.error_807284497
-161 : br.-1.error_<T: void testlist()>
-162 : br.0.uninit_1841231258
-163 : br.0.uninit_304778235
-164 : br.0.error_584894253
-165 : br.0.error_1453456727
-166 : br.0.opened_1253217373
-167 : br.-2.opened_-<T: void testlist()>
-168 : br.0.error_914714026
-169 : br.0.error_295020153
-170 : br.0.opened_361799550
-171 : br.0.error_304778235
-172 : br.0.uninit_67400522
-173 : br.0.opened_1285057852
-174 : br.0.opened_914714026
-175 : br.0.uninit_749610025
-176 : br.0.opened_643638052
-177 : br.0.error_1875663709
-178 : br.0.opened_1556616873
-179 : br.0.opened_295020153
-180 : br.0.error_1250409756
-181 : br.0.uninit_361799550
-182 : br.0.uninit_175812855
-183 : br.0.error_334399936
-184 : br.0.opened_175812855
-185 : br.0.opened_2036466599
-186 : br.0.error_1253217373
-187 : br.0.error_749610025
-188 : br.0.error_1285057852
-189 : br.0.opened_67400522
-190 : br.0.uninit_1285057852
-191 : br.0.error_175812855
-192 : br.0.error_2036466599
-193 : br.0.error_1841231258
-194 : br.0.uninit_823084291
-195 : br.0.error_1556616873
-196 : br.-2.uninit_-<T: void testlist()>
-197 : br.0.uninit_2036466599
-198 : br.0.opened_334399936
-199 : br.0.opened_823084291
-200 : br.0.error_104808799
-201 : br.0.error_228859333
-202 : br.0.opened_228859333
-203 : br.0.uninit_295020153
-204 : br.0.error_823084291
-205 : br.0.uninit_1253217373
-206 : br.0.error_361799550
-207 : br.0.opened_584894253
-208 : br.0.uninit_334399936
-209 : br.0.error_67400522
-210 : br.-2.error_-<T: void testlist()>
-211 : br.0.error_200845970
-212 : br.0.uninit_1556616873
-213 : br.0.opened_104808799
-214 : br.0.uninit_1875663709
-215 : br.0.error_643638052
-216 : br.0.uninit_1250409756
-217 : br.0.error_1238832193
-218 : br.0.opened_1238832193
-219 : br.0.opened_304778235
-220 : br.0.opened_749610025
-221 : br.0.uninit_643638052
-222 : br.0.opened_1453456727
-223 : br.0.uninit_1453456727
-224 : br.0.uninit_1238832193
-225 : br.0.uninit_200845970
-226 : br.0.opened_1841231258
-227 : br.0.opened_1250409756
-228 : br.0.uninit_228859333
-229 : br.0.uninit_584894253
-230 : br.0.uninit_914714026
-231 : br.0.uninit_104808799
-232 : br.0.opened_1875663709
-233 : br.0.opened_200845970
+<org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AServerLoad hslToASL(org.apache.hadoop.hbase.HServerLoad)>
 
-<test: void <clinit>()>
+<org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AServerInfo hsiToASI(org.apache.hadoop.hbase.HServerInfo)>
 
-<test: void <init>()>
+<org.apache.hadoop.hbase.avro.generated.AAlreadyExists: void put(int,java.lang.Object)>
 
-<test: void main(java.lang.String[])>
+<org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit(java.lang.String)>
 
-<test: int index(int)>
+<org.apache.hadoop.hbase.avro.generated.AAlreadyExists: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.generated.AClusterStatus: void <init>()>
+
+<org.apache.hadoop.hbase.avro.generated.AClusterStatus: org.apache.avro.Schema getSchema()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>(org.apache.hadoop.conf.Configuration)>
+
+<org.apache.hadoop.hbase.avro.generated.AClusterStatus: java.lang.Object get(int)>
+
+<org.apache.hadoop.hbase.avro.generated.AClusterStatus: void put(int,java.lang.Object)>
+
+<org.apache.hadoop.hbase.avro.generated.AClusterStatus: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.generated.AColumn: void <init>()>
+
+<org.apache.hadoop.hbase.avro.generated.AColumn: org.apache.avro.Schema getSchema()>
+
+<org.apache.hadoop.hbase.avro.AvroServer: void doMain(java.lang.String[])>
+
+<org.apache.hadoop.hbase.avro.generated.AColumn: java.lang.Object get(int)>
+
+<org.apache.hadoop.hbase.avro.AvroServer: void main(java.lang.String[])>
+
+<org.apache.hadoop.hbase.avro.generated.AColumn: void put(int,java.lang.Object)>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: void <init>()>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: org.apache.avro.Schema getSchema()>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: java.lang.Object get(int)>
+
+<org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.AClusterStatus csToACS(org.apache.hadoop.hbase.ClusterStatus)>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: void put(int,java.lang.Object)>
+
+<org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.avro.generated.ATableDescriptor htdToATD(org.apache.hadoop.hbase.HTableDescriptor)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.avro.util.Utf8 getHBaseVersion()>
+
+<org.apache.hadoop.hbase.avro.generated.AColumn: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.avro.generated.AClusterStatus getClusterStatus()>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnValue: void <init>()>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnValue: org.apache.avro.Schema getSchema()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.avro.generic.GenericArray listTables()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.avro.generated.ATableDescriptor describeTable(java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnValue: java.lang.Object get(int)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: boolean isTableEnabled(java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: boolean tableExists(java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnValue: void put(int,java.lang.Object)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor describeFamily(java.nio.ByteBuffer,java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnValue: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm[] values()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void createTable(org.apache.hadoop.hbase.avro.generated.ATableDescriptor)>
+
+<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm valueOf(java.lang.String)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void deleteTable(java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void modifyTable(java.nio.ByteBuffer,org.apache.hadoop.hbase.avro.generated.ATableDescriptor)>
+
+<org.apache.hadoop.hbase.avro.generated.AColumnFamilyDescriptor: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.generated.ADelete: void <init>()>
+
+<org.apache.hadoop.hbase.avro.generated.ADelete: org.apache.avro.Schema getSchema()>
+
+<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: void <init>(java.lang.String,int)>
+
+<org.apache.hadoop.hbase.avro.generated.ADelete: java.lang.Object get(int)>
+
+<org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: void <init>()>
+
+<org.apache.hadoop.hbase.avro.generated.ADelete: void put(int,java.lang.Object)>
+
+<org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: org.apache.avro.Schema getSchema()>
+
+<org.apache.hadoop.hbase.avro.generated.ADelete: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.generated.AGet: void <init>()>
+
+<org.apache.hadoop.hbase.avro.generated.AGet: org.apache.avro.Schema getSchema()>
+
+<org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: java.lang.Object get(int)>
+
+<org.apache.hadoop.hbase.avro.generated.AGet: java.lang.Object get(int)>
+
+<org.apache.hadoop.hbase.avro.generated.AGet: void put(int,java.lang.Object)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void enableTable(java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.generated.AGet: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void disableTable(java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>
+
+<org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: void put(int,java.lang.Object)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void flush(java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor: void <clinit>()>
+
+<org.apache.hadoop.hbase.avro.generated.AIOError: void <init>()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void split(java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void addFamily(java.nio.ByteBuffer,org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor)>
+
+<org.apache.hadoop.hbase.avro.generated.AIOError: org.apache.avro.Schema getSchema()>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void deleteFamily(java.nio.ByteBuffer,java.nio.ByteBuffer)>
+
+<org.apache.hadoop.hbase.avro.generated.AIOError: java.lang.Object get(int)>
+
+<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: java.lang.Void modifyFamily(java.nio.ByteBuffer,java.nio.ByteBuffer,org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor)>
 

@@ -1,0 +1,7 @@
+block 0
+1885769953:this := @this: org.apache.hadoop.fs.Hdfs
+912502580:path := @parameter0: org.apache.hadoop.fs.Path
+1978602386:$stack2 = new org.apache.hadoop.hdfs.CorruptFileBlockIterator
+1456923361:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+1318491599:specialinvoke $stack2.<org.apache.hadoop.hdfs.CorruptFileBlockIterator: void <init>(org.apache.hadoop.hdfs.DFSClient,org.apache.hadoop.fs.Path)>($stack3, path)
+1139305484:return $stack2

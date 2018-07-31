@@ -1,0 +1,9 @@
+block 0
+1956845069:this := @this: org.apache.hadoop.fs.Hdfs
+2006419032:dir := @parameter0: org.apache.hadoop.fs.Path
+77117079:permission := @parameter1: org.apache.hadoop.fs.permission.FsPermission
+100194946:createParent := @parameter2: boolean
+1199044382:$stack4 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+462869575:$stack5 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(dir)
+347393647:virtualinvoke $stack4.<org.apache.hadoop.hdfs.DFSClient: boolean primitiveMkdir(java.lang.String,org.apache.hadoop.fs.permission.FsPermission,boolean)>($stack5, permission, createParent)
+1869197498:return

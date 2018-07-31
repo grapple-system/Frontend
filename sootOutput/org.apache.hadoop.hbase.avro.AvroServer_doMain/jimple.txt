@@ -1,0 +1,728 @@
+block 0
+1255723887:args := @parameter0: java.lang.String[]
+84324483:$stack7 = lengthof args
+1592671657:if $stack7 >= 1 goto port = 9090
+block 1
+896786845:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 2
+1366832221:port = 9090
+871019240:len$ = lengthof args
+926303796:i$ = 0
+1330447795:if i$ >= len$ goto arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+block 3
+735344652:cmd = args[i$]
+962507619:$stack18 = virtualinvoke cmd.<java.lang.String: boolean startsWith(java.lang.String)>("--port=")
+504973670:if $stack18 == 0 goto $stack19 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("--help")
+block 4
+272530556:$stack25 = "--port="
+1547112627:$stack26 = virtualinvoke $stack25.<java.lang.String: int length()>()
+145825834:$stack27 = virtualinvoke cmd.<java.lang.String: java.lang.String substring(int)>($stack26)
+1468241972:port = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($stack27)
+845442767:goto [?= i$ = i$ + 1]
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 5
+594579220:$stack19 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("--help")
+1039948229:if $stack19 != 0 goto staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 6
+754932387:$stack22 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("-h")
+190920427:if $stack22 == 0 goto $stack23 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("start")
+block 7
+1931691665:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+635379732:goto [?= staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()]
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 8
+2073830279:$stack23 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("start")
+316863915:if $stack23 == 0 goto $stack24 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("stop")
+block 9
+904927065:goto [?= i$ = i$ + 1]
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 10
+715160960:$stack24 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("stop")
+1774316039:if $stack24 == 0 goto staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 11
+670827031:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit(java.lang.String)>("To shutdown the Avro server run bin/hbase-daemon.sh stop avro or send a kill signal to the Avro server pid")
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 7
+1931691665:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+635379732:goto [?= staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()]
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 2
+1366832221:port = 9090
+871019240:len$ = lengthof args
+926303796:i$ = 0
+1330447795:if i$ >= len$ goto arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+block 3
+735344652:cmd = args[i$]
+962507619:$stack18 = virtualinvoke cmd.<java.lang.String: boolean startsWith(java.lang.String)>("--port=")
+504973670:if $stack18 == 0 goto $stack19 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("--help")
+block 4
+272530556:$stack25 = "--port="
+1547112627:$stack26 = virtualinvoke $stack25.<java.lang.String: int length()>()
+145825834:$stack27 = virtualinvoke cmd.<java.lang.String: java.lang.String substring(int)>($stack26)
+1468241972:port = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($stack27)
+845442767:goto [?= i$ = i$ + 1]
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 5
+594579220:$stack19 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("--help")
+1039948229:if $stack19 != 0 goto staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 6
+754932387:$stack22 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("-h")
+190920427:if $stack22 == 0 goto $stack23 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("start")
+block 7
+1931691665:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+635379732:goto [?= staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()]
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 8
+2073830279:$stack23 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("start")
+316863915:if $stack23 == 0 goto $stack24 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("stop")
+block 9
+904927065:goto [?= i$ = i$ + 1]
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 10
+715160960:$stack24 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("stop")
+1774316039:if $stack24 == 0 goto staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 11
+670827031:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit(java.lang.String)>("To shutdown the Avro server run bin/hbase-daemon.sh stop avro or send a kill signal to the Avro server pid")
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 7
+1931691665:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+635379732:goto [?= staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()]
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 0
+1255723887:args := @parameter0: java.lang.String[]
+84324483:$stack7 = lengthof args
+1592671657:if $stack7 >= 1 goto port = 9090
+block 1
+896786845:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 2
+1366832221:port = 9090
+871019240:len$ = lengthof args
+926303796:i$ = 0
+1330447795:if i$ >= len$ goto arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+block 3
+735344652:cmd = args[i$]
+962507619:$stack18 = virtualinvoke cmd.<java.lang.String: boolean startsWith(java.lang.String)>("--port=")
+504973670:if $stack18 == 0 goto $stack19 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("--help")
+block 4
+272530556:$stack25 = "--port="
+1547112627:$stack26 = virtualinvoke $stack25.<java.lang.String: int length()>()
+145825834:$stack27 = virtualinvoke cmd.<java.lang.String: java.lang.String substring(int)>($stack26)
+1468241972:port = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($stack27)
+845442767:goto [?= i$ = i$ + 1]
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 5
+594579220:$stack19 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("--help")
+1039948229:if $stack19 != 0 goto staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 6
+754932387:$stack22 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("-h")
+190920427:if $stack22 == 0 goto $stack23 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("start")
+block 7
+1931691665:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+635379732:goto [?= staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()]
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 8
+2073830279:$stack23 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("start")
+316863915:if $stack23 == 0 goto $stack24 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("stop")
+block 9
+904927065:goto [?= i$ = i$ + 1]
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 10
+715160960:$stack24 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("stop")
+1774316039:if $stack24 == 0 goto staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 11
+670827031:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit(java.lang.String)>("To shutdown the Avro server run bin/hbase-daemon.sh stop avro or send a kill signal to the Avro server pid")
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 7
+1931691665:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+635379732:goto [?= staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()]
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 2
+1366832221:port = 9090
+871019240:len$ = lengthof args
+926303796:i$ = 0
+1330447795:if i$ >= len$ goto arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+block 3
+735344652:cmd = args[i$]
+962507619:$stack18 = virtualinvoke cmd.<java.lang.String: boolean startsWith(java.lang.String)>("--port=")
+504973670:if $stack18 == 0 goto $stack19 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("--help")
+block 4
+272530556:$stack25 = "--port="
+1547112627:$stack26 = virtualinvoke $stack25.<java.lang.String: int length()>()
+145825834:$stack27 = virtualinvoke cmd.<java.lang.String: java.lang.String substring(int)>($stack26)
+1468241972:port = staticinvoke <java.lang.Integer: int parseInt(java.lang.String)>($stack27)
+845442767:goto [?= i$ = i$ + 1]
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 5
+594579220:$stack19 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("--help")
+1039948229:if $stack19 != 0 goto staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 6
+754932387:$stack22 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("-h")
+190920427:if $stack22 == 0 goto $stack23 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("start")
+block 7
+1931691665:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+635379732:goto [?= staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()]
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 8
+2073830279:$stack23 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("start")
+316863915:if $stack23 == 0 goto $stack24 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("stop")
+block 9
+904927065:goto [?= i$ = i$ + 1]
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 10
+715160960:$stack24 = virtualinvoke cmd.<java.lang.String: boolean equals(java.lang.Object)>("stop")
+1774316039:if $stack24 == 0 goto staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 11
+670827031:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit(java.lang.String)>("To shutdown the Avro server run bin/hbase-daemon.sh stop avro or send a kill signal to the Avro server pid")
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 7
+1931691665:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+635379732:goto [?= staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()]
+block 12
+1752069395:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void printUsageAndExit()>()
+block 13
+12691277:i$ = i$ + 1
+1193744863:goto [?= arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")]
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return
+block 14
+1094627165:arr$#9 = staticinvoke <org.apache.commons.logging.LogFactory: org.apache.commons.logging.Log getLog(java.lang.String)>("AvroServer")
+864622150:$stack9 = new java.lang.StringBuilder
+254536882:specialinvoke $stack9.<java.lang.StringBuilder: void <init>()>()
+1954689180:$stack10 = virtualinvoke $stack9.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("starting HBase Avro server on port ")
+255996780:$stack11 = staticinvoke <java.lang.Integer: java.lang.String toString(int)>(port)
+1799049015:$stack12 = virtualinvoke $stack10.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>($stack11)
+992309406:$stack13 = virtualinvoke $stack12.<java.lang.StringBuilder: java.lang.String toString()>()
+1590075830:interfaceinvoke arr$#9.<org.apache.commons.logging.Log: void info(java.lang.Object)>($stack13)
+1911725457:$stack14 = new org.apache.avro.specific.SpecificResponder
+1126780571:$stack15 = new org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1517860139:specialinvoke $stack15.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: void <init>()>()
+1269528782:specialinvoke $stack14.<org.apache.avro.specific.SpecificResponder: void <init>(java.lang.Class,java.lang.Object)>(class "Lorg/apache/hadoop/hbase/avro/generated/HBase;", $stack15)
+1773970438:$stack17 = new org.apache.avro.ipc.HttpServer
+1179968371:specialinvoke $stack17.<org.apache.avro.ipc.HttpServer: void <init>(org.apache.avro.ipc.Responder,int)>($stack14, 9090)
+1605702850:staticinvoke <java.lang.Thread: void sleep(long)>(1000000L)
+1016591849:return

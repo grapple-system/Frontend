@@ -1,0 +1,14 @@
+block 0
+1035681719:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1755588291:table := @parameter0: java.nio.ByteBuffer
+114109618:$stack4 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+975941670:$stack5 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+124018276:virtualinvoke $stack4.<org.apache.hadoop.hbase.client.HBaseAdmin: void split(byte[])>($stack5)
+304172847:return null
+block 0
+1035681719:this := @this: org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl
+1755588291:table := @parameter0: java.nio.ByteBuffer
+114109618:$stack4 = this.<org.apache.hadoop.hbase.avro.AvroServer$HBaseImpl: org.apache.hadoop.hbase.client.HBaseAdmin admin>
+975941670:$stack5 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>(table)
+124018276:virtualinvoke $stack4.<org.apache.hadoop.hbase.client.HBaseAdmin: void split(byte[])>($stack5)
+304172847:return null

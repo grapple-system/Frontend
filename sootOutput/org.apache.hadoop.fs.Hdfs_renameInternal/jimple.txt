@@ -1,0 +1,35 @@
+block 0
+960704936:this := @this: org.apache.hadoop.fs.Hdfs
+640103260:src := @parameter0: org.apache.hadoop.fs.Path
+1416656186:dst := @parameter1: org.apache.hadoop.fs.Path
+990656754:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+1556173561:$stack4 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(src)
+921999281:$stack5 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(dst)
+1267115606:$stack6 = newarray (org.apache.hadoop.fs.Options$Rename)[1]
+1201078845:$stack7 = <org.apache.hadoop.fs.Options$Rename: org.apache.hadoop.fs.Options$Rename NONE>
+1439452257:$stack6[0] = $stack7
+721876120:virtualinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient: void rename(java.lang.String,java.lang.String,org.apache.hadoop.fs.Options$Rename[])>($stack4, $stack5, $stack6)
+2066011620:return
+block 0
+1565613612:this := @this: org.apache.hadoop.fs.Hdfs
+1404608759:src := @parameter0: org.apache.hadoop.fs.Path
+1295679363:dst := @parameter1: org.apache.hadoop.fs.Path
+1050768030:overwrite := @parameter2: boolean
+133321775:$stack4 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+1034783710:$stack5 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(src)
+807377568:$stack6 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(dst)
+797107151:$stack7 = newarray (org.apache.hadoop.fs.Options$Rename)[1]
+660626311:if overwrite == 0 goto $stack8 = <org.apache.hadoop.fs.Options$Rename: org.apache.hadoop.fs.Options$Rename NONE>
+block 1
+532957247:$stack8 = <org.apache.hadoop.fs.Options$Rename: org.apache.hadoop.fs.Options$Rename OVERWRITE>
+30912386:goto [?= $stack7[0] = $stack8]
+block 3
+2143659352:$stack7[0] = $stack8
+1123913519:virtualinvoke $stack4.<org.apache.hadoop.hdfs.DFSClient: void rename(java.lang.String,java.lang.String,org.apache.hadoop.fs.Options$Rename[])>($stack5, $stack6, $stack7)
+1191220798:return
+block 2
+1524396519:$stack8 = <org.apache.hadoop.fs.Options$Rename: org.apache.hadoop.fs.Options$Rename NONE>
+block 3
+2143659352:$stack7[0] = $stack8
+1123913519:virtualinvoke $stack4.<org.apache.hadoop.hdfs.DFSClient: void rename(java.lang.String,java.lang.String,org.apache.hadoop.fs.Options$Rename[])>($stack5, $stack6, $stack7)
+1191220798:return

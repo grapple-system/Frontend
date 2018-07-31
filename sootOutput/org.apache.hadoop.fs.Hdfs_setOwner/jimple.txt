@@ -1,0 +1,9 @@
+block 0
+1417153600:this := @this: org.apache.hadoop.fs.Hdfs
+1791508071:f := @parameter0: org.apache.hadoop.fs.Path
+1301402330:username := @parameter1: java.lang.String
+310452117:groupname := @parameter2: java.lang.String
+2048393198:$stack4 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+2147238293:$stack5 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
+2095538351:virtualinvoke $stack4.<org.apache.hadoop.hdfs.DFSClient: void setOwner(java.lang.String,java.lang.String,java.lang.String)>($stack5, username, groupname)
+2070627946:return

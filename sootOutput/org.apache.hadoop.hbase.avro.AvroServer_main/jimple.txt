@@ -1,0 +1,8 @@
+block 0
+1655972870:args := @parameter0: java.lang.String[]
+1085622114:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void doMain(java.lang.String[])>(args)
+2013901882:return
+block 0
+1655972870:args := @parameter0: java.lang.String[]
+1085622114:staticinvoke <org.apache.hadoop.hbase.avro.AvroServer: void doMain(java.lang.String[])>(args)
+2013901882:return

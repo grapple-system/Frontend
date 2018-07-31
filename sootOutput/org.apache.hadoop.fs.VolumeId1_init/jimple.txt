@@ -1,0 +1,12 @@
+block 0
+1473758481:this := @this: org.apache.hadoop.fs.VolumeId$1
+1842116246:specialinvoke this.<java.lang.Object: void <init>()>()
+73058675:return
+block 0
+1473758481:this := @this: org.apache.hadoop.fs.VolumeId$1
+1842116246:specialinvoke this.<java.lang.Object: void <init>()>()
+73058675:return
+block 0
+1473758481:this := @this: org.apache.hadoop.fs.VolumeId$1
+1842116246:specialinvoke this.<java.lang.Object: void <init>()>()
+73058675:return

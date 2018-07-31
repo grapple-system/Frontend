@@ -1,0 +1,5 @@
+block 0
+1025072405:$stack0 = <org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm: org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm[] $VALUES>
+397641711:$stack1 = virtualinvoke $stack0.<java.lang.Object: java.lang.Object clone()>()
+1218147673:$stack2 = (org.apache.hadoop.hbase.avro.generated.ACompressionAlgorithm[]) $stack1
+1076406962:return $stack2

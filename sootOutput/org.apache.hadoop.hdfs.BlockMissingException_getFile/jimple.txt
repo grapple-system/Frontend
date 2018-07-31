@@ -1,0 +1,12 @@
+block 0
+292872563:this := @this: org.apache.hadoop.hdfs.BlockMissingException
+723038984:$stack1 = this.<org.apache.hadoop.hdfs.BlockMissingException: java.lang.String filename>
+937195105:return $stack1
+block 0
+292872563:this := @this: org.apache.hadoop.hdfs.BlockMissingException
+723038984:$stack1 = this.<org.apache.hadoop.hdfs.BlockMissingException: java.lang.String filename>
+937195105:return $stack1
+block 0
+292872563:this := @this: org.apache.hadoop.hdfs.BlockMissingException
+723038984:$stack1 = this.<org.apache.hadoop.hdfs.BlockMissingException: java.lang.String filename>
+937195105:return $stack1

@@ -1,0 +1,40 @@
+block 0
+1998741793:this := @this: org.apache.hadoop.fs.Hdfs$2
+823635085:l1 := @parameter0: org.apache.hadoop.fs.Hdfs
+1980528509:x0 := @parameter1: org.apache.hadoop.fs.Path
+2124429748:x1 := @parameter2: boolean
+451900456:l4 := @parameter3: org.apache.hadoop.fs.Path
+1700153115:this.<org.apache.hadoop.fs.Hdfs$2: org.apache.hadoop.fs.Hdfs this$0> = l1
+65112445:this.<org.apache.hadoop.fs.Hdfs$2: org.apache.hadoop.fs.Path val$f> = l4
+2094728618:specialinvoke this.<org.apache.hadoop.fs.Hdfs$DirListingIterator: void <init>(org.apache.hadoop.fs.Hdfs,org.apache.hadoop.fs.Path,boolean,org.apache.hadoop.fs.Hdfs$1)>(l1, x0, x1, null)
+544865532:return
+block 0
+1328901016:this := @this: org.apache.hadoop.fs.Hdfs$2
+448288866:l1 := @parameter0: org.apache.hadoop.fs.Hdfs
+1347174748:x0 := @parameter1: org.apache.hadoop.fs.Path
+1822323955:x1 := @parameter2: boolean
+135506771:l4 := @parameter3: org.apache.hadoop.fs.Path
+357886628:this.<org.apache.hadoop.fs.Hdfs$2: org.apache.hadoop.fs.Hdfs this$0> = l1
+187958805:this.<org.apache.hadoop.fs.Hdfs$2: org.apache.hadoop.fs.Path val$f> = l4
+1013657610:specialinvoke this.<org.apache.hadoop.fs.Hdfs$DirListingIterator: void <init>(org.apache.hadoop.fs.Hdfs,org.apache.hadoop.fs.Path,boolean,org.apache.hadoop.fs.Hdfs$1)>(l1, x0, x1, null)
+1111951675:return
+block 0
+1328901016:this := @this: org.apache.hadoop.fs.Hdfs$2
+448288866:l1 := @parameter0: org.apache.hadoop.fs.Hdfs
+1347174748:x0 := @parameter1: org.apache.hadoop.fs.Path
+1822323955:x1 := @parameter2: boolean
+135506771:l4 := @parameter3: org.apache.hadoop.fs.Path
+357886628:this.<org.apache.hadoop.fs.Hdfs$2: org.apache.hadoop.fs.Hdfs this$0> = l1
+187958805:this.<org.apache.hadoop.fs.Hdfs$2: org.apache.hadoop.fs.Path val$f> = l4
+1013657610:specialinvoke this.<org.apache.hadoop.fs.Hdfs$DirListingIterator: void <init>(org.apache.hadoop.fs.Hdfs,org.apache.hadoop.fs.Path,boolean,org.apache.hadoop.fs.Hdfs$1)>(l1, x0, x1, null)
+1111951675:return
+block 0
+1328901016:this := @this: org.apache.hadoop.fs.Hdfs$2
+448288866:l1 := @parameter0: org.apache.hadoop.fs.Hdfs
+1347174748:x0 := @parameter1: org.apache.hadoop.fs.Path
+1822323955:x1 := @parameter2: boolean
+135506771:l4 := @parameter3: org.apache.hadoop.fs.Path
+357886628:this.<org.apache.hadoop.fs.Hdfs$2: org.apache.hadoop.fs.Hdfs this$0> = l1
+187958805:this.<org.apache.hadoop.fs.Hdfs$2: org.apache.hadoop.fs.Path val$f> = l4
+1013657610:specialinvoke this.<org.apache.hadoop.fs.Hdfs$DirListingIterator: void <init>(org.apache.hadoop.fs.Hdfs,org.apache.hadoop.fs.Path,boolean,org.apache.hadoop.fs.Hdfs$1)>(l1, x0, x1, null)
+1111951675:return

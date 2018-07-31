@@ -1,0 +1,830 @@
+block 0
+1858263440:atd := @parameter0: org.apache.hadoop.hbase.avro.generated.ATableDescriptor
+2092883499:$stack4 = new org.apache.hadoop.hbase.HTableDescriptor
+758991444:$stack5 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.nio.ByteBuffer name>
+559705792:$stack6 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>($stack5)
+723104582:specialinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void <init>(byte[])>($stack6)
+839213325:$stack7 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families>
+1423992712:if $stack7 == null goto $stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+block 1
+1316525828:$stack32 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families>
+1464984894:$stack33 = interfaceinvoke $stack32.<org.apache.avro.generic.GenericArray: long size()>()
+1313209296:$stack34 = $stack33 cmp 0L
+432937399:if $stack34 <= 0 goto $stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+block 2
+1260651126:$stack36 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families>
+1135893732:i$ = interfaceinvoke $stack36.<org.apache.avro.generic.GenericArray: java.util.Iterator iterator()>()
+406173571:$stack38 = interfaceinvoke i$.<java.util.Iterator: boolean hasNext()>()
+1164645391:if $stack38 == 0 goto $stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+block 3
+609825594:$stack39 = interfaceinvoke i$.<java.util.Iterator: java.lang.Object next()>()
+510382951:afd = (org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor) $stack39
+906056863:$stack40 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.HColumnDescriptor afdToHCD(org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor)>(afd)
+1529639302:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void addFamily(org.apache.hadoop.hbase.HColumnDescriptor)>($stack40)
+block 4
+579161899:$stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+128846374:if $stack8 == null goto $stack9 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+block 5
+129618340:$stack29 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+265108079:$stack30 = virtualinvoke $stack29.<java.lang.Long: long longValue()>()
+2017848970:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setMaxFileSize(long)>($stack30)
+block 6
+1882240844:$stack9 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+668345982:if $stack9 == null goto $stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+block 7
+16344660:$stack26 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+1963342800:$stack27 = virtualinvoke $stack26.<java.lang.Long: long longValue()>()
+1668613848:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setMemStoreFlushSize(long)>($stack27)
+block 8
+1409058575:$stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+418646126:if $stack10 == null goto $stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+block 9
+1401898481:$stack23 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+1694262384:$stack24 = virtualinvoke $stack23.<java.lang.Boolean: boolean booleanValue()>()
+1559472121:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setReadOnly(boolean)>($stack24)
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 0
+1858263440:atd := @parameter0: org.apache.hadoop.hbase.avro.generated.ATableDescriptor
+2092883499:$stack4 = new org.apache.hadoop.hbase.HTableDescriptor
+758991444:$stack5 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.nio.ByteBuffer name>
+559705792:$stack6 = staticinvoke <org.apache.hadoop.hbase.util.Bytes: byte[] toBytes(java.nio.ByteBuffer)>($stack5)
+723104582:specialinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void <init>(byte[])>($stack6)
+839213325:$stack7 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families>
+1423992712:if $stack7 == null goto $stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+block 1
+1316525828:$stack32 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families>
+1464984894:$stack33 = interfaceinvoke $stack32.<org.apache.avro.generic.GenericArray: long size()>()
+1313209296:$stack34 = $stack33 cmp 0L
+432937399:if $stack34 <= 0 goto $stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+block 2
+1260651126:$stack36 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: org.apache.avro.generic.GenericArray families>
+1135893732:i$ = interfaceinvoke $stack36.<org.apache.avro.generic.GenericArray: java.util.Iterator iterator()>()
+406173571:$stack38 = interfaceinvoke i$.<java.util.Iterator: boolean hasNext()>()
+1164645391:if $stack38 == 0 goto $stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+block 3
+609825594:$stack39 = interfaceinvoke i$.<java.util.Iterator: java.lang.Object next()>()
+510382951:afd = (org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor) $stack39
+906056863:$stack40 = staticinvoke <org.apache.hadoop.hbase.avro.AvroUtil: org.apache.hadoop.hbase.HColumnDescriptor afdToHCD(org.apache.hadoop.hbase.avro.generated.AFamilyDescriptor)>(afd)
+1529639302:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void addFamily(org.apache.hadoop.hbase.HColumnDescriptor)>($stack40)
+463237487:goto [?= $stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>]
+block 4
+579161899:$stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+128846374:if $stack8 == null goto $stack9 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+block 5
+129618340:$stack29 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+265108079:$stack30 = virtualinvoke $stack29.<java.lang.Long: long longValue()>()
+2017848970:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setMaxFileSize(long)>($stack30)
+block 6
+1882240844:$stack9 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+668345982:if $stack9 == null goto $stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+block 7
+16344660:$stack26 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+1963342800:$stack27 = virtualinvoke $stack26.<java.lang.Long: long longValue()>()
+1668613848:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setMemStoreFlushSize(long)>($stack27)
+block 8
+1409058575:$stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+418646126:if $stack10 == null goto $stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+block 9
+1401898481:$stack23 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+1694262384:$stack24 = virtualinvoke $stack23.<java.lang.Boolean: boolean booleanValue()>()
+1559472121:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setReadOnly(boolean)>($stack24)
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 8
+1409058575:$stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+418646126:if $stack10 == null goto $stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+block 9
+1401898481:$stack23 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+1694262384:$stack24 = virtualinvoke $stack23.<java.lang.Boolean: boolean booleanValue()>()
+1559472121:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setReadOnly(boolean)>($stack24)
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 6
+1882240844:$stack9 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+668345982:if $stack9 == null goto $stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+block 7
+16344660:$stack26 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+1963342800:$stack27 = virtualinvoke $stack26.<java.lang.Long: long longValue()>()
+1668613848:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setMemStoreFlushSize(long)>($stack27)
+block 8
+1409058575:$stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+418646126:if $stack10 == null goto $stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+block 9
+1401898481:$stack23 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+1694262384:$stack24 = virtualinvoke $stack23.<java.lang.Boolean: boolean booleanValue()>()
+1559472121:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setReadOnly(boolean)>($stack24)
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 8
+1409058575:$stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+418646126:if $stack10 == null goto $stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+block 9
+1401898481:$stack23 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>
+1694262384:$stack24 = virtualinvoke $stack23.<java.lang.Boolean: boolean booleanValue()>()
+1559472121:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setReadOnly(boolean)>($stack24)
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 10
+1821038295:$stack11 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+755464400:if $stack11 == null goto $stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+block 11
+1338446903:$stack20 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean deferredLogFlush>
+1975607158:$stack21 = virtualinvoke $stack20.<java.lang.Boolean: boolean booleanValue()>()
+1662417126:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setDeferredLogFlush(boolean)>($stack21)
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 12
+454096398:$stack12 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean rootRegion>
+1267821762:if $stack12 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 13
+2136906057:$stack15 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaRegion>
+842984696:if $stack15 != null goto $stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+block 14
+771935287:$stack19 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean metaTable>
+1848988233:if $stack19 == null goto return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 16
+990146148:return $stack4
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 15
+1544474221:$stack13 = new org.apache.hadoop.hbase.avro.generated.AIllegalArgument
+2063593044:specialinvoke $stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: void <init>()>()
+1538955593:$stack14 = new org.apache.avro.util.Utf8
+122110358:specialinvoke $stack14.<org.apache.avro.util.Utf8: void <init>(java.lang.String)>("Can\'t set root or meta flag on create table.")
+300836639:$stack13.<org.apache.hadoop.hbase.avro.generated.AIllegalArgument: org.apache.avro.util.Utf8 message> = $stack14
+136183278:throw $stack13
+block 4
+579161899:$stack8 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+128846374:if $stack8 == null goto $stack9 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+block 5
+129618340:$stack29 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long maxFileSize>
+265108079:$stack30 = virtualinvoke $stack29.<java.lang.Long: long longValue()>()
+2017848970:virtualinvoke $stack4.<org.apache.hadoop.hbase.HTableDescriptor: void setMaxFileSize(long)>($stack30)
+block 6
+1882240844:$stack9 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Long memStoreFlushSize>
+668345982:if $stack9 == null goto $stack10 = atd.<org.apache.hadoop.hbase.avro.generated.ATableDescriptor: java.lang.Boolean readOnly>

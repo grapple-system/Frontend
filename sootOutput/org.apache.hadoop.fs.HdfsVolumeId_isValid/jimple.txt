@@ -1,0 +1,9 @@
+block 0
+921273396:this := @this: org.apache.hadoop.fs.HdfsVolumeId
+267494816:return 1
+block 0
+921273396:this := @this: org.apache.hadoop.fs.HdfsVolumeId
+267494816:return 1
+block 0
+921273396:this := @this: org.apache.hadoop.fs.HdfsVolumeId
+267494816:return 1

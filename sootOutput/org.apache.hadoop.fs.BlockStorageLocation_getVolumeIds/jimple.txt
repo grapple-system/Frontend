@@ -1,0 +1,16 @@
+block 0
+1393727955:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+1980528509:$stack1 = this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds>
+2124429748:return $stack1
+block 0
+743241707:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+1926240621:$stack1 = this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds>
+2010067613:return $stack1
+block 0
+743241707:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+1926240621:$stack1 = this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds>
+2010067613:return $stack1
+block 0
+743241707:this := @this: org.apache.hadoop.fs.BlockStorageLocation
+1926240621:$stack1 = this.<org.apache.hadoop.fs.BlockStorageLocation: org.apache.hadoop.fs.VolumeId[] volumeIds>
+2010067613:return $stack1

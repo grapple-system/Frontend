@@ -1,0 +1,15 @@
+block 0
+1114370802:$stack0 = new org.apache.hadoop.fs.VolumeId$1
+524136404:specialinvoke $stack0.<org.apache.hadoop.fs.VolumeId$1: void <init>()>()
+862069640:<org.apache.hadoop.fs.VolumeId: org.apache.hadoop.fs.VolumeId INVALID_VOLUME_ID> = $stack0
+771996532:return
+block 0
+1114370802:$stack0 = new org.apache.hadoop.fs.VolumeId$1
+524136404:specialinvoke $stack0.<org.apache.hadoop.fs.VolumeId$1: void <init>()>()
+862069640:<org.apache.hadoop.fs.VolumeId: org.apache.hadoop.fs.VolumeId INVALID_VOLUME_ID> = $stack0
+771996532:return
+block 0
+1114370802:$stack0 = new org.apache.hadoop.fs.VolumeId$1
+524136404:specialinvoke $stack0.<org.apache.hadoop.fs.VolumeId$1: void <init>()>()
+862069640:<org.apache.hadoop.fs.VolumeId: org.apache.hadoop.fs.VolumeId INVALID_VOLUME_ID> = $stack0
+771996532:return

@@ -1,0 +1,12 @@
+block 0
+1558857633:this := @this: org.apache.hadoop.hdfs.BlockReaderFactory
+301667985:specialinvoke this.<java.lang.Object: void <init>()>()
+522361920:return
+block 0
+1558857633:this := @this: org.apache.hadoop.hdfs.BlockReaderFactory
+301667985:specialinvoke this.<java.lang.Object: void <init>()>()
+522361920:return
+block 0
+1558857633:this := @this: org.apache.hadoop.hdfs.BlockReaderFactory
+301667985:specialinvoke this.<java.lang.Object: void <init>()>()
+522361920:return

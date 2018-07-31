@@ -1,6 +1,0 @@
-<T: void testFW()>,fw.0.uninit_2130511303,<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,par.-1.uninit_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-<T: void testFW()>,fw.0.opened_2130511303,<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,par.-1.opened_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-<T: void testFW()>,fw.0.error_2130511303,<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,par.-1.error_<T: java.io.FileWriter testCallFW(java.io.FileWriter)>
-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,par.-2.uninit_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,<T: void testFW()>,fw.0.uninit_-2130511303
-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,par.-2.opened_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,<T: void testFW()>,fw.0.opened_-2130511303
-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,par.-2.error_-<T: java.io.FileWriter testCallFW(java.io.FileWriter)>,<T: void testFW()>,fw.0.error_-2130511303

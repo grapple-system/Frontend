@@ -1,0 +1,36 @@
+block 0
+1059925794:this := @this: org.apache.hadoop.fs.HdfsVolumeId
+1640224684:id := @parameter0: byte[]
+2044812362:specialinvoke this.<java.lang.Object: void <init>()>()
+1011750890:if id != null goto this.<org.apache.hadoop.fs.HdfsVolumeId: byte[] id> = id
+block 1
+1529536070:$stack2 = new java.lang.NullPointerException
+1815772036:specialinvoke $stack2.<java.lang.NullPointerException: void <init>(java.lang.String)>("A valid Id can only be constructed with a non-null byte array.")
+306090132:throw $stack2
+block 2
+29063342:this.<org.apache.hadoop.fs.HdfsVolumeId: byte[] id> = id
+1488869438:return
+block 0
+1059925794:this := @this: org.apache.hadoop.fs.HdfsVolumeId
+1640224684:id := @parameter0: byte[]
+2044812362:specialinvoke this.<java.lang.Object: void <init>()>()
+1011750890:if id != null goto this.<org.apache.hadoop.fs.HdfsVolumeId: byte[] id> = id
+block 1
+1529536070:$stack2 = new java.lang.NullPointerException
+1815772036:specialinvoke $stack2.<java.lang.NullPointerException: void <init>(java.lang.String)>("A valid Id can only be constructed with a non-null byte array.")
+306090132:throw $stack2
+block 2
+29063342:this.<org.apache.hadoop.fs.HdfsVolumeId: byte[] id> = id
+1488869438:return
+block 0
+1059925794:this := @this: org.apache.hadoop.fs.HdfsVolumeId
+1640224684:id := @parameter0: byte[]
+2044812362:specialinvoke this.<java.lang.Object: void <init>()>()
+1011750890:if id != null goto this.<org.apache.hadoop.fs.HdfsVolumeId: byte[] id> = id
+block 1
+1529536070:$stack2 = new java.lang.NullPointerException
+1815772036:specialinvoke $stack2.<java.lang.NullPointerException: void <init>(java.lang.String)>("A valid Id can only be constructed with a non-null byte array.")
+306090132:throw $stack2
+block 2
+29063342:this.<org.apache.hadoop.fs.HdfsVolumeId: byte[] id> = id
+1488869438:return

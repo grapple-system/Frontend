@@ -1,0 +1,4 @@
+block 0
+1123939422:this := @this: org.apache.hadoop.hbase.avro.generated.AIOError
+1486504709:specialinvoke this.<org.apache.avro.specific.SpecificExceptionBase: void <init>()>()
+1969754956:return

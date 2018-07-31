@@ -1,0 +1,28 @@
+block 0
+1450945109:this := @this: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1
+1672064808:eldest := @parameter0: java.util.Map$Entry
+221971351:$stack2 = virtualinvoke this.<org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1: int size()>()
+448206835:if $stack2 <= 10000 goto $stack3 = 0
+block 1
+1388117264:$stack3 = 1
+1734881808:goto [?= return $stack3]
+block 3
+271594494:return $stack3
+block 2
+848995025:$stack3 = 0
+block 3
+271594494:return $stack3
+block 0
+1450945109:this := @this: org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1
+1672064808:eldest := @parameter0: java.util.Map$Entry
+221971351:$stack2 = virtualinvoke this.<org.apache.hadoop.hdfs.BlockReaderLocal$LocalDatanodeInfo$1: int size()>()
+448206835:if $stack2 <= 10000 goto $stack3 = 0
+block 1
+1388117264:$stack3 = 1
+1734881808:goto [?= return $stack3]
+block 3
+271594494:return $stack3
+block 2
+848995025:$stack3 = 0
+block 3
+271594494:return $stack3

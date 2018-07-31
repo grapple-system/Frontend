@@ -1,0 +1,10 @@
+block 0
+1279095549:this := @this: org.apache.hadoop.fs.Hdfs
+1941633008:$stack1 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+1148038393:$stack2 = virtualinvoke $stack1.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.fs.FsStatus getDiskStatus()>()
+318869248:return $stack2
+block 0
+1279095549:this := @this: org.apache.hadoop.fs.Hdfs
+1941633008:$stack1 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
+1148038393:$stack2 = virtualinvoke $stack1.<org.apache.hadoop.hdfs.DFSClient: org.apache.hadoop.fs.FsStatus getDiskStatus()>()
+318869248:return $stack2
