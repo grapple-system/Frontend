@@ -75,7 +75,7 @@ public class Runner {
 	}
 
 	public void run(Chain<SootClass> classes) {
-		synchronized (this) {
+		//synchronized (this) {
 			for (SootClass klass : classes) {
 				List<SootMethod> origMethods = klass.getMethods();
 				for (SootMethod m : origMethods) {
@@ -84,17 +84,17 @@ public class Runner {
 					}
 				}
 			}
-		}
+		//}
 	}
 
 	public void run(Body mb) {
-		synchronized (this) {
+		//synchronized (this) {
 			System.out.println("\n\n");
 			System.out.println("Method: " + mb.getMethod().getSubSignature().toString());
 			System.out.println("---------------------------------------------------");
 
 			// init the Directory to save the graph
-			dirPath = "sootOutput/" + mb.getMethod().getDeclaringClass().toString() + "_" + mb.getMethod().getName();
+			dirPath = "E:/Study/zuo_project/pepper_wef/pepper/sootOutput/" + mb.getMethod().getDeclaringClass().toString() + "_" + mb.getMethod().getName();
 			String regEx = "[`~!@#$%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
 			Pattern p = Pattern.compile(regEx);
 			// file_path = file_path + sm.getDeclaringClass().getName() + "_" +
@@ -126,7 +126,7 @@ public class Runner {
 
 			// export the symbolic execution tree
 			export(mb);
-		}
+		//}
 	}
 
 	/* Add by wefcser */
@@ -354,30 +354,33 @@ public class Runner {
 	private void operate(Block block, StateNode node) {
 		// ---------------------------------------------------------
 		// generate symbolic execution graph (SEG)
-		Propagator p = new Propagator(node);
-		for (Iterator<Unit> it = block.iterator(); it.hasNext();) {
-			Stmt stmt = (Stmt) it.next();
-			// //for debugging
-			// System.out.println(stmt);
-			stmt.apply(p);
-		}
+		//synchronized (this) {
+			Propagator p = new Propagator(node);
+			for (Iterator<Unit> it = block.iterator(); it.hasNext();) {
+				Stmt stmt = (Stmt) it.next();
+				// //for debugging
+				// System.out.println(stmt);
+				stmt.apply(p);
+			}
 
-		// generate peg_block for alias analysis
-		// PegIntra_block peg_block = new PegIntra_block();
-		// PEGGenerator_block generator_block = new PEGGenerator_block(block,
-		// peg_block);
-		// generator_block.process();
-		// node.setPeg_intra_block(peg_block);
+			// generate peg_block for alias analysis
+			// PegIntra_block peg_block = new PegIntra_block();
+			// PEGGenerator_block generator_block = new
+			// PEGGenerator_block(block,
+			// peg_block);
+			// generator_block.process();
+			// node.setPeg_intra_block(peg_block);
 
-		// generate typestate checking
-		TypeGraphList tgl = new TypeGraphList(block);
-		TSCGenerator tscgenerator = new TSCGenerator(block, tgl);
-		// warning: par add node index!
-		tscgenerator.process(dirPath, node.index);
-		tscgenerator.print(dirPath);
-		node.addTypegraphList(tgl);
-		node.getTypegraphList().simplifyGraph();
-		// node.setConStr(p.constraintstr);
+			// generate typestate checking
+			TypeGraphList tgl = new TypeGraphList(block);
+			TSCGenerator tscgenerator = new TSCGenerator(block, tgl);
+			// warning: par add node index!
+			tscgenerator.process(dirPath, node.index);
+			tscgenerator.print(dirPath);
+			node.addTypegraphList(tgl);
+			node.getTypegraphList().simplifyGraph();
+			// node.setConStr(p.constraintstr);
+		//}
 
 	}
 

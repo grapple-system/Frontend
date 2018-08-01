@@ -56,7 +56,7 @@ public class TSCGenerator {
 		try {
 			if(!file.exists())
 			file.createNewFile();		
-			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file, false)));
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
 			for(CallInfo callinfo : callInfoList){
 				pw.println(callinfo.print2str());
 			}
@@ -72,7 +72,7 @@ public class TSCGenerator {
 		try {
 			if(!file.exists())
 			file.createNewFile();		
-			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file, false)));
+			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
 			for(String calledvar : calledVar){
 				pw.println(calledvar);
 			}
@@ -111,13 +111,12 @@ public class TSCGenerator {
 		FileOutputStream fos = null;
 		try {
 			if (!file.exists()) {
-				file.createNewFile();// Èç¹ûÎÄ¼þ²»´æÔÚ£¬¾Í´´½¨¸ÃÎÄ¼þ
-				fos = new FileOutputStream(file);// Ê×´ÎÐ´Èë»ñÈ¡
+				file.createNewFile();
+				fos = new FileOutputStream(file);
 			} else {
-				// Èç¹ûÎÄ¼þÒÑ´æÔÚ£¬ÄÇÃ´¾ÍÔÚÎÄ¼þÄ©Î²×·¼ÓÐ´Èë
-				fos = new FileOutputStream(file, true);// ÕâÀï¹¹Ôì·½·¨¶àÁËÒ»¸ö²ÎÊýtrue,±íÊ¾ÔÚÎÄ¼þÄ©Î²×·¼ÓÐ´Èë
+				fos = new FileOutputStream(file, true);
 			}
-			OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");// Ö¸¶¨ÒÔUTF-8¸ñÊ½Ð´ÈëÎÄ¼þ
+			OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
 			osw.write("block " + block.getIndexInMethod() + "\r\n");
 			Stmt nowst, succst;
 			Iterator<Unit> stmts = block.iterator();

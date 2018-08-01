@@ -63,8 +63,8 @@ public class IntraMain extends BodyTransformer {
 	}
 
 	public static void main(String[] args) {
-		String sp = "lib/";
-		String dirpath = "protocal/";
+		String sp = "E:/Study/zuo_project/pepper_wef/pepper/lib/";
+		String dirpath = "E:/Study/zuo_project/pepper_wef/pepper/protocal/";
 		init(dirpath);
 		// set the sootclass path
 		File dirFile = new File(sp);
@@ -96,11 +96,12 @@ public class IntraMain extends BodyTransformer {
 		 * "-cp path_of_classes_analyzed class_names" e.g., -cp
 		 * E:\Workspace\ws_program\taintanalysis\bin\ InterTest HelloWorld
 		 */
-		synchronized (IntraMain.class) {
+		System.out.println(args);
+		//synchronized (IntraMain.class) {
 			soot.Main.main(args);
-			TSCGenerator.printCallInfo("intraOutput/callInfoFile");
-			TSCGenerator.printCalledVar("intraOutput/calledVarFile");
-		}
+			TSCGenerator.printCallInfo("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/callInfoFile");
+			TSCGenerator.printCalledVar("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/calledVarFile");
+		//}
 	}
 
 }
