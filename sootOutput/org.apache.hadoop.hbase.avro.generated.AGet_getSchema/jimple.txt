@@ -1,8 +1,0 @@
-block 0
-1342423316:this := @this: org.apache.hadoop.hbase.avro.generated.AGet
-1936362218:$stack1 = <org.apache.hadoop.hbase.avro.generated.AGet: org.apache.avro.Schema SCHEMA$>
-1347111575:return $stack1
-block 0
-1342423316:this := @this: org.apache.hadoop.hbase.avro.generated.AGet
-1936362218:$stack1 = <org.apache.hadoop.hbase.avro.generated.AGet: org.apache.avro.Schema SCHEMA$>
-1347111575:return $stack1

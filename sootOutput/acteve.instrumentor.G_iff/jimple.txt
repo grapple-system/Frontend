@@ -1,8 +1,0 @@
-block 0
-1559633258:ce := @parameter0: soot.jimple.ConditionExpr
-570771924:target := @parameter1: soot.jimple.Stmt
-154275519:$r0 = <acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor>
-895885904:$r1 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
-304746413:$r2 = virtualinvoke $r1.<soot.jimple.Jimple: soot.jimple.IfStmt newIfStmt(soot.Value,soot.Unit)>(ce, target)
-124465196:virtualinvoke $r0.<acteve.instrumentor.BodyEditor: void insertStmt(soot.jimple.Stmt)>($r2)
-237476994:return

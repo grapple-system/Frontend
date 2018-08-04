@@ -1,4 +1,0 @@
-block 0
-1837646426:this := @this: acteve.instrumentor.G
-569587012:specialinvoke this.<java.lang.Object: void <init>()>()
-1714296005:return

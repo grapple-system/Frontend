@@ -1,8 +1,0 @@
-block 0
-666642000:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"record\",\"name\":\"ADelete\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"row\",\"type\":\"bytes\"},{\"name\":\"columns\",\"type\":[{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"AColumn\",\"fields\":[{\"name\":\"family\",\"type\":\"bytes\"},{\"name\":\"qualifier\",\"type\":[\"bytes\",\"null\"]}]}},\"null\"]}]}")
-1547714604:<org.apache.hadoop.hbase.avro.generated.ADelete: org.apache.avro.Schema SCHEMA$> = $stack0
-428156140:return
-block 0
-666642000:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"record\",\"name\":\"ADelete\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"row\",\"type\":\"bytes\"},{\"name\":\"columns\",\"type\":[{\"type\":\"array\",\"items\":{\"type\":\"record\",\"name\":\"AColumn\",\"fields\":[{\"name\":\"family\",\"type\":\"bytes\"},{\"name\":\"qualifier\",\"type\":[\"bytes\",\"null\"]}]}},\"null\"]}]}")
-1547714604:<org.apache.hadoop.hbase.avro.generated.ADelete: org.apache.avro.Schema SCHEMA$> = $stack0
-428156140:return

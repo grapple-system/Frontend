@@ -1,7 +1,0 @@
-block 0
-1437356959:this := @this: acteve.instrumentor.BodyEditor
-245818511:this.<acteve.instrumentor.BodyEditor: boolean removed> = 1
-475853558:$r0 = this.<acteve.instrumentor.BodyEditor: soot.util.Chain stmts>
-1072401514:$r1 = this.<acteve.instrumentor.BodyEditor: soot.jimple.Stmt originalStmt>
-1560207407:interfaceinvoke $r0.<soot.util.Chain: boolean remove(java.lang.Object)>($r1)
-1404376717:return

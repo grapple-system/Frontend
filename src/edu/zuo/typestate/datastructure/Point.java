@@ -26,7 +26,7 @@ public class Point {
 	}
 
 	public boolean equalPoint(Point p) {
-		if (name.equals(p.getName()) && (hashcode == p.getHashcode()))
+		if (name.equals(p.getName()) && (hashcode.equals(p.getHashcode())))
 			return true;
 		return false;
 	}

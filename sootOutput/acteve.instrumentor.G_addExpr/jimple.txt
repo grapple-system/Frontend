@@ -1,6 +1,0 @@
-block 0
-1549638396:i1 := @parameter0: soot.Immediate
-90850756:i2 := @parameter1: soot.Immediate
-67783075:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
-482636431:$r1 = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.AddExpr newAddExpr(soot.Value,soot.Value)>(i1, i2)
-624761098:return $r1

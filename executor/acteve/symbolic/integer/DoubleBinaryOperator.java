@@ -30,32 +30,30 @@
 */
 package acteve.symbolic.integer;
 
-public class DoubleBinaryOperator extends BinaryOperator
-{
-    public DoubleBinaryOperator(String op)
-    {
+public class DoubleBinaryOperator extends BinaryOperator {
+	public DoubleBinaryOperator(String op) {
 		super(op);
-    }
+	}
 
-    public Expression apply(Expression leftOp, Expression rightOp)
-    {
-        if(leftOp instanceof SymbolicLong){
-            leftOp = ((SymbolicLong) leftOp)._cast(Types.FLOAT);
-        }else if(leftOp instanceof UnaryFloatExpression){
-            // not useful
-            leftOp = ((UnaryFloatExpression) leftOp)._cast(Types.FLOAT);
-        }
+	public Expression apply(Expression leftOp, Expression rightOp) {
+		if (leftOp instanceof SymbolicLong) {
+			leftOp = ((SymbolicLong) leftOp)._cast(Types.FLOAT);
+		} else if (leftOp instanceof UnaryFloatExpression) {
+			// not useful
+			leftOp = ((UnaryFloatExpression) leftOp)._cast(Types.FLOAT);
+		}
 		DoubleExpression left = (DoubleExpression) leftOp;
 
-        if(rightOp instanceof BinaryLongExpression){
-            rightOp = ((BinaryLongExpression) rightOp)._cast(Types.FLOAT);
-        }else if(rightOp instanceof UnaryFloatExpression){
-            // not useful
-            rightOp = ((UnaryFloatExpression) rightOp)._cast(Types.FLOAT);
-        }
+		if (rightOp instanceof BinaryLongExpression) {
+			rightOp = ((BinaryLongExpression) rightOp)._cast(Types.FLOAT);
+		} else if (rightOp instanceof UnaryFloatExpression) {
+			// not useful
+			rightOp = ((UnaryFloatExpression) rightOp)._cast(Types.FLOAT);
+		}
 		DoubleExpression right = (DoubleExpression) rightOp;
-//		if(left instanceof Constant && right instanceof Constant)
-//			assert false;
+		// if(left instanceof Constant && right instanceof Constant)
+		// assert false;
 		return new BinaryDoubleExpression(this, left, right);
-    }
+
+	}
 }

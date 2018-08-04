@@ -15,51 +15,28 @@ class T extends java.lang.Object
     public void testTry()
     {
         T this;
-        char[] cca, $r0;
-        java.lang.StringBuilder sb, $r1;
-        java.lang.String format, f, $r3;
-        java.io.File file, $r4;
-        java.text.SimpleDateFormat sdf, $r5;
-        java.text.ParseException e, $r7;
+        java.lang.String format, f, $r0;
+        java.io.File file, $r1;
+        java.text.SimpleDateFormat sdf, $r2;
+        java.text.ParseException e, $r4;
         byte a;
-        java.lang.Class $r2;
         boolean $z0;
-        java.io.IOException $r9, e;
-        java.lang.NullPointerException $r10, e;
+        java.io.IOException $r6, e;
+        java.lang.NullPointerException $r7, e;
         int a;
 
         this := @this: T;
-        $r0 = newarray (char)[2];
-        $r0[0] = 97;
-        $r0[1] = 98;
-        cca = $r0;
-        $r1 = new java.lang.StringBuilder;
-        specialinvoke $r1.<java.lang.StringBuilder: void <init>()>();
-        sb = $r1;
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("str");
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char)>(115);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence)>(sb);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(int)>(0);
-        $r2 = virtualinvoke this.<java.lang.Object: java.lang.Class getClass()>();
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.Object)>($r2);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(boolean)>(0);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[])>(cca);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(double)>(0.1);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(float)>(0.1F);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(long)>(0L);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(char[],int,int)>(cca, 0, 1);
-        virtualinvoke sb.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.CharSequence,int,int)>(sb, 0, 0);
         format = "yyyy-MM-dd HH:mm:ss";
         virtualinvoke format.<java.lang.String: java.lang.String toString()>();
-        $r3 = new java.lang.String;
-        specialinvoke $r3.<java.lang.String: void <init>()>();
-        f = $r3;
-        $r4 = new java.io.File;
-        specialinvoke $r4.<java.io.File: void <init>(java.lang.String)>("");
-        file = $r4;
-        $r5 = new java.text.SimpleDateFormat;
-        specialinvoke $r5.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(format);
-        sdf = $r5;
+        $r0 = new java.lang.String;
+        specialinvoke $r0.<java.lang.String: void <init>()>();
+        f = $r0;
+        $r1 = new java.io.File;
+        specialinvoke $r1.<java.io.File: void <init>(java.lang.String)>("");
+        file = $r1;
+        $r2 = new java.text.SimpleDateFormat;
+        specialinvoke $r2.<java.text.SimpleDateFormat: void <init>(java.lang.String)>(format);
+        sdf = $r2;
 
      label0:
         virtualinvoke sdf.<java.text.SimpleDateFormat: java.util.Date parse(java.lang.String)>(format);
@@ -68,8 +45,8 @@ class T extends java.lang.Object
         goto label3;
 
      label2:
-        $r7 := @caughtexception;
-        e = $r7;
+        $r4 := @caughtexception;
+        e = $r4;
         virtualinvoke e.<java.text.ParseException: void printStackTrace()>();
 
      label3:
@@ -89,8 +66,8 @@ class T extends java.lang.Object
         goto label8;
 
      label7:
-        $r9 := @caughtexception;
-        e = $r9;
+        $r6 := @caughtexception;
+        e = $r6;
         virtualinvoke file.<java.io.File: boolean delete()>();
         virtualinvoke e.<java.io.IOException: void printStackTrace()>();
 
@@ -101,8 +78,8 @@ class T extends java.lang.Object
         goto label11;
 
      label10:
-        $r10 := @caughtexception;
-        e = $r10;
+        $r7 := @caughtexception;
+        e = $r7;
         virtualinvoke e.<java.lang.NullPointerException: void printStackTrace()>();
         a = 0;
         a = a + 1;
@@ -247,21 +224,36 @@ class T extends java.lang.Object
         T this;
         java.io.File $r0, file;
         boolean a;
-        null_type fw;
-        java.io.FileWriter fw;
+        java.io.FileWriter fw, $r1;
 
         this := @this: T;
         $r0 = new java.io.File;
         specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("");
         file = $r0;
         a = 0;
-        fw = null;
-        fw = virtualinvoke this.<T: java.io.FileWriter testCallFW(java.io.FileWriter)>(fw);
+        $r1 = new java.io.FileWriter;
+        specialinvoke $r1.<java.io.FileWriter: void <init>(java.io.File)>(file);
+        fw = $r1;
+        virtualinvoke fw.<java.io.FileWriter: void write(java.lang.String)>("a");
+        virtualinvoke this.<T: java.io.FileWriter testCallFW(java.io.FileWriter)>(fw);
+        virtualinvoke this.<T: java.io.FileWriter testCallFW2(java.io.FileWriter)>(fw);
         virtualinvoke fw.<java.io.FileWriter: void close()>();
         return;
     }
 
     public java.io.FileWriter testCallFW(java.io.FileWriter) throws java.io.IOException
+    {
+        T this;
+        java.io.FileWriter par;
+
+        this := @this: T;
+        par := @parameter0: java.io.FileWriter;
+        virtualinvoke par.<java.io.FileWriter: void write(java.lang.String)>("");
+        virtualinvoke par.<java.io.FileWriter: void close()>();
+        return par;
+    }
+
+    public java.io.FileWriter testCallFW2(java.io.FileWriter) throws java.io.IOException
     {
         T this;
         java.io.FileWriter par, $r0, par;
@@ -292,7 +284,9 @@ class T extends java.lang.Object
         specialinvoke $r0.<java.io.File: void <init>(java.lang.String)>("");
         file = $r0;
         a = 0;
-        fw = null;
+        $r1 = new java.io.FileWriter;
+        specialinvoke $r1.<java.io.FileWriter: void <init>(java.io.File)>(file);
+        fw = $r1;
         if a == 0 goto label0;
 
         if a == 1 goto label1;

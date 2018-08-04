@@ -1,8 +1,0 @@
-block 0
-1952221700:this := @this: org.apache.hadoop.fs.Hdfs
-1506971749:f := @parameter0: org.apache.hadoop.fs.Path
-2048109909:permission := @parameter1: org.apache.hadoop.fs.permission.FsPermission
-2100013654:$stack3 = this.<org.apache.hadoop.fs.Hdfs: org.apache.hadoop.hdfs.DFSClient dfs>
-1800022151:$stack4 = virtualinvoke this.<org.apache.hadoop.fs.Hdfs: java.lang.String getUriPath(org.apache.hadoop.fs.Path)>(f)
-598771651:virtualinvoke $stack3.<org.apache.hadoop.hdfs.DFSClient: void setPermission(java.lang.String,org.apache.hadoop.fs.permission.FsPermission)>($stack4, permission)
-52813883:return

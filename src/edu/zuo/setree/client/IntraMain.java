@@ -67,21 +67,21 @@ public class IntraMain extends BodyTransformer {
 		String dirpath = "E:/Study/zuo_project/pepper_wef/pepper/protocal/";
 		init(dirpath);
 		// set the sootclass path
-		File dirFile = new File(sp);
-		String path = "";
-		if (!dirFile.isDirectory()) {
-			return;
-		}
-		String[] fileList = dirFile.list();
-		for (int i = 0; i < fileList.length; i++) {
-			// ±éÀúÎÄ¼þÄ¿Â¼
-			String string = fileList[i];
-			if (string.endsWith(".jar")) {
-				path += sp + string + ";";
-			}
-		}
-		path += sp + "test;";
-		Scene.v().setSootClassPath(path);
+//		File dirFile = new File(sp);
+//		String path = "";
+//		if (!dirFile.isDirectory()) {
+//			return;
+//		}
+//		String[] fileList = dirFile.list();
+//		for (int i = 0; i < fileList.length; i++) {
+//			// ±éÀúÎÄ¼þÄ¿Â¼
+//			String string = fileList[i];
+//			if (string.endsWith(".jar")) {
+//				path += sp + string + ";";
+//			}
+//		}
+//		path += sp + "test;";
+//		Scene.v().setSootClassPath(path);
 		// set options
 		Options.v().setPhaseOption("jb", "use-original-names:true");
 		Options.v().setPhaseOption("tag", "off");

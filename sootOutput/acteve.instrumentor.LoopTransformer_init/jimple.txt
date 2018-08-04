@@ -1,4 +1,0 @@
-block 0
-1878015918:this := @this: acteve.instrumentor.LoopTransformer
-2043068409:specialinvoke this.<java.lang.Object: void <init>()>()
-1734718180:return

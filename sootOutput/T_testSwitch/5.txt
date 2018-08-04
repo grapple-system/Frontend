@@ -1,2 +1,0 @@
-digraph sootOutput/T_testSwitch/5{
-} 

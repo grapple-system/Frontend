@@ -1,7 +1,0 @@
-block 0
-537764886:throwable := @parameter0: soot.Local
-1603252426:$r0 = <acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor>
-1386204873:$r1 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
-1949268043:$r2 = virtualinvoke $r1.<soot.jimple.Jimple: soot.jimple.ThrowStmt newThrowStmt(soot.Value)>(throwable)
-1484963716:virtualinvoke $r0.<acteve.instrumentor.BodyEditor: void insertStmt(soot.jimple.Stmt)>($r2)
-1877713025:return

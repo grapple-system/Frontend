@@ -27,6 +27,7 @@ import edu.zuo.setree.export.Exporter;
 import edu.zuo.typestate.TSCGenerator;
 import edu.zuo.typestate.datastructure.ConstraintGraph;
 import edu.zuo.typestate.datastructure.ConstraintGraphList;
+import edu.zuo.typestate.datastructure.TypeGraph;
 import edu.zuo.typestate.datastructure.TypeGraphList;
 import soot.Body;
 import soot.BooleanType;
@@ -93,17 +94,18 @@ public class Runner {
 			System.out.println("Method: " + mb.getMethod().getSubSignature().toString());
 			System.out.println("---------------------------------------------------");
 
+			if(!hasInterestVar(mb))
+				return;
+			
 			// init the Directory to save the graph
 			dirPath = "E:/Study/zuo_project/pepper_wef/pepper/sootOutput/" + mb.getMethod().getDeclaringClass().toString() + "_" + mb.getMethod().getName();
 			String regEx = "[`~!@#$%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
 			Pattern p = Pattern.compile(regEx);
-			// file_path = file_path + sm.getDeclaringClass().getName() + "_" +
-			// sm.getName()+".txt";
 			Matcher m = p.matcher(dirPath);
 			dirPath = m.replaceAll("").trim();
-			File dirFile = new File(dirPath);
-			if (!dirFile.exists())
-				dirFile.mkdirs();
+//			File dirFile = new File(dirPath);
+//			if (!dirFile.exists())
+//				dirFile.mkdirs();
 
 			// transform the body
 			transform(mb.getMethod());
@@ -127,6 +129,16 @@ public class Runner {
 			// export the symbolic execution tree
 			export(mb);
 		//}
+	}
+	
+	//return true if method has interest var, such fileWriter
+	private boolean hasInterestVar(Body mb){
+		BriefBlockGraph cfg = new BriefBlockGraph(mb);
+		List<Block> entries = cfg.getHeads();
+		TypeGraphList tgl = new TypeGraphList(entries.get(0));
+		if(tgl.ltg.size() == 0)
+			return false;
+		return true;
 	}
 
 	/* Add by wefcser */
@@ -376,7 +388,7 @@ public class Runner {
 			TSCGenerator tscgenerator = new TSCGenerator(block, tgl);
 			// warning: par add node index!
 			tscgenerator.process(dirPath, node.index);
-			tscgenerator.print(dirPath);
+			//tscgenerator.print(dirPath);
 			node.addTypegraphList(tgl);
 			node.getTypegraphList().simplifyGraph();
 			// node.setConStr(p.constraintstr);

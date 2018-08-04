@@ -1,0 +1,15 @@
+org.apache.hadoop.mapred.QueueManager
+org.apache.hadoop.mapred.lib.DelegatingInputFormat
+org.apache.hadoop.mapred.lib.NLineInputFormat
+org.apache.hadoop.examples.DBCountPageView$PageviewMapper
+org.apache.hadoop.examples.DBCountPageView$PageviewRecord
+org.apache.hadoop.examples.ExampleDriver
+org.apache.hadoop.examples.DBCountPageView
+org.apache.hadoop.examples.WordStandardDeviation
+org.apache.hadoop.examples.pi.DistBbp
+org.apache.hadoop.examples.pi.Parser
+org.apache.hadoop.examples.WordMedian
+org.apache.hadoop.examples.DBCountPageView$PageviewReducer
+org.apache.hadoop.examples.DBCountPageView$AccessRecord
+org.apache.hadoop.examples.WordMean
+org.apache.hadoop.mapreduce.counters.FileSystemCounterGroup

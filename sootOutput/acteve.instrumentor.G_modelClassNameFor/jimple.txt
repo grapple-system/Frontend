@@ -1,7 +1,0 @@
-block 0
-134894806:className := @parameter0: java.lang.String
-1581756857:$r0 = new java.lang.StringBuilder
-1219100908:specialinvoke $r0.<java.lang.StringBuilder: void <init>(java.lang.String)>("models.")
-2065118200:$r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(className)
-606013040:modelClassName = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>()
-1862976702:return modelClassName

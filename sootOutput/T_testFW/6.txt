@@ -1,5 +1,0 @@
-digraph sootOutput/T_testFW/6{
-uninit_686359899 -> uninit_128445625
-opened_686359899 -> opened_128445625
-error_686359899 -> error_128445625
-} 

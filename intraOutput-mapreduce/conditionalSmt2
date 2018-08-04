@@ -1,0 +1,73 @@
+<org.apache.hadoop.mapred.TaskLog: org.apache.hadoop.mapred.TaskLog$LogFileDetail getLogFileDetail(org.apache.hadoop.mapred.TaskAttemptID,org.apache.hadoop.mapred.TaskLog$LogName,boolean)>
+0:(not (= $R$@ret6 soot.jimple.NullConstant@1199175639))
+0:#c#$R$@ret0#<org.apache.hadoop.mapred.TaskLog: java.io.File getIndexFile(org.apache.hadoop.mapred.TaskAttemptID,boolean)>#$R$@para0#$Z$@para2
+0:#c#$R$@ret1#<org.apache.hadoop.mapred.TaskLog: java.lang.String obtainLogDirOwner(org.apache.hadoop.mapred.TaskAttemptID)>#$R$@para0
+0:#c#$R$@ret2#<org.apache.hadoop.io.SecureIOUtils: java.io.FileInputStream openForRead(java.io.File,java.lang.String,java.lang.String)>#$R$@ret0#$R$@ret1#soot.jimple.NullConstant@1199175639
+0:#c#null#<java.io.InputStreamReader: void <init>(java.io.InputStream,java.nio.charset.Charset)>#$R$@ret2#$R$@var$r4
+0:#c#null#<java.io.BufferedReader: void <init>(java.io.Reader)>#$R$1
+0:#c#null#<org.apache.hadoop.mapred.TaskLog$LogFileDetail: void <init>(org.apache.hadoop.mapred.TaskLog$1)>#soot.jimple.NullConstant@1199175639
+0:#c#$R$@ret6#<java.io.BufferedReader: java.lang.String readLine()>
+0:#p#$R$@para0#$R$@para1#$Z$@para2
+2:(not (= $Z$@ret3 0))
+2:#c#$I$@ret0#<java.lang.String: int indexOf(java.lang.String)>#soot.jimple.StringConstant@320464694
+2:#c#$I$@ret1#<java.lang.String: int length()>
+2:#c#$R$@ret2#<java.lang.String: java.lang.String substring(int)>#(+ $I$@ret0 $I$@ret1)
+2:#c#$Z$@ret3#<java.lang.Enum: boolean equals(java.lang.Object)>#$R$@var$r11
+5:(= $Z$@ret0 0)
+5:#c#$Z$@ret0#<java.lang.Enum: boolean equals(java.lang.Object)>#$R$@var$r11
+11:#r#$R$2
+12:(= $R$@ret0 soot.jimple.NullConstant@1199175639)
+12:#c#$R$@ret0#<java.io.BufferedReader: java.lang.String readLine()>
+25:(= $Z$@ret1 0)
+25:#c#$R$@ret0#<org.apache.hadoop.mapred.TaskLog$LogName: java.lang.String toString()>
+25:#c#$Z$@ret1#<java.lang.String: boolean contains(java.lang.CharSequence)>#$R$@ret0
+51:#r#$R$2
+26:#r#$R$2
+6:#r#$R$2
+
+<org.apache.hadoop.examples.dancing.Sudoku: void <init>(java.io.InputStream)>
+0:(= $R$@ret3 soot.jimple.NullConstant@257711034)
+0:#c#null#<java.lang.Object: void <init>()>
+0:#c#null#<java.io.InputStreamReader: void <init>(java.io.InputStream,java.nio.charset.Charset)>#$R$@para0#$R$@var$r1
+0:#c#null#<java.io.BufferedReader: void <init>(java.io.Reader)>#$R$1
+0:#c#$R$@ret3#<java.io.BufferedReader: java.lang.String readLine()>
+0:#c#null#<java.util.ArrayList: void <init>()>
+0:#p#$R$@para0
+1:(= $Z$@ret2 0)
+1:#c#null#<java.util.StringTokenizer: void <init>(java.lang.String)>#$R$@ret3
+1:#c#$I$@ret1#<java.util.StringTokenizer: int countTokens()>
+1:#c#$Z$@ret2#<java.util.StringTokenizer: boolean hasMoreElements()>
+3:(= $Z$@ret1 0)
+3:#c#$R$@ret0#<java.util.StringTokenizer: java.lang.String nextToken()>
+3:#c#$Z$@ret1#<java.lang.String: boolean equals(java.lang.Object)>#$R$@ret0
+
+<org.apache.hadoop.examples.pi.Util: java.util.List readJobOutputs(org.apache.hadoop.fs.FileSystem,org.apache.hadoop.fs.Path)>
+0:(>= 0 $I$@varlen$)
+0:#c#null#<java.util.ArrayList: void <init>()>
+0:#c#$R$@ret1#<org.apache.hadoop.fs.FileSystem: org.apache.hadoop.fs.FileStatus[] listStatus(org.apache.hadoop.fs.Path)>#$R$@para1
+0:#p#$R$@para0#$R$@para1
+1:(= $Z$@ret2 0)
+1:#c#$R$@ret0#<org.apache.hadoop.fs.FileStatus: org.apache.hadoop.fs.Path getPath()>
+1:#c#$R$@ret1#<org.apache.hadoop.fs.Path: java.lang.String getName()>
+1:#c#$Z$@ret2#<java.lang.String: boolean startsWith(java.lang.String)>#soot.jimple.StringConstant@16466470
+3:(= $R$@ret4 soot.jimple.NullConstant@755907046)
+3:#c#$R$@ret0#<org.apache.hadoop.fs.FileStatus: org.apache.hadoop.fs.Path getPath()>
+3:#c#$R$@ret1#<org.apache.hadoop.fs.FileSystem: org.apache.hadoop.fs.FSDataInputStream open(org.apache.hadoop.fs.Path)>#$R$@ret0
+3:#c#null#<java.io.InputStreamReader: void <init>(java.io.InputStream,java.nio.charset.Charset)>#$R$@ret1#$R$@var$r7
+3:#c#null#<java.io.BufferedReader: void <init>(java.io.Reader)>#$R$2
+3:#c#$R$@ret4#<java.io.BufferedReader: java.lang.String readLine()>
+2:(= $Z$@ret0 0)
+2:#c#$Z$@ret0#<java.util.List: boolean isEmpty()>
+6:#r#$R$0
+
+<org.apache.hadoop.examples.terasort.TeraScheduler: java.util.List readFile(java.lang.String)>
+0:(= $R$@ret4 soot.jimple.NullConstant@29317051)
+0:#c#null#<java.util.ArrayList: void <init>(int)>#10000
+0:#c#null#<java.io.FileInputStream: void <init>(java.lang.String)>#$R$@para0
+0:#c#null#<java.io.InputStreamReader: void <init>(java.io.InputStream,java.nio.charset.Charset)>#$R$3#$R$@var$r4
+0:#c#null#<java.io.BufferedReader: void <init>(java.io.Reader)>#$R$2
+0:#c#$R$@ret4#<java.io.BufferedReader: java.lang.String readLine()>
+0:#p#$R$@para0
+1:#r#$R$0
+2:#r#$R$0
+

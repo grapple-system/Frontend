@@ -1,7 +1,0 @@
-block 0
-435005995:monitor := @parameter0: soot.Local
-1111423577:$r0 = <acteve.instrumentor.G: acteve.instrumentor.BodyEditor editor>
-883297033:$r1 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
-2135116978:$r2 = virtualinvoke $r1.<soot.jimple.Jimple: soot.jimple.EnterMonitorStmt newEnterMonitorStmt(soot.Value)>(monitor)
-459307876:virtualinvoke $r0.<acteve.instrumentor.BodyEditor: void insertStmt(soot.jimple.Stmt)>($r2)
-1531244614:return

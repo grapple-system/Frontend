@@ -1,0 +1,21 @@
+<org.apache.hadoop.mapred.TaskLog: org.apache.hadoop.mapred.TaskLog$LogFileDetail getLogFileDetail(org.apache.hadoop.mapred.TaskAttemptID,org.apache.hadoop.mapred.TaskLog$LogName,boolean)>
+0:(not (= $R$@ret6 soot.jimple.NullConstant@1199175639))
+2:(not (= $Z$@ret3 0))
+5:(= $Z$@ret0 0)
+12:(= $R$@ret0 soot.jimple.NullConstant@1199175639)
+25:(= $Z$@ret1 0)
+
+<org.apache.hadoop.examples.dancing.Sudoku: void <init>(java.io.InputStream)>
+0:(= $R$@ret3 soot.jimple.NullConstant@257711034)
+1:(= $Z$@ret2 0)
+3:(= $Z$@ret1 0)
+
+<org.apache.hadoop.examples.pi.Util: java.util.List readJobOutputs(org.apache.hadoop.fs.FileSystem,org.apache.hadoop.fs.Path)>
+0:(>= 0 $I$@varlen$)
+1:(= $Z$@ret2 0)
+3:(= $R$@ret4 soot.jimple.NullConstant@755907046)
+2:(= $Z$@ret0 0)
+
+<org.apache.hadoop.examples.terasort.TeraScheduler: java.util.List readFile(java.lang.String)>
+0:(= $R$@ret4 soot.jimple.NullConstant@29317051)
+

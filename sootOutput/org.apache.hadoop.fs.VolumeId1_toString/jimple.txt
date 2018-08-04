@@ -1,6 +1,0 @@
-block 0
-431008242:this := @this: org.apache.hadoop.fs.VolumeId$1
-968481845:return "Invalid VolumeId"
-block 0
-431008242:this := @this: org.apache.hadoop.fs.VolumeId$1
-968481845:return "Invalid VolumeId"

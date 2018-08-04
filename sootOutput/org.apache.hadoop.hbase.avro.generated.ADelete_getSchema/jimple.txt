@@ -1,8 +1,0 @@
-block 0
-1081944577:this := @this: org.apache.hadoop.hbase.avro.generated.ADelete
-293974199:$stack1 = <org.apache.hadoop.hbase.avro.generated.ADelete: org.apache.avro.Schema SCHEMA$>
-247924517:return $stack1
-block 0
-1081944577:this := @this: org.apache.hadoop.hbase.avro.generated.ADelete
-293974199:$stack1 = <org.apache.hadoop.hbase.avro.generated.ADelete: org.apache.avro.Schema SCHEMA$>
-247924517:return $stack1

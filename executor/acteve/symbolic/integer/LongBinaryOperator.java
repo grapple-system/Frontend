@@ -43,7 +43,12 @@ public class LongBinaryOperator extends BinaryOperator
         if(leftOp instanceof SymbolicInteger){
             leftOp = ((SymbolicInteger) leftOp)._cast(Types.LONG);
         }
-		LongExpression left = (LongExpression) leftOp;
+		LongExpression left =null;
+		try{
+			left= (LongExpression) leftOp;
+		}catch(Exception e){
+        	System.out.println("LongExpression");
+        }
 //		if(left instanceof Constant && rightOp instanceof Constant)
 //			assert false;
 		return new BinaryLongExpression(this, left, rightOp);

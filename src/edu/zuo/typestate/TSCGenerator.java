@@ -107,17 +107,17 @@ public class TSCGenerator {
 	public void process(String dirPath, int nodeindex) {
 		init();
 		// write stmt with hashcode for checking
-		File file = new File(dirPath + "/jimple.txt");
-		FileOutputStream fos = null;
-		try {
-			if (!file.exists()) {
-				file.createNewFile();
-				fos = new FileOutputStream(file);
-			} else {
-				fos = new FileOutputStream(file, true);
-			}
-			OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
-			osw.write("block " + block.getIndexInMethod() + "\r\n");
+		//File file = new File(dirPath + "/jimple.txt");
+		//FileOutputStream fos = null;
+//		try {
+//			if (!file.exists()) {
+//				file.createNewFile();
+//				fos = new FileOutputStream(file);
+//			} else {
+//				fos = new FileOutputStream(file, true);
+//			}
+			//OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
+			//osw.write("block " + block.getIndexInMethod() + "\r\n");
 			Stmt nowst, succst;
 			Iterator<Unit> stmts = block.iterator();
 			if (stmts.hasNext()) {
@@ -125,20 +125,20 @@ public class TSCGenerator {
 				succst = nowst;
 				for (; stmts.hasNext();) {
 					succst = (Stmt) stmts.next();
-					osw.write(nowst.hashCode() + ":" + nowst.toString() + "\r\n");
+					//osw.write(nowst.hashCode() + ":" + nowst.toString() + "\r\n");
 					typegraph_list.state = 0;
 					processStmt(nowst, succst, nodeindex);
 					nowst = succst;
 				}
-				osw.write(succst.hashCode() + ":" + succst.toString() + "\r\n");
+				//osw.write(succst.hashCode() + ":" + succst.toString() + "\r\n");
 				typegraph_list.state = 0;
 				processStmt(succst, succst, nodeindex);
 			}
-			osw.close();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+			//osw.close();
+//		} catch (IOException e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 	}
 
 	private void init() {

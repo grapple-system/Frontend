@@ -1,5 +1,0 @@
-block 0
-206808442:f := @parameter0: soot.SootFieldRef
-1200943848:$r0 = <acteve.instrumentor.G: soot.jimple.Jimple jimple>
-966502593:$r1 = virtualinvoke $r0.<soot.jimple.Jimple: soot.jimple.StaticFieldRef newStaticFieldRef(soot.SootFieldRef)>(f)
-442774643:return $r1

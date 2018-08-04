@@ -1,8 +1,0 @@
-block 0
-1896889642:className := @parameter0: java.lang.String
-1629473379:$r0 = new java.lang.StringBuilder
-1175799888:specialinvoke $r0.<java.lang.StringBuilder: void <init>(java.lang.String)>("models.")
-1216555060:$r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>(className)
-1603691173:$r0 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.StringBuilder append(java.lang.String)>("$A3TInvoke")
-170291114:$r1 = virtualinvoke $r0.<java.lang.StringBuilder: java.lang.String toString()>()
-1634535194:return $r1

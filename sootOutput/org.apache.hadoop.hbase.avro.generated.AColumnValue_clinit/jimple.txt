@@ -1,8 +1,0 @@
-block 0
-559154337:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"record\",\"name\":\"AColumnValue\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"family\",\"type\":\"bytes\"},{\"name\":\"qualifier\",\"type\":\"bytes\"},{\"name\":\"value\",\"type\":\"bytes\"},{\"name\":\"timestamp\",\"type\":[\"long\",\"null\"]}]}")
-59879483:<org.apache.hadoop.hbase.avro.generated.AColumnValue: org.apache.avro.Schema SCHEMA$> = $stack0
-1251438918:return
-block 0
-559154337:$stack0 = staticinvoke <org.apache.avro.Schema: org.apache.avro.Schema parse(java.lang.String)>("{\"type\":\"record\",\"name\":\"AColumnValue\",\"namespace\":\"org.apache.hadoop.hbase.avro.generated\",\"fields\":[{\"name\":\"family\",\"type\":\"bytes\"},{\"name\":\"qualifier\",\"type\":\"bytes\"},{\"name\":\"value\",\"type\":\"bytes\"},{\"name\":\"timestamp\",\"type\":[\"long\",\"null\"]}]}")
-59879483:<org.apache.hadoop.hbase.avro.generated.AColumnValue: org.apache.avro.Schema SCHEMA$> = $stack0
-1251438918:return
