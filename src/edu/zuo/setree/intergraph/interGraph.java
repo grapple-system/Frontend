@@ -56,17 +56,17 @@ public class interGraph {
     /** each line of pair2varMapFile is
      * (funcIndex,inFuncVarIndex) : outFuncVarIndex
      */
-    public static final File pair2indexMapFile = new File("interOutput/pair2indexMap");
+    public static final File pair2indexMapFile = new File("interOutput/pair2indexMap.txt");
 
     /** each line of index2varMapFile is
      * outFuncVarIndex : funcIndex.inFuncVarIndex.nodeIndex.varName
      */
-    public static final File index2varMapFile = new File("interOutput/index2varMap");
+    public static final File index2varMapFile = new File("interOutput/index2varMap.txt");
 
     /** each line of func2indexMapFile is
      * funcIndex : funcName
      */
-    public static final File func2indexMapFile = new File("interOutput/func2indexMap");
+    public static final File func2indexMapFile = new File("interOutput/func2indexMap.txt");
 
     /** each line of interGraphFile is
      * outFuncVarIndex  outFuncVarIndex label   constraint
@@ -83,12 +83,12 @@ public class interGraph {
      * [Store]  s
      * other    e
      */
-    public static final File interGraphFile = new File("interOutput/interGraph");
+    public static final File interGraphFile = new File("interOutput/interGraph.txt");
 
     /** each line of interSmt2File is
      * (funcIndex, nodeIndex):constraintString
      */
-    public static final File interSmt2File = new File("interOutput/interSmt2");
+    public static final File interSmt2File = new File("interOutput/interSmt2.txt");
 
     public static void genMap(){
         try {

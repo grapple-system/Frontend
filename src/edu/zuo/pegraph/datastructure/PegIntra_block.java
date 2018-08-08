@@ -67,20 +67,18 @@ public class PegIntra_block {
 	public Set<String> getVars(){
 		Set<String> Vars = new HashSet<>();
 		//--formal parameters
-		//System.out.println("formal_callee");
 		if(formal_callee!=null){
-			//System.out.println(formal_callee.toString());
+			//System.out.println("formal_callee:"+formal_callee.toString());
 			Vars.add(formal_callee.toString());
 		}
-		//System.out.println("formal_paras"+formal_paras.size());
+		//System.out.println("formal_paras_size:"+formal_paras.size());
 		for (Local loc:formal_paras){
 			//System.out.println(loc.toString());
 			Vars.add(loc.toString());
 		}
 		//--formal return: could be {Local, StringConstant, ClassConstant}
-		//System.out.println("formal_return");
 		if(formal_return!=null){
-			//System.out.println(formal_return.toString());
+			//System.out.println("formal_return:"+formal_return.toString());
 			Vars.add(formal_return.toString());
 		}
 		////--call sites
@@ -121,20 +119,26 @@ public class PegIntra_block {
 
 		//local2local: Assign
 		for(Value loc1: this.local2Local.keySet()){
+			//System.out.print("local2local: "+loc1.toString()+" 2");
 			HashSet<Local> locs = this.local2Local.get(loc1);
 			Vars.add(loc1.toString());
 			for(Value loc2: locs) {
+				//System.out.println(" "+loc2.toString());
 				Vars.add(loc2.toString());
 			}
+			//System.out.println();
 		}
 
 		//obj2local: New
 		for(Value v: this.obj2Local.keySet()){
+			//System.out.print("obj2local: "+v.toString()+" 2");
 			HashSet<Local> locs = this.obj2Local.get(v);
 			Vars.add(v.toString());
 			for(Value loc: locs) {
+				//System.out.print(" "+loc.toString());
 				Vars.add(loc.toString());
 			}
+			//System.out.println();
 		}
 
 		//ref2local

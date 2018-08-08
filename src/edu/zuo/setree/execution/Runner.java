@@ -74,20 +74,26 @@ public class Runner {
 		System.out.println("\n\n");
 		System.out.println("Method: " + mb.getMethod().getSubSignature().toString());
 		System.out.println("---------------------------------------------------");
-		
+
 		//transform the body
+		System.out.println("\nBefore transform()");
 		transform(mb.getMethod());
 		
 		//confirm that there's no loop at all before executing it symbolically
+		System.out.println("\nBefore confirm_no_loop()");
 		confirm_no_loop(mb);
 		
 		//execute the body symbolically
+		System.out.println("\nBefore execute()");
 		execute(mb);
+		//printOutInfo(root,1);
 
 		//separate func entry
+		System.out.println("\nBefore separate()");
         separate();
 		
 		//export the symbolic execution tree
+		System.out.println("\nBefore export()");
 		export(mb);
 	}
 
@@ -100,8 +106,8 @@ public class Runner {
         for(Local loc:formal_paras) {
             peg_block.addFormalParameter(loc);
         }
-        root.getPeg_intra_block().clearFormal_callee();
-        root.getPeg_intra_block().clearFormal_paras();
+        //root.getPeg_intra_block().clearFormal_callee();
+        //root.getPeg_intra_block().clearFormal_paras();
         Map<Local, Expression> localExpressionMap=root.getLocalsMap();
         for(Local l:localExpressionMap.keySet()){
         	funcEntry.putToLocalsMap(l, localExpressionMap.get(l));
@@ -199,7 +205,10 @@ public class Runner {
 		}
 		else if(succs.size() == 1){
 			//fall-through
-			traverseCFG(succs.get(0), node);
+            StateNode nTrue = new StateNode(node);
+            node.setTrueChild(nTrue);
+            traverseCFG(succs.get(0), nTrue);
+			//traverseCFG(succs.get(0), node);
 		}
 		else if(succs.size() == 0){
 			//end
@@ -281,7 +290,18 @@ public class Runner {
 //		}
 //		return null;
 //	}
-	
-	
-
+	/** print out state information
+	 * @param root
+	 * @param id
+	 */
+	private static void printOutInfo(StateNode root, int id) {
+		// TODO Auto-generated method stub
+		if (root == null) {
+			return;
+		}
+		System.out.println(id + ": " + root.toString());
+		System.out.println("local2local size:" + root.getPeg_intra_block().getLocal2Local().size());
+		printOutInfo(root.getFalseChild(), 2 * id);
+		printOutInfo(root.getTrueChild(), 2 * id + 1);
+	}
 }

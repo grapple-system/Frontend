@@ -12,11 +12,11 @@ import soot.*;
 
 public class Exporter {
 	
-	public static final File outFile = new File("/Users/wangyifei/IdeaProjects/pepper/intraOutput/set.conditional");
-	public static final File stateNodeFile = new File("/Users/wangyifei/IdeaProjects/pepper/intraOutput/stateNode.json");
-	public static final File conditionalSmt2File = new File("/Users/wangyifei/IdeaProjects/pepper/intraOutput/conditionalSmt2");
-	public static final File consEdgeGraphFile = new File("/Users/wangyifei/IdeaProjects/pepper/intraOutput/consEdgeGraph");
-	public static final File var2indexMapFile = new File("/Users/wangyifei/IdeaProjects/pepper/intraOutput/var2indexMap");
+	public static final File setOutFile = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/set.conditional");
+	public static final File stateNodeFile = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/stateNode.json");
+	public static final File conditionalSmt2File = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/conditionalSmt2");
+	public static final File consEdgeGraphFile = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/consEdgeGraph");
+	public static final File var2indexMapFile = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/var2indexMap");
 
 	private static Map<String,Stack<Integer>> constraintEdgeMap = new LinkedHashMap<>();
 	private static Map<String, Integer> var2indexMap = new LinkedHashMap<>();
@@ -24,7 +24,6 @@ public class Exporter {
 	public static void run(StateNode root, Body mb) {
 		//for debugging
 		System.out.println("STATE ==>>");
-		printOutInfo(root, 0);
 		System.out.println("\n");
 		
 		//export symbolic execution tree info to output file
@@ -36,14 +35,15 @@ public class Exporter {
 	
 	
 	private static void export(StateNode root, Body mb) {
-		PrintWriter out = null;
+		//printOutInfo(root,0);
+		PrintWriter setOut = null;
 		PrintWriter stateNodeOut = null;
 		PrintWriter consEdgeGraphOut = null;
 		PrintWriter var2indexMapOut = null;
 		PrintWriter conditionalSmt2Out = null;
 		try {
-			if(!outFile.exists()) {
-				outFile.createNewFile();
+			if(!setOutFile.exists()) {
+				setOutFile.createNewFile();
 			}
 			if(!stateNodeFile.exists()) {
 				stateNodeFile.createNewFile();
@@ -57,14 +57,14 @@ public class Exporter {
 			if(!var2indexMapFile.exists()) {
 				var2indexMapFile.createNewFile();
 			}
-			out = new PrintWriter(new BufferedWriter(new FileWriter(outFile, true)));
+			setOut = new PrintWriter(new BufferedWriter(new FileWriter(setOutFile, true)));
 			stateNodeOut = new PrintWriter(new BufferedWriter(new FileWriter(stateNodeFile, true)));
 			conditionalSmt2Out = new PrintWriter((new BufferedWriter(new FileWriter(conditionalSmt2File,true))));
 			consEdgeGraphOut = new PrintWriter(new BufferedWriter(new FileWriter(consEdgeGraphFile, true)));
 			var2indexMapOut = new PrintWriter(new BufferedWriter(new FileWriter(var2indexMapFile, true)));
 
 			//Print Function Signature
-			out.println(mb.getMethod().getSignature());
+			setOut.println(mb.getMethod().getSignature());
             stateNodeOut.println(mb.getMethod().getSignature());
             conditionalSmt2Out.println(mb.getMethod().getSignature());
 			consEdgeGraphOut.println(mb.getMethod().getSignature());
@@ -72,7 +72,7 @@ public class Exporter {
 
             // Recursive
 			System.out.println("Exporting set.conditional...");
-			recursiveExport(root, 0, out);
+			recursiveExport(root, 0, setOut);
 			System.out.println("Exporting conditionalSmt2...");
 			recursiveConditionalSmt2(root, 0, conditionalSmt2Out);
 			System.out.println("Exporting stateNode.json...");
@@ -86,14 +86,14 @@ public class Exporter {
 			printVar2indexMap(var2indexMapOut);
 
 			// Output End
-			out.println();
+			setOut.println();
 			stateNodeOut.println();
 			conditionalSmt2Out.println();
 			consEdgeGraphOut.println();
 			var2indexMapOut.println();
 
 			// Output close
-			out.close();
+			setOut.close();
 			stateNodeOut.close();
 			conditionalSmt2Out.close();
 			consEdgeGraphOut.close();
@@ -121,9 +121,9 @@ public class Exporter {
 			out.println(index + ":" + root.getConditional().toSmt2String());
 		}
 
-		//recursive operation 
+		//recursive operation
+		recursiveExport(root.getFalseChild(), 2 * index, out);
 		recursiveExport(root.getTrueChild(), 2 * index + 1, out);
-		recursiveExport(root.getFalseChild(), 2 * index + 2, out);
 	}
 
 	private static void recursiveConditionalSmt2(StateNode root, int index, PrintWriter conditionalSmt2Out){
@@ -163,8 +163,8 @@ public class Exporter {
 		}
 
 		//recursive operation
+		recursiveConditionalSmt2(root.getFalseChild(), 2 * index, conditionalSmt2Out);
 		recursiveConditionalSmt2(root.getTrueChild(), 2 * index + 1, conditionalSmt2Out);
-		recursiveConditionalSmt2(root.getFalseChild(), 2 * index + 2, conditionalSmt2Out);
 	}
 
 	private static void recursiveStateNode(StateNode root, int index, PrintWriter stateNodeOut){
@@ -202,15 +202,14 @@ public class Exporter {
 
 
 		//recursive operation
+		recursiveStateNode(root.getFalseChild(), 2 * index,  stateNodeOut);
 		recursiveStateNode(root.getTrueChild(), 2 * index + 1,  stateNodeOut);
-		recursiveStateNode(root.getFalseChild(), 2 * index + 2,  stateNodeOut);
 	}
 
 	private static void recursiveConsEdgeGraph(StateNode root, int index, PrintWriter consEdgeGraphOut) {
 		if(root == null){
 			return;
 		}
-		//consEdgeGraphOut.println("----------"+index+"----------");
 		Set<String> Vars = root.getPegIntra_blockVars();
 		// push
 		for(String s: Vars){
@@ -236,8 +235,8 @@ public class Exporter {
 			}
 		}
 		//recursive operation
+		recursiveConsEdgeGraph(root.getFalseChild(), 2 * index, consEdgeGraphOut);
 		recursiveConsEdgeGraph(root.getTrueChild(), 2 * index + 1, consEdgeGraphOut);
-		recursiveConsEdgeGraph(root.getFalseChild(), 2 * index + 2, consEdgeGraphOut);
 		// pop
 		for(String s: Vars){
             constraintEdgeMap.get(s).pop();
@@ -294,8 +293,9 @@ public class Exporter {
 			return;
 		}
 		System.out.println(id + ": " + root.toString());
+		System.out.println("local2local size:"+root.getPeg_intra_block().getLocal2Local().size());
+		printOutInfo(root.getFalseChild(), 2 * id);
 		printOutInfo(root.getTrueChild(), 2 * id + 1);
-		printOutInfo(root.getFalseChild(), 2 * id + 2);
 	}
 
 }

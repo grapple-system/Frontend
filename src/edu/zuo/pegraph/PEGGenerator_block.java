@@ -100,7 +100,6 @@ public class PEGGenerator_block {
 	 * Ignores certain types of statements, and calls addFlowEdges()
 	 * 
 	 * @param s
-	 * @param sm
 	 */
 	private void processStmt(Stmt s) {
 		if (s instanceof ReturnVoidStmt)
@@ -140,7 +139,6 @@ public class PEGGenerator_block {
 	}
 	
 	private void addFlowEdges(Stmt s) {
-
 		// case 0: call site
 		if (s.containsInvokeExpr()) {
 			InvokeExpr ie = s.getInvokeExpr();			
