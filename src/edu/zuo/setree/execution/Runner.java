@@ -205,10 +205,10 @@ public class Runner {
 		}
 		else if(succs.size() == 1){
 			//fall-through
-            StateNode nTrue = new StateNode(node);
-            node.setTrueChild(nTrue);
-            traverseCFG(succs.get(0), nTrue);
-			//traverseCFG(succs.get(0), node);
+//            StateNode nTrue = new StateNode(node);
+//            node.setTrueChild(nTrue);
+//            traverseCFG(succs.get(0), nTrue);
+			traverseCFG(succs.get(0), node);
 		}
 		else if(succs.size() == 0){
 			//end
@@ -264,7 +264,7 @@ public class Runner {
 		
 		//---------------------------------------------------------
 		//generate peg_block (PEG) for alias analysis
-		PegIntra_block peg_block = new PegIntra_block();
+		PegIntra_block peg_block = node.getPeg_intra_block() == null ? new PegIntra_block() : node.getPeg_intra_block();
 		PEGGenerator_block generator_block = new PEGGenerator_block(block, peg_block);
 		generator_block.process();
 		node.setPeg_intra_block(peg_block);
