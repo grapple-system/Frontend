@@ -10,6 +10,7 @@ import java.util.List;
 import java.util.Map;
 import edu.zuo.setree.execution.Runner;
 import edu.zuo.typestate.TSCGenerator;
+import edu.zuo.typestate.datastructure.CallExecutor;
 import edu.zuo.typestate.datastructure.TypeProtocol;
 import soot.Body;
 import soot.BodyTransformer;
@@ -67,21 +68,21 @@ public class IntraMain extends BodyTransformer {
 		String dirpath = "E:/Study/zuo_project/pepper_wef/pepper/protocal/";
 		init(dirpath);
 		// set the sootclass path
-//		File dirFile = new File(sp);
-//		String path = "";
-//		if (!dirFile.isDirectory()) {
-//			return;
-//		}
-//		String[] fileList = dirFile.list();
-//		for (int i = 0; i < fileList.length; i++) {
-//			// ±éÀúÎÄ¼þÄ¿Â¼
-//			String string = fileList[i];
-//			if (string.endsWith(".jar")) {
-//				path += sp + string + ";";
-//			}
-//		}
-//		path += sp + "test;";
-//		Scene.v().setSootClassPath(path);
+		File dirFile = new File(sp);
+		String path = "";
+		if (!dirFile.isDirectory()) {
+			return;
+		}
+		String[] fileList = dirFile.list();
+		for (int i = 0; i < fileList.length; i++) {
+			// ±éÀúÎÄ¼þÄ¿Â¼
+			String string = fileList[i];
+			if (string.endsWith(".jar")) {
+				path += sp + string + ";";
+			}
+		}
+		path += sp + "test;";
+		Scene.v().setSootClassPath(path);
 		// set options
 		Options.v().setPhaseOption("jb", "use-original-names:true");
 		Options.v().setPhaseOption("tag", "off");
@@ -96,11 +97,13 @@ public class IntraMain extends BodyTransformer {
 		 * "-cp path_of_classes_analyzed class_names" e.g., -cp
 		 * E:\Workspace\ws_program\taintanalysis\bin\ InterTest HelloWorld
 		 */
-		System.out.println(args);
+		//System.out.println(args);
 		//synchronized (IntraMain.class) {
 			soot.Main.main(args);
-			TSCGenerator.printCallInfo("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/callInfoFile");
+			//TSCGenerator.printCallInfo("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/callInfoFile");
 			TSCGenerator.printCalledVar("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/calledVarFile");
+			CallExecutor.dealReturn();
+			CallExecutor.printCallInfo("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/callInfoFile");
 		//}
 	}
 

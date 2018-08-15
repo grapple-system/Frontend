@@ -63,7 +63,7 @@ public class ConstraintGraph {
 	
 	public void print(String file_path){
 		deduplication();
-		String regEx = "[`~!@#$%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
+		String regEx = "[`~!@#%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
 		Pattern p = Pattern.compile(regEx);
 		Matcher m = p.matcher(file_path);
 		file_path = m.replaceAll("").trim();

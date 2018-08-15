@@ -94,6 +94,28 @@ public class TypeGraph {
 		stmtDegree.put(endhash, degree);
 	}
 
+	public void doDegreeOut(String starthash) {
+		int[] degree;
+		if (stmtDegree.containsKey(starthash)) {
+			degree = stmtDegree.get(starthash);
+		} else {
+			degree = new int[] { 0, 0 };
+		}
+		degree[1]++;
+		stmtDegree.put(starthash, degree);
+	}
+
+	public void doDegreeIn(String endhash) {
+		int[] degree;
+		if (stmtDegree.containsKey(endhash)) {
+			degree = stmtDegree.get(endhash);
+		} else {
+			degree = new int[] { 0, 0 };
+		}
+		degree[0]++;
+		stmtDegree.put(endhash, degree);
+	}
+
 	// transmit all states from start to end
 	public void transAll(String starthash, String endhash) {
 		for (String state : allStates) {
@@ -231,15 +253,31 @@ public class TypeGraph {
 	public Set<String> getVars(int index) {
 		Set<String> vars = new HashSet<String>();
 		for (TransEdge te : transedges) {
-			vars.add(index+"."+te.start.print());
-			vars.add(index+"."+te.end.print());
+			vars.add(index + "." + te.start.print());
+			vars.add(index + "." + te.end.print());
+		}
+		int stateNum = allStates.length;
+		if (transedges.size() >= stateNum) {
+			List<TransEdge> lastedges = transedges.subList(transedges.size() - stateNum, transedges.size() - 1);
+			String hashcode = lastedges.get(0).end.getHashcode();
+			int i = 0;
+			for (String state : allStates) {
+				for (TransEdge te : lastedges) {
+					if (te.end.getName().equals(state)) {
+						i++;
+						break;
+					}
+				}
+				if (i == 0)
+					vars.add(index + "." + state + "_" + hashcode);
+			}
 		}
 		return vars;
 	}
 
 	public void printDot(String file_path) {
 		simplifyGraph();
-		String regEx = "[`~!@#$%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
+		String regEx = "[`~!@#%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
 		Pattern p = Pattern.compile(regEx);
 		// file_path = file_path + sm.getDeclaringClass().getName() + "_" +
 		// sm.getName()+".txt";

@@ -21,32 +21,53 @@ public class CallInfo {
 		//this.receivePoint = receive;
 	}
 	
+	public CallInfo(CallInfo callinfo){
+		this.callMethod = callinfo.callMethod();
+		this.receiveMethod = callinfo.receiveMethod();
+		this.callNodeIndex = callinfo.callnodeIndex();
+		this.callStr = callinfo.callStr();
+		this.receiveStr = callinfo.receiveStr();
+	}
+	
+	public void changeCallStr(String callStr){
+		this.callStr = callStr;
+		this.callNodeIndex = Integer.parseInt(callStr.split("[.]")[1]);
+	}
 
 	public String callVar() {
-		return callStr.split(".")[1];
+		String[] sa = callStr.split("[.]");
+		return sa[0];
 	}
 
 	public String receiveVar() {
-		return receiveStr.split(".")[1];
+		return receiveStr.split("[.]")[0];
 	}
 
+	public String callState() {
+		return (callStr.split("[.]")[2]).split("_")[0];
+	}
+
+	public String receiveState() {
+		return (receiveStr.split("[.]")[2]).split("_")[0];
+	}
+	
 	public String callHash() {
-		return (callStr.split(".")[2]).split("_")[1];
+		return (callStr.split("[.]")[2]).split("_")[1];
 	}
 
 	public String receiveHash() {
-		return (receiveStr.split(".")[2]).split("_")[1];
+		return (receiveStr.split("[.]")[2]).split("_")[1];
 	}
 
 	public String callStr() {
-		return callStr.split(".")[2];
+		return callStr;
 	}
 
 	public String receiveStr() {
-		return receiveStr.split(".")[2];
+		return receiveStr;
 	}
 
-	public int nodeIndex() {
+	public int callnodeIndex() {
 		return callNodeIndex;
 	}
 
@@ -59,6 +80,6 @@ public class CallInfo {
 	}
 	
 	public String print2str(){
-		return callMethod+","+callStr+","+receiveMethod+","+receiveStr;
+		return callMethod+", "+callStr+", "+receiveMethod+", "+receiveStr;
 	}
 }

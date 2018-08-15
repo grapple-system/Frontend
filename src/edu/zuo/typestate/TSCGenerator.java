@@ -12,6 +12,7 @@ import java.util.Iterator;
 import java.util.List;
 
 import edu.zuo.setree.client.IntraMain;
+import edu.zuo.typestate.datastructure.CallExecutor;
 import edu.zuo.typestate.datastructure.CallInfo;
 import edu.zuo.typestate.datastructure.Point;
 import edu.zuo.typestate.datastructure.TypeGraph;
@@ -42,7 +43,7 @@ public class TSCGenerator {
 	private TypeGraphList typegraph_list;
 	private List<Local> interestLocal = new ArrayList<Local>();
 	private Stmt laststmt;
-	private static List<CallInfo> callInfoList = new ArrayList<CallInfo>();
+	//private static List<CallInfo> callInfoList = new ArrayList<CallInfo>();
 	private static List<String> calledVar = new ArrayList<String>();
 
 	public TSCGenerator(Block block, TypeGraphList typegraph_list) {
@@ -57,7 +58,7 @@ public class TSCGenerator {
 			if(!file.exists())
 			file.createNewFile();		
 			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(file, true)));
-			for(CallInfo callinfo : callInfoList){
+			for(CallInfo callinfo : CallExecutor.callInfoList){
 				pw.println(callinfo.print2str());
 			}
 			pw.close();
@@ -89,9 +90,10 @@ public class TSCGenerator {
 		String[] allStates = tg.getStates();
 		for(String state : allStates){
 			String callStr = var+"."+index+"."+state+"_"+callhash;
-			String receiveStr = par+"."+"-1."+state+"_"+receivemethod;
+			String receiveStr = par+"."+"0."+state+"_"+receivemethod;
 			CallInfo callInfo = new CallInfo(callmethod, receivemethod, index, callStr, receiveStr);
-			callInfoList.add(callInfo);
+			CallExecutor.callInfoList.add(callInfo);
+			tg.doDegreeOut(Integer.toString(callhash));
 			String calledvar = receivemethod+":"+par;
 			if(!calledVar.contains(calledvar))
 				calledVar.add(calledvar);
@@ -100,24 +102,25 @@ public class TSCGenerator {
 			String callStr = par+"."+"-2."+state+"_-"+receivemethod;
 			String receiveStr = var+"."+index+"."+state+"_-"+callhash;
 			CallInfo callInfo = new CallInfo(receivemethod, callmethod, -2, callStr, receiveStr);
-			callInfoList.add(callInfo);
+			CallExecutor.callInfoList.add(callInfo);
+			tg.doDegreeIn("-"+callhash);
 		}
 	}
 
 	public void process(String dirPath, int nodeindex) {
 		init();
 		// write stmt with hashcode for checking
-		//File file = new File(dirPath + "/jimple.txt");
-		//FileOutputStream fos = null;
-//		try {
-//			if (!file.exists()) {
-//				file.createNewFile();
-//				fos = new FileOutputStream(file);
-//			} else {
-//				fos = new FileOutputStream(file, true);
-//			}
-			//OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
-			//osw.write("block " + block.getIndexInMethod() + "\r\n");
+		File file = new File(dirPath + "/jimple.txt");
+		FileOutputStream fos = null;
+		try {
+			if (!file.exists()) {
+				file.createNewFile();
+				fos = new FileOutputStream(file);
+			} else {
+				fos = new FileOutputStream(file, true);
+			}
+			OutputStreamWriter osw = new OutputStreamWriter(fos, "UTF-8");
+			osw.write("block " + block.getIndexInMethod() + "\r\n");
 			Stmt nowst, succst;
 			Iterator<Unit> stmts = block.iterator();
 			if (stmts.hasNext()) {
@@ -125,20 +128,20 @@ public class TSCGenerator {
 				succst = nowst;
 				for (; stmts.hasNext();) {
 					succst = (Stmt) stmts.next();
-					//osw.write(nowst.hashCode() + ":" + nowst.toString() + "\r\n");
+					osw.write(nowst.hashCode() + ":" + nowst.toString() + "\r\n");
 					typegraph_list.state = 0;
 					processStmt(nowst, succst, nodeindex);
 					nowst = succst;
 				}
-				//osw.write(succst.hashCode() + ":" + succst.toString() + "\r\n");
+				osw.write(succst.hashCode() + ":" + succst.toString() + "\r\n");
 				typegraph_list.state = 0;
 				processStmt(succst, succst, nodeindex);
 			}
-			//osw.close();
-//		} catch (IOException e) {
-//			// TODO Auto-generated catch block
-//			e.printStackTrace();
-//		}
+			osw.close();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
 
 	private void init() {
