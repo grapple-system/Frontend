@@ -3,6 +3,7 @@
  */
 class Int{
     int i;
+    public String s;
     Int(){
         i=0;
     }
@@ -39,7 +40,7 @@ public class test5 {
         Int a = new Int(5);
         Int b = new Int(6);
         Int c = new Int();
-
+        c.s = "hello";
         if(x<y){
             x = x+y;
         }else{

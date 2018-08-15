@@ -155,6 +155,7 @@ public class PegIntra_block {
 			HashSet<ConcreteRef> refs = this.local2Ref.get(local);
 			Vars.add(local.toString());
 			for(ConcreteRef ref: refs){
+				System.out.println("-------------"+local.toString()+"2"+ref.toString());
 				Vars.add(ref.toString());
 			}
 		}
@@ -477,7 +478,8 @@ public class PegIntra_block {
 	}
 	
 	public void addLocal2Ref(Local l, ConcreteRef ref){
-		if(this.local2Ref.containsKey(l)){
+        System.out.println("-------------"+l.toString()+"2"+ref.toString());
+        if(this.local2Ref.containsKey(l)){
 			this.local2Ref.get(l).add(ref);
 		}
 		else{
@@ -499,7 +501,8 @@ public class PegIntra_block {
 //	}
 
 	public void addConst2Ref(Constant cons, ConcreteRef ref){
-		if(this.const2Ref.containsKey(cons)){
+        System.out.println("-------------"+cons.toString()+"2"+ref.toString());
+        if(this.const2Ref.containsKey(cons)){
 			this.const2Ref.get(cons).add(ref);
 		}
 		else{

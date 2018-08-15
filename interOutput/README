@@ -32,3 +32,25 @@ interGraph 5 output files:
     4)interSmt2.txt
     5)pair2indexMap.txt
 Backend input files: 3), 4)
+
+Each line of interGraph file is:
+outFuncVarIndex  outFuncVarIndex label   constraint
+
+label: a|e|l|n|o|p|r|s
+constraint: [T]|[pair,pair]
+pair: (funcIndex, nodeIndex)
+
+[Assign] a
+[Load]   l
+[New]    n
+[New & Store] b
+[Store]  s
+[Callee] c
+[Param]  p
+[Return] r
+other    e
+
+
+File interSmt2 is input of SEGraph().
+Each line of interSmt2 is:
+(funcIndex,nodeIndex):constraintString

@@ -207,6 +207,7 @@ public class interGraph {
                         /* a, b, [Assign]   a
                         * a, b, [Load]  l
                         * a, b, [New]   n
+                        * a, b, [New & Store]   b
                         * a, b, [Store] s
                         */
                         System.out.println(3);
@@ -221,7 +222,9 @@ public class interGraph {
                             case "[Assign]": label="a";break;
                             case "[Load]": label="l";break;
                             case "[New]": label="n";break;
+                            case "[New & Store]": label="b";break;
                             case "[Store]": label="s";break;
+                            default: assert (false);
                         }
                         interGraphOut.println(i1+"\t"+i2+"\t"+label+"\t[T]");
                     }else if(tokens.length==4){
