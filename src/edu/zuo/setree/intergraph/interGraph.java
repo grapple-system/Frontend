@@ -312,9 +312,12 @@ public class interGraph {
 								&& !calledVarList.contains(calledVar))
 							interGraphOut
 									.println(i1 + "\t" + i2 + "\tn\t[" + p3.toString() + "," + p4.toString() + "]");
-						else
+						else if(n1_right != n2_right)
 							interGraphOut
 									.println(i1 + "\t" + i2 + "\te\t[" + p3.toString() + "," + p4.toString() + "]");
+						else
+							interGraphOut
+							.println(i1 + "\t" + i2 + "\te\t[T]");
 					} else {
 						assert(tokens[3] == "[Call]");
 						// Do not handle system call
@@ -424,7 +427,11 @@ public class interGraph {
 				int i2 = pair2indexMap.get(new pair(receiveMethodIndex, receiveVarIndex));
 				pair p1 = new pair(callMethodIndex, Integer.parseInt(tokens[1].split("[.]")[1]));
 				pair p2 = new pair(receiveMethodIndex, Integer.parseInt(tokens[3].split("[.]")[1]));
-				interGraphOut.println(i1 + "\t" + i2 + "\te\t[" + p1.toString() + "," + p2.toString() + "]");
+				String receiveIndex = tokens[3].split("[.]")[1];
+				if(receiveIndex.equals("0"))
+					interGraphOut.println(i1 + "\t" + i2 + "\te\t[" + p1.toString() + "," + p2.toString() + "]");
+				else
+					interGraphOut.println(i1 + "\t" + i2 + "\te\t[" + p1.toString() + "," + p2.toString() + "]");
 			}
 
 			consEdgeGraphInput.close();
