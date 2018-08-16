@@ -313,21 +313,21 @@ public class Runner {
 			// setConditional(ifstmt, node);
 
 			StateNode nTrue = new StateNode(node);
-			node.setTrueChild(nTrue);
 			nTrue.index = 2 * node.index + 1;
-			constraint_graph_list.temp2Constraint(block.getTail().hashCode(), succs.get(0).getHead().hashCode(),
+			node.setTrueChild(nTrue);
+			constraint_graph_list.temp2Constraint(block.getTail().hashCode(), succs.get(1).getHead().hashCode(),
 					node.index, nTrue.index);
 
 			StateNode nFalse = new StateNode(node);
-			node.setFalseChild(nFalse);
 			nFalse.index = 2 * node.index;
-			constraint_graph_list.temp2Constraint(block.getTail().hashCode(), succs.get(1).getHead().hashCode(),
+			node.setFalseChild(nFalse);
+			constraint_graph_list.temp2Constraint(block.getTail().hashCode(), succs.get(0).getHead().hashCode(),
 					node.index, nFalse.index);
 			constraint_graph_list.clearTemp();
 			node.setConstraintGraphList(constraint_graph_list);
 
-			traverseCFG(succs.get(0), nTrue);
-			traverseCFG(succs.get(1), nFalse);
+			traverseCFG(succs.get(1), nTrue);
+			traverseCFG(succs.get(0), nFalse);
 		} else if (succs.size() == 1) {
 			// fall-through
 
