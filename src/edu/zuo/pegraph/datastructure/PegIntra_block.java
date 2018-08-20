@@ -270,13 +270,15 @@ public class PegIntra_block {
 			HashSet<ConcreteRef> refs = this.local2Ref.get(local);
 			for(ConcreteRef ref: refs){
 				if(ref instanceof InstanceFieldRef){//Store
-					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+					//builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+					builder.append(var2indexMap.get(index+"."+((InstanceFieldRef) ref).getBase().toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
 				}
 				else if(ref instanceof StaticFieldRef){//Assign
 					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Assign]\n");
 				}
 				else if (ref instanceof ArrayRef){//Store
-					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+					//builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+					builder.append(var2indexMap.get(index+"."+((ArrayRef) ref).getBase().toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
 				}
 				else{
 					System.err.println("ref type error!!!");
@@ -289,13 +291,21 @@ public class PegIntra_block {
 			HashSet<ConcreteRef> refs = this.const2Ref.get(cons);
 			for(ConcreteRef ref: refs){
 				if(ref instanceof InstanceFieldRef){//New & Store: (x.f = constant) <==> (x <-Store[f]- tmp <-New- constant)
-					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New & Store]\n");
+					//builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New & Store]\n");
+					var2indexMap.put(index+".tmp"+var2indexMap.size(),var2indexMap.size());
+					int tmpIndex = var2indexMap.size()-1;
+					builder.append(tmpIndex + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New]\n");
+					builder.append(var2indexMap.get(index+"."+((InstanceFieldRef) ref).getBase().toString()) + ", " + tmpIndex + ", [Store]\n");
 				}
 				else if(ref instanceof StaticFieldRef){//New: (X.f = constant) <==> (f <-New- constant)
 					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New]\n");
 				}
 				else if (ref instanceof ArrayRef){//New & Store: (array[*] = constant) <==> (array <-Store[E]- tmp <-New- constant)
-					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New & Store]\n");
+					//builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New & Store]\n");
+					var2indexMap.put(index+".tmp"+var2indexMap.size(),var2indexMap.size());
+					int tmpIndex = var2indexMap.size()-1;
+					builder.append(tmpIndex + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New]\n");
+					builder.append(var2indexMap.get(index+"."+((ArrayRef) ref).getBase().toString()) + ", " + tmpIndex + ", [Store]\n");
 				}
 				else{
 					System.err.println("ref type error!!!");

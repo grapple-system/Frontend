@@ -227,6 +227,7 @@ public class interGraph {
                             default: assert (false);
                         }
                         interGraphOut.println(i1+"\t"+i2+"\t"+label+"\t[T]");
+                        interGraphOut.println(i2+"\t"+i1+"\t-"+label+"\t[T]");
                     }else if(tokens.length==4){
                         /* a, b, [x, y]
                         */
@@ -242,6 +243,7 @@ public class interGraph {
                         pair p3 = new pair(funcIndex, n1_rignt);
                         pair p4 = new pair(funcIndex, n2_right);
                         interGraphOut.println(i1+"\t"+i2+"\te\t["+p3.toString()+","+p4.toString()+"]");
+                        interGraphOut.println(i2+"\t"+i1+"\t-e\t["+p3.toString()+","+p4.toString()+"]");
                     }else{
                         assert(tokens[3]=="[Call]");
                         // Do not handle system call
@@ -261,6 +263,7 @@ public class interGraph {
                             pair p3 = new pair(funcIndex, funcNodeIndex);
                             pair p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\to\t["+p3.toString()+","+p4.toString()+"]");
+                            interGraphOut.println(i2+"\t"+i1+"\t-o\t["+p3.toString()+","+p4.toString()+"]");
                         }
                         //params    p
                         int paraN = tokens.length - 5;
@@ -276,6 +279,7 @@ public class interGraph {
                             pair p3 = new pair(funcIndex, funcNodeIndex);
                             pair p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
+                            interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
                         }else {
                             int first_right = Integer.parseInt(tokens[5].substring(1,tokens[5].length()));
                             if(!(funcParamReturn.containsKey(callFuncIndex)&&funcParamReturn.get(callFuncIndex).containsKey("[Para0]")))continue;
@@ -287,6 +291,7 @@ public class interGraph {
                             pair p3 = new pair(funcIndex, funcNodeIndex);
                             pair p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
+                            interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
                             for(int i = 1;i<paraN-1;i++){
                                 first_right = Integer.parseInt(tokens[5+i].substring(0,tokens[5+i].length()));
                                 second_right = funcParamReturn.get(callFuncIndex).get("[Para"+i+"]");
@@ -297,6 +302,7 @@ public class interGraph {
                                 p3 = new pair(funcIndex, funcNodeIndex);
                                 p4 = new pair(callFuncIndex, 0);
                                 interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
+                                interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
                             }
 
                             int paraIndex = paraN-1;
@@ -309,6 +315,7 @@ public class interGraph {
                             p3 = new pair(funcIndex, funcNodeIndex);
                             p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
+                            interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
                         }
                         //return    r
                         if(tokens[0].length()>2){
@@ -325,6 +332,7 @@ public class interGraph {
                                     int i1= pair2indexMap.get(p1);
                                     pair p3 = new pair(callFuncIndex, callFuncRetNode);
                                     interGraphOut.println(i1+"\t"+i2+"\tr\t["+p3.toString()+","+p4.toString()+"]");
+                                    interGraphOut.println(i2+"\t"+i1+"\t-r\t["+p3.toString()+","+p4.toString()+"]");
                                 }
                             }
 
