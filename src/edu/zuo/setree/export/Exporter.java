@@ -156,7 +156,7 @@ public class Exporter {
 			for(Local l: localExpressionMap.keySet()){
 				String expr = localExpressionMap.get(l).toSmt2String();
 				if(!expr.contains(" ")&&expr.contains("@para")) {
-					conditionalSmt2Out.print("#"+ localExpressionMap.get(l).toSmt2String());
+					conditionalSmt2Out.print("#"+l.toString()+":"+localExpressionMap.get(l).toSmt2String());
 				}
 			}
 			conditionalSmt2Out.println();
@@ -213,7 +213,13 @@ public class Exporter {
 		Set<String> Vars = root.getPegIntra_blockVars();
 		// push
 		for(String s: Vars){
-			putVar2indexMap(index+"."+s);
+//		    if(root.getLocalsMap().containsKey(s)){
+//		        s = root.getLocalsMap().get(s).toSmt2String();
+//                putVar2indexMap(index+"."+s);
+//            }else{
+//                putVar2indexMap(index+"."+s);
+//            }
+            putVar2indexMap(index+"."+s);
 			if(!constraintEdgeMap.containsKey(s)) {
 				constraintEdgeMap.put(s, new Stack<Integer>());
 			}else if (constraintEdgeMap.get(s).size() != 0){

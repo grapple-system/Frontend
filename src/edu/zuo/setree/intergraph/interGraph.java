@@ -188,10 +188,12 @@ public class interGraph {
             Scanner consEdgeGraphInput = new Scanner(consEdgeGraphFile);
             funcIndex=-1;
             PrintWriter interGraphOut = null;
+            PrintWriter interSmt2Out = null;
             if(!interGraphFile.exists()){
                 interGraphFile.createNewFile();
             }
             interGraphOut = new PrintWriter(new BufferedWriter(new FileWriter(interGraphFile, true)));
+            interSmt2Out = new PrintWriter(new BufferedWriter(new FileWriter(interSmt2File, true)));
             while(consEdgeGraphInput.hasNextLine()){
                 String line = consEdgeGraphInput.nextLine();
                 System.out.println("#"+line+"#");
@@ -250,6 +252,8 @@ public class interGraph {
                         if(! func2indexMap.containsKey(tokens[2])) continue;
                         int funcNodeIndex = Integer.parseInt(tokens[1]);
                         int callFuncIndex = func2indexMap.get(tokens[2]);
+                        if(callFuncIndex<0)continue;
+                        String calleeParaSmt2 = "";
                         //System.out.println(funcNodeIndex+" "+callFuncIndex);
                         // callee   o
                         if(tokens[4].length()>2){
@@ -264,6 +268,7 @@ public class interGraph {
                             pair p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\to\t["+p3.toString()+","+p4.toString()+"]");
                             interGraphOut.println(i2+"\t"+i1+"\t-o\t["+p3.toString()+","+p4.toString()+"]");
+                            calleeParaSmt2=calleeParaSmt2+"["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Callee"+first_right+" $D$"+callFuncIndex+"$Callee"+second_right;
                         }
                         //params    p
                         int paraN = tokens.length - 5;
@@ -280,6 +285,11 @@ public class interGraph {
                             pair p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                             interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
+                            if(calleeParaSmt2.length()==0){
+                                calleeParaSmt2=calleeParaSmt2+"["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
+                            }else{
+                                calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
+                            }
                         }else {
                             int first_right = Integer.parseInt(tokens[5].substring(1,tokens[5].length()));
                             if(!(funcParamReturn.containsKey(callFuncIndex)&&funcParamReturn.get(callFuncIndex).containsKey("[Para0]")))continue;
@@ -292,6 +302,7 @@ public class interGraph {
                             pair p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                             interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
+                            calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
                             for(int i = 1;i<paraN-1;i++){
                                 first_right = Integer.parseInt(tokens[5+i].substring(0,tokens[5+i].length()));
                                 second_right = funcParamReturn.get(callFuncIndex).get("[Para"+i+"]");
@@ -303,6 +314,7 @@ public class interGraph {
                                 p4 = new pair(callFuncIndex, 0);
                                 interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                                 interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
+                                calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
                             }
 
                             int paraIndex = paraN-1;
@@ -316,6 +328,10 @@ public class interGraph {
                             p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                             interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
+                            calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
+                        }
+                        if(calleeParaSmt2.length()!=0) {
+                            interSmt2Out.println(calleeParaSmt2);
                         }
                         //return    r
                         if(tokens[0].length()>2){
@@ -333,6 +349,7 @@ public class interGraph {
                                     pair p3 = new pair(callFuncIndex, callFuncRetNode);
                                     interGraphOut.println(i1+"\t"+i2+"\tr\t["+p3.toString()+","+p4.toString()+"]");
                                     interGraphOut.println(i2+"\t"+i1+"\t-r\t["+p3.toString()+","+p4.toString()+"]");
+                                    interSmt2Out.println("["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Return"+first_right+" $D$"+callFuncIndex+"$Return"+second_right);
                                 }
                             }
 
@@ -391,7 +408,9 @@ public class interGraph {
     public static void main(String args[]){
         genMap();
         printMap();
-        printGraph();
+        //print intra smt2_constraint
         printSmt2();
+        //print inter Graph and callee,param,return smt2_constraint
+        printGraph();
     }
 }
