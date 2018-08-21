@@ -51,7 +51,7 @@ public class StateNode {
 	public String getConStr(){
 		return constraintstr;
 	}
-	
+
 	public StateNode(){
 		this.localsMap = new LinkedHashMap<Local, Expression>();
 		

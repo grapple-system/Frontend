@@ -1,0 +1,56 @@
+StateNode Tree of a Function(After separate() in edu.zuo.setree.execution.Runner)
+            0(func entry)
+            |T
+       _____1_____
+      |F         T|
+   ___2___     ___3___
+  |F     T|   |F     T|
+  4       5   6       7
+
+            ||
+            ||edu.zuo.setree.expot.Expoter
+           \||/
+            \/
+
+Expoeter 5 output files:
+    1)conditionalSmt2
+    2)consEdgeGraph
+    3)var2indexMap
+    4)set.conditional
+    5)var2indexMap
+interGraph 3 input files: 1), 2), 3)
+
+            ||
+            ||edu.zuo.setree.intergraph.interGraph
+           \||/
+            \/
+
+interGraph 5 output files:
+    1)func2indexMap.txt
+    2)index2varMap.txt
+    3)interGraph.txt
+    4)interSmt2.txt
+    5)pair2indexMap.txt
+Backend input files: 3), 4)
+
+Each line of interGraph file is:
+outFuncVarIndex  outFuncVarIndex label   constraint
+
+label: a|e|l|n|o|p|r|s
+constraint: [T]|[pair,pair]
+pair: (funcIndex, nodeIndex)
+
+[Assign] a
+[Load]   l
+[New]    n
+[New & Store] b
+[Store]  s
+[Callee] c
+[Param]  p
+[Return] r
+other    e
+
+
+File interSmt2 is input of SEGraph().
+Each line of interSmt2 is:
+(funcIndex,nodeIndex):constraintString

@@ -11,6 +11,7 @@ import edu.zuo.typestate.datastructure.ConstraintEdge;
 import edu.zuo.typestate.datastructure.ConstraintGraph;
 import edu.zuo.typestate.datastructure.TransEdge;
 import edu.zuo.typestate.datastructure.TypeGraph;
+
 import edu.zuo.setree.JSON.JSON;
 import soot.*;
 
@@ -332,17 +333,19 @@ public class Exporter {
 	/**
 	 * print out state information
 	 * 
+
 	 * @param root
 	 * @param id
 	 */
 	private static void printOutInfo(StateNode root, int id) {
 		// TODO Auto-generated method stub
-		if (root == null) {
+		if(root == null){
 			return;
 		}
 		System.out.println(id + ": " + root.toString());
+		System.out.println("local2local size:"+root.getPeg_intra_block().getLocal2Local().size());
+		printOutInfo(root.getFalseChild(), 2 * id);
 		printOutInfo(root.getTrueChild(), 2 * id + 1);
-		printOutInfo(root.getFalseChild(), 2 * id + 2);
 	}
 
 }

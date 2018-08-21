@@ -67,20 +67,22 @@ public class PegIntra_block {
 	public Set<String> getVars(){
 		Set<String> Vars = new HashSet<>();
 		//--formal parameters
-		//System.out.println("formal_callee");
+
 		if(formal_callee!=null){
-			//System.out.println(formal_callee.toString());
+			//System.out.println("formal_callee:"+formal_callee.toString());
 			Vars.add(formal_callee.toString());
 		}
-		//System.out.println("formal_paras"+formal_paras.size());
+		//System.out.println("formal_paras_size:"+formal_paras.size());
+
 		for (Local loc:formal_paras){
 			//System.out.println(loc.toString());
 			Vars.add(loc.toString());
 		}
 		//--formal return: could be {Local, StringConstant, ClassConstant}
-		//System.out.println("formal_return");
+
 		if(formal_return!=null){
-			//System.out.println(formal_return.toString());
+			//System.out.println("formal_return:"+formal_return.toString());
+
 			Vars.add(formal_return.toString());
 		}
 		////--call sites
@@ -121,20 +123,30 @@ public class PegIntra_block {
 
 		//local2local: Assign
 		for(Value loc1: this.local2Local.keySet()){
+
+			//System.out.print("local2local: "+loc1.toString()+" 2");
 			HashSet<Local> locs = this.local2Local.get(loc1);
 			Vars.add(loc1.toString());
 			for(Value loc2: locs) {
+				//System.out.println(" "+loc2.toString());
 				Vars.add(loc2.toString());
 			}
+			//System.out.println();
+
 		}
 
 		//obj2local: New
 		for(Value v: this.obj2Local.keySet()){
+
+			//System.out.print("obj2local: "+v.toString()+" 2");
 			HashSet<Local> locs = this.obj2Local.get(v);
 			Vars.add(v.toString());
 			for(Value loc: locs) {
+				//System.out.print(" "+loc.toString());
 				Vars.add(loc.toString());
 			}
+			//System.out.println();
+
 		}
 
 		//ref2local
@@ -151,6 +163,9 @@ public class PegIntra_block {
 			HashSet<ConcreteRef> refs = this.local2Ref.get(local);
 			Vars.add(local.toString());
 			for(ConcreteRef ref: refs){
+
+				System.out.println("-------------"+local.toString()+"2"+ref.toString());
+
 				Vars.add(ref.toString());
 			}
 		}
@@ -265,13 +280,17 @@ public class PegIntra_block {
 			HashSet<ConcreteRef> refs = this.local2Ref.get(local);
 			for(ConcreteRef ref: refs){
 				if(ref instanceof InstanceFieldRef){//Store
-					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+					//builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+					builder.append(var2indexMap.get(index+"."+((InstanceFieldRef) ref).getBase().toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+
 				}
 				else if(ref instanceof StaticFieldRef){//Assign
 					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Assign]\n");
 				}
 				else if (ref instanceof ArrayRef){//Store
-					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+					//builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+					builder.append(var2indexMap.get(index+"."+((ArrayRef) ref).getBase().toString()) + ", " + var2indexMap.get(index+"."+local.toString()) + ", [Store]\n");
+
 				}
 				else{
 					System.err.println("ref type error!!!");
@@ -284,13 +303,21 @@ public class PegIntra_block {
 			HashSet<ConcreteRef> refs = this.const2Ref.get(cons);
 			for(ConcreteRef ref: refs){
 				if(ref instanceof InstanceFieldRef){//New & Store: (x.f = constant) <==> (x <-Store[f]- tmp <-New- constant)
-					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New & Store]\n");
+					//builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New & Store]\n");
+					var2indexMap.put(index+".tmp"+var2indexMap.size(),var2indexMap.size());
+					int tmpIndex = var2indexMap.size()-1;
+					builder.append(tmpIndex + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New]\n");
+					builder.append(var2indexMap.get(index+"."+((InstanceFieldRef) ref).getBase().toString()) + ", " + tmpIndex + ", [Store]\n");
 				}
 				else if(ref instanceof StaticFieldRef){//New: (X.f = constant) <==> (f <-New- constant)
 					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New]\n");
 				}
 				else if (ref instanceof ArrayRef){//New & Store: (array[*] = constant) <==> (array <-Store[E]- tmp <-New- constant)
-					builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New & Store]\n");
+					//builder.append(var2indexMap.get(index+"."+ref.toString()) + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New & Store]\n");
+					var2indexMap.put(index+".tmp"+var2indexMap.size(),var2indexMap.size());
+					int tmpIndex = var2indexMap.size()-1;
+					builder.append(tmpIndex + ", " + var2indexMap.get(index+"."+cons.toString()) + ", [New]\n");
+					builder.append(var2indexMap.get(index+"."+((ArrayRef) ref).getBase().toString()) + ", " + tmpIndex + ", [Store]\n");
 				}
 				else{
 					System.err.println("ref type error!!!");
@@ -473,7 +500,8 @@ public class PegIntra_block {
 	}
 	
 	public void addLocal2Ref(Local l, ConcreteRef ref){
-		if(this.local2Ref.containsKey(l)){
+        System.out.println("-------------"+l.toString()+"2"+ref.toString());
+        if(this.local2Ref.containsKey(l)){
 			this.local2Ref.get(l).add(ref);
 		}
 		else{
@@ -495,7 +523,8 @@ public class PegIntra_block {
 //	}
 
 	public void addConst2Ref(Constant cons, ConcreteRef ref){
-		if(this.const2Ref.containsKey(cons)){
+        System.out.println("-------------"+cons.toString()+"2"+ref.toString());
+        if(this.const2Ref.containsKey(cons)){
 			this.const2Ref.get(cons).add(ref);
 		}
 		else{

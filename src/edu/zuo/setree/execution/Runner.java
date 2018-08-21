@@ -229,14 +229,13 @@ public class Runner {
 		// TODO Auto-generated method stub
 		LoopNestTree loopNestTree = new LoopNestTree(mb);
 		List<Loop> need2Remove = new ArrayList<>();
-		for (Loop l : loopNestTree) {
-			if (l.getHead() instanceof IdentityStmt
-					&& ((IdentityStmt) l.getHead()).getRightOp() instanceof CaughtExceptionRef) {
+		for(Loop l: loopNestTree){
+			if(l.getHead() instanceof IdentityStmt && ((IdentityStmt)l.getHead()).getRightOp() instanceof CaughtExceptionRef){
 				need2Remove.add(l);
 			}
 		}
 		loopNestTree.removeAll(need2Remove);
-		if (!loopNestTree.isEmpty()) {
+		if(!loopNestTree.isEmpty()) {
 			throw new RuntimeException("Unexpected loops existing!!!");
 		}
 	}
@@ -245,10 +244,9 @@ public class Runner {
 		BriefBlockGraph cfg = new BriefBlockGraph(mb);
 		System.out.println("\n\nCFG before executing ==>>");
 		System.out.println(cfg.toString());
-
-		// List<Block> entries = cfg.getHeads();
+		
+		//List<Block> entries = cfg.getHeads();
 		List<Block> entries = new ArrayList<Block>(cfg.getHeads());
-
 		filterEntries(entries);
 
 		assert(entries.size() == 1);
@@ -264,17 +262,16 @@ public class Runner {
 		BriefBlockGraph cfg = new BriefBlockGraph(method.getActiveBody());
 		System.out.println("\nCFG before transforming ==>>");
 		System.out.println(cfg.toString());
-
-		// switch transform: transform lookupswitch and tableswitch into if
+		
+		//switch transform: transform lookupswitch and tableswitch into if
 		SwitchTransformer.transform(method);
-
-		// loop transform: unroll the loop twice
+		
+		//loop transform: unroll the loop twice
 		LoopTransformer.transform(method);
 	}
 
-	/**
-	 * filter out the entry blocks which are catching exceptions
-	 * 
+	
+	/** filter out the entry blocks which are catching exceptions
 	 * @param entries
 	 */
 	private void filterEntries(List<Block> entries) {
@@ -438,4 +435,18 @@ public class Runner {
 	// return null;
 	// }
 
+	/** print out state information
+	 * @param root
+	 * @param id
+	 */
+	private static void printOutInfo(StateNode root, int id) {
+		// TODO Auto-generated method stub
+		if (root == null) {
+			return;
+		}
+		System.out.println(id + ": " + root.toString());
+		System.out.println("local2local size:" + root.getPeg_intra_block().getLocal2Local().size());
+		printOutInfo(root.getFalseChild(), 2 * id);
+		printOutInfo(root.getTrueChild(), 2 * id + 1);
+	}
 }

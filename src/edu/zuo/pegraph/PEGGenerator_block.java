@@ -100,7 +100,10 @@ public class PEGGenerator_block {
 	 * Ignores certain types of statements, and calls addFlowEdges()
 	 * 
 	 * @param s
+<<<<<<< HEAD
 	 * @param sm
+=======
+>>>>>>> origin/wef
 	 */
 	private void processStmt(Stmt s) {
 		if (s instanceof ReturnVoidStmt)
