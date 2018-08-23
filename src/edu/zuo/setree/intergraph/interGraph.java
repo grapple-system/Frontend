@@ -102,16 +102,17 @@ public class interGraph {
             }
             Scanner consEdgeGraphInput = new Scanner(consEdgeGraphFile);
             Scanner var2indexMapInput = new Scanner(var2indexMapFile);
+            System.out.println("-----var2indexMap-----");
             int varIndex = 0;
             while(var2indexMapInput.hasNextLine()){
                 String line = var2indexMapInput.nextLine();
-                //System.out.println("#"+line+"#");
                 if(line.length()==0){
 
                 }else if(line.startsWith("<")){
                     ++funcIndex;
                     func2indexMap.put(line,funcIndex);
                 }else {
+                    System.out.println("-#"+varIndex+":"+Runtime.getRuntime().totalMemory()/1048576+"m#-");
                     String[] tokens = line.split(" : ");
                     int right = Integer.parseInt(tokens[0]);
                     pair2indexMap.put(new pair(funcIndex,right), varIndex);
@@ -120,7 +121,7 @@ public class interGraph {
                 }
 
             }
-
+            System.out.println("-----consEdgeGraph-----");
             funcIndex=-1;
             while(consEdgeGraphInput.hasNextLine()) {
                 String line = consEdgeGraphInput.nextLine();
@@ -128,6 +129,7 @@ public class interGraph {
 
                 } else if (line.startsWith("<")) {
                     ++funcIndex;
+                    System.out.println("-#"+funcIndex+":"+Runtime.getRuntime().totalMemory()/1048576+"m#-");
                     funcParamReturn.put(funcIndex,new LinkedHashMap<String, Integer>());
                 } else {
                     String[] tokens = line.split(", ");
@@ -407,10 +409,12 @@ public class interGraph {
 
     public static void main(String args[]){
         genMap();
+        System.out.println("---------------print Map");
         printMap();
-        //print intra smt2_constraint
+        System.out.println("---------------print intra smt2_constraint");
         printSmt2();
-        //print inter Graph and callee,param,return smt2_constraint
+        System.out.println("---------------print inter Graph and callee,param,return smt2_constraint");
         printGraph();
+        System.out.println("End");
     }
 }
