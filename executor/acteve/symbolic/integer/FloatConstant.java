@@ -51,7 +51,7 @@ public final class FloatConstant extends FloatExpression implements Constant
 
     @Override
     public String toSmt2String() {
-        return seed+"";
+        return "$FC"+seed;
     }
 
     public static FloatConstant get(float c)

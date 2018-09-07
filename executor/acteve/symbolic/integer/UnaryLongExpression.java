@@ -55,6 +55,6 @@ public class UnaryLongExpression extends LongExpression
 
     @Override
     public String toSmt2String() {
-        return "UnaryLongExpression";
+        return "(" + op.toString() + " "+ operand.toSmt2String() + ")";
     }
 }

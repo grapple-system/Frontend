@@ -1,9 +1,10 @@
 package edu.zuo.setree.intergraph;
 
+import edu.zuo.callgraph.callGraph;
+import soot.jimple.toolkits.callgraph.CallGraph;
+
 import java.io.*;
-import java.util.LinkedHashMap;
-import java.util.Map;
-import java.util.Scanner;
+import java.util.*;
 
 /**
  * Created by wangyifei on 2018/5/1.
@@ -42,16 +43,37 @@ class pair extends Object{
     }
 }
 
+class ValueComparator implements Comparator<String>{
+    HashMap<String, Integer> map = new HashMap<String, Integer>();
+
+    public ValueComparator(HashMap<String, Integer> map){
+        this.map.putAll(map);
+    }
+
+    @Override
+    public int compare(String s1, String s2) {
+        if(map.get(s1) >= map.get(s2)){
+            return 1;
+        }else{
+            return -1;
+        }
+    }
+}
+
 public class interGraph {
     public static final File consEdgeGraphFile = new File("intraOutput/consEdgeGraph");
     public static final File var2indexMapFile = new File("intraOutput/var2indexMap");
     public static final File conditionalSmt2File = new File("intraOutput/conditionalSmt2");
+    public static final File callGraphIntraFile = new File("intraOutput/callGraph");
     public static int funcIndex = -1;
 
     private static Map<pair, Integer> pair2indexMap = new LinkedHashMap<>();
     private static Map<Integer, String> index2varMap = new LinkedHashMap<>();
     private static Map<String, Integer> func2indexMap = new LinkedHashMap<>();
     private static Map<Integer, Map<String, Integer>> funcParamReturn = new LinkedHashMap<>();
+
+    private static HashMap<String, Integer> callOrder = new HashMap<>();
+    public static Map<String, Set<String>> callMap = new LinkedHashMap<>();
 
     /** each line of pair2varMapFile is
      * (funcIndex,inFuncVarIndex) : outFuncVarIndex
@@ -89,6 +111,11 @@ public class interGraph {
      * (funcIndex, nodeIndex):constraintString
      */
     public static final File interSmt2File = new File("interOutput/interSmt2.txt");
+
+    /** callGraph
+     *
+     */
+    public static final File callGraphFile = new File("interOutput/callGraph.txt");
 
     public static void genMap(){
         try {
@@ -202,6 +229,7 @@ public class interGraph {
                 if(line.length()==0){
 
                 }else if(line.startsWith("<")){
+                    interGraphOut.println("#################################################");
                     ++funcIndex;
                 }else {
                     String[] tokens = line.split(", ");
@@ -249,6 +277,7 @@ public class interGraph {
                         interGraphOut.println(i1+"\t"+i2+"\te\t["+p3.toString()+","+p4.toString()+"]");
                         interGraphOut.println(i2+"\t"+i1+"\t-e\t["+p3.toString()+","+p4.toString()+"]");
                     }else{
+                        interGraphOut.println("+++++++++++++++++++++++++++++++++++++");
                         assert(tokens[3]=="[Call]");
                         // Do not handle system call
                         if(! func2indexMap.containsKey(tokens[2])) continue;
@@ -356,6 +385,7 @@ public class interGraph {
                             }
 
                         }
+                        interGraphOut.println("-----------------------------------------------");
                     }
                 }
             }
@@ -363,6 +393,7 @@ public class interGraph {
 
             consEdgeGraphInput.close();
             interGraphOut.close();
+            interSmt2Out.close();
         }
         catch(IOException e) {
             e.printStackTrace();
@@ -407,6 +438,113 @@ public class interGraph {
         }
     }
 
+    public static void printCall() {
+        try {
+            Scanner callGraphInput = new Scanner(callGraphIntraFile);
+            String func="";
+            String line="";
+            funcIndex = -1;
+            while (callGraphInput.hasNextLine()) {
+                line = callGraphInput.nextLine();
+                System.out.println("#" + funcIndex +":"+Runtime.getRuntime().totalMemory()/1048576+"m#");
+                if (line.startsWith("<")) {
+                    ++funcIndex;
+                    func = line;
+                    callOrder.put(line, 1);
+                    if(!callMap.containsKey(func)){
+                        callMap.put(func, new HashSet<String>());
+                    }
+                }else{
+                    callOrder.put(line.substring(1),1);
+                    callMap.get(func).add(line.substring(1));
+                }
+            }
+            callGraphInput.close();
+
+            /*consEdgeGraphInput = new Scanner(consEdgeGraphFile);
+            funcIndex = -1;
+            func = "";
+            while (consEdgeGraphInput.hasNextLine()) {
+                line = consEdgeGraphInput.nextLine();
+                System.out.println("#" + funcIndex +":"+Runtime.getRuntime().totalMemory()/1048576+"m#");
+                if(line.length()==0){
+
+                }else if (line.startsWith("<")) {
+                    ++funcIndex;
+                    func=line;
+                    //funcSet.add(line);
+                    //callGraphOut.println(line);
+                } else {
+                    String[] tokens = line.split(", ");
+                    if (tokens.length > 4) {
+                        int start = line.indexOf("<");
+                        int end = line.indexOf(">")+1;
+                        String callsite = line.substring(start,end);
+                        if(callMap.containsKey(callsite)) {
+                            System.out.println(callsite);
+                            callMap.get(func).add(callsite);
+                        }
+                        //callGraphOut.println("#"+line.substring(start,end));
+                    }
+                }
+            }
+            consEdgeGraphInput.close();*/
+
+            int update = -1;
+            int preUpdate;
+            while(update != 0){
+                preUpdate = update;
+                update=0;
+                for(String key:callMap.keySet()){
+                    int order = 1;
+                    for(String val:callMap.get(key)){
+                        order += callOrder.get(val);
+                    }
+                    if(order!=1&&order!=callOrder.get(key)){
+                        callOrder.put(key,order);
+                        //System.out.println(key);
+                        ++update;
+                    }
+                }
+                System.out.println("Totally update "+update);
+                if(update==preUpdate){
+                    System.out.println("Loop call");
+                    break;
+                }
+            }
+
+            Comparator<String> comparator = new ValueComparator(callOrder);
+            //TreeMap is a map sorted by its keys.
+            //The comparator is used to sort the TreeMap by keys.
+            TreeMap<String, Integer> result = new TreeMap<String, Integer>(comparator);
+            result.putAll(callOrder);
+
+            PrintWriter callGraphOut = null;
+            if (!callGraphFile.exists()) {
+                callGraphFile.createNewFile();
+            }
+            callGraphOut = new PrintWriter(new BufferedWriter(new FileWriter(callGraphFile, true)));
+            for(String key:result.keySet()){
+                if(!callMap.containsKey(key))continue;
+                int size = callMap.get(key).size();
+                if(size!=0) {
+                    String keySplit[] = key.split(" ");
+                    callGraphOut.print(keySplit[2].substring(0,keySplit[2].lastIndexOf(">"))+" "+keySplit[0].substring(1,keySplit[0].indexOf(":")) + "\t" + size);
+                    for (String val:callMap.get(key)){
+                        String valSplit[] = val.split(" ");
+                        callGraphOut.print("\t"+valSplit[2].substring(0,valSplit[2].lastIndexOf(">"))+" "+valSplit[0].substring(1,valSplit[0].indexOf(":")));
+                    }
+                    callGraphOut.println();
+                }
+            }
+            callGraphOut.close();
+        }
+        catch(IOException e) {
+            e.printStackTrace();
+        }
+
+    }
+
     public static void main(String args[]){
         genMap();
         System.out.println("---------------print Map");
@@ -415,6 +553,9 @@ public class interGraph {
         printSmt2();
         System.out.println("---------------print inter Graph and callee,param,return smt2_constraint");
         printGraph();
+        System.out.println("---------------print call Graph");
+        //printCall();
         System.out.println("End");
+
     }
 }

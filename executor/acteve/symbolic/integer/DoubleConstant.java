@@ -51,7 +51,7 @@ public final class DoubleConstant extends DoubleExpression implements Constant
 
     @Override
     public String toSmt2String() {
-        return seed+"";
+        return "$DC$"+seed;
     }
 
     public static DoubleConstant get(double c)
