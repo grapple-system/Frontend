@@ -47,6 +47,6 @@ public class CharArrayConstant extends Array
 
 	@Override
 	public String toSmt2String() {
-		return "CharArrayConstant";
+		return toString();
 	}
 }

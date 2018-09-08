@@ -48,6 +48,6 @@ public class ArrayLength extends IntegerExpression
 
 	@Override
 	public String toSmt2String() {
-		return "ArrayLength";
+		return toYicesString();
 	}
 }

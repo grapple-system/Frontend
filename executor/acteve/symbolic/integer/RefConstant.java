@@ -61,7 +61,7 @@ public class RefConstant extends RefExpression implements Constant
 	@Override
 	public String toSmt2String() {
 		int hash = System.identityHashCode(seed);
-		return (seed == null ? "null" : "$R"+seed.getClass().getName())+"@"+hash;
+		return (seed == null ? "null" : "$RC$"+seed.getClass().getName())+"@"+hash;
 	}
 
 	private static final RefConstant NULL = new RefConstant(null);

@@ -425,7 +425,7 @@ public class interGraph {
                     if(tokens[1].startsWith("#")){
 
                     }else {
-                        String t = tokens[1].replace("$I", "$I$" + funcIndex).replace("$L", "$L$" + funcIndex).replace("$F", "$F$" + funcIndex).replace("$D", "$D$" + funcIndex).replace("$Z", "$I$" + funcIndex).replace("$R", "$L$" + funcIndex).replace("$B", "$I$" + funcIndex);
+                        String t = tokens[1].replace("$I", "$I$" + funcIndex).replace("$L", "$L$" + funcIndex).replace("$F", "$F$" + funcIndex).replace("$D", "$D$" + funcIndex).replace("$Z", "$Z$" + funcIndex).replace("$R", "$R$" + funcIndex).replace("$B", "$B$" + funcIndex);
                         interSmt2Out.println("(" + funcIndex + "," + tokens[0] + "):" + t);
                     }
                 }

@@ -53,7 +53,7 @@ public final class LongConstant extends LongExpression implements Constant
 
     @Override
     public String toSmt2String() {
-        return "$LC"+seed;
+        return "$LC$"+seed;
     }
 
     public static LongConstant get(long c)

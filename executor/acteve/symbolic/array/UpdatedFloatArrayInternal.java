@@ -51,7 +51,7 @@ public class UpdatedFloatArrayInternal extends UpdatedArrayInternal
 
 	@Override
 	public String toSmt2String() {
-		return "UpdatedFloatArrayInternal";
+		return toString();
 	}
 
 	public Expression get(Expression index)

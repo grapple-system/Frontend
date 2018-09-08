@@ -52,7 +52,7 @@ public class DoubleArrayElem extends DoubleExpression
 
 	@Override
 	public String toSmt2String() {
-		return null;
+		return toYicesString();
 	}
 
 }

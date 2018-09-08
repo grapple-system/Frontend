@@ -70,7 +70,7 @@ public class SymbolicIntegerArray extends Array
 
 	@Override
 	public String toSmt2String() {
-		return "SymbolicIntegerArray";
+		return toString();
 	}
 }
 	
