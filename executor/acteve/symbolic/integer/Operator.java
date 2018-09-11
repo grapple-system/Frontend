@@ -63,6 +63,12 @@ public abstract class Operator
                 return "/";
             case "drem":
                 return "rem";
+            case "ior": case "lor":
+                return "or";
+            case "iand": case "land":
+                return "and";
+            case "ixor": case "lxor":
+                return "xor";
             default:
                 return op;
         }

@@ -56,7 +56,7 @@ public class BinaryLongExpression extends LongExpression
 
     @Override
     public String toSmt2String() {
-        return "(" + op.toString() + " " + left.toSmt2String() + " " + right.toSmt2String() + ")";
+        return "(" + op.toSmt2String() + " " + left.toSmt2String() + " " + right.toSmt2String() + ")";
     }
 
 }

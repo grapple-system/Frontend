@@ -229,7 +229,7 @@ public class interGraph {
                 if(line.length()==0){
 
                 }else if(line.startsWith("<")){
-                    interGraphOut.println("#################################################");
+                    //interGraphOut.println("#################################################");
                     ++funcIndex;
                 }else {
                     String[] tokens = line.split(", ");
@@ -277,7 +277,7 @@ public class interGraph {
                         interGraphOut.println(i1+"\t"+i2+"\te\t["+p3.toString()+","+p4.toString()+"]");
                         interGraphOut.println(i2+"\t"+i1+"\t-e\t["+p3.toString()+","+p4.toString()+"]");
                     }else{
-                        interGraphOut.println("+++++++++++++++++++++++++++++++++++++");
+                        //interGraphOut.println("+++++++++++++++++++++++++++++++++++++");
                         assert(tokens[3]=="[Call]");
                         // Do not handle system call
                         if(! func2indexMap.containsKey(tokens[2])) continue;
@@ -299,7 +299,7 @@ public class interGraph {
                             pair p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\to\t["+p3.toString()+","+p4.toString()+"]");
                             interGraphOut.println(i2+"\t"+i1+"\t-o\t["+p3.toString()+","+p4.toString()+"]");
-                            calleeParaSmt2=calleeParaSmt2+"["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Callee"+first_right+" $D$"+callFuncIndex+"$Callee"+second_right;
+                            calleeParaSmt2=calleeParaSmt2+"["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Callee"+first_right+" $D$"+callFuncIndex+"$Callee"+second_right+")";
                         }
                         //params    p
                         int paraN = tokens.length - 5;
@@ -317,9 +317,9 @@ public class interGraph {
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                             interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
                             if(calleeParaSmt2.length()==0){
-                                calleeParaSmt2=calleeParaSmt2+"["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
+                                calleeParaSmt2=calleeParaSmt2+"["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right+")";
                             }else{
-                                calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
+                                calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right+")";
                             }
                         }else {
                             int first_right = Integer.parseInt(tokens[5].substring(1,tokens[5].length()));
@@ -333,7 +333,7 @@ public class interGraph {
                             pair p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                             interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
-                            calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
+                            calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right+")";
                             for(int i = 1;i<paraN-1;i++){
                                 first_right = Integer.parseInt(tokens[5+i].substring(0,tokens[5+i].length()));
                                 second_right = funcParamReturn.get(callFuncIndex).get("[Para"+i+"]");
@@ -345,7 +345,7 @@ public class interGraph {
                                 p4 = new pair(callFuncIndex, 0);
                                 interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                                 interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
-                                calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
+                                calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right+")";
                             }
 
                             int paraIndex = paraN-1;
@@ -359,7 +359,7 @@ public class interGraph {
                             p4 = new pair(callFuncIndex, 0);
                             interGraphOut.println(i1+"\t"+i2+"\tp\t["+p3.toString()+","+p4.toString()+"]");
                             interGraphOut.println(i2+"\t"+i1+"\t-p\t["+p3.toString()+","+p4.toString()+"]");
-                            calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right;
+                            calleeParaSmt2=calleeParaSmt2+"#(= $D$"+funcIndex+"$Para"+first_right+" $D$"+callFuncIndex+"$Para"+second_right+")";
                         }
                         if(calleeParaSmt2.length()!=0) {
                             interSmt2Out.println(calleeParaSmt2);
@@ -380,12 +380,12 @@ public class interGraph {
                                     pair p3 = new pair(callFuncIndex, callFuncRetNode);
                                     interGraphOut.println(i1+"\t"+i2+"\tr\t["+p3.toString()+","+p4.toString()+"]");
                                     interGraphOut.println(i2+"\t"+i1+"\t-r\t["+p3.toString()+","+p4.toString()+"]");
-                                    interSmt2Out.println("["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Return"+first_right+" $D$"+callFuncIndex+"$Return"+second_right);
+                                    interSmt2Out.println("["+p3.toString()+","+p4.toString()+"]:(= $D$"+funcIndex+"$Return"+first_right+" $D$"+callFuncIndex+"$Return"+second_right+")");
                                 }
                             }
 
                         }
-                        interGraphOut.println("-----------------------------------------------");
+                        //interGraphOut.println("-----------------------------------------------");
                     }
                 }
             }
@@ -416,6 +416,8 @@ public class interGraph {
             funcIndex = -1;
             while(conditionalSmt2Input.hasNextLine()){
                 String line = conditionalSmt2Input.nextLine();
+                if(line.contains("ishr")||line.contains("ishl")||line.contains("iushr")||line.contains("lshr")||line.contains("lshl")||line.contains("lushr"))continue;
+                line = line.replace("(iand","(and").replace("(ior","(or").replace("(ixor","(xor").replace("(land","(and").replace("(lor","(or").replace("(lxor","(xor");
                 if(line.length()==0){
 
                 }else if(line.startsWith("<")){
