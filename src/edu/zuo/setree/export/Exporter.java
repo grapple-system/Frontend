@@ -12,13 +12,13 @@ import soot.*;
 
 public class Exporter {
 	
-	public static final File setOutFile = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/set.conditional");
-	public static final File stateNodeFile = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/stateNode.json");
-	public static final File conditionalSmt2File = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/conditionalSmt2");
-	public static final File consEdgeGraphFile = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/consEdgeGraph");
-	public static final File var2indexMapFile = new File("/Users/wangyifei/IdeaProjects/Grapple-frontend/intraOutput/var2indexMap");
+	public static final File setOutFile = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/set.conditional");
+	public static final File stateNodeFile = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/stateNode.json");
+	public static final File conditionalSmt2File = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/conditionalSmt2");
+	public static final File consEdgeGraphFile = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/consEdgeGraph");
+	public static final File var2indexMapFile = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/var2indexMap");
 
-	private static Map<String,Stack<Integer>> constraintEdgeMap = new LinkedHashMap<>();
+	private static Map<String,Stack<Long>> constraintEdgeMap = new LinkedHashMap<>();
 	private static Map<String, Integer> var2indexMap = new LinkedHashMap<>();
 	
 	public static void run(StateNode root, Body mb) {
@@ -110,7 +110,7 @@ public class Exporter {
 		}
 	}
 	
-	private static void recursiveExport(StateNode root, int index, PrintWriter out) {
+	private static void recursiveExport(StateNode root, long index, PrintWriter out) {
 		//termination
 		if(root == null) {
 			return;
@@ -126,7 +126,7 @@ public class Exporter {
 		recursiveExport(root.getTrueChild(), 2 * index + 1, out);
 	}
 
-	private static void recursiveConditionalSmt2(StateNode root, int index, PrintWriter conditionalSmt2Out){
+	private static void recursiveConditionalSmt2(StateNode root, long index, PrintWriter conditionalSmt2Out){
 		//termination
 		if(root == null) {
 			return;
@@ -206,7 +206,8 @@ public class Exporter {
 		recursiveStateNode(root.getTrueChild(), 2 * index + 1,  stateNodeOut);
 	}
 
-	private static void recursiveConsEdgeGraph(StateNode root, int index, PrintWriter consEdgeGraphOut) {
+	private static void recursiveConsEdgeGraph(StateNode root, long index, PrintWriter consEdgeGraphOut) {
+		//if(index<0)System.exit(-1);
 		if(root == null){
 			return;
 		}
@@ -221,9 +222,9 @@ public class Exporter {
 //            }
             putVar2indexMap(index+"."+s);
 			if(!constraintEdgeMap.containsKey(s)) {
-				constraintEdgeMap.put(s, new Stack<Integer>());
+				constraintEdgeMap.put(s, new Stack<Long>());
 			}else if (constraintEdgeMap.get(s).size() != 0){
-				int start = constraintEdgeMap.get(s).peek();
+				long start = constraintEdgeMap.get(s).peek();
 				consEdgeGraphOut.println(var2indexMap.get(start+"."+s)+", "+var2indexMap.get(index+"."+s)+", ["+start+", "+index+"]");
 			}
 			constraintEdgeMap.get(s).push(index);
@@ -293,7 +294,7 @@ public class Exporter {
 	 * @param root
 	 * @param id
 	 */
-	private static void printOutInfo(StateNode root, int id) {
+	private static void printOutInfo(StateNode root, long id) {
 		// TODO Auto-generated method stub
 		if(root == null){
 			return;

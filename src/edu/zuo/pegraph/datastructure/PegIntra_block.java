@@ -182,7 +182,7 @@ public class PegIntra_block {
 		return Vars;
 	}
 
-	public String toString(Map<String, Integer> var2indexMap, int index){
+	public String toString(Map<String, Integer> var2indexMap, long index){
 		StringBuilder builder = new StringBuilder();
 		//System.out.println("local2Local: "+local2Local.size() +"\nobj2local: "+ obj2Local.size() +"\nref2Local: "+ ref2Local.size() +"\nlocal2Ref: "+ local2Ref.size() +"\nconst2Ref: "+ const2Ref.size());
 		//--method signature

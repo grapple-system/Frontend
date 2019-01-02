@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Statistic">
+    <option name="excludeDotArtifactDirectory" value="true" />
+    <option name="excludedDirectories">
+      <list>
+        <option value="$PROJECT_DIR$/bin" />
+        <option value="$PROJECT_DIR$/executor" />
+        <option value="$PROJECT_DIR$/interOutput" />
+        <option value="$PROJECT_DIR$/intraOutput" />
+        <option value="$PROJECT_DIR$/lib" />
+        <option value="$PROJECT_DIR$/sootOutput" />
+        <option value="$PROJECT_DIR$/test" />
+        <option value="$PROJECT_DIR$/src/edu/zuo/callgraph" />
+        <option value="$PROJECT_DIR$/src/edu/zuo/cg" />
+        <option value="$PROJECT_DIR$/src/edu/zuo/setree/intergraph" />
+        <option value="$PROJECT_DIR$/src/edu/zuo/setree/JSON" />
+        <option value="$PROJECT_DIR$/src/edu/zuo/setree/export" />
+        <option value="$PROJECT_DIR$/src/edu/zuo/setree/datastructure" />
+      </list>
+    </option>
+  </component>
+</project>
