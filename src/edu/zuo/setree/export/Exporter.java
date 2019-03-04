@@ -12,11 +12,11 @@ import soot.*;
 
 public class Exporter {
 	
-	public static final File setOutFile = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/set.conditional");
-	public static final File stateNodeFile = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/stateNode.json");
-	public static final File conditionalSmt2File = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/conditionalSmt2");
-	public static final File consEdgeGraphFile = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/consEdgeGraph");
-	public static final File var2indexMapFile = new File("/Users/wangyifei/Projects_Java/Grapple-frontend/intraOutput/var2indexMap");
+	public static final File setOutFile = new File("intraOutput/set.conditional");
+	public static final File stateNodeFile = new File("intraOutput/stateNode.json");
+	public static final File conditionalSmt2File = new File("intraOutput/conditionalSmt2");
+	public static final File consEdgeGraphFile = new File("intraOutput/consEdgeGraph");
+	public static final File var2indexMapFile = new File("intraOutput/var2indexMap");
 
 	private static Map<String,Stack<Long>> constraintEdgeMap = new LinkedHashMap<>();
 	private static Map<String, Integer> var2indexMap = new LinkedHashMap<>();
