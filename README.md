@@ -26,8 +26,9 @@ Soot may have some problems in handling *.jar, so I write a *.sh file to run a l
 
 The output is under ./interOutput which is the input of backend.
 
-# Questions or Comments?
 
-
-# Project Contributors
-
+## Project Contributors
+* [**Zhiqiang Zuo**](http://zuozhiqiang.bitbucket.io/) - *Assistant Professor, Nanjing University*
+* **Yifei Wang** - *Master Student, Nanjing University*
+* **Qiuhong Pan** - *Master Student, Nanjing University*
+* **Shenming Lu** - *Master Student, Nanjing University*
