@@ -17,7 +17,8 @@ public class ConstraintGraphList {
 		Chain<Local> locals = block.getBody().getLocals();
 		for (Local local : locals) {
 			String classname = local.getType().toString();
-			if (IntraMain.allClass.contains(classname) && !local.getName().startsWith("$")) {
+			//if (IntraMain.allClass.contains(classname) && !local.getName().startsWith("$")) {
+			if (IntraMain.allClass.contains(classname)) {
 				if (getConstraintGraph(local.getName() + local.hashCode()) == null) {
 					ConstraintGraph cg = new ConstraintGraph(local.getName() + local.hashCode());
 					addConstraintGraph(cg);

@@ -66,7 +66,7 @@ public class IntraMain extends BodyTransformer {
 
 	public static void main(String[] args) {
 		String sp = "E:/Study/zuo_project/pepper_wef/pepper/lib/";
-		String dirpath = "E:/Study/zuo_project/pepper_wef/pepper/protocal/";
+		String dirpath = "E:/Study/zuo_project/pepper_wef/pepper/protocol/";
 		init(dirpath);
 		// set the sootclass path
 		File dirFile = new File(sp);
@@ -85,13 +85,12 @@ public class IntraMain extends BodyTransformer {
 		path += sp + "test;";
 		Scene.v().setSootClassPath(path);
 		// set options
-		
+
 		Options.v().setPhaseOption("jb", "use-original-names:true");
 		Options.v().setPhaseOption("tag", "off");
 		Options.v().set_output_format(Options.output_format_jimple);
 		Options.v().set_keep_line_number(true);
 		Options.v().set_prepend_classpath(true);
-
 
 		PackManager.v().getPack("jtp").add(new Transform("jtp.setree", new IntraMain()));
 		/**
@@ -99,14 +98,18 @@ public class IntraMain extends BodyTransformer {
 		 * "-cp path_of_classes_analyzed class_names" e.g., -cp
 		 * E:\Workspace\ws_program\taintanalysis\bin\ InterTest HelloWorld
 		 */
-		//System.out.println(args);
-		//synchronized (IntraMain.class) {
-			soot.Main.main(args);
-			//TSCGenerator.printCallInfo("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/callInfoFile");
+		// System.out.println(args);
+		// synchronized (IntraMain.class) {
+		soot.Main.main(args);
+		// TSCGenerator.printCallInfo("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/callInfoFile");
+		//if (Runner.hasInter) {
 			TSCGenerator.printCalledVar("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/calledVarFile");
 			CallExecutor.dealReturn();
 			CallExecutor.printCallInfo("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/callInfoFile");
+			CallExecutor.printMetReturn("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/methodReturnFile");
+			Runner.hasInter = false;
 		//}
+		// }
 
 	}
 

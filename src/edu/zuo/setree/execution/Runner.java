@@ -23,8 +23,8 @@ import acteve.symbolic.integer.Expression;
 import acteve.symbolic.integer.FloatBinaryOperator;
 import acteve.symbolic.integer.IntegerBinaryOperator;
 import acteve.symbolic.integer.LongBinaryOperator;
-import edu.zuo.pegraph.PEGGenerator_block;
-import edu.zuo.pegraph.datastructure.PegIntra_block;
+//import edu.zuo.pegraph.PEGGenerator_block;
+//import edu.zuo.pegraph.datastructure.PegIntra_block;
 import edu.zuo.setree.datastructure.Conditional;
 import edu.zuo.setree.datastructure.StateNode;
 import edu.zuo.setree.export.Exporter;
@@ -72,13 +72,14 @@ public class Runner {
 	private String outPath;
 	public static ConstraintGraphList constraint_graph_list;
 	private final StateNode funcEntry;
-	//private final StateNode funcExit;
+	// private final StateNode funcExit;
 	private List<Integer> passedNode = new ArrayList<Integer>();
+	public static boolean hasInter = false;
 
 	public Runner() {
 		this.root = new StateNode();
 		this.funcEntry = new StateNode();
-		//this.funcExit = new StateNode();
+		// this.funcExit = new StateNode();
 	}
 
 	public void run(Chain<SootClass> classes) {
@@ -99,9 +100,16 @@ public class Runner {
 		System.out.println("\n\n");
 		System.out.println("Method: " + mb.getMethod().getSubSignature().toString());
 		System.out.println("---------------------------------------------------");
+		
+		if(mb.getMethod().getSubSignature().contains("isLeaseCheckerStarted")){
+			System.out.println("next class");
+		}
 
-		if (!hasInterestVar(mb))
+		if (!hasInterestVar(mb)) {
+			hasInter = false;
 			return;
+		}
+//		hasInter = true;
 
 		// init the Directory to save the graph
 		dirPath = "E:/Study/zuo_project/pepper_wef/pepper/sootOutput/interMet.txt";
@@ -119,7 +127,7 @@ public class Runner {
 			if (!outFile.exists())
 				outFile.mkdirs();
 			PrintWriter pw = new PrintWriter(new BufferedWriter(new FileWriter(dirFile, true)));
-			pw.println(mb.getMethod().getDeclaringClass().toString());
+			pw.println(mb.getMethod().getSignature());
 			pw.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
@@ -134,7 +142,7 @@ public class Runner {
 		confirm_no_loop(mb);
 
 		// add func exit
-		//addExitNode(mb);
+		// addExitNode(mb);
 
 		// execute the body symbolically
 		execute(mb);
@@ -148,6 +156,10 @@ public class Runner {
 		// export the symbolic execution tree
 		export(mb);
 		// }
+		// TSCGenerator.printCalledVar("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/calledVarFile");
+		// CallExecutor.dealReturn();
+		// CallExecutor.printCallInfo("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/callInfoFile");
+		// CallExecutor.printMetReturn("E:/Study/zuo_project/pepper_wef/pepper/intraOutput/methodReturnFile");
 	}
 
 	// return true if method has interest var, such fileWriter
@@ -158,25 +170,6 @@ public class Runner {
 		if (tgl.ltg.size() == 0)
 			return false;
 		return true;
-	}
-
-	/* Add by wefcser */
-	private void separate() {
-		PegIntra_block first_peg_block = root.getPeg_intra_block();
-		PegIntra_block peg_block = new PegIntra_block();
-		peg_block.setFormalCallee(first_peg_block.getFormal_callee());
-		List<Local> formal_paras = first_peg_block.getFormal_paras();
-		for (Local loc : formal_paras) {
-			peg_block.addFormalParameter(loc);
-		}
-		root.getPeg_intra_block().clearFormal_callee();
-		root.getPeg_intra_block().clearFormal_paras();
-		Map<Local, Expression> localExpressionMap = root.getLocalsMap();
-		for (Local l : localExpressionMap.keySet()) {
-			funcEntry.putToLocalsMap(l, localExpressionMap.get(l));
-		}
-		funcEntry.setTrueChild(root);
-		funcEntry.setPeg_intra_block(peg_block);
 	}
 
 	// Add by pan. init entry node for typestate checking
@@ -205,21 +198,21 @@ public class Runner {
 	}
 
 	// Add exit node for each method
-//	private void addExitNode(Body mb) {
-//		funcExit.index = -2;
-//		BriefBlockGraph cfg = new BriefBlockGraph(mb);
-//		List<Block> entries = cfg.getHeads();
-//		filterEntries(entries);
-//		assert(entries.size() == 1);
-//		Block entry = entries.get(0);
-//		TypeGraphList first_tgl = new TypeGraphList(entry);
-//		Map<Local, Expression> localExpressionMap = root.getLocalsMap();
-//		for (Local l : localExpressionMap.keySet()) {
-//			funcExit.putToLocalsMap(l, localExpressionMap.get(l));
-//		}
-//		funcExit.setTypegraphList(new TypeGraphList(entry));
-//		funcExit.setConstraintGraphList(new ConstraintGraphList(entry));
-//	}
+	// private void addExitNode(Body mb) {
+	// funcExit.index = -2;
+	// BriefBlockGraph cfg = new BriefBlockGraph(mb);
+	// List<Block> entries = cfg.getHeads();
+	// filterEntries(entries);
+	// assert(entries.size() == 1);
+	// Block entry = entries.get(0);
+	// TypeGraphList first_tgl = new TypeGraphList(entry);
+	// Map<Local, Expression> localExpressionMap = root.getLocalsMap();
+	// for (Local l : localExpressionMap.keySet()) {
+	// funcExit.putToLocalsMap(l, localExpressionMap.get(l));
+	// }
+	// funcExit.setTypegraphList(new TypeGraphList(entry));
+	// funcExit.setConstraintGraphList(new ConstraintGraphList(entry));
+	// }
 
 	private void export(Body mb) {
 		Exporter.run(funcEntry, mb);
@@ -229,13 +222,14 @@ public class Runner {
 		// TODO Auto-generated method stub
 		LoopNestTree loopNestTree = new LoopNestTree(mb);
 		List<Loop> need2Remove = new ArrayList<>();
-		for(Loop l: loopNestTree){
-			if(l.getHead() instanceof IdentityStmt && ((IdentityStmt)l.getHead()).getRightOp() instanceof CaughtExceptionRef){
+		for (Loop l : loopNestTree) {
+			if (l.getHead() instanceof IdentityStmt
+					&& ((IdentityStmt) l.getHead()).getRightOp() instanceof CaughtExceptionRef) {
 				need2Remove.add(l);
 			}
 		}
 		loopNestTree.removeAll(need2Remove);
-		if(!loopNestTree.isEmpty()) {
+		if (!loopNestTree.isEmpty()) {
 			throw new RuntimeException("Unexpected loops existing!!!");
 		}
 	}
@@ -244,8 +238,8 @@ public class Runner {
 		BriefBlockGraph cfg = new BriefBlockGraph(mb);
 		System.out.println("\n\nCFG before executing ==>>");
 		System.out.println(cfg.toString());
-		
-		//List<Block> entries = cfg.getHeads();
+
+		// List<Block> entries = cfg.getHeads();
 		List<Block> entries = new ArrayList<Block>(cfg.getHeads());
 		filterEntries(entries);
 
@@ -262,16 +256,17 @@ public class Runner {
 		BriefBlockGraph cfg = new BriefBlockGraph(method.getActiveBody());
 		System.out.println("\nCFG before transforming ==>>");
 		System.out.println(cfg.toString());
-		
-		//switch transform: transform lookupswitch and tableswitch into if
+
+		// switch transform: transform lookupswitch and tableswitch into if
 		SwitchTransformer.transform(method);
-		
-		//loop transform: unroll the loop twice
+
+		// loop transform: unroll the loop twice
 		LoopTransformer.transform(method);
 	}
 
-	
-	/** filter out the entry blocks which are catching exceptions
+	/**
+	 * filter out the entry blocks which are catching exceptions
+	 * 
 	 * @param entries
 	 */
 	private void filterEntries(List<Block> entries) {
@@ -329,18 +324,22 @@ public class Runner {
 			// fall-through
 
 			// warning: call_hashcode changed to temp.callhash: +/-hashcode
-			constraint_graph_list.temp2Constraint(block.getTail().hashCode(), succs.get(0).getHead().hashCode(),
-					node.index, node.index);
+			if (TSCGenerator.lastCall) {
+				constraint_graph_list.temp2Constraint(-block.getTail().hashCode(), succs.get(0).getHead().hashCode(),
+						node.index, node.index);
+			} else
+				constraint_graph_list.temp2Constraint(block.getTail().hashCode(), succs.get(0).getHead().hashCode(),
+						node.index, node.index);
 			constraint_graph_list.clearTemp();
 			node.addConstraintGraphList(constraint_graph_list);
 			traverseCFG(succs.get(0), node);
 		} else if (succs.size() == 0) {
 			constraint_graph_list.temp2Constraint(Integer.toString(block.getTail().hashCode()),
-					"-" + block.getBody().getMethod().getSignature(), node.index, -2);
+					"-" + Integer.toString(block.getTail().hashCode()), node.index, -2);
 			constraint_graph_list.clearTemp();
 			CallExecutor.addRet(block.getBody().getMethod().getSignature(), constraint_graph_list);
 			node.setConstraintGraphList(new ConstraintGraphList(block));
-			//node.setTrueChild(funcExit);
+			// node.setTrueChild(funcExit);
 			// end
 		} else if (succs.size() > 2) {
 			node.setConstraintGraphList(constraint_graph_list);
@@ -349,36 +348,6 @@ public class Runner {
 		}
 	}
 
-	// public static BinaryOperator getConditionOperator(ConditionExpr
-	// conditionExpr) {
-	// // TODO Auto-generated method stub
-	// String binExprSymbol = conditionExpr.getSymbol().trim();
-	//
-	// Type binType = conditionExpr.getType();
-	//// assert(binType == binExpr.getOp2().getType());
-	//
-	// if(binType instanceof IntType || binType instanceof ShortType || binType
-	// instanceof CharType || binType instanceof ByteType){
-	// return new IntegerBinaryOperator(binExprSymbol);
-	// }
-	// else if(binType instanceof LongType){
-	// return new LongBinaryOperator(binExprSymbol);
-	// }
-	// else if(binType instanceof FloatType){
-	// return new FloatBinaryOperator(binExprSymbol);
-	// }
-	// else if(binType instanceof DoubleType){
-	// return new DoubleBinaryOperator(binExprSymbol);
-	// }
-	// else if(binType instanceof BooleanType){
-	// return new BooleanBinaryOperator(binExprSymbol);
-	// }
-	// else{
-	// System.err.println("wrong type: " + binType.toString());
-	// }
-	//
-	// return null;
-	// }
 
 	private void operate(Block block, StateNode node) {
 		// ---------------------------------------------------------
@@ -392,22 +361,14 @@ public class Runner {
 			stmt.apply(p);
 		}
 
-		// generate peg_block for alias analysis
-		// PegIntra_block peg_block = new PegIntra_block();
-		// PEGGenerator_block generator_block = new
-		// PEGGenerator_block(block,
-		// peg_block);
-		// generator_block.process();
-		// node.setPeg_intra_block(peg_block);
-
-		// generate typestate checking
 		TypeGraphList tgl = new TypeGraphList(block);
 		TSCGenerator tscgenerator = new TSCGenerator(block, tgl);
 		// warning: par add node index!
 		tscgenerator.process(outPath, node.index);
 		tscgenerator.print(outPath);
 		node.addTypegraphList(tgl);
-		node.getTypegraphList().simplifyGraph();
+		// don't simplify
+		// node.getTypegraphList().simplifyGraph();
 		// node.setConStr(p.constraintstr);
 		// }
 
@@ -435,18 +396,4 @@ public class Runner {
 	// return null;
 	// }
 
-	/** print out state information
-	 * @param root
-	 * @param id
-	 */
-	private static void printOutInfo(StateNode root, int id) {
-		// TODO Auto-generated method stub
-		if (root == null) {
-			return;
-		}
-		System.out.println(id + ": " + root.toString());
-		System.out.println("local2local size:" + root.getPeg_intra_block().getLocal2Local().size());
-		printOutInfo(root.getFalseChild(), 2 * id);
-		printOutInfo(root.getTrueChild(), 2 * id + 1);
-	}
 }

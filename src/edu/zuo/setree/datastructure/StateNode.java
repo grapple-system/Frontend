@@ -3,7 +3,7 @@ package edu.zuo.setree.datastructure;
 import java.util.*;
 
 import acteve.symbolic.integer.Expression;
-import edu.zuo.pegraph.datastructure.PegIntra_block;
+//import edu.zuo.pegraph.datastructure.PegIntra_block;
 import edu.zuo.typestate.datastructure.ConstraintGraph;
 import edu.zuo.typestate.datastructure.ConstraintGraphList;
 import edu.zuo.typestate.datastructure.TypeGraphList;
@@ -31,7 +31,7 @@ public class StateNode {
 	
 	//---------------------------------------------------------
 	//specific to alias analysis
-	private PegIntra_block peg_intra_block = null;
+	//private PegIntra_block peg_intra_block = null;
 	
 	//specific to typestate checking, intra node edges
 	private TypeGraphList tgl = null;
@@ -172,19 +172,6 @@ public class StateNode {
 	
 	public String getRetString() {
 		return returnExpr == null ? "null" : returnExpr.toString();
-	}
-
-	public PegIntra_block getPeg_intra_block() {
-		return peg_intra_block;
-	}
-
-	public void setPeg_intra_block(PegIntra_block peg_intra_block) {
-		this.peg_intra_block = peg_intra_block;
-	}
-
-	public Set<String> getPegIntra_blockVars() {
-		if(peg_intra_block == null) return null;
-		return peg_intra_block.getVars();
 	}
 
 	public void setTypegraphList(TypeGraphList tgl){

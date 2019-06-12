@@ -26,7 +26,8 @@ public class TypeGraphList {
 		Chain<Local> locals = block.getBody().getLocals();
 		for (Local local : locals) {
 			String classname = local.getType().toString();
-			if (IntraMain.allClass.contains(classname) && !local.getName().startsWith("$")) {
+			//if (IntraMain.allClass.contains(classname) && !local.getName().startsWith("$")) {
+			if (IntraMain.allClass.contains(classname)) {
 				if(getTypeGraph(local.getName()+local.hashCode()) == null){
 					TypeGraph tg = new TypeGraph(classname, local.getName()+local.hashCode());
 					addTypeGraph(tg);
@@ -102,6 +103,15 @@ public class TypeGraphList {
 				tg.transAll(starthash, endhash);
 			else
 				tg.transAllCon(starthash, endhash);
+		}
+	}
+	
+	public void transAllReturn(String starthash, String endhash){
+		for(TypeGraph tg : ltg){
+			//if(state == 0)
+				tg.transReturn(starthash, endhash);
+			//else
+				tg.transConReturn(starthash, endhash);
 		}
 	}
 	

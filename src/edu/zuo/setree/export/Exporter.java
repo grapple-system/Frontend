@@ -7,6 +7,7 @@ import acteve.symbolic.integer.*;
 //import com.sun.org.apache.xpath.internal.operations.Bool;
 import edu.zuo.setree.datastructure.CallSite;
 import edu.zuo.setree.datastructure.StateNode;
+import edu.zuo.typestate.datastructure.CallExecutor;
 import edu.zuo.typestate.datastructure.ConstraintEdge;
 import edu.zuo.typestate.datastructure.ConstraintGraph;
 import edu.zuo.typestate.datastructure.TransEdge;
@@ -97,6 +98,7 @@ public class Exporter {
 			}
 			// recursiveConsEdgeGraph(root, 0, consEdgeGraphOut);
 			System.out.println("Exporting var2indexMap...");
+			addReturnVar(mb);
 			printVar2indexMap(var2indexMapOut);
 
 			// Output End
@@ -128,6 +130,19 @@ public class Exporter {
 		Set<String> vars = node.getTypeStateVars();
 		for (String var : vars) {
 			putVar2indexMap(varName + "." + var);
+		}
+	}
+	
+	public static void addReturnVar(Body mb){
+		String n = mb.getMethod().getSignature();
+		for (Map.Entry<String, List<String>> entry : CallExecutor.methodReturn.entrySet()) {
+			String method = entry.getKey().split(", ")[0];
+			if(method.equals(mb.getMethod().getSignature())){
+				List<String> rets = entry.getValue();
+				for(String ret:rets){
+					putVar2indexMap(ret);
+				}
+			}
 		}
 	}
 
@@ -252,45 +267,45 @@ public class Exporter {
 		recursiveConsEdgeGraph(root.getFalseChild(), varname, consEdgeGraphOut);
 	}
 
-	private static void recursiveConsEdgeGraph(StateNode root, int index, PrintWriter consEdgeGraphOut) {
-		if (root == null) {
-			return;
-		}
-		// consEdgeGraphOut.println("----------"+index+"----------");
-		Set<String> Vars = root.getPegIntra_blockVars();
-		// push
-		for (String s : Vars) {
-			putVar2indexMap(index + "." + s);
-			if (!constraintEdgeMap.containsKey(s)) {
-				constraintEdgeMap.put(s, new Stack<Integer>());
-			} else if (constraintEdgeMap.get(s).size() != 0) {
-				int start = constraintEdgeMap.get(s).peek();
-				consEdgeGraphOut.println(var2indexMap.get(start + "." + s) + ", " + var2indexMap.get(index + "." + s)
-						+ ", [" + start + ", " + index + "]");
-			}
-			constraintEdgeMap.get(s).push(index);
-			// System.out.print(index);
-		}
-		// params rets
-		// consEdgeGraphOut.println(root.getPeg_intra_block().getCallSites().size());
-		// consEdgeGraphOut.println("----in----");
-		consEdgeGraphOut.print(root.getPeg_intra_block().toString(var2indexMap, index));
-		// consEdgeGraphOut.println("----out----");
-		List<CallSite> callSites = root.getCallsites();
-		if (callSites != null) {
-			for (CallSite cs : callSites) {
-				// consEdgeGraphOut.println("#" + cs.getSignature());
-			}
-		}
-		// recursive operation
-		recursiveConsEdgeGraph(root.getTrueChild(), 2 * index + 1, consEdgeGraphOut);
-		recursiveConsEdgeGraph(root.getFalseChild(), 2 * index + 2, consEdgeGraphOut);
-		// pop
-		for (String s : Vars) {
-			constraintEdgeMap.get(s).pop();
-			// System.out.print(index);
-		}
-	}
+//	private static void recursiveConsEdgeGraph(StateNode root, int index, PrintWriter consEdgeGraphOut) {
+//		if (root == null) {
+//			return;
+//		}
+//		// consEdgeGraphOut.println("----------"+index+"----------");
+//		Set<String> Vars = root.getPegIntra_blockVars();
+//		// push
+//		for (String s : Vars) {
+//			putVar2indexMap(index + "." + s);
+//			if (!constraintEdgeMap.containsKey(s)) {
+//				constraintEdgeMap.put(s, new Stack<Integer>());
+//			} else if (constraintEdgeMap.get(s).size() != 0) {
+//				int start = constraintEdgeMap.get(s).peek();
+//				consEdgeGraphOut.println(var2indexMap.get(start + "." + s) + ", " + var2indexMap.get(index + "." + s)
+//						+ ", [" + start + ", " + index + "]");
+//			}
+//			constraintEdgeMap.get(s).push(index);
+//			// System.out.print(index);
+//		}
+//		// params rets
+//		// consEdgeGraphOut.println(root.getPeg_intra_block().getCallSites().size());
+//		// consEdgeGraphOut.println("----in----");
+//		consEdgeGraphOut.print(root.getPeg_intra_block().toString(var2indexMap, index));
+//		// consEdgeGraphOut.println("----out----");
+//		List<CallSite> callSites = root.getCallsites();
+//		if (callSites != null) {
+//			for (CallSite cs : callSites) {
+//				// consEdgeGraphOut.println("#" + cs.getSignature());
+//			}
+//		}
+//		// recursive operation
+//		recursiveConsEdgeGraph(root.getTrueChild(), 2 * index + 1, consEdgeGraphOut);
+//		recursiveConsEdgeGraph(root.getFalseChild(), 2 * index + 2, consEdgeGraphOut);
+//		// pop
+//		for (String s : Vars) {
+//			constraintEdgeMap.get(s).pop();
+//			// System.out.print(index);
+//		}
+//	}
 
 	private static void printVar2indexMap(PrintWriter var2indexMapOut) {
 		for (String s : var2indexMap.keySet()) {
@@ -343,7 +358,6 @@ public class Exporter {
 			return;
 		}
 		System.out.println(id + ": " + root.toString());
-		System.out.println("local2local size:"+root.getPeg_intra_block().getLocal2Local().size());
 		printOutInfo(root.getFalseChild(), 2 * id);
 		printOutInfo(root.getTrueChild(), 2 * id + 1);
 	}

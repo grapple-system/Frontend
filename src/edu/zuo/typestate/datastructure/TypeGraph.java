@@ -127,6 +127,29 @@ public class TypeGraph {
 		}
 	}
 
+	// return: open -> error
+	public void transReturn(String starthash, String endhash) {
+		TransEdge te = null;
+		// uninit -> uninit
+		te = new TransEdge();
+		te.addStart(new Point("uninit", starthash));
+		te.addEnd(new Point("uninit", endhash));
+		transedges.add(te);
+		doDegree(starthash, endhash);
+		// open -> error
+		te = new TransEdge();
+		te.addStart(new Point("opened", starthash));
+		te.addEnd(new Point("error", endhash));
+		transedges.add(te);
+		doDegree(starthash, endhash);
+		// error -> error
+		te = new TransEdge();
+		te.addStart(new Point("error", starthash));
+		te.addEnd(new Point("error", endhash));
+		transedges.add(te);
+		doDegree(starthash, endhash);
+	}
+
 	// transmit for method
 	public void transMethod(String method, String starthash, String endhash) {
 		TypeProtocol tp = IntraMain.typemap.get(classname);
@@ -147,6 +170,22 @@ public class TypeGraph {
 			String[] te = new String[] { state, state };
 			Runner.constraint_graph_list.addTemp(varname, te);
 		}
+	}
+
+	// special for constraint
+	public void transConReturn(String starthash, String endhash) {
+		// Runner.constraint_graph_list.clearTemp();
+		String[] te = new String[2];
+		// uninit -> uninit
+		te = new String[] { "uninit", "uninit" };
+		Runner.constraint_graph_list.addTemp(varname, te);
+		// open -> error
+		te = new String[] { "opened", "error" };
+		Runner.constraint_graph_list.addTemp(varname, te);
+		// error -> error
+		te = new String[] { "error", "error" };
+		Runner.constraint_graph_list.addTemp(varname, te);
+
 	}
 
 	// special for constraint
@@ -184,6 +223,7 @@ public class TypeGraph {
 		}
 	}
 
+	//remove two call: printDot operate
 	public void simplifyGraph() {
 		int stateNum = allStates.length;
 		if (transedges.size() <= stateNum) {
@@ -276,7 +316,7 @@ public class TypeGraph {
 	}
 
 	public void printDot(String file_path) {
-		simplifyGraph();
+		//simplifyGraph();
 		String regEx = "[`~!@#%^&*()+=|{}';',\\[\\]<>?~£¡@#£¤%¡­¡­&*£¨£©¡ª¡ª+|{}¡¾¡¿¡®£»£º¡±¡°¡¯¡££¬¡¢£¿]";
 		Pattern p = Pattern.compile(regEx);
 		// file_path = file_path + sm.getDeclaringClass().getName() + "_" +

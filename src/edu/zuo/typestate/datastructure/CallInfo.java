@@ -1,6 +1,7 @@
 package edu.zuo.typestate.datastructure;
 
 public class CallInfo {
+	private int callNum;
 	private String callMethod;
 	private String receiveMethod;
 	private int callNodeIndex;
@@ -11,12 +12,13 @@ public class CallInfo {
 	//parname of receive method
 	private String receiveStr;
 
-	public CallInfo(String callmethod, String receivemethod, int index, String var, String par) {
+	public CallInfo(String callmethod, String receivemethod, int index, String var, String par, int callNum) {
 		this.callMethod = callmethod;
 		this.receiveMethod = receivemethod;
 		this.callNodeIndex = index;
 		this.callStr = var;
 		this.receiveStr = par;
+		this.callNum = callNum;
 		//this.callPoint = call;
 		//this.receivePoint = receive;
 	}
@@ -27,6 +29,7 @@ public class CallInfo {
 		this.callNodeIndex = callinfo.callnodeIndex();
 		this.callStr = callinfo.callStr();
 		this.receiveStr = callinfo.receiveStr();
+		this.callNum = callinfo.callNum();
 	}
 	
 	public void changeCallStr(String callStr){
@@ -34,6 +37,10 @@ public class CallInfo {
 		this.callNodeIndex = Integer.parseInt(callStr.split("[.]")[1]);
 	}
 
+	public int callNum(){
+		return callNum;
+	}
+	
 	public String callVar() {
 		String[] sa = callStr.split("[.]");
 		return sa[0];
@@ -80,6 +87,6 @@ public class CallInfo {
 	}
 	
 	public String print2str(){
-		return callMethod+", "+callStr+", "+receiveMethod+", "+receiveStr;
+		return callNum+", "+callMethod+", "+callStr+", "+receiveMethod+", "+receiveStr;
 	}
 }
